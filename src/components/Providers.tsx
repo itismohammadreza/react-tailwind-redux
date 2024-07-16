@@ -4,19 +4,19 @@ import { StoreProvider } from "@redux/StoreProvider";
 import { RouterProvider } from "react-router-dom";
 import { router } from "@root/router";
 import { PropsWithChildren } from "react";
-import { PrimeReactProvider } from "primereact/api";
+import { PowellProvider } from "@powell/PowellProvider";
 import '@locales/i18n';
 import "@styles/global.scss";
 
 export const Providers = ({children}: PropsWithChildren) => {
   return (
       <StoreProvider>
-        <PrimeReactProvider value={{ripple: true}}>
+        <PowellProvider>
           <RouterProvider router={router}/>
           <Loading/>
           <Toast/>
           {children}
-        </PrimeReactProvider>
+        </PowellProvider>
       </StoreProvider>
   );
 }

@@ -19,6 +19,7 @@
       "@locales/*": ["src/locales/*"],
       "@models/*": ["src/models/*"],
       "@pages/*": ["src/pages/*"],
+      "@powell/*": ["src/powell/*"],
       "@redux/*": ["src/redux/*"],
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],

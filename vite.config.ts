@@ -14,6 +14,7 @@ export default defineConfig({
       "@locales": resolve(__dirname, "./src/locales/"),
       "@models": resolve(__dirname, "./src/models/"),
       "@pages": resolve(__dirname, "./src/pages/"),
+      "@powell": resolve(__dirname, "./src/powell/"),
       "@redux": resolve(__dirname, "./src/redux/"),
       "@services": resolve(__dirname, "./src/services/"),
       "@styles": resolve(__dirname, "./src/styles/"),
