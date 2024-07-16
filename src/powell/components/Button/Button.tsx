@@ -1,4 +1,4 @@
-import { memo, MouseEvent, useCallback, useRef, useState } from "react";
+import { memo, MouseEvent, useRef, useState } from "react";
 import { Button as PrimeButton, ButtonProps as PrimeButtonProps } from "primereact/button";
 import { classNames } from "primereact/utils";
 
@@ -31,7 +31,8 @@ export const Button = memo((props: ButtonProps) => {
     nextText,
     nextSeverity,
     state = 'default',
-    onStateChange
+    onStateChange,
+    ...rest
   } = props;
 
   const [_state, _setState] = useState<ButtonState>(state);
@@ -68,7 +69,7 @@ export const Button = memo((props: ButtonProps) => {
 
   return (
       <PrimeButton
-          {...props}
+          {...rest}
           onClick={handleClick}
           label={async ? tempProps.current.label : props.label}
           icon={async ? tempProps.current.icon : props.icon}
