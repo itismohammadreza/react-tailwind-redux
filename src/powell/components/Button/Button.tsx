@@ -1,4 +1,4 @@
-import { memo, MouseEvent, useCallback, useState } from "react";
+import { memo, MouseEvent, useCallback, useRef, useState } from "react";
 import { Button as PrimeButton, ButtonProps as PrimeButtonProps } from "primereact/button";
 import { classNames } from "primereact/utils";
 
@@ -17,6 +17,8 @@ interface ButtonProps extends Omit<PrimeButtonProps, "loading"> {
   onStateChange?: (state: ButtonState) => void;
 }
 
+type ButtonTempProps = Pick<ButtonProps, "label" | "icon" | "raised" | "outlined" | "text" | "severity">;
+
 export const Button = memo((props: ButtonProps) => {
   const {
     async,
@@ -31,7 +33,21 @@ export const Button = memo((props: ButtonProps) => {
     state = 'default',
     onStateChange
   } = props;
+
   const [_state, _setState] = useState<ButtonState>(state);
+
+  const getButtonTempProps = (newState: ButtonState) => {
+    return {
+      label: newState === 'default' ? props.label : (nextLabel ?? props.label),
+      icon: newState === 'default' ? props.icon : (nextIcon ?? props.icon),
+      outlined: newState === 'default' ? props.outlined : (nextOutlined ?? props.outlined),
+      text: newState === 'default' ? props.text : (nextText ?? props.text),
+      raised: newState === 'default' ? props.raised : (nextRaised ?? props.raised),
+      severity: newState === 'default' ? props.severity : (nextSeverity ?? props.severity),
+    }
+  }
+
+  const tempProps = useRef<ButtonTempProps>(getButtonTempProps(state));
 
   const handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
     if (async) {
@@ -44,19 +60,22 @@ export const Button = memo((props: ButtonProps) => {
   }, [])
 
   const removeLoading = useCallback((toggleState?: boolean) => {
-    _setState(toggleState ? 'next' : 'default');
-  }, [])
+    const newState = toggleState ? 'next' : 'default';
+    tempProps.current = getButtonTempProps(newState);
+    _setState(newState);
+    onStateChange?.(newState);
+  }, []);
 
   return (
       <PrimeButton
           {...props}
           onClick={handleClick}
-          label={async ? (['default', 'loading'].includes(_state) ? props.label : (nextLabel ?? props.label)) : props.label}
-          icon={async ? (['default', 'loading'].includes(_state) ? props.icon : (nextIcon ?? props.icon)) : props.icon}
-          severity={async ? (['default', 'loading'].includes(_state) ? props.severity : (nextSeverity ?? props.severity)) : props.severity}
-          raised={async ? (['default', 'loading'].includes(_state) ? props.raised : (nextRaised ?? props.raised)) : props.raised}
-          text={async ? (['default', 'loading'].includes(_state) ? props.text : (nextText ?? props.text)) : props.text}
-          outlined={async ? (['default', 'loading'].includes(_state) ? props.outlined : (nextOutlined ?? props.outlined)) : props.outlined}
+          label={async ? tempProps.current.label : props.label}
+          icon={async ? tempProps.current.icon : props.icon}
+          severity={async ? tempProps.current.severity : props.severity}
+          raised={async ? tempProps.current.raised : props.raised}
+          text={async ? tempProps.current.text : props.text}
+          outlined={async ? tempProps.current.outlined : props.outlined}
           loading={_state === 'loading'}
           className={classNames(props.className, `state-${_state}`)}
       />
