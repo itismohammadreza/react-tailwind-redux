@@ -1,0 +1,11 @@
+.input-text-wrapper {
+  display: flex;
+
+  &.label-fix-side {
+    flex-direction: row;
+  }
+
+  &.label-fix-top {
+    flex-direction: column;
+  }
+}

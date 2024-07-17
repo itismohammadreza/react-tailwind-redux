@@ -21,7 +21,12 @@ export const Home = () => {
       <>
         <h2>Home Page</h2>
         <FormContainer onSuccess={onSuccess}>
-          <InputText parseError={(e)=><h3>{e.message}</h3>} rules={{required: 'is required'}} name="name" hint="asdasd"/>
+          <InputText
+              label="label"
+              labelPos="fix-side"
+              rules={{required: 'is required'}}
+              name="name"
+              hint="asdasd"/>
           <Button type="submit" label="submit"/>
         </FormContainer>
         <Button
