@@ -1,23 +1,23 @@
 import { memo, MouseEvent, useRef, useState } from "react";
-import { Button as PrimeButton, ButtonProps as PrimeButtonProps } from "primereact/button";
-import { classNames } from "primereact/utils";
+import { PrimeButton, PrimeButtonProps, primeClassNames } from "@powell/api";
+import { ButtonAppearance } from "@powell/models/common";
 
 type ButtonState = 'default' | 'loading' | 'next';
 
-interface ButtonProps extends Omit<PrimeButtonProps, "loading"> {
+interface ButtonProps extends Omit<PrimeButtonProps, "loading" | "link" | "text" | "outlined"> {
   async?: true;
   onClickAsync?: (event: { loadingCallback: (ok?: boolean) => void, event: MouseEvent<HTMLButtonElement> }) => void;
+  appearance?: ButtonAppearance;
   nextLabel?: string;
   nextIcon?: string;
   nextRaised?: boolean;
-  nextOutlined?: boolean;
-  nextText?: boolean;
+  nextAppearance?: ButtonAppearance;
   nextSeverity?: ButtonProps['severity'];
   state?: ButtonState;
   onStateChange?: (state: ButtonState) => void;
 }
 
-type ButtonTempProps = Pick<ButtonProps, "label" | "icon" | "raised" | "outlined" | "text" | "severity">;
+type ButtonTempProps = Pick<ButtonProps, "label" | "icon" | "raised" | "appearance" | "severity">;
 
 export const Button = memo((props: ButtonProps) => {
   const {
@@ -27,9 +27,8 @@ export const Button = memo((props: ButtonProps) => {
     nextLabel,
     nextIcon,
     nextRaised,
-    nextOutlined,
-    nextText,
     nextSeverity,
+    nextAppearance,
     state = 'default',
     onStateChange,
     ...rest
@@ -41,8 +40,7 @@ export const Button = memo((props: ButtonProps) => {
     return {
       label: newState === 'default' ? props.label : (nextLabel ?? props.label),
       icon: newState === 'default' ? props.icon : (nextIcon ?? props.icon),
-      outlined: newState === 'default' ? props.outlined : (nextOutlined ?? props.outlined),
-      text: newState === 'default' ? props.text : (nextText ?? props.text),
+      appearance: newState === 'default' ? props.appearance : (nextAppearance ?? props.appearance),
       raised: newState === 'default' ? props.raised : (nextRaised ?? props.raised),
       severity: newState === 'default' ? props.severity : (nextSeverity ?? props.severity),
     }
@@ -75,10 +73,11 @@ export const Button = memo((props: ButtonProps) => {
           icon={async ? tempProps.current.icon : props.icon}
           severity={async ? tempProps.current.severity : props.severity}
           raised={async ? tempProps.current.raised : props.raised}
-          text={async ? tempProps.current.text : props.text}
-          outlined={async ? tempProps.current.outlined : props.outlined}
+          text={async ? tempProps.current.appearance === 'text' : props.appearance === 'text'}
+          outlined={async ? tempProps.current.appearance === 'outlined' : props.appearance === 'outlined'}
+          link={async ? tempProps.current.appearance === 'link' : props.appearance === 'link'}
           loading={_state === 'loading'}
-          className={classNames(props.className, `state-${_state}`)}
+          className={primeClassNames(props.className, `state-${_state}`)}
       />
   )
 })
