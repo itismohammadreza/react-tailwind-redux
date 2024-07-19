@@ -1,11 +1,90 @@
 .input-text-wrapper {
-  display: flex;
 
-  &.label-fix-side {
-    flex-direction: row;
+  .field {
+    display: flex;
+    gap: 0.25rem 1rem;
+
+    > div {
+      flex-grow: 1;
+    }
   }
 
-  &.label-fix-top {
+  input {
+    width: 100%;
+  }
+
+  &.label-fix-side .field {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &.label-fix-top .field {
     flex-direction: column;
+
+    label {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  &.addon-before {
+    [class*="icon-"] {
+      input {
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      }
+    }
+  }
+
+  &.addon-after {
+    &.label-float {
+      .p-inputgroup-addon {
+        border-left: 0;
+      }
+    }
+
+    [class*="icon-"] {
+      input {
+        border-radius: var(--border-radius) 0 0 var(--border-radius);
+      }
+    }
+  }
+
+  &[class*="addon-"] {
+    .p-inputgroup {
+      .p-icon-field,
+      .p-float-label {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  &.is-ltr {
+    direction: ltr;
+
+    &.label-float {
+      &.icon-left .field label {
+        left: 2.5rem;
+      }
+    }
+  }
+
+  &.is-rtl {
+    direction: rtl;
+
+    &.label-float {
+      label {
+        left: auto;
+        right: 0.75rem;
+      }
+
+      &.icon-right .field label {
+        right: 2.5rem;
+      }
+    }
+
+    &[class*="addon-"] {
+      .p-inputgroup {
+        flex-direction: row-reverse;
+      }
+    }
   }
 }

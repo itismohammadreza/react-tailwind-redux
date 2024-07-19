@@ -1,100 +1,160 @@
-import { InputText as PrimeInputText, InputTextProps as PrimeInputTextProps } from "primereact/inputtext";
 import { Control, FieldError, FieldValues, PathValue, useController, UseControllerProps } from "react-hook-form";
-import { ChangeEvent, forwardRef, ReactNode, Ref } from "react";
+import { ChangeEvent, ReactNode, useRef } from "react";
 import { useTransform } from "@powell/hooks";
-import { LabelPos } from "@powell/models/common";
-import { FloatLabel } from "primereact/floatlabel";
-import { classNames } from "primereact/utils";
+import { Addon, LabelPosition } from "@powell/models";
+import {
+  primeClassNames,
+  PrimeFloatLabel,
+  PrimeIconField,
+  PrimeIconFieldProps,
+  PrimeInputIcon,
+  PrimeInputText,
+  PrimeInputTextProps,
+  PrimeUniqueComponentId
+} from "@powell/api";
+import { getAddonTemplate } from "@powell/utils";
+import { usePowellConfig } from "@powell/hooks";
 import './InputText.scss';
 
 interface InputTextProps extends PrimeInputTextProps {
-  rules?: UseControllerProps<FieldValues, string>['rules'];
   name: string;
-  hint: string;
-  label: string;
-  labelPos: LabelPos;
+  rules?: UseControllerProps<FieldValues, string>['rules'];
   parseError?: (error: FieldError) => ReactNode;
   control?: Control<FieldValues>;
   transform?: {
     input?: (value: PathValue<FieldValues, string>) => any;
-    output?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => PathValue<FieldValues, string>;
-  }
+    output?: (event: ChangeEvent<HTMLInputElement>) => PathValue<FieldValues, string>;
+  };
+  showRequiredStar?: boolean;
+  rtl?: boolean;
+  label?: string;
+  icon?: string | ReactNode;
+  hint?: string;
+  addon?: Addon;
+  iconPosition?: PrimeIconFieldProps["iconPosition"];
+  labelPosition?: LabelPosition;
 }
 
-export const InputText = forwardRef((props: InputTextProps, ref: Ref<HTMLDivElement>) => {
+export const InputText = (props: InputTextProps) => {
+  const [config] = usePowellConfig();
+
   const {
     rules = {},
     parseError,
     name,
     control,
     transform = {},
+    iconPosition = 'left',
+    labelPosition = 'fixed-top',
+    addon,
+    icon,
+    rtl = config.rtl,
+    showRequiredStar = config.showRequiredStar,
+    variant = config.formVariant,
     ...rest
-  } = props
+  } = props;
 
+  const inputId = useRef(PrimeUniqueComponentId());
   const {field, fieldState: {error}} = useController({
     name,
     control,
     disabled: rest.disabled,
-    rules
+    rules,
   })
+
+  // let field = {};
+  // let error = false;
+  // if (name) {
+  //   const controller = useController({
+  //     name,
+  //     control,
+  //     disabled: rest.disabled,
+  //     rules,
+  //   })
+  //   field = controller.field;
+  //   error = controller.fieldState.error
+  // }
 
   const {value, onChange} = useTransform<FieldValues, string, any>({
     value: field.value,
     onChange: field.onChange,
     transform: {
-      input: transform.input ?? (value => value || ''),
+      input: transform.input ?? (value => value),
       output: transform.output ?? ((event: ChangeEvent<HTMLInputElement>) => event.target.value as PathValue<FieldValues, string>)
     }
   });
 
-  const labelEl = <label htmlFor="username">{rest.label}</label>;
-  const rootInputEl = <PrimeInputText
-      {...rest}
-      name={field.name}
-      value={value}
-      onChange={(event) => {
-        onChange(event)
-        rest.onChange?.(event);
-      }}
-      onBlur={(event) => {
-        field.onBlur();
-        rest.onBlur?.(event);
-      }}
-      required={!!rules.required}
-      invalid={!!error}
-  />
+  const labelEl = rest.label &&
+      <label htmlFor={inputId.current}>{rest.label}{rules.required && showRequiredStar ? '*' : ''}</label>;
+  const rootInputEl = (
+      <PrimeInputText
+          {...rest}
+          variant={variant}
+          id={inputId.current}
+          name={field.name}
+          value={value}
+          onChange={(event) => {
+            onChange(event)
+            rest.onChange?.(event);
+          }}
+          onBlur={(event) => {
+            field.onBlur();
+            rest.onBlur?.(event);
+          }}
+          required={!!rules.required}
+          invalid={!!error}/>
+  )
+
+  const iconEl = icon && (
+      typeof icon === 'string'
+          ?
+          <PrimeInputIcon className={icon}></PrimeInputIcon>
+          :
+          <PrimeInputIcon>{icon}</PrimeInputIcon>
+  )
+
+  const withIcon = (
+      <PrimeIconField iconPosition={iconPosition}>
+        {iconEl}
+        {rootInputEl}
+      </PrimeIconField>
+  )
 
   return (
-      <>
-        <div className={classNames('input-text-wrapper', `label-${rest.labelPos}`)}>
+      <div className={primeClassNames('input-text-wrapper',
+          `variant-${variant}`,
           {
-              rest.labelPos !== 'float' && labelEl
-          }
-          <div className="p-inputgroup">
-            <span className="p-inputgroup-addon">
-                <i className="pi pi-user"></i>
-            </span>
+            [`label-${labelPosition}`]: rest.label,
+            [`icon-${iconPosition}`]: iconEl,
+            'is-rtl': rtl,
+            'is-ltr': !rtl,
+            'addon-before': addon?.before,
+            'addon-after': addon?.after,
+          })}>
+        <div className="field">
+          {labelPosition !== 'float' && labelEl}
+          <div className={primeClassNames({"p-inputgroup": addon})}>
+            {getAddonTemplate(addon?.before)}
             {
-              rest.labelPos === 'float'
+              labelPosition === 'float'
                   ?
-                  (
-                      <FloatLabel>
-                        {rootInputEl}
-                        {labelEl}
-                      </FloatLabel>
-                  )
+                  <PrimeFloatLabel>
+                    {icon ? withIcon : rootInputEl}
+                    {labelEl}
+                  </PrimeFloatLabel>
                   :
-                  rootInputEl
+                  icon ? withIcon : rootInputEl
             }
+            {getAddonTemplate(addon?.after)}
           </div>
         </div>
         {
           error
               ?
-              <div className="text-red-700">{parseError?.(error) || error.message}</div>
+              parseError?.(error) || <small className="text-red-700">{error.message}</small>
               :
               <div>{rest.hint}</div>
         }
-      </>
+      </div>
   )
-})
+}
