@@ -1,7 +1,7 @@
 import { PropsWithChildren, useState } from 'react';
 import { useLocation } from "react-router-dom";
 import { useUser } from "@hooks/useUser";
-import { useConfig } from "@hooks/useConfig.ts";
+import { useConfig } from "@hooks/useConfig";
 import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;

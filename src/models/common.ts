@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { UserState } from "@models/business";
+import { PowellConfig } from "@powell/models";
 
 export type Nullable<T = void> = T | null | undefined;
 
@@ -29,9 +30,8 @@ export type Events = {
   loading: boolean;
 }
 
-export interface ConfigState {
+export interface ConfigState extends PowellConfig {
   paletteMode: PaletteMode;
-  rtl: boolean;
   locale: Locale;
   langStorageKey: string;
   apiUrl: string;

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Providers } from "@components/Providers.tsx";
+import { Providers } from "@components/Providers";
 
 export const App = () => {
   return (

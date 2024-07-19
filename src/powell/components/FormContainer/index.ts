@@ -1,1 +1,1 @@
-export * from "./FormContainer.tsx";
+export * from "./FormContainer";
