@@ -1,14 +1,16 @@
 import { PropsWithChildren } from "react";
-import { APIOptions, PrimeReactProvider } from "primereact/api";
+import { PrimeProvider } from "@powell/api";
+import { PowellConfig } from "@powell/models";
+import { usePowellConfig } from "@powell/hooks";
 
-export const PowellProvider = (props: PropsWithChildren<{ config?: APIOptions }>) => {
-  const defaultConfig: APIOptions = {
-    ripple: true
-  }
-  const {children, config = defaultConfig} = props;
-
+export const PowellProvider = (props: PropsWithChildren<{ config?: PowellConfig }>) => {
+  const {children, config} = props;
+  const [powellConfig, setPowellConfig] = usePowellConfig();
+  const defaultConfig = {...powellConfig, ...config};
+  setPowellConfig(defaultConfig);
   return (
-      <PrimeReactProvider value={config}>
+      <PrimeProvider value={defaultConfig}>
         {children}
-      </PrimeReactProvider>)
+      </PrimeProvider>
+  )
 }
