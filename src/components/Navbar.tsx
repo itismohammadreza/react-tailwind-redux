@@ -9,7 +9,7 @@ const drawerWidth = 240;
 export const Navbar = (props: PropsWithChildren) => {
   const {t} = useTranslation();
   const currentUser = useUser();
-  const [{paletteMode, rtl, locale}, updateConfig] = useConfig();
+  const [{theme, rtl, locale}, updateConfig] = useConfig();
   const location = useLocation();
   const {children} = props;
   const [open, setOpen] = useState(false);

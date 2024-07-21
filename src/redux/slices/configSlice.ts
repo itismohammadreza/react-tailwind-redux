@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ConfigState, Locale, PaletteMode } from "@models/common";
+import { ConfigState, Locale } from "@models/common";
 import { globalConfig } from "@config/globalConfig";
+import { ThemeName } from "@powell/models";
 
 const configSlice = createSlice({
   name: "config",
   initialState: globalConfig,
   reducers: {
-    changePalette: (state: ConfigState, action: PayloadAction<PaletteMode>) => {
-      state.paletteMode = action.payload;
+    changeTheme: (state: ConfigState, action: PayloadAction<ThemeName>) => {
+      state.theme = action.payload;
     },
     changeToRtl: (state: ConfigState, action: PayloadAction<boolean>) => {
       state.rtl = action.payload;
@@ -18,5 +19,5 @@ const configSlice = createSlice({
   },
 });
 
-export const {changePalette, changeToRtl, changeLocale} = configSlice.actions;
+export const {changeTheme, changeToRtl, changeLocale} = configSlice.actions;
 export const configReducer = configSlice.reducer;

@@ -9,8 +9,6 @@ export type SafeAny = any;
 
 export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
-export type PaletteMode = 'light' | 'dark';
-
 export type Locale = 'faIr' | 'enUs';
 
 export interface RequestConfig {
@@ -31,7 +29,6 @@ export type Events = {
 }
 
 export interface ConfigState extends PowellConfig {
-  paletteMode: PaletteMode;
   locale: Locale;
   langStorageKey: string;
   apiUrl: string;

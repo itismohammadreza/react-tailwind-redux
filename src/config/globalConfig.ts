@@ -1,7 +1,6 @@
 import { ConfigState } from "@models/common";
 
 export const globalConfig: Readonly<ConfigState> = {
-  paletteMode: "light",
   rtl: true,
   locale: "faIr",
   langStorageKey: "lng",
