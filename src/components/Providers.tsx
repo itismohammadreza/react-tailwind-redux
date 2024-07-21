@@ -4,7 +4,7 @@ import { StoreProvider } from "@redux/StoreProvider";
 import { RouterProvider } from "react-router-dom";
 import { router } from "@root/router";
 import { memo, PropsWithChildren } from "react";
-import { PowellProvider } from "@powell/PowellProvider";
+import { PowellProvider } from "@powell/api";
 import { globalConfig } from "@config/globalConfig";
 import '@locales/i18n';
 import "@styles/global.scss";

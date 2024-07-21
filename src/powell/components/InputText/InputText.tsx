@@ -1,6 +1,6 @@
 import { Control, FieldError, FieldValues, PathValue, useController, UseControllerProps } from "react-hook-form";
 import { ChangeEvent, ReactNode, useRef } from "react";
-import { useTransform } from "@powell/hooks";
+import { usePowellConfig, useTransform } from "@powell/hooks";
 import { Addon, LabelPosition } from "@powell/models";
 import {
   primeClassNames,
@@ -13,7 +13,6 @@ import {
   PrimeUniqueComponentId
 } from "@powell/api";
 import { getAddonTemplate } from "@powell/utils";
-import { usePowellConfig } from "@powell/hooks";
 import './InputText.scss';
 
 interface InputTextProps extends PrimeInputTextProps {
@@ -37,7 +36,6 @@ interface InputTextProps extends PrimeInputTextProps {
 
 export const InputText = (props: InputTextProps) => {
   const [config] = usePowellConfig();
-
   const {
     rules = {},
     parseError,
@@ -50,7 +48,7 @@ export const InputText = (props: InputTextProps) => {
     icon,
     rtl = config.rtl,
     showRequiredStar = config.showRequiredStar,
-    variant = config.formVariant,
+    variant = config.inputStyle,
     ...rest
   } = props;
 

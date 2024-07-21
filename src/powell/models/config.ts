@@ -58,9 +58,24 @@ export type ThemeName =
     "viva-dark" |
     "viva-light";
 
-export interface PowellConfig extends PrimeAPIOptions {
+type OmittedPrimeApiOptions = Omit<PrimeAPIOptions,
+    "setAppendTo" |
+    "setStyleContainer" |
+    "setAutoZIndex" |
+    "setCssTransition" |
+    "setFilterMatchModeOptions" |
+    "setHideOverlaysOnDocumentScrolling" |
+    "setInputStyle" |
+    "setLocale" |
+    "setNonce" |
+    "setNullSortOrder" |
+    "setRipple" |
+    "setZIndex" |
+    "setPt" |
+    "changeTheme">;
+
+export interface PowellConfig extends OmittedPrimeApiOptions {
   theme?: ThemeName;
   rtl?: boolean;
   showRequiredStar?: boolean;
-  formVariant?: PrimeInputTextProps["variant"];
 }

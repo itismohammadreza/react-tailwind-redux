@@ -4,7 +4,7 @@ import { InputText, InputTextProps } from "primereact/inputtext";
 import { FloatLabel } from "primereact/floatlabel";
 import { IconField, IconFieldProps } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
-import { APIOptions, PrimeReactProvider } from "primereact/api";
+import { APIOptions, PrimeReactContext, PrimeReactProvider } from "primereact/api";
 
 export const PrimeButton = Button;
 export type PrimeButtonProps = ButtonProps;
@@ -16,6 +16,7 @@ export type PrimeIconFieldProps = IconFieldProps;
 export const PrimeInputIcon = InputIcon;
 export type PrimeAPIOptions = APIOptions;
 export const PrimeProvider = PrimeReactProvider;
+export const PrimeContext = PrimeReactContext;
 
 export const PrimeUniqueComponentId = UniqueComponentId;
 export const primeClassNames = classNames;
