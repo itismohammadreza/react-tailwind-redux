@@ -1,4 +1,4 @@
-import { createBrowserRouter, LoaderFunctionArgs, redirect, } from "react-router-dom";
+import { createBrowserRouter, LoaderFunctionArgs, redirect, RouteObject } from "react-router-dom";
 import { dispatch, getState } from "@redux/store/rootStore";
 import { Login } from "@pages/auth/Login";
 import { Register } from "@pages/auth/Register";
@@ -46,7 +46,7 @@ const loginLoader = async () => {
   return null;
 }
 
-export const router = createBrowserRouter([
+export const routes: RouteObject[] = [
   {
     path: "/",
     element: <Main/>,
@@ -57,13 +57,8 @@ export const router = createBrowserRouter([
         element: <Home/>,
       },
       {
-        path: "about",
-        element: <About/>,
-      },
-      {
-        path: "protected",
-        loader: protectedLoader,
-        Component: () => <><h3>Protected</h3></>,
+        path: "input",
+        element: <InputPage/>,
       },
     ],
   },
@@ -85,4 +80,6 @@ export const router = createBrowserRouter([
     path: '*',
     element: <NotFound/>
   }
-]);
+]
+
+export const router = createBrowserRouter(routes);

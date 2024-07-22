@@ -29,12 +29,9 @@ export const useTransform = <
 >(
     options: UseTransformOptions<TFieldValues, TName, TValue>
 ) => {
-  const value =
-      typeof options.transform?.input === 'function'
-          ? options.transform.input(options.value)
-          : options.value
+  const value = options.transform?.input?.(options.value) || options.value;
 
-  const onChange = (...event: any[]): void => {
+  const onChange = (...event: any[]) => {
     if (typeof options.transform?.output === 'function') {
       options.onChange(options.transform.output(...event))
     } else {
