@@ -1,7 +1,6 @@
-import { configService } from "@powell/api";
+import { configService, PrimeContext, PrimeZIndexOptions } from "@powell/api";
 import { useContext } from "react";
 import { PowellConfig } from "@powell/models";
-import { PrimeReactContext, ZIndexOptions } from "primereact/api";
 
 export const usePowellConfig = () => {
   const [powellConfig, setPowellConfig] = configService.use();
@@ -21,7 +20,7 @@ export const usePowellConfig = () => {
     setAppendTo,
     changeTheme,
     ...restPrimeConfig
-  } = useContext(PrimeReactContext);
+  } = useContext(PrimeContext);
 
   const actions: Partial<Record<keyof PowellConfig, (c: PowellConfig) => any>> = {
     pt: (v) => setPt?.(v.pt!),
@@ -48,7 +47,7 @@ export const usePowellConfig = () => {
       setInputStyle?.(v.inputStyle!);
     },
     nullSortOrder: (v) => setNullSortOrder?.(v.nullSortOrder!),
-    zIndex: (v) => setZIndex?.(v.zIndex! as ZIndexOptions),
+    zIndex: (v) => setZIndex?.(v.zIndex! as PrimeZIndexOptions),
     autoZIndex: (v) => setAutoZIndex?.(v.autoZIndex!),
     appendTo: (v) => setAppendTo?.(v.appendTo!),
     theme: (v) => changeTheme?.(powellConfig.theme, v.theme!, 'powell-theme-link')

@@ -1,4 +1,3 @@
-'use client'
 import { SetStateAction, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type Set<T> = (newState: SetStateAction<T>, callback?: (newState: T) => void) => void;
@@ -12,7 +11,6 @@ export interface StateWithValue<T> {
   useSelector: UseSelector<T>;
   set: Set<T>;
   reset: () => void;
-
   subscribe(subscriber: SubscriberFunc<T>): () => void;
 }
 
