@@ -5,6 +5,9 @@ import { FloatLabel } from "primereact/floatlabel";
 import { IconField, IconFieldProps } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { APIOptions, PrimeReactContext, PrimeReactProvider } from "primereact/api";
+import { PanelMenu } from 'primereact/panelmenu';
+import { Sidebar } from "primereact/sidebar";
+import { MenuItem } from "primereact/menuitem";
 
 export const PrimeButton = Button;
 export type PrimeButtonProps = ButtonProps;
@@ -17,6 +20,9 @@ export const PrimeInputIcon = InputIcon;
 export type PrimeAPIOptions = APIOptions;
 export const PrimeProvider = PrimeReactProvider;
 export const PrimeContext = PrimeReactContext;
+export const PrimePanelMenu = PanelMenu;
+export const PrimeSidebar = Sidebar;
+export type PrimeMenuItem = MenuItem;
 
 export const PrimeUniqueComponentId = UniqueComponentId;
 export const primeClassNames = classNames;
