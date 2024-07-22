@@ -8,6 +8,7 @@ import { authService } from "@services/authService";
 import { updateUser } from "@redux/slices/userSlice";
 import { apiEndpoints } from "@services/dataService";
 import { NotFound } from "@pages/NotFound";
+import { InputPage } from "@pages/main/showcase/Input.tsx";
 
 const provideUser = async () => {
   try {
