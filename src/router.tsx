@@ -4,7 +4,6 @@ import { Login } from "@pages/auth/Login";
 import { Register } from "@pages/auth/Register";
 import { Main } from "@pages/main/Main";
 import { Home } from "@pages/main/Home";
-import { About } from "@pages/main/About";
 import { authService } from "@services/authService";
 import { updateUser } from "@redux/slices/userSlice";
 import { apiEndpoints } from "@services/dataService";
