@@ -28,11 +28,13 @@ export type Events = {
   loading: boolean;
 }
 
-export interface ConfigState extends PowellConfig {
+export interface ConfigState {
+  rtl: boolean;
   locale: Locale;
   langStorageKey: string;
   apiUrl: string;
   requestTimeout: number;
+  powellConfig: Omit<PowellConfig, 'rtl'>;
 }
 
 export interface RootState {

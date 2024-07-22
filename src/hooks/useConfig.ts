@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectConfig } from "@redux/selectors/configSelector";
 import { ConfigState } from "@models/common";
-import { changeLocale, changeTheme, changeToRtl } from "@redux/slices/configSlice";
+import { changeLocale, changeToRtl } from "@redux/slices/configSlice";
 import { useTranslation } from "react-i18next";
 import { usePowellConfig } from "@powell/hooks";
+import { PowellConfig } from "@powell/models";
 
 export const useConfig = () => {
   const appConfig = useSelector(selectConfig);
@@ -17,19 +18,18 @@ export const useConfig = () => {
     },
     rtl: (c: Partial<ConfigState>) => {
       dispatch(changeToRtl(c.rtl!));
-    },
-    theme: (c: Partial<ConfigState>) => {
-      dispatch(changeTheme(c.theme!));
+      setPowellConfig({rtl: c.rtl!});
     },
   }
   return [
-    {...appConfig, ...powellConfig},
+    {...appConfig, powellConfig},
     (config: Partial<ConfigState>) => {
       for (const key in config) {
         if (key in actions) {
           actions[key](config);
+        } else {
+          setPowellConfig(config.powellConfig as PowellConfig);
         }
-        setPowellConfig(config);
       }
     }
   ] as [ConfigState, (config: Partial<ConfigState>) => void]
