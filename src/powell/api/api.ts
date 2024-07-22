@@ -4,7 +4,18 @@ import { InputText, InputTextProps } from "primereact/inputtext";
 import { FloatLabel } from "primereact/floatlabel";
 import { IconField, IconFieldProps } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
-import { APIOptions, PrimeReactContext, PrimeReactProvider } from "primereact/api";
+import {
+  addLocale,
+  APIOptions,
+  locale,
+  localeOption,
+  localeOptions,
+  PrimeReactContext,
+  PrimeReactProvider,
+  updateLocaleOption,
+  updateLocaleOptions,
+  ZIndexOptions
+} from "primereact/api";
 import { PanelMenu } from 'primereact/panelmenu';
 import { Sidebar } from "primereact/sidebar";
 import { MenuItem } from "primereact/menuitem";
@@ -23,6 +34,12 @@ export const PrimeContext = PrimeReactContext;
 export const PrimePanelMenu = PanelMenu;
 export const PrimeSidebar = Sidebar;
 export type PrimeMenuItem = MenuItem;
-
+export type PrimeZIndexOptions = ZIndexOptions;
+export const primeLocale = locale;
+export const primeAddLocale = addLocale;
+export const primeUpdateLocaleOption = updateLocaleOption;
+export const primeUpdateLocaleOptions = updateLocaleOptions;
+export const primeLocaleOption = localeOption;
+export const primeLocaleOptions = localeOptions;
 export const PrimeUniqueComponentId = UniqueComponentId;
 export const primeClassNames = classNames;
