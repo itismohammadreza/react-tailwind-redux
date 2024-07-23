@@ -8,9 +8,13 @@
     }
   }
 
-  textarea {
+  .p-inputtextarea {
     width: 100%;
     min-height: 100%;
+  }
+
+  .p-icon-field .p-input-icon {
+    z-index: 5;
   }
 
   &.label-fix-side .field {
@@ -28,7 +32,7 @@
 
   &.addon-before {
     [class*="icon-"] {
-      textarea {
+      .p-inputtextarea {
         border-radius: 0 var(--border-radius) var(--border-radius) 0;
       }
     }
@@ -42,7 +46,7 @@
     }
 
     [class*="icon-"] {
-      textarea {
+      .p-inputtextarea {
         border-radius: var(--border-radius) 0 0 var(--border-radius);
       }
     }

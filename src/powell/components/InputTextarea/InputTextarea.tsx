@@ -22,7 +22,7 @@ interface InputTextareaProps extends PrimeInputTextareaProps {
   control?: Control<FieldValues>;
   transform?: {
     input?: (value: PathValue<FieldValues, string>) => any;
-    output?: (event: ChangeEvent<HTMLInputElement>) => PathValue<FieldValues, string>;
+    output?: (event: ChangeEvent<HTMLTextAreaElement>) => PathValue<FieldValues, string>;
   };
   showRequiredStar?: boolean;
   rtl?: boolean;
@@ -65,13 +65,13 @@ export const InputTextarea = (props: InputTextareaProps) => {
     onChange: field.onChange,
     transform: {
       input: transform.input ?? (value => value),
-      output: transform.output ?? ((event: ChangeEvent<HTMLInputElement>) => event.target.value as PathValue<FieldValues, string>)
+      output: transform.output ?? ((event: ChangeEvent<HTMLTextAreaElement>) => event.target.value as PathValue<FieldValues, string>)
     }
   });
 
   const labelEl = rest.label &&
       <label htmlFor={inputId.current}>{rest.label}{rules.required && showRequiredStar ? '*' : ''}</label>;
-  const rootInputEl = (
+  const rootEl = (
       <PrimeInputTextarea
           {...rest}
           rows={5}
@@ -102,7 +102,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
   const withIcon = (
       <PrimeIconField iconPosition={iconPosition}>
         {iconEl}
-        {rootInputEl}
+        {rootEl}
       </PrimeIconField>
   )
 
@@ -125,11 +125,11 @@ export const InputTextarea = (props: InputTextareaProps) => {
               labelPosition === 'float'
                   ?
                   <PrimeFloatLabel>
-                    {icon ? withIcon : rootInputEl}
+                    {icon ? withIcon : rootEl}
                     {labelEl}
                   </PrimeFloatLabel>
                   :
-                  icon ? withIcon : rootInputEl
+                  icon ? withIcon : rootEl
             }
             {getAddonTemplate(addon?.after)}
           </div>

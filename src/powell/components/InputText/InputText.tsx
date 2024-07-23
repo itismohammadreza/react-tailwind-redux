@@ -84,7 +84,7 @@ export const InputText = (props: InputTextProps) => {
 
   const labelEl = rest.label &&
       <label htmlFor={inputId.current}>{rest.label}{rules.required && showRequiredStar ? '*' : ''}</label>;
-  const rootInputEl = (
+  const rootEl = (
       <PrimeInputText
           {...rest}
           variant={variant}
@@ -114,7 +114,7 @@ export const InputText = (props: InputTextProps) => {
   const withIcon = (
       <PrimeIconField iconPosition={iconPosition}>
         {iconEl}
-        {rootInputEl}
+        {rootEl}
       </PrimeIconField>
   )
 
@@ -137,11 +137,11 @@ export const InputText = (props: InputTextProps) => {
               labelPosition === 'float'
                   ?
                   <PrimeFloatLabel>
-                    {icon ? withIcon : rootInputEl}
+                    {icon ? withIcon : rootEl}
                     {labelEl}
                   </PrimeFloatLabel>
                   :
-                  icon ? withIcon : rootInputEl
+                  icon ? withIcon : rootEl
             }
             {getAddonTemplate(addon?.after)}
           </div>

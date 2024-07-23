@@ -7,7 +7,7 @@ export const InputTextareaPage = () => {
   const [{rtl}, setConfig] = useConfig();
 
   return (
-      <FormContainer>
+      <FormContainer onSuccess={v => console.log(v)}>
         <input type="checkbox" defaultChecked={rtl} onChange={v => setConfig({rtl: v.target.checked})}/>
         <div className="flex flex-col gap-2 p-10">
           <InputTextarea label="label" labelPosition="float" name="n"/>
