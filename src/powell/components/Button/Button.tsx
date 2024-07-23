@@ -31,6 +31,7 @@ export const Button = memo((props: ButtonProps) => {
     nextAppearance,
     state = 'default',
     onStateChange,
+    type = 'button',
     ...rest
   } = props;
 
@@ -67,6 +68,7 @@ export const Button = memo((props: ButtonProps) => {
 
   return (
       <PrimeButton
+          type={type}
           {...rest}
           onClick={handleClick}
           label={async ? tempProps.current.label : props.label}
