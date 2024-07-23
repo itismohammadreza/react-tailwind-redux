@@ -3,7 +3,7 @@ import { InputText } from "@powell/components/InputText";
 import { Button } from "@powell/components/Button";
 import { useConfig } from "@hooks/useConfig";
 
-export const InputPage = () => {
+export const InputTextPage = () => {
   const [{rtl}, setConfig] = useConfig();
 
   return (
