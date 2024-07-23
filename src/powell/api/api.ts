@@ -19,11 +19,14 @@ import {
 import { PanelMenu } from 'primereact/panelmenu';
 import { Sidebar } from "primereact/sidebar";
 import { MenuItem } from "primereact/menuitem";
+import { InputTextarea, InputTextareaProps } from "primereact/inputtextarea";
 
 export const PrimeButton = Button;
 export type PrimeButtonProps = ButtonProps;
 export const PrimeInputText = InputText;
+export const PrimeInputTextarea = InputTextarea;
 export type PrimeInputTextProps = InputTextProps;
+export type PrimeInputTextareaProps = InputTextareaProps;
 export const PrimeFloatLabel = FloatLabel;
 export const PrimeIconField = IconField;
 export type PrimeIconFieldProps = IconFieldProps;
