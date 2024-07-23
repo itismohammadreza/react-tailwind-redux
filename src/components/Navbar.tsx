@@ -13,7 +13,7 @@ export const Navbar = (props: PropsWithChildren) => {
   const navigate = useNavigate();
   const currentUser = useUser();
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [{theme, rtl, locale}, setConfig] = useConfig();
+  const [{powellConfig: {theme}, rtl, locale}, setConfig] = useConfig();
   const {children} = props;
   const navItems: PrimeMenuItem[] = routes[0].children!.map(route => ({
     label: route.path || 'home',
@@ -33,7 +33,7 @@ export const Navbar = (props: PropsWithChildren) => {
   }
 
   const handleThemeToggle = () => {
-    setConfig({theme: 'nova'});
+    setConfig({powellConfig: {theme: 'nova'}});
   }
 
   return (

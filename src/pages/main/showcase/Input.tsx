@@ -4,11 +4,11 @@ import { Button } from "@powell/components/Button";
 import { useConfig } from "@hooks/useConfig";
 
 export const InputPage = () => {
-  const [config, changeConfig] = useConfig();
+  const [{rtl}, setConfig] = useConfig();
 
   return (
       <FormContainer>
-        <input type="checkbox" defaultChecked={config.rtl} onChange={v => changeConfig({rtl: v.target.checked})}/>
+        <input type="checkbox" defaultChecked={rtl} onChange={v => setConfig({rtl: v.target.checked})}/>
         <div className="flex flex-col gap-2 p-10">
           <InputText label="label" labelPosition="float" name="n"/>
           <InputText label="label" labelPosition="fix-side" name="n"/>

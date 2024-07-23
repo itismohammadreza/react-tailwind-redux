@@ -57,7 +57,7 @@ export const usePowellConfig = () => {
       if (key in actions) {
         actions[key](c);
       }
-      setPowellConfig(c);
+      setPowellConfig(prev => ({...prev, ...c}));
     }
   }
   return [{...powellConfig, ...restPrimeConfig}, updateConfig] as [config: PowellConfig, (c: Partial<PowellConfig>) => any];

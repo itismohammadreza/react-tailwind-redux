@@ -9,7 +9,7 @@ export type SafeAny = any;
 
 export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
-export type Locale = 'faIr' | 'enUs';
+export type Locale = 'faIR' | 'enUS';
 
 export interface RequestConfig {
   pathTemplate?: string | RegExp,
