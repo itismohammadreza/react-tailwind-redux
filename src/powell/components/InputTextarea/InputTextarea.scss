@@ -1,4 +1,4 @@
-.input-text-wrapper {
+.input-textarea-wrapper {
   .field {
     display: flex;
     gap: 0.25rem 1rem;
@@ -8,8 +8,9 @@
     }
   }
 
-  input {
+  textarea {
     width: 100%;
+    min-height: 100%;
   }
 
   &.label-fix-side .field {
@@ -27,7 +28,7 @@
 
   &.addon-before {
     [class*="icon-"] {
-      input {
+      textarea {
         border-radius: 0 var(--border-radius) var(--border-radius) 0;
       }
     }
@@ -41,7 +42,7 @@
     }
 
     [class*="icon-"] {
-      input {
+      textarea {
         border-radius: var(--border-radius) 0 0 var(--border-radius);
       }
     }

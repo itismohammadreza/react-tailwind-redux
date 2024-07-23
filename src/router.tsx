@@ -8,7 +8,8 @@ import { authService } from "@services/authService";
 import { updateUser } from "@redux/slices/userSlice";
 import { apiEndpoints } from "@services/dataService";
 import { NotFound } from "@pages/NotFound";
-import { InputPage } from "@pages/main/showcase/Input.tsx";
+import { InputTextPage } from "@pages/main/showcase/InputText.tsx";
+import { InputTextareaPage } from "@pages/main/showcase/InputTextarea.tsx";
 
 const provideUser = async () => {
   try {
@@ -57,8 +58,12 @@ export const routes: RouteObject[] = [
         element: <Home/>,
       },
       {
-        path: "input",
-        element: <InputPage/>,
+        path: "inputText",
+        element: <InputTextPage/>,
+      },
+      {
+        path: "inputTextarea",
+        element: <InputTextareaPage/>,
       },
     ],
   },
