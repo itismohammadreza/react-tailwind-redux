@@ -13,7 +13,8 @@ export const Navbar = (props: PropsWithChildren) => {
   const navigate = useNavigate();
   const currentUser = useUser();
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [{powellConfig: {theme}, rtl, locale}, setConfig] = useConfig();
+  const [configSidebarVisible, setConfigSidebarVisible] = useState(false);
+  const [config, setConfig] = useConfig();
   const {children} = props;
   const navItems: PrimeMenuItem[] = routes[0].children!.map(route => ({
     label: route.path || 'home',
@@ -25,11 +26,11 @@ export const Navbar = (props: PropsWithChildren) => {
   }))
 
   const handleLocaleToggle = () => {
-    setConfig({locale: locale === 'faIR' ? 'enUS' : 'faIR'});
+    setConfig({locale: config.locale === 'faIR' ? 'enUS' : 'faIR'});
   }
 
   const handleDirectionToggle = () => {
-    setConfig({rtl: !rtl});
+    setConfig({rtl: !config.rtl});
   }
 
   const handleThemeToggle = () => {
@@ -44,22 +45,22 @@ export const Navbar = (props: PropsWithChildren) => {
           <Button
               icon="pi pi-bars"
               appearance="text"
-              className="w-10 h-10 md:hidden"
+              className="size-10"
               onClick={() => setSidebarVisible(true)}/>
-          <ul className="hidden w-full md:w-auto md:flex flex-col p-4 md:p-0 mt-4 border border-gray-100 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-            <li>
-              <Button label="Home" appearance="link" className="p-0"></Button>
-            </li>
-            <li>
-              <Button label="About" appearance="link" className="p-0"></Button>
-            </li>
-            <li>
-              <Button label="Services" appearance="link" className="p-0"></Button>
-            </li>
-            <li>
-              <Button label="Contact" appearance="link" className="p-0"></Button>
-            </li>
-          </ul>
+          {/*<ul className="hidden w-full md:w-auto md:flex flex-col p-4 md:p-0 mt-4 border border-gray-100 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">*/}
+          {/*  <li>*/}
+          {/*    <Button label="Home" appearance="link" className="p-0"></Button>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <Button label="About" appearance="link" className="p-0"></Button>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <Button label="Services" appearance="link" className="p-0"></Button>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <Button label="Contact" appearance="link" className="p-0"></Button>*/}
+          {/*  </li>*/}
+          {/*</ul>*/}
         </nav>
 
         <PrimeSidebar className="w-[20rem]" visible={sidebarVisible} onHide={() => setSidebarVisible(false)}>
