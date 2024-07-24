@@ -44,7 +44,7 @@ export const Dropdown = (props: DropdownProps) => {
     control,
     transform = {},
     iconPosition = 'left',
-    labelPosition = 'fixed-top',
+    labelPosition = 'fix-top',
     appendTo = 'self',
     addon,
     icon,

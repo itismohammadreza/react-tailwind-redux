@@ -43,7 +43,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
     control,
     transform = {},
     iconPosition = 'left',
-    labelPosition = 'fixed-top',
+    labelPosition = 'fix-top',
     addon,
     icon,
     rtl = config.rtl,
