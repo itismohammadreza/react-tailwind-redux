@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import enLocales from './en/common';
 import faLocales from './fa/common';
 import { globalConfig } from "@config/globalConfig";
-import { Locale } from "@models/theme";
+import { Locale } from "@models/common";
 
 const resources: Partial<Record<Locale, { translation: any }>> = {
   'enUS': {translation: enLocales},

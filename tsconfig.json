@@ -23,7 +23,6 @@
       "@redux/*": ["src/redux/*"],
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
-      "@theme/*": ["src/theme/*"],
       "@utils/*": ["src/utils/*"],
       "@root/*": ["src/*"]
     },
