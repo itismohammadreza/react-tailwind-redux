@@ -1,0 +1,14 @@
+.checkbox-wrapper {
+  .field {
+    display: flex;
+    gap: 0.25rem 1rem;
+  }
+
+  &.is-ltr {
+    direction: ltr;
+  }
+
+  &.is-rtl {
+    direction: rtl;
+  }
+}

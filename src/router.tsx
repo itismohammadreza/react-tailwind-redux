@@ -11,6 +11,7 @@ import { NotFound } from "@pages/NotFound";
 import { InputTextPage } from "@pages/main/showcase/InputText.tsx";
 import { InputTextareaPage } from "@pages/main/showcase/InputTextarea.tsx";
 import { DropdownPage } from "@pages/main/showcase/Dropdown.tsx";
+import { CheckboxPage } from "@pages/main/showcase/Checkbox.tsx";
 
 const provideUser = async () => {
   try {
@@ -65,6 +66,10 @@ export const routes: RouteObject[] = [
       {
         path: "inputTextarea",
         element: <InputTextareaPage/>,
+      },
+      {
+        path: "checkbox",
+        element: <CheckboxPage/>,
       },
       {
         path: "dropdown",
