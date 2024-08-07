@@ -1,4 +1,6 @@
 import { PrimeAPIOptions } from "@powell/api";
+import { Size } from "@powell/models/common.ts";
+import { FixLabelPosition, LabelPosition } from "@powell/models/forms.ts";
 
 export type ThemeName =
     "arya-blue" |
@@ -78,4 +80,7 @@ export interface PowellConfig extends OmittedPrimeApiOptions {
   theme?: ThemeName;
   rtl?: boolean;
   showRequiredStar?: boolean;
+  inputSize?: Size;
+  labelPosition?: LabelPosition;
+  fixLabelPosition?: FixLabelPosition;
 }
