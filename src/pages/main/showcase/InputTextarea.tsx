@@ -1,14 +1,10 @@
 import { FormContainer } from "@powell/components/FormContainer";
 import { InputTextarea } from "@powell/components/InputTextarea";
 import { Button } from "@powell/components/Button";
-import { useConfig } from "@hooks/useConfig";
 
 export const InputTextareaPage = () => {
-  const [{rtl}, setConfig] = useConfig();
-
   return (
       <FormContainer onSuccess={v => console.log(v)}>
-        <input type="checkbox" defaultChecked={rtl} onChange={v => setConfig({rtl: v.target.checked})}/>
         <div className="flex flex-col gap-2 p-10">
           <InputTextarea label="label" labelPosition="float" name="n"/>
           <InputTextarea label="label" labelPosition="fix-side" name="n"/>

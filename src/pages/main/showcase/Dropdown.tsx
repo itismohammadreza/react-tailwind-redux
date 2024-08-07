@@ -1,10 +1,8 @@
 import { FormContainer } from "@powell/components/FormContainer";
 import { Dropdown } from "@powell/components/Dropdown";
 import { Button } from "@powell/components/Button";
-import { useConfig } from "@hooks/useConfig";
 
 export const DropdownPage = () => {
-  const [{rtl}, setConfig] = useConfig();
   const options = [
     {label: 'label1', value: 1},
     {label: 'label2', value: 2},
@@ -13,7 +11,6 @@ export const DropdownPage = () => {
   ]
   return (
       <FormContainer onSuccess={v => console.log(v)}>
-        <input type="checkbox" defaultChecked={rtl} onChange={v => setConfig({rtl: v.target.checked})}/>
         <div className="flex flex-col gap-2 p-10">
           <Dropdown filter options={options} label="label" labelPosition="float" name="n"/>
           <Dropdown options={options} label="label" labelPosition="fix-side" name="n"/>
