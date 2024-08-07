@@ -1,6 +1,6 @@
 import { Control, FieldError, FieldValues, PathValue, useController, UseControllerProps } from "react-hook-form";
 import { ChangeEvent, ReactNode, useRef } from "react";
-import { usePowellConfig, useTransform } from "@powell/hooks";
+import { useTransform } from "@powell/hooks";
 import {
   PrimeCheckbox,
   PrimeCheckboxChangeEvent,
@@ -9,8 +9,12 @@ import {
   PrimeUniqueComponentId
 } from "@powell/api";
 import './Checkbox.scss';
+import { useConfigHandler } from "@powell/hooks/useConfigHandler.ts";
 
 interface CheckboxProps extends PrimeCheckboxProps {
+  // form-based props
+  label?: string;
+  hint?: string;
   name: string;
   rules?: UseControllerProps<FieldValues, string>['rules'];
   parseError?: (error: FieldError) => ReactNode;
@@ -19,23 +23,22 @@ interface CheckboxProps extends PrimeCheckboxProps {
     input?: (value: PathValue<FieldValues, string>) => any;
     output?: (event: ChangeEvent<HTMLInputElement>) => PathValue<FieldValues, string>;
   };
+  // config-based props
   showRequiredStar?: boolean;
   rtl?: boolean;
-  label?: string;
-  hint?: string;
 }
 
 export const Checkbox = (props: CheckboxProps) => {
-  const [config] = usePowellConfig();
+  props = useConfigHandler(props);
   const {
     rules = {},
     parseError,
     name,
     control,
     transform = {},
-    rtl = config.rtl,
-    showRequiredStar = config.showRequiredStar,
-    variant = config.inputStyle,
+    rtl,
+    showRequiredStar,
+    variant,
     ...rest
   } = props;
 
