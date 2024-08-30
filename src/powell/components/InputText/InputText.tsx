@@ -1,6 +1,4 @@
-import {Control, FieldError, FieldValues, PathValue, useController, UseControllerProps} from "react-hook-form";
-import {ChangeEvent, ReactNode, useRef} from "react";
-import {usePowellConfig, useTransform} from "@powell/hooks";
+import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition} from "@powell/models";
 import {
   primeClassNames,
@@ -12,17 +10,18 @@ import {
   PrimeInputTextProps,
   PrimeUniqueComponentId
 } from "@powell/api";
-import {getAddonTemplate} from "@powell/utils";
+import {getAddonTemplate, transformer} from "@powell/utils";
+import {Field, FieldProps} from "formik";
+import {useConfigHandler, useFormContext} from "@powell/hooks";
+import {SafeAny} from "@powell/models/common";
 import './InputText.scss';
 
 interface InputTextProps extends PrimeInputTextProps {
-  name: string;
-  rules?: UseControllerProps<FieldValues, string>['rules'];
+  name?: string;
   parseError?: (error: string) => ReactNode;
-  control?: Control<FieldValues>;
   transform?: {
-    input?: (value: PathValue<FieldValues, string>) => any;
-    output?: (event: ChangeEvent<HTMLInputElement>) => PathValue<FieldValues, string>;
+    input?: (value: SafeAny) => string;
+    output?: (event: ChangeEvent<HTMLInputElement>) => SafeAny;
   };
   showRequiredStar?: boolean;
   rtl?: boolean;
@@ -34,128 +33,14 @@ interface InputTextProps extends PrimeInputTextProps {
   labelPosition?: LabelPosition;
 }
 
-// export const InputText = (props: InputTextProps) => {
-//   const [config] = usePowellConfig();
-//   const {
-//     rules = {},
-//     parseError,
-//     name,
-//     control,
-//     transform = {},
-//     iconPosition = 'left',
-//     labelPosition = 'fix-top',
-//     addon,
-//     icon,
-//     rtl = config.rtl,
-//     showRequiredStar = config.showRequiredStar,
-//     variant = config.inputStyle,
-//     ...rest
-//   } = props;
-//
-//   const inputId = useRef(PrimeUniqueComponentId());
-//   const {field, fieldState: {error}} = useController({
-//     name,
-//     control,
-//     disabled: rest.disabled,
-//     rules,
-//   })
-//
-//   const {value, onChange} = useTransform<FieldValues, string, any>({
-//     value: field.value,
-//     onChange: field.onChange,
-//     transform: {
-//       input: transform.input ?? (value => value),
-//       output: transform.output ?? ((event: ChangeEvent<HTMLInputElement>) => event.target.value as PathValue<FieldValues, string>)
-//     }
-//   });
-//
-//   const labelEl = rest.label &&
-//       <label htmlFor={inputId.current}>{rest.label}{rules.required && showRequiredStar ? '*' : ''}</label>;
-//   const rootEl = (
-//       <PrimeInputText
-//           {...rest}
-//           variant={variant}
-//           id={inputId.current}
-//           name={name}
-//           value={value}
-//           onChange={(event) => {
-//             onChange(event)
-//             rest.onChange?.(event);
-//           }}
-//           onBlur={(event) => {
-//             field.onBlur();
-//             rest.onBlur?.(event);
-//           }}
-//           required={!!rules.required}
-//           invalid={!!error}/>
-//   )
-//
-//   const iconEl = icon && (
-//       typeof icon === 'string'
-//           ?
-//           <PrimeInputIcon className={icon}></PrimeInputIcon>
-//           :
-//           <PrimeInputIcon>{icon}</PrimeInputIcon>
-//   )
-//
-//   const withIcon = (
-//       <PrimeIconField iconPosition={iconPosition}>
-//         {iconEl}
-//         {rootEl}
-//       </PrimeIconField>
-//   )
-//
-//   return (
-//       <div className={primeClassNames('input-text-wrapper',
-//           `variant-${variant}`,
-//           {
-//             [`label-${labelPosition}`]: rest.label,
-//             [`icon-${iconPosition}`]: iconEl,
-//             'is-rtl': rtl,
-//             'is-ltr': !rtl,
-//             'addon-before': addon?.before,
-//             'addon-after': addon?.after,
-//           })}>
-//         <div className="field">
-//           {labelPosition !== 'float' && labelEl}
-//           <div className={primeClassNames({"p-inputgroup": addon})}>
-//             {getAddonTemplate(addon?.before)}
-//             {
-//               labelPosition === 'float'
-//                   ?
-//                   <PrimeFloatLabel>
-//                     {icon ? withIcon : rootEl}
-//                     {labelEl}
-//                   </PrimeFloatLabel>
-//                   :
-//                   icon ? withIcon : rootEl
-//             }
-//             {getAddonTemplate(addon?.after)}
-//           </div>
-//         </div>
-//         {
-//           error
-//               ?
-//               parseError?.(error) || <small className="text-red-700">{error.message}</small>
-//               :
-//               <div>{rest.hint}</div>
-//         }
-//       </div>
-//   )
-// }
-
-import {ErrorMessage, FieldHookConfig, useField, useFormikContext} from "formik";
-import {useConfigHandler} from "@powell/hooks/useConfigHandler";
-
-export const MyTextField = (props: InputTextProps & FieldHookConfig<any>) => {
+export const InputText = (props: InputTextProps) => {
   props = useConfigHandler(props);
   const {
-    rules = {},
     parseError,
     name,
     transform = {},
     iconPosition = 'left',
-    labelPosition = 'fix-top',
+    labelPosition,
     addon,
     icon,
     rtl,
@@ -163,55 +48,111 @@ export const MyTextField = (props: InputTextProps & FieldHookConfig<any>) => {
     variant,
     ...rest
   } = props;
-  const formikContext = useFormikContext(); // Check if we're in Formik context
-  const [field, meta, helpers] = formikContext ? useField({name}) : [{} as any, {} as any, {} as any];
+
   const inputId = useRef(PrimeUniqueComponentId());
 
-  const {value, onChange} = useTransform<any, string, any>({
-    value: field.value ?? props.value,
-    onChange: helpers.setValue ?? (event => event),
-    transform: {
-      input: transform.input ?? (value => value),
-      output: transform.output ?? ((event: ChangeEvent<HTMLInputElement>) => event.target.value)
+  // Check if we're in Formik context
+  const formContext = useFormContext();
+  const withinForm = formContext && name;
+  const isRequired = withinForm && formContext.validationSchema.fields?.[name].tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
+
+  // Internal state for non-Formik usage
+  const [internalValue, setInternalValue] = useState(rest.value || '');
+
+  const inputEl = useCallback(() => {
+    const commonProps = {
+      ...rest,
+      variant,
+      id: inputId.current,
+      name,
+      required: isRequired,
+    };
+
+    if (withinForm) {
+      // if in Formik context
+      return (
+          <Field name={name}>
+            {({field, meta}: FieldProps) => {
+              const {value, onChange} = transformer({
+                value: field.value,
+                onChange: (event: string) => formContext.setFieldValue(name, event),
+                transform: {
+                  input: transform.input ?? (value => value),
+                  output: transform.output ?? (event => event.target.value)
+                }
+              });
+
+              return (
+                  <>
+                    <PrimeInputText
+                        {...commonProps}
+                        value={value}
+                        onChange={(event) => {
+                          onChange(event);
+                          rest.onChange?.(event);
+                        }}
+                        onBlur={(event) => {
+                          field.onBlur(event);
+                          rest.onBlur?.(event);
+                        }}
+                        invalid={!!meta.error}
+                    />
+                    {
+                      meta.error
+                          ?
+                          parseError?.(meta.error) || <small className="text-red-700">{meta.error}</small>
+                          :
+                          <div>{rest.hint}</div>
+                    }
+                  </>
+              );
+            }}
+          </Field>
+      );
+    } else {
+      // if outside Formik context
+      const {value, onChange} = transformer({
+        value: internalValue,
+        onChange: (event: string) => setInternalValue(event),
+        transform: {
+          input: transform.input ?? (value => value),
+          output: transform.output ?? (event => event.target.value)
+        }
+      });
+
+      return (
+          <PrimeInputText
+              {...commonProps}
+              value={value}
+              onChange={(event) => {
+                onChange(event);
+                rest.onChange?.(event);
+              }}
+              onBlur={rest.onBlur}
+          />
+      );
     }
-  });
+  }, [internalValue]);
 
-  const labelEl = rest.label &&
-      <label htmlFor={inputId.current}>{rest.label}{rules.required && showRequiredStar ? '*' : ''}</label>;
-
-  const rootEl = (
-      <PrimeInputText
-          {...rest}
-          variant={variant}
-          id={inputId.current}
-          name={name}
-          value={value}
-          onChange={(event) => {
-            onChange?.(event);
-            rest.onChange?.(event);
-          }}
-          onBlur={(event) => {
-            field.onBlur?.(event);
-            rest.onBlur?.(event);
-          }}
-          required={!!rules.required}
-          invalid={!!meta.error}/>
-  )
+  const labelEl = rest.label && (
+      <label htmlFor={inputId.current}>
+        {rest.label}
+        {isRequired && showRequiredStar ? '*' : ''}
+      </label>
+  );
 
   const iconEl = icon && (
       typeof icon === 'string'
-          ?
-          <PrimeInputIcon className={icon}></PrimeInputIcon>
-          :
-          <PrimeInputIcon>{icon}</PrimeInputIcon>
-  )
+          ? <PrimeInputIcon className={icon}></PrimeInputIcon>
+          : <PrimeInputIcon>{icon}</PrimeInputIcon>
+  );
 
   const withIcon = (
       <PrimeIconField iconPosition={iconPosition}>
         {iconEl}
-        {rootEl}
+        {inputEl()}
       </PrimeIconField>
-  )
+  );
 
   return (
       <div className={primeClassNames('input-text-wrapper',
@@ -229,25 +170,18 @@ export const MyTextField = (props: InputTextProps & FieldHookConfig<any>) => {
           <div className={primeClassNames({"p-inputgroup": addon})}>
             {getAddonTemplate(addon?.before)}
             {
-              labelPosition === 'float'
-                  ?
+              labelPosition === 'float' ? (
                   <PrimeFloatLabel>
-                    {icon ? withIcon : rootEl}
+                    {icon ? withIcon : inputEl()}
                     {labelEl}
                   </PrimeFloatLabel>
-                  :
-                  icon ? withIcon : rootEl
+              ) : (
+                  icon ? withIcon : inputEl()
+              )
             }
             {getAddonTemplate(addon?.after)}
           </div>
         </div>
-        {
-          meta.error
-              ?
-              parseError?.(meta.error) || <small className="text-red-700">{meta.error}</small>
-              :
-              <div>{rest.hint}</div>
-        }
       </div>
-  )
+  );
 };

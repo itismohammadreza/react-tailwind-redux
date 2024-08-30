@@ -1,6 +1,6 @@
 import { configService, PrimeContext, PrimeZIndexOptions } from "@powell/api";
 import { useContext } from "react";
-import { PowellConfig } from "@powell/models";
+import {PowellConfig, SafeAny} from "@powell/models";
 
 export const usePowellConfig = () => {
   const [powellConfig, setPowellConfig] = configService.use();
@@ -22,7 +22,7 @@ export const usePowellConfig = () => {
     ...restPrimeConfig
   } = useContext(PrimeContext);
 
-  const actions: Partial<Record<keyof PowellConfig, (c: PowellConfig) => any>> = {
+  const actions: Partial<Record<keyof PowellConfig, (c: PowellConfig) => SafeAny>> = {
     pt: (v) => setPt?.(v.pt!),
     filterMatchModeOptions: (v) => setFilterMatchModeOptions?.(v.filterMatchModeOptions!),
     locale: (v) => setLocale?.(v.locale!),
@@ -55,7 +55,7 @@ export const usePowellConfig = () => {
   const updateConfig = (c: Partial<PowellConfig>) => {
     for (const key in c) {
       if (key in actions) {
-        actions[key](c);
+        actions[key as keyof PowellConfig]?.(c);
       }
       setPowellConfig(prev => ({...prev, ...c}));
     }
