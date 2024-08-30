@@ -12,7 +12,7 @@ import {
 } from "@powell/api";
 import {getAddonTemplate, transformer} from "@powell/utils";
 import {Field, FieldProps} from "formik";
-import {useConfigHandler, useFormContext} from "@powell/hooks";
+import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
 import './InputText.scss';
 
@@ -34,7 +34,7 @@ interface InputTextProps extends PrimeInputTextProps {
 }
 
 export const InputText = (props: InputTextProps) => {
-  props = useConfigHandler(props);
+  props = useApplyConfig(props);
   const {
     parseError,
     name,

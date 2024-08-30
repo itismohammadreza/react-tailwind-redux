@@ -8,7 +8,7 @@ interface CommonConfigProps {
   labelPosition?: PowellConfig["labelPosition"];
 }
 
-export const useConfigHandler = (props: CommonConfigProps, isFixLabel?: boolean) => {
+export const useApplyConfig = <T extends CommonConfigProps>(props: T, isFixLabel?: boolean) => {
   const [config] = usePowellConfig();
 
   const result = {

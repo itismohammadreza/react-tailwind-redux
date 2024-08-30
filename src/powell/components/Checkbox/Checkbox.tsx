@@ -9,7 +9,7 @@ import {
   PrimeUniqueComponentId
 } from "@powell/api";
 import './Checkbox.scss';
-import {useConfigHandler} from "@powell/hooks/useConfigHandler";
+import {useApplyConfig} from "@powell/hooks/useApplyConfig.ts";
 
 interface CheckboxProps extends PrimeCheckboxProps {
   // form-based props
@@ -29,7 +29,7 @@ interface CheckboxProps extends PrimeCheckboxProps {
 }
 
 export const Checkbox = (props: CheckboxProps) => {
-  props = useConfigHandler(props, true);
+  props = useApplyConfig(props, true);
   const {
     rules = {},
     parseError,
