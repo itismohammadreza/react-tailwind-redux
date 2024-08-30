@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { eventBusService } from "@services/eventBusService";
+import {useEffect, useState} from "react";
+import {eventBusService} from "@services/eventBusService";
 
 interface ToastProps {
   closable?: boolean;

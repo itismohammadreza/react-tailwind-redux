@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { HTMLAttributes } from "react";
+import {Link} from "react-router-dom";
+import {HTMLAttributes} from "react";
 
 interface LogoProps extends HTMLAttributes<any> {
   src?: string;

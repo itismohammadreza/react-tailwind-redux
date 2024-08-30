@@ -1,4 +1,4 @@
-import { ConfigState } from "@models/common";
+import {ConfigState} from "@models/common";
 
 export const globalConfig: Readonly<ConfigState> = {
   rtl: true,

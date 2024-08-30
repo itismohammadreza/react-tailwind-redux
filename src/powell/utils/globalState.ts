@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {SetStateAction, useEffect, useLayoutEffect, useRef, useState} from "react";
 
 type Set<T> = (newState: SetStateAction<T>, callback?: (newState: T) => void) => void;
 

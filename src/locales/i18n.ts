@@ -1,10 +1,10 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { initReactI18next } from 'react-i18next';
+import {initReactI18next} from 'react-i18next';
 import enLocales from './en/common';
 import faLocales from './fa/common';
-import { globalConfig } from "@config/globalConfig";
-import { Locale } from "@models/common";
+import {globalConfig} from "@config/globalConfig";
+import {Locale} from "@models/common";
 
 const resources: Partial<Record<Locale, { translation: any }>> = {
   'enUS': {translation: enLocales},

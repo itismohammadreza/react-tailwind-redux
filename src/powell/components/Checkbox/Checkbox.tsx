@@ -1,6 +1,6 @@
-import { Control, FieldError, FieldValues, PathValue, useController, UseControllerProps } from "react-hook-form";
-import { ChangeEvent, ReactNode, useRef } from "react";
-import { useTransform } from "@powell/hooks";
+import {Control, FieldError, FieldValues, PathValue, useController, UseControllerProps} from "react-hook-form";
+import {ChangeEvent, ReactNode, useRef} from "react";
+import {useTransform} from "@powell/hooks";
 import {
   PrimeCheckbox,
   PrimeCheckboxChangeEvent,
@@ -9,7 +9,7 @@ import {
   PrimeUniqueComponentId
 } from "@powell/api";
 import './Checkbox.scss';
-import { useConfigHandler } from "@powell/hooks/useConfigHandler.ts";
+import {useConfigHandler} from "@powell/hooks/useConfigHandler";
 
 interface CheckboxProps extends PrimeCheckboxProps {
   // form-based props

@@ -29,16 +29,16 @@ import {
   CheckboxProps,
   CheckboxState
 } from "primereact/checkbox";
-import { Dropdown, DropdownChangeEvent, DropdownFilterEvent, DropdownProps } from "primereact/dropdown";
-import { FloatLabel } from "primereact/floatlabel";
-import { InputIcon } from 'primereact/inputicon';
-import { IconField, IconFieldProps } from "primereact/iconfield";
-import { InputText, InputTextProps } from "primereact/inputtext";
-import { InputTextarea, InputTextareaProps } from "primereact/inputtextarea";
-import { Button, ButtonProps } from "primereact/button";
-import { Sidebar } from "primereact/sidebar";
-import { PanelMenu } from 'primereact/panelmenu';
-import { MenuItem } from "primereact/menuitem";
+import {Dropdown, DropdownChangeEvent, DropdownFilterEvent, DropdownProps} from "primereact/dropdown";
+import {FloatLabel} from "primereact/floatlabel";
+import {InputIcon} from 'primereact/inputicon';
+import {IconField, IconFieldProps} from "primereact/iconfield";
+import {InputText, InputTextProps} from "primereact/inputtext";
+import {InputTextarea, InputTextareaProps} from "primereact/inputtextarea";
+import {Button, ButtonProps} from "primereact/button";
+import {Sidebar} from "primereact/sidebar";
+import {PanelMenu} from 'primereact/panelmenu';
+import {MenuItem} from "primereact/menuitem";
 import {
   addLocale,
   APIOptions,
@@ -51,7 +51,7 @@ import {
   updateLocaleOptions,
   ZIndexOptions
 } from "primereact/api";
-import { classNames, UniqueComponentId } from "primereact/utils";
+import {classNames, UniqueComponentId} from "primereact/utils";
 
 export const PrimeAutoComplete = AutoComplete;
 export type PrimeAutoCompleteProps = AutoCompleteProps;

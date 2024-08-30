@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
-import { configService, powellDefaults, PrimeProvider } from "@powell/api";
-import { PowellConfig, ThemeName } from "@powell/models";
+import {PropsWithChildren} from "react";
+import {configService, powellDefaults, PrimeProvider} from "@powell/api";
+import {PowellConfig, ThemeName} from "@powell/models";
 
 const createThemeLink = () => {
   const headEl = document.head;

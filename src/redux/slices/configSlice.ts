@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ConfigState, Locale } from "@models/common";
-import { globalConfig } from "@config/globalConfig";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {ConfigState, Locale} from "@models/common";
+import {globalConfig} from "@config/globalConfig";
 
 const configSlice = createSlice({
   name: "config",

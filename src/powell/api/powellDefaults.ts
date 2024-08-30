@@ -1,4 +1,4 @@
-import { PowellConfig } from "@powell/models";
+import {PowellConfig} from "@powell/models";
 
 export const powellDefaults: PowellConfig = {
   theme: 'lara-light-cyan',

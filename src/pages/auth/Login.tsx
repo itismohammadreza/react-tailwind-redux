@@ -1,8 +1,8 @@
-import { useLazyGetProfileQuery, useLoginMutation } from "@services/dataService";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { User } from "@models/business";
-import { useDispatch } from "react-redux";
-import { updateUser } from "@redux/slices/userSlice";
+import {useLazyGetProfileQuery, useLoginMutation} from "@services/dataService";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import {User} from "@models/business";
+import {useDispatch} from "react-redux";
+import {updateUser} from "@redux/slices/userSlice";
 
 export const Login = () => {
   const navigate = useNavigate();

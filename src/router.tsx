@@ -1,17 +1,18 @@
-import { createBrowserRouter, LoaderFunctionArgs, redirect, RouteObject } from "react-router-dom";
-import { dispatch, getState } from "@redux/store/rootStore";
-import { Login } from "@pages/auth/Login";
-import { Register } from "@pages/auth/Register";
-import { Main } from "@pages/main/Main";
-import { Home } from "@pages/main/Home";
-import { authService } from "@services/authService";
-import { updateUser } from "@redux/slices/userSlice";
-import { apiEndpoints } from "@services/dataService";
-import { NotFound } from "@pages/NotFound";
-import { InputTextPage } from "@pages/main/showcase/InputText.tsx";
-import { InputTextareaPage } from "@pages/main/showcase/InputTextarea.tsx";
-import { DropdownPage } from "@pages/main/showcase/Dropdown.tsx";
-import { CheckboxPage } from "@pages/main/showcase/Checkbox.tsx";
+import {createBrowserRouter, LoaderFunctionArgs, redirect, RouteObject} from "react-router-dom";
+import {dispatch, getState} from "@redux/store/rootStore";
+import {Login} from "@pages/auth/Login";
+import {Register} from "@pages/auth/Register";
+import {Main} from "@pages/main/Main";
+import {Home} from "@pages/main/Home";
+import {authService} from "@services/authService";
+import {updateUser} from "@redux/slices/userSlice";
+import {apiEndpoints} from "@services/dataService";
+import {NotFound} from "@pages/NotFound";
+import {InputTextPage} from "@pages/main/showcase/InputTextPage";
+import {InputTextareaPage} from "@pages/main/showcase/InputTextareaPage";
+import {DropdownPage} from "@pages/main/showcase/DropdownPage";
+import {CheckboxPage} from "@pages/main/showcase/CheckboxPage";
+import {UtilsPage} from "@pages/main/showcase/UtilsPage";
 
 const provideUser = async () => {
   try {
@@ -74,6 +75,10 @@ export const routes: RouteObject[] = [
       {
         path: "dropdown",
         element: <DropdownPage/>,
+      },
+      {
+        path: "utils",
+        element: <UtilsPage/>,
       },
     ],
   },

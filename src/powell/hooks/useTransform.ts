@@ -1,41 +1,21 @@
-import { FieldPath, FieldValues, PathValue, UseControllerReturn, } from 'react-hook-form';
+import {SafeAny} from "@powell/models/common";
 
-export type UseTransformOptions<
-    TFieldValues extends FieldValues = FieldValues,
-    TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-    TValue = unknown,
-> = {
-  value: UseControllerReturn<TFieldValues, TName>['field']['value'];
-  onChange: UseControllerReturn<TFieldValues, TName>['field']['onChange'];
+export type UseTransformOptions = {
+  value: SafeAny;
+  onChange: (...event: SafeAny[]) => void;
   transform?: {
-    input?: (value: PathValue<TFieldValues, TName>) => TValue;
-    output?: (...event: any[]) => PathValue<TFieldValues, TName>;
+    input?: (value: SafeAny) => SafeAny;
+    output?: (...event: SafeAny[]) => SafeAny;
   }
 }
 
-export type UseTransformReturn<
-    TFieldValues extends FieldValues = FieldValues,
-    TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-    TValue = unknown
-> = {
-  value: TValue;
-  onChange: UseControllerReturn<TFieldValues, TName>['field']['onChange'];
-}
-
-export const useTransform = <
-    TFieldValues extends FieldValues = FieldValues,
-    TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-    TValue = unknown
->(
-    options: UseTransformOptions<TFieldValues, TName, TValue>
-) => {
+export const useTransform = (options: UseTransformOptions) => {
   const value = options.transform?.input?.(options.value) || options.value;
-
-  const onChange = (...event: any[]) => {
+  const onChange = (...event: SafeAny[]) => {
     if (typeof options.transform?.output === 'function') {
-      options.onChange(options.transform.output(...event))
+      options.onChange(options.transform.output(...event));
     } else {
-      options.onChange(...event)
+      options.onChange(...event);
     }
   }
 
@@ -44,3 +24,4 @@ export const useTransform = <
     onChange
   }
 }
+

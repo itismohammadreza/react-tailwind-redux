@@ -1,6 +1,6 @@
-import { BaseQueryFn } from "@reduxjs/toolkit/query/react";
-import { AxiosRequestConfig } from "axios";
-import { httpService } from "@services/api/httpService";
+import {BaseQueryFn} from "@reduxjs/toolkit/query/react";
+import {AxiosRequestConfig} from "axios";
+import {httpService} from "@services/api/httpService";
 
 export const axiosBaseQuery = ({baseUrl}: { baseUrl: string }): BaseQueryFn<AxiosRequestConfig, unknown, unknown> => {
   return async ({url, method, data, params, headers}) => {

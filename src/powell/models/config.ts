@@ -1,6 +1,6 @@
-import { PrimeAPIOptions } from "@powell/api";
-import { Size } from "@powell/models/common.ts";
-import { FixLabelPosition, LabelPosition } from "@powell/models/forms.ts";
+import {PrimeAPIOptions} from "@powell/api";
+import {Size} from "@powell/models/common";
+import {FixLabelPosition, LabelPosition} from "@powell/models/forms";
 
 export type ThemeName =
     "arya-blue" |

@@ -1,9 +1,9 @@
-import { Axios, AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
-import { RequestConfig } from "@models/common";
-import { RequestsConfig } from "@config/requestsConfig";
-import { globalConfig } from "@config/globalConfig";
-import { authService } from "@services/authService";
-import { eventBusService } from "@services/eventBusService";
+import {Axios, AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig} from "axios";
+import {RequestConfig} from "@models/common";
+import {RequestsConfig} from "@config/requestsConfig";
+import {globalConfig} from "@config/globalConfig";
+import {authService} from "@services/authService";
+import {eventBusService} from "@services/eventBusService";
 
 const requestsQueue: AxiosRequestConfig[] = [];
 const loadingRequestsCounter = new Map<string, number>();

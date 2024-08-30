@@ -1,5 +1,5 @@
-import { usePowellConfig } from "@powell/hooks/usePowellConfig";
-import { PowellConfig } from "@powell/models";
+import {usePowellConfig} from "@powell/hooks/usePowellConfig";
+import {PowellConfig} from "@powell/models";
 
 interface CommonConfigProps {
   rtl?: PowellConfig["rtl"];

@@ -1,7 +1,7 @@
-import { globalConfig } from "@config/globalConfig";
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { axiosBaseQuery } from "@services/api/axiosBaseQuery";
-import { Product, User } from "@models/business";
+import {globalConfig} from "@config/globalConfig";
+import {createApi} from "@reduxjs/toolkit/query/react";
+import {axiosBaseQuery} from "@services/api/axiosBaseQuery";
+import {Product, User} from "@models/business";
 
 const api = createApi({
   baseQuery: axiosBaseQuery({baseUrl: globalConfig.apiUrl}),

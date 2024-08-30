@@ -1,6 +1,6 @@
-import { memo, MouseEvent, useRef, useState } from "react";
-import { PrimeButton, PrimeButtonProps, primeClassNames } from "@powell/api";
-import { ButtonAppearance } from "@powell/models";
+import {memo, MouseEvent, useRef, useState} from "react";
+import {PrimeButton, PrimeButtonProps, primeClassNames} from "@powell/api";
+import {ButtonAppearance} from "@powell/models";
 
 type ButtonState = 'default' | 'loading' | 'next';
 

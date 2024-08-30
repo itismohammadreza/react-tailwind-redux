@@ -1,8 +1,8 @@
-import { Middleware } from 'redux';
-import { configureStore } from "@reduxjs/toolkit";
-import { rootReducer } from "@redux/store/rootReducer";
-import { RootState } from "@models/common";
-import { apiMiddleware } from "@services/dataService";
+import {Middleware} from 'redux';
+import {configureStore} from "@reduxjs/toolkit";
+import {rootReducer} from "@redux/store/rootReducer";
+import {RootState} from "@models/common";
+import {apiMiddleware} from "@services/dataService";
 
 const middlewares: Middleware<RootState>[] = [apiMiddleware];
 

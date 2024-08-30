@@ -1,5 +1,5 @@
-import { useRegisterMutation } from "@services/dataService";
-import { useNavigate } from "react-router-dom";
+import {useRegisterMutation} from "@services/dataService";
+import {useNavigate} from "react-router-dom";
 
 export const Register = () => {
   const [trigger, {isLoading}] = useRegisterMutation();

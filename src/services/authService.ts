@@ -1,6 +1,6 @@
-import { dispatch, getState } from "@redux/store/rootStore";
-import { redirect } from "react-router-dom";
-import { updateUser } from "@redux/slices/userSlice";
+import {dispatch, getState} from "@redux/store/rootStore";
+import {redirect} from "react-router-dom";
+import {updateUser} from "@redux/slices/userSlice";
 
 const hasPermission = (input: string[] | string) => {
   if (!input || !input.length) {

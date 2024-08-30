@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { UserState } from "@models/business";
-import { PowellConfig } from "@powell/models";
+import {ReactNode} from "react";
+import {AxiosRequestConfig, AxiosResponse} from "axios";
+import {UserState} from "@models/business";
+import {PowellConfig} from "@powell/models";
 
 export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 

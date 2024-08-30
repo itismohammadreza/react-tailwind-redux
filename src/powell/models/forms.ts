@@ -1,5 +1,6 @@
-import { PrimeButtonProps } from "@powell/api";
-import { ButtonAppearance, Position } from "@powell/models";
+import {PrimeButtonProps} from "@powell/api";
+import {ButtonAppearance, Position} from "@powell/models";
+import {MouseEvent} from "react";
 
 export type LabelPosition = 'float' | 'fix-side' | 'fix-top';
 export type FixLabelPosition = Exclude<LabelPosition, 'float'>;
@@ -13,7 +14,7 @@ export interface AddonConfig {
   icon?: string;
   iconPosition?: IconPosition;
   text?: string;
-  onClick?: (event) => any;
+  onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 export interface Addon {

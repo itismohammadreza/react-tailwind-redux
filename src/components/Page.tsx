@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect } from 'react';
+import {PropsWithChildren, useEffect} from 'react';
 
 export const Page = ({title, children}: PropsWithChildren<{ title: string }>) => {
   useEffect(() => {

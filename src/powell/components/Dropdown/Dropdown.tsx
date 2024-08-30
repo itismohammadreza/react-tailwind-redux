@@ -1,7 +1,7 @@
-import { Control, FieldError, FieldValues, PathValue, useController, UseControllerProps } from "react-hook-form";
-import { ChangeEvent, ReactNode, useRef } from "react";
-import { usePowellConfig, useTransform } from "@powell/hooks";
-import { Addon, LabelPosition } from "@powell/models";
+import {Control, FieldError, FieldValues, PathValue, useController, UseControllerProps} from "react-hook-form";
+import {ChangeEvent, ReactNode, useRef} from "react";
+import {usePowellConfig, useTransform} from "@powell/hooks";
+import {Addon, LabelPosition} from "@powell/models";
 import {
   primeClassNames,
   PrimeDropdown,
@@ -13,7 +13,7 @@ import {
   PrimeInputIcon,
   PrimeUniqueComponentId
 } from "@powell/api";
-import { getAddonTemplate } from "@powell/utils";
+import {getAddonTemplate} from "@powell/utils";
 import './Dropdown.scss';
 
 interface DropdownProps extends PrimeDropdownProps {

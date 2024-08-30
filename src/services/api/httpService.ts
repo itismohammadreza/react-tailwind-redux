@@ -1,6 +1,6 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { axiosInterceptor } from "@services/api/axiosInterceptor";
-import { globalConfig } from "@config/globalConfig";
+import axios, {AxiosRequestConfig} from "axios";
+import {axiosInterceptor} from "@services/api/axiosInterceptor";
+import {globalConfig} from "@config/globalConfig";
 
 axios.defaults.baseURL = globalConfig.apiUrl;
 axios.defaults.timeout = globalConfig.requestTimeout;

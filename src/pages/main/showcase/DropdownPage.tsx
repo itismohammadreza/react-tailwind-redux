@@ -1,6 +1,6 @@
-import { FormContainer } from "@powell/components/FormContainer";
-import { Dropdown } from "@powell/components/Dropdown";
-import { Button } from "@powell/components/Button";
+import {FormContainer} from "@powell/components/FormContainer";
+import {Dropdown} from "@powell/components/Dropdown";
+import {Button} from "@powell/components/Button";
 
 export const DropdownPage = () => {
   const options = [
@@ -10,7 +10,7 @@ export const DropdownPage = () => {
     {label: 'label4', value: 4},
   ]
   return (
-      <FormContainer onSuccess={v => console.log(v)}>
+      <FormContainer initialValues={{}} onSubmit={v => console.log(v)}>
         <div className="flex flex-col gap-2 p-10">
           <Dropdown filter options={options} label="label" labelPosition="float" name="n"/>
           <Dropdown options={options} label="label" labelPosition="fix-side" name="n"/>

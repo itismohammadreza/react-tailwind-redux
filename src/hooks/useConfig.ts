@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectConfig } from "@redux/selectors/configSelector";
-import { ConfigState } from "@models/common";
-import { changeLocale, changeToRtl } from "@redux/slices/configSlice";
-import { useTranslation } from "react-i18next";
-import { usePowellConfig } from "@powell/hooks";
-import { PowellConfig } from "@powell/models";
+import {useDispatch, useSelector} from "react-redux";
+import {selectConfig} from "@redux/selectors/configSelector";
+import {ConfigState} from "@models/common";
+import {changeLocale, changeToRtl} from "@redux/slices/configSlice";
+import {useTranslation} from "react-i18next";
+import {usePowellConfig} from "@powell/hooks";
+import {PowellConfig} from "@powell/models";
 
 export const useConfig = () => {
   const appConfig = useSelector(selectConfig);

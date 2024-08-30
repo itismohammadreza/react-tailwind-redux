@@ -1,5 +1,5 @@
-import { CSSProperties, useEffect, useMemo, useState } from "react";
-import { eventBusService } from "@services/eventBusService";
+import {CSSProperties, useEffect, useMemo, useState} from "react";
+import {eventBusService} from "@services/eventBusService";
 
 export const Loading = () => {
   const [loading, setLoading] = useState(false);

@@ -1,5 +1,5 @@
-import { configService, PrimeContext, PrimeZIndexOptions } from "@powell/api";
-import { useContext } from "react";
+import {configService, PrimeContext, PrimeZIndexOptions} from "@powell/api";
+import {useContext} from "react";
 import {PowellConfig, SafeAny} from "@powell/models";
 
 export const usePowellConfig = () => {
