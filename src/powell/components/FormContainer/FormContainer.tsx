@@ -1,105 +1,50 @@
-import {FormEventHandler, FormHTMLAttributes, PropsWithChildren} from 'react';
-import {
-  FieldValues,
-  FormProvider,
-  SubmitErrorHandler,
-  SubmitHandler,
-  useForm,
-  UseFormProps,
-  UseFormReturn
-} from 'react-hook-form';
-import {Form, Formik, FormikConfig} from "formik";
+import {Form, Formik, FormikConfig, FormikContextType, FormikValues, useFormikContext} from "formik";
+import {ForwardedRef, forwardRef, PropsWithChildren, useEffect, useRef} from "react";
+import {FormProvider} from "@powell/components/FormContainer";
 
-export type FormContainerProps<T extends FieldValues = FieldValues> =
-    PropsWithChildren<UseFormProps<T> & {
-      onSuccess?: SubmitHandler<T>
-      onError?: SubmitErrorHandler<T>
-      FormProps?: FormHTMLAttributes<HTMLFormElement>
-      handleSubmit?: FormEventHandler<HTMLFormElement>
-      formContext?: UseFormReturn<T>
-    }>
+interface FormContainerProps<T extends FormikValues> extends FormikConfig<T> {
+  onInit?: (context: FormikContextType<T>) => void;
+}
 
-export const FormContainer = <TFieldValues extends FieldValues = FieldValues>(
-    props: PropsWithChildren<FormikConfig<any>>
-): any => {
-  const {
-    // handleSubmit,
-    children,
-    // FormProps,
-    // formContext,
-    // onSuccess,
-    // onError,
-    // ...useFormProps
-  } = props;
+const FormContent = <T extends FormikValues>(props: PropsWithChildren<{onInit: FormContainerProps<T>['onInit']}>) => {
+  const {children, onInit} = props;
+  const formikContext: FormikContextType<T> = useFormikContext();
+  const initialized = useRef(false);
 
-  // if (!formContext) {
-  //   return (
-  //       <FormProviderWithoutContext<TFieldValues>
-  //           {...{
-  //             onSuccess,
-  //             onError,
-  //             FormProps,
-  //             children,
-  //             ...useFormProps
-  //           }}/>
-  //   )
-  // }
-  // if (typeof onSuccess === 'function' && typeof handleSubmit === 'function') {
-  //   console.warn('Property `onSuccess` will be ignored because handleSubmit is provided');
-  // }
+  useEffect(() => {
+    if (!initialized.current) {
+      onInit?.(formikContext);
+      initialized.current = true;
+    }
+  }, [formikContext, onInit]);
+
   return (
-      // <FormProvider {...formContext}>
-      //   <form
-      //       noValidate
-      //       {...FormProps}
-      //       onSubmit={
-      //         handleSubmit
-      //             ? handleSubmit
-      //             : onSuccess
-      //                 ? formContext.handleSubmit(onSuccess, onError)
-      //                 : () => console.log('submit handler `onSuccess` is missing')
-      //       }>
-      //     {children}
-      //   </form>
-      // </FormProvider>
-      <Formik {...props}>
+      <>
+        {children}
+      </>
+  );
+}
+
+export const FormContainer = forwardRef(<T extends FormikValues>(props: FormContainerProps<T>, ref: ForwardedRef<HTMLFormElement>) => {
+  const {children, onInit, ...rest} = props;
+
+  return (
+      <Formik {...rest}>
         {
           (context) => (
-              typeof children === 'function' ? <Form>{children(context)}</Form> :<Form>{children}</Form>
+              <FormProvider {...rest}>
+                <Form ref={ref}>
+                  {
+                    typeof children === 'function'
+                        ?
+                        <FormContent<T> onInit={onInit}>{children(context)}</FormContent>
+                        :
+                        <FormContent<T> onInit={onInit}>{children}</FormContent>
+                  }
+                </Form>
+              </FormProvider>
           )
         }
       </Formik>
   )
-}
-
-// const FormProviderWithoutContext = <TFieldValues extends FieldValues = FieldValues>
-// (
-//     props: PropsWithChildren<FormikConfig<any>>
-// ) => {
-//   const {
-//     onSuccess,
-//     onError,
-//     FormProps,
-//     children,
-//     ...useFormProps
-//   } = props;
-//
-//   const methods = useForm<TFieldValues>({...useFormProps});
-//   const {handleSubmit} = methods;
-//
-//   return (
-//       <FormProvider {...methods}>
-//         <form
-//             onSubmit={handleSubmit(
-//                 onSuccess
-//                     ? onSuccess
-//                     : () => console.log('submit handler `onSuccess` is missing'),
-//                 onError
-//             )}
-//             noValidate
-//             {...FormProps}>
-//           {children}
-//         </form>
-//       </FormProvider>
-//   )
-// }
+})

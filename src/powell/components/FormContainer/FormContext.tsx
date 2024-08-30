@@ -1,0 +1,17 @@
+import {createContext, PropsWithChildren} from "react";
+import {FormikConfig, FormikValues} from "formik";
+
+export const FormContext = createContext<FormikConfig<FormikValues> | undefined>(undefined);
+
+export const FormProvider = <T extends FormikValues>(props: PropsWithChildren<FormikConfig<T>>) => {
+  const {children, ...rest} = props;
+
+  return (
+      <FormContext.Provider value={rest}>
+        <>
+          {children}
+        </>
+      </FormContext.Provider>
+  );
+};
+
