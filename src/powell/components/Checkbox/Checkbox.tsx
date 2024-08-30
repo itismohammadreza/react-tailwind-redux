@@ -29,7 +29,7 @@ interface CheckboxProps extends PrimeCheckboxProps {
 }
 
 export const Checkbox = (props: CheckboxProps) => {
-  props = useConfigHandler(props);
+  props = useConfigHandler(props, true);
   const {
     rules = {},
     parseError,

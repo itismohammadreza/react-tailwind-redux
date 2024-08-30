@@ -4,20 +4,24 @@ import {PowellConfig} from "@powell/models";
 interface CommonConfigProps {
   rtl?: PowellConfig["rtl"];
   showRequiredStar?: PowellConfig["showRequiredStar"];
-  inputSize?: PowellConfig["inputSize"];
+  size?: PowellConfig["inputSize"];
   labelPosition?: PowellConfig["labelPosition"];
-  fixLabelPosition?: PowellConfig["fixLabelPosition"];
 }
 
-export const useConfigHandler = (props: CommonConfigProps) => {
+export const useConfigHandler = (props: CommonConfigProps, isFixLabel?: boolean) => {
   const [config] = usePowellConfig();
 
-  return {
+  const result = {
     ...props,
     rtl: props.rtl ?? config.rtl,
     showRequiredStar: props.showRequiredStar ?? config.showRequiredStar,
-    inputSize: props.inputSize ?? config.inputSize,
     labelPosition: props.labelPosition ?? config.labelPosition,
-    fixLabelPosition: props.fixLabelPosition ?? config.fixLabelPosition,
-  } as any
+    size: props.size ?? config.inputSize,
+  }
+
+  if (isFixLabel) {
+    result.labelPosition = config.fixLabelPosition;
+  }
+
+  return result;
 }

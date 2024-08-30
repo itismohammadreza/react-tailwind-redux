@@ -46,6 +46,7 @@ export const InputText = (props: InputTextProps) => {
     rtl,
     showRequiredStar,
     variant,
+    size,
     ...rest
   } = props;
 
@@ -157,6 +158,7 @@ export const InputText = (props: InputTextProps) => {
   return (
       <div className={primeClassNames('input-text-wrapper',
           `variant-${variant}`,
+          `p-inputtext-${size}`,
           {
             [`label-${labelPosition}`]: rest.label,
             [`icon-${iconPosition}`]: iconEl,
