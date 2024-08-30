@@ -14,6 +14,7 @@ import {getAddonTemplate, transformer} from "@powell/utils";
 import {Field, FieldProps} from "formik";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
+import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './InputText.scss';
 
 interface InputTextProps extends PrimeInputTextProps {
@@ -98,13 +99,7 @@ export const InputText = (props: InputTextProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    {
-                      meta.error
-                          ?
-                          parseError?.(meta.error) || <small className="text-red-700">{meta.error}</small>
-                          :
-                          <div>{rest.hint}</div>
-                    }
+                    <ErrorMessage message={meta.error} parseError={parseError} hint={rest.hint}/>
                   </>
               );
             }}
