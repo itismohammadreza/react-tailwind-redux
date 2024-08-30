@@ -3,10 +3,6 @@ import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { UserState } from "@models/business";
 import { PowellConfig } from "@powell/models";
 
-export type Nullable<T = void> = T | null | undefined;
-
-export type SafeAny = any;
-
 export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export type Locale = 'faIR' | 'enUS';
