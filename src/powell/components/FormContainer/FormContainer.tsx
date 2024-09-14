@@ -35,11 +35,9 @@ export const FormContainer = forwardRef(<T extends FormikValues>(props: FormCont
               <FormProvider {...rest}>
                 <Form ref={ref}>
                   {
-                    typeof children === 'function'
-                        ?
-                        <FormContent<T> onInit={onInit}>{children(context)}</FormContent>
-                        :
-                        <FormContent<T> onInit={onInit}>{children}</FormContent>
+                    <FormContent<T> onInit={onInit}>
+                      {typeof children === 'function' ? children(context) : children}
+                    </FormContent>
                   }
                 </Form>
               </FormProvider>

@@ -67,7 +67,6 @@ export const InputText = (props: InputTextProps) => {
       variant,
       id: inputId.current,
       name,
-      required: isRequired,
     };
 
     if (withinForm) {
