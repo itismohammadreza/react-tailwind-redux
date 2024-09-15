@@ -3,18 +3,42 @@
     display: flex;
     gap: 0.25rem 1rem;
 
-    > div {
+    > .field-inner {
       flex-grow: 1;
     }
   }
 
   .p-inputtextarea {
     width: 100%;
-    min-height: 100%;
   }
 
-  .p-icon-fields .p-input-icon {
-    z-index: 5;
+  .p-icon-field {
+    .p-input-icon {
+      z-index: 5;
+      color: var(--text-color-secondary);
+    }
+
+    &.p-icon-field-right {
+      .p-inputtextarea {
+        padding-right: 2.5rem;
+      }
+
+      .p-input-icon {
+        right: 0.75rem;
+        left: auto;
+      }
+    }
+
+    &.p-icon-field-left {
+      .p-inputtextarea {
+        padding-left: 2.5rem;
+      }
+
+      .p-input-icon {
+        left: 0.75rem;
+        right: auto;
+      }
+    }
   }
 
   &.label-fix-side .field {
@@ -58,6 +82,14 @@
       .p-float-label {
         flex-grow: 1;
       }
+    }
+
+    &.addon-before .p-inputtextarea {
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    &.addon-after .p-inputtextarea {
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
     }
   }
 
