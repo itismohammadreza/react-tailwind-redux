@@ -4,7 +4,7 @@ import {PowellConfig} from "@powell/models";
 interface CommonConfigProps {
   rtl?: PowellConfig["rtl"];
   showRequiredStar?: PowellConfig["showRequiredStar"];
-  size?: PowellConfig["inputSize"];
+  inputSize?: PowellConfig["inputSize"];
   labelPosition?: PowellConfig["labelPosition"];
 }
 
@@ -16,7 +16,7 @@ export const useApplyConfig = <T extends CommonConfigProps>(props: T, isFixLabel
     rtl: props.rtl ?? config.rtl,
     showRequiredStar: props.showRequiredStar ?? config.showRequiredStar,
     labelPosition: props.labelPosition ?? config.labelPosition,
-    size: props.size ?? config.inputSize,
+    inputSize: props.inputSize ?? config.inputSize,
   }
 
   if (isFixLabel) {

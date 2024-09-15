@@ -1,5 +1,5 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
-import {Addon, LabelPosition} from "@powell/models";
+import {Addon, LabelPosition, Size} from "@powell/models";
 import {
   primeClassNames,
   PrimeFloatLabel,
@@ -29,6 +29,7 @@ interface InputTextProps extends PrimeInputTextProps {
   label?: string;
   icon?: string | ReactNode;
   hint?: string;
+  inputSize?: Size;
   addon?: Addon;
   iconPosition?: PrimeIconFieldProps["iconPosition"];
   labelPosition?: LabelPosition;
@@ -47,7 +48,7 @@ export const InputText = (props: InputTextProps) => {
     rtl,
     showRequiredStar,
     variant,
-    size,
+    inputSize,
     ...rest
   } = props;
 
@@ -55,13 +56,13 @@ export const InputText = (props: InputTextProps) => {
 
   // Check if we're in Formik context
   const formContext = useFormContext();
-  const withinForm = formContext && name;
-  const isRequired = withinForm && formContext.validationSchema.fields?.[name].tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
+  const withinForm = !!formContext && !!name;
+  const isRequired = withinForm && formContext.validationSchema?.fields?.[name].tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
 
   // Internal state for non-Formik usage
   const [internalValue, setInternalValue] = useState(rest.value || '');
 
-  const inputEl = useCallback(() => {
+  const rootEl = useCallback(() => {
     const commonProps = {
       ...rest,
       variant,
@@ -127,7 +128,7 @@ export const InputText = (props: InputTextProps) => {
           />
       );
     }
-  }, [internalValue]);
+  }, [internalValue, props]);
 
   const labelEl = rest.label && (
       <label htmlFor={inputId.current}>
@@ -145,14 +146,14 @@ export const InputText = (props: InputTextProps) => {
   const withIcon = (
       <PrimeIconField iconPosition={iconPosition}>
         {iconEl}
-        {inputEl()}
+        {rootEl()}
       </PrimeIconField>
   );
 
   return (
       <div className={primeClassNames('input-text-wrapper',
           `variant-${variant}`,
-          `p-inputtext-${size}`,
+          `p-inputtext-${inputSize}`,
           {
             [`label-${labelPosition}`]: rest.label,
             [`icon-${iconPosition}`]: iconEl,
@@ -163,16 +164,16 @@ export const InputText = (props: InputTextProps) => {
           })}>
         <div className="field">
           {labelPosition !== 'float' && labelEl}
-          <div className={primeClassNames({"p-inputgroup": addon})}>
+          <div className={primeClassNames('field-inner', {"p-inputgroup": addon})}>
             {getAddonTemplate(addon?.before)}
             {
               labelPosition === 'float' ? (
                   <PrimeFloatLabel>
-                    {icon ? withIcon : inputEl()}
+                    {icon ? withIcon : rootEl()}
                     {labelEl}
                   </PrimeFloatLabel>
               ) : (
-                  icon ? withIcon : inputEl()
+                  icon ? withIcon : rootEl()
               )
             }
             {getAddonTemplate(addon?.after)}

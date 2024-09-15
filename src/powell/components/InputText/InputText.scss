@@ -3,7 +3,7 @@
     display: flex;
     gap: 0.25rem 1rem;
 
-    > div {
+    > .field-inner {
       flex-grow: 1;
     }
   }
@@ -12,8 +12,33 @@
     width: 100%;
   }
 
-  .p-icon-field .p-input-icon {
-    z-index: 5;
+  .p-icon-field {
+    .p-input-icon {
+      z-index: 5;
+      color: var(--text-color-secondary);
+    }
+
+    &.p-icon-field-right {
+      .p-inputtext {
+        padding-right: 2.5rem;
+      }
+
+      .p-input-icon {
+        right: 0.75rem;
+        left: auto;
+      }
+    }
+
+    &.p-icon-field-left {
+      .p-inputtext {
+        padding-left: 2.5rem;
+      }
+
+      .p-input-icon {
+        left: 0.75rem;
+        right: auto;
+      }
+    }
   }
 
   &.label-fix-side .field {
@@ -57,6 +82,14 @@
       .p-float-label {
         flex-grow: 1;
       }
+    }
+
+    &.addon-before .p-inputtext {
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    &.addon-after .p-inputtext {
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
     }
   }
 
