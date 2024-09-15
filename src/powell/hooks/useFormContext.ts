@@ -7,7 +7,7 @@ export const useFormContext = () => {
   const formikContext = useFormikContext();
 
   if (!context || !formikContext) {
-    throw new Error('useFormContext must be used within a FormContainer');
+    return null;
   }
 
   return {...context, ...formikContext} as FormikContextType<FormikValues>;
