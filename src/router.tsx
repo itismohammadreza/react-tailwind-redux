@@ -13,6 +13,7 @@ import {InputTextareaPage} from "@pages/main/showcase/InputTextareaPage";
 import {DropdownPage} from "@pages/main/showcase/DropdownPage";
 import {CheckboxPage} from "@pages/main/showcase/CheckboxPage";
 import {UtilsPage} from "@pages/main/showcase/UtilsPage";
+import {AutoCompletePage} from "@pages/main/showcase/AutoCompletePage.tsx";
 
 const provideUser = async () => {
   try {
@@ -56,6 +57,10 @@ export const routes: RouteObject[] = [
     element: <Main/>,
     loader: provideUser,
     children: [
+      {
+        path: "autoComplete",
+        element: <AutoCompletePage/>,
+      },
       {
         path: "",
         element: <Home/>,
