@@ -111,15 +111,7 @@ export const Navbar = (props: PropsWithChildren) => {
             onHide={() => setConfigSidebarVisible(false)}
             modal={false}
             position="right">
-          <FormContainer defaultValues={{
-            rtl: config.rtl
-          }}>
-            <Checkbox
-                rtl={true}
-                onChange={e => setConfig({rtl: e.checked})}
-                name="rtl"
-                label="RTL"/>
-          </FormContainer>
+          <Checkbox checked={config.rtl} onChange={e => setConfig({rtl: e.checked})} name="rtl" label="RTL"/>
         </PrimeSidebar>
 
         <PrimeSidebar
