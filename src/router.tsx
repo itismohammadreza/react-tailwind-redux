@@ -14,6 +14,7 @@ import {DropdownPage} from "@pages/main/showcase/DropdownPage";
 import {CheckboxPage} from "@pages/main/showcase/CheckboxPage";
 import {UtilsPage} from "@pages/main/showcase/UtilsPage";
 import {AutoCompletePage} from "@pages/main/showcase/AutoCompletePage.tsx";
+import {ButtonPage} from "@pages/main/showcase/ButtonPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -58,20 +59,16 @@ export const routes: RouteObject[] = [
     loader: provideUser,
     children: [
       {
-        path: "autoComplete",
-        element: <AutoCompletePage/>,
-      },
-      {
         path: "",
         element: <Home/>,
       },
       {
-        path: "inputText",
-        element: <InputTextPage/>,
+        path: "button",
+        element: <ButtonPage/>,
       },
       {
-        path: "inputTextarea",
-        element: <InputTextareaPage/>,
+        path: "autoComplete",
+        element: <AutoCompletePage/>,
       },
       {
         path: "checkbox",
@@ -80,6 +77,14 @@ export const routes: RouteObject[] = [
       {
         path: "dropdown",
         element: <DropdownPage/>,
+      },
+      {
+        path: "inputText",
+        element: <InputTextPage/>,
+      },
+      {
+        path: "inputTextarea",
+        element: <InputTextareaPage/>,
       },
       {
         path: "utils",

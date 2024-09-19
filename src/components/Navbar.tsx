@@ -6,7 +6,6 @@ import {Logo} from "@components/Logo";
 import {primeClassNames, PrimeMenuItem, PrimePanelMenu, PrimeSidebar} from "@powell/api";
 import {routes} from "@root/router";
 import {useNavigate} from "react-router-dom";
-import {FormContainer} from "@powell/components/FormContainer";
 import {Checkbox} from "@powell/components/Checkbox";
 
 export const Navbar = (props: PropsWithChildren) => {
