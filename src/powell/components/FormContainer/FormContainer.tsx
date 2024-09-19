@@ -4,6 +4,7 @@ import {FormProvider} from "@powell/components/FormContainer";
 
 interface FormContainerProps<T extends FormikValues> extends FormikConfig<T> {
   onInit?: (context: FormikContextType<T>) => void;
+  className?: string;
 }
 
 const FormContent = <T extends FormikValues>(props: PropsWithChildren<{onInit: FormContainerProps<T>['onInit']}>) => {
@@ -26,14 +27,14 @@ const FormContent = <T extends FormikValues>(props: PropsWithChildren<{onInit: F
 }
 
 export const FormContainer = forwardRef(<T extends FormikValues>(props: FormContainerProps<T>, ref: ForwardedRef<HTMLFormElement>) => {
-  const {children, onInit, ...rest} = props;
+  const {children, onInit, className, ...rest} = props;
 
   return (
       <Formik {...rest}>
         {
           (context) => (
               <FormProvider {...rest}>
-                <Form ref={ref}>
+                <Form ref={ref} className={className}>
                   {
                     <FormContent<T> onInit={onInit}>
                       {typeof children === 'function' ? children(context) : children}
