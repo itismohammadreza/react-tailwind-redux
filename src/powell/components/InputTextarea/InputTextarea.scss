@@ -8,7 +8,7 @@
     }
   }
 
-  .p-inputtextarea {
+  :where(.p-inputtextarea) {
     width: 100%;
   }
 
@@ -19,7 +19,7 @@
     }
 
     &.p-icon-field-right {
-      .p-inputtextarea {
+      :where(.p-inputtextarea) {
         padding-right: 2.5rem;
       }
 
@@ -30,7 +30,7 @@
     }
 
     &.p-icon-field-left {
-      .p-inputtextarea {
+      :where(.p-inputtextarea) {
         padding-left: 2.5rem;
       }
 
@@ -56,7 +56,7 @@
 
   &.addon-before {
     [class*="icon-"] {
-      .p-inputtextarea {
+      :where(.p-inputtextarea) {
         border-radius: 0 var(--border-radius) var(--border-radius) 0;
       }
     }
@@ -70,7 +70,7 @@
     }
 
     [class*="icon-"] {
-      .p-inputtextarea {
+      :where(.p-inputtextarea) {
         border-radius: var(--border-radius) 0 0 var(--border-radius);
       }
     }
@@ -84,11 +84,11 @@
       }
     }
 
-    &.addon-before .p-inputtextarea {
+    &.addon-before :where(.p-inputtextarea) {
       border-radius: 0 var(--border-radius) var(--border-radius) 0;
     }
 
-    &.addon-after .p-inputtextarea {
+    &.addon-after :where(.p-inputtextarea) {
       border-radius: var(--border-radius) 0 0 var(--border-radius);
     }
   }
