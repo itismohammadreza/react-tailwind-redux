@@ -29,8 +29,8 @@ interface AutoCompleteProps extends PrimeAutoCompleteProps {
   label?: string;
   icon?: string | ReactNode;
   hint?: string;
-  inputSize?: Size;
   addon?: Addon;
+  inputSize?: Size;
   iconPosition?: PrimeIconFieldProps["iconPosition"];
   labelPosition?: LabelPosition;
 }
@@ -62,7 +62,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
   // Internal state for non-Formik usage
   const [internalValue, setInternalValue] = useState(rest.value || '');
 
-  const rootEl = useCallback(() => {
+  const inputEl = useCallback(() => {
     const commonProps = {
       ...rest,
       variant,
@@ -80,7 +80,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
                 onChange: (event: string) => formContext.setFieldValue(name, event),
                 transform: {
                   input: transform.input ?? (value => value),
-                  output: transform.output ?? (event => event.value)
+                  output: transform.output ?? (event => event.target.value)
                 }
               });
 
@@ -112,7 +112,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         onChange: (event: string) => setInternalValue(event),
         transform: {
           input: transform.input ?? (value => value),
-          output: transform.output ?? (event => event.value)
+          output: transform.output ?? (event => event.target.value)
         }
       });
 
@@ -128,7 +128,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
           />
       );
     }
-  }, [internalValue, props]);
+  }, [internalValue]);
 
   const labelEl = rest.label && (
       <label htmlFor={inputId.current}>
@@ -146,7 +146,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
   const withIcon = (
       <PrimeIconField iconPosition={iconPosition}>
         {iconEl}
-        {rootEl()}
+        {inputEl()}
       </PrimeIconField>
   );
 
@@ -164,16 +164,16 @@ export const AutoComplete = (props: AutoCompleteProps) => {
           })}>
         <div className="field">
           {labelPosition !== 'float' && labelEl}
-          <div className={primeClassNames('field-inner', {"p-inputgroup": addon})}>
+          <div className={primeClassNames({"p-inputgroup": addon})}>
             {getAddonTemplate(addon?.before)}
             {
               labelPosition === 'float' ? (
                   <PrimeFloatLabel>
-                    {icon ? withIcon : rootEl()}
+                    {icon ? withIcon : inputEl()}
                     {labelEl}
                   </PrimeFloatLabel>
               ) : (
-                  icon ? withIcon : rootEl()
+                  icon ? withIcon : inputEl()
               )
             }
             {getAddonTemplate(addon?.after)}
