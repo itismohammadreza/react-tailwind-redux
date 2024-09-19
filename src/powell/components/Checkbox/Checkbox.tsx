@@ -1,41 +1,35 @@
-import {Control, FieldError, FieldValues, PathValue, useController, UseControllerProps} from "react-hook-form";
-import {ChangeEvent, ReactNode, useRef} from "react";
-import {useTransform} from "@powell/hooks";
-import {
-  PrimeCheckbox,
-  PrimeCheckboxChangeEvent,
-  PrimeCheckboxProps,
-  primeClassNames,
-  PrimeUniqueComponentId
-} from "@powell/api";
+import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
+import {FixLabelPosition} from "@powell/models";
+import {PrimeCheckbox, PrimeCheckboxProps, primeClassNames, PrimeUniqueComponentId} from "@powell/api";
+import {transformer} from "@powell/utils";
+import {Field, FieldProps} from "formik";
+import {useApplyConfig, useFormContext} from "@powell/hooks";
+import {SafeAny} from "@powell/models/common";
+import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './Checkbox.scss';
-import {useApplyConfig} from "@powell/hooks/useApplyConfig.ts";
 
-interface CheckboxProps extends PrimeCheckboxProps {
-  // form-based props
-  label?: string;
-  hint?: string;
-  name: string;
-  rules?: UseControllerProps<FieldValues, string>['rules'];
-  parseError?: (error: FieldError) => ReactNode;
-  control?: Control<FieldValues>;
+interface CheckboxProps extends Omit<PrimeCheckboxProps, 'checked'> {
+  checked?: boolean;
+  name?: string;
+  parseError?: (error: string) => ReactNode;
   transform?: {
-    input?: (value: PathValue<FieldValues, string>) => any;
-    output?: (event: ChangeEvent<HTMLInputElement>) => PathValue<FieldValues, string>;
+    input?: (value: SafeAny) => string;
+    output?: (event: ChangeEvent<HTMLInputElement>) => SafeAny;
   };
-  // config-based props
   showRequiredStar?: boolean;
   rtl?: boolean;
+  label?: string;
+  hint?: string;
+  labelPosition?: FixLabelPosition;
 }
 
 export const Checkbox = (props: CheckboxProps) => {
-  props = useApplyConfig(props, true);
+  props = useApplyConfig(props, {sizable: false, isFixLabel: true});
   const {
-    rules = {},
     parseError,
     name,
-    control,
     transform = {},
+    labelPosition,
     rtl,
     showRequiredStar,
     variant,
@@ -43,57 +37,100 @@ export const Checkbox = (props: CheckboxProps) => {
   } = props;
 
   const inputId = useRef(PrimeUniqueComponentId());
-  const {field, fieldState: {error}} = useController({
-    name,
-    control,
-    disabled: rest.disabled,
-    rules,
-  })
 
-  const {value, onChange} = useTransform<FieldValues, string, any>({
-    value: field.value,
-    onChange: field.onChange,
-    transform: {
-      input: transform.input ?? (value => value),
-      output: transform.output ?? ((event: PrimeCheckboxChangeEvent) => event.checked as PathValue<FieldValues, string>)
+  // Check if we're in Formik context
+  const formContext = useFormContext();
+  const withinForm = !!formContext && !!name;
+  const isRequired = withinForm && formContext.validationSchema?.fields?.[name].tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
+
+  // Internal state for non-Formik usage
+  const [internalValue, setInternalValue] = useState(rest.value || '');
+
+  const rootEl = useCallback(() => {
+    const commonProps = {
+      ...rest,
+      variant,
+      inputId: inputId.current,
+      name,
+    };
+
+    if (withinForm) {
+      // if in Formik context
+      return (
+          <Field name={name}>
+            {({field, meta}: FieldProps) => {
+              const {value, onChange} = transformer({
+                value: field.value,
+                onChange: (event: string) => formContext.setFieldValue(name, event),
+                transform: {
+                  input: transform.input ?? (value => value),
+                  output: transform.output ?? (event => event.target.checked)
+                }
+              });
+
+              return (
+                  <>
+                    <PrimeCheckbox
+                        {...commonProps}
+                        checked={value}
+                        onChange={(event) => {
+                          onChange(event);
+                          rest.onChange?.(event);
+                        }}
+                        invalid={!!meta.error}
+                    />
+                    <ErrorMessage message={meta.error} parseError={parseError} hint={rest.hint}/>
+                  </>
+              );
+            }}
+          </Field>
+      );
+    } else {
+      // if outside Formik context
+      const {value, onChange} = transformer({
+        value: internalValue,
+        onChange: (event: string) => setInternalValue(event),
+        transform: {
+          input: transform.input ?? (value => value),
+          output: transform.output ?? (event => event.target.checked)
+        }
+      });
+
+      return (
+          <PrimeCheckbox
+              {...commonProps}
+              checked={value}
+              onChange={(event) => {
+                onChange(event);
+                rest.onChange?.(event);
+              }}
+              onBlur={rest.onBlur}
+          />
+      );
     }
-  });
+  }, [internalValue, props]);
 
-  const labelEl = rest.label &&
-      <label htmlFor={inputId.current}>{rest.label}{rules.required && showRequiredStar ? '*' : ''}</label>;
-  const rootEl = (
-      <PrimeCheckbox
-          {...rest}
-          variant={variant}
-          inputId={inputId.current}
-          name={field.name}
-          checked={value}
-          onChange={(event) => {
-            onChange(event);
-            rest.onChange?.(event);
-          }}
-          required={!!rules.required}
-          invalid={!!error}/>
-  )
+  const labelEl = rest.label && (
+      <label htmlFor={inputId.current}>
+        {rest.label}
+        {isRequired && showRequiredStar ? '*' : ''}
+      </label>
+  );
 
   return (
       <div className={primeClassNames('checkbox-wrapper',
           `variant-${variant}`,
           {
+            [`label-${labelPosition}`]: rest.label,
             'is-rtl': rtl,
             'is-ltr': !rtl,
           })}>
         <div className="field">
-          {rootEl}
           {labelEl}
+          <div className={primeClassNames('field-inner')}>
+            {rootEl()}
+          </div>
         </div>
-        {
-          error
-              ?
-              parseError?.(error) || <small className="text-red-700">{error.message}</small>
-              :
-              <div>{rest.hint}</div>
-        }
       </div>
-  )
-}
+  );
+};

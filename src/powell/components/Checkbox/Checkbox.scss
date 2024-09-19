@@ -2,6 +2,27 @@
   .field {
     display: flex;
     gap: 0.25rem 1rem;
+
+    > .field-inner {
+      flex-grow: 1;
+    }
+  }
+
+  :where(.p-checkbox) {
+    width: 100%;
+  }
+
+  &.label-fix-side .field {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &.label-fix-top .field {
+    flex-direction: column;
+
+    label {
+      margin-bottom: 0.25rem;
+    }
   }
 
   &.is-ltr {
