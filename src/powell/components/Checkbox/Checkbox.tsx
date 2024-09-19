@@ -44,7 +44,7 @@ export const Checkbox = (props: CheckboxProps) => {
   const isRequired = withinForm && formContext.validationSchema?.fields?.[name].tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
 
   // Internal state for non-Formik usage
-  const [internalValue, setInternalValue] = useState(rest.value || '');
+  const [internalValue, setInternalValue] = useState(rest.checked);
 
   const rootEl = useCallback(() => {
     const commonProps = {
@@ -61,7 +61,7 @@ export const Checkbox = (props: CheckboxProps) => {
             {({field, meta}: FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
-                onChange: (event: string) => formContext.setFieldValue(name, event),
+                onChange: (event: boolean) => formContext.setFieldValue(name, event),
                 transform: {
                   input: transform.input ?? (value => value),
                   output: transform.output ?? (event => event.target.checked)
@@ -89,7 +89,7 @@ export const Checkbox = (props: CheckboxProps) => {
       // if outside Formik context
       const {value, onChange} = transformer({
         value: internalValue,
-        onChange: (event: string) => setInternalValue(event),
+        onChange: (event: boolean) => setInternalValue(event),
         transform: {
           input: transform.input ?? (value => value),
           output: transform.output ?? (event => event.target.checked)
