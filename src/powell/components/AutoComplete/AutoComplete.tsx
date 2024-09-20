@@ -1,14 +1,14 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
-  primeClassNames,
-  PrimeFloatLabel,
-  PrimeIconField,
-  PrimeIconFieldProps,
-  PrimeInputIcon,
-  PrimeAutoComplete,
-  PrimeAutoCompleteProps,
-  PrimeUniqueComponentId
+  $classNames,
+  $FloatLabel,
+  $IconField,
+  $IconFieldProps,
+  $InputIcon,
+  $AutoComplete,
+  $AutoCompleteProps,
+  $UniqueComponentId
 } from "@powell/api";
 import {getAddonTemplate, transformer} from "@powell/utils";
 import {Field, FieldProps} from "formik";
@@ -17,7 +17,7 @@ import {SafeAny} from "@powell/models/common";
 import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './AutoComplete.scss';
 
-interface AutoCompleteProps extends PrimeAutoCompleteProps {
+interface AutoCompleteProps extends $AutoCompleteProps {
   name?: string;
   parseError?: (error: string) => ReactNode;
   transform?: {
@@ -31,7 +31,7 @@ interface AutoCompleteProps extends PrimeAutoCompleteProps {
   hint?: string;
   addon?: Addon;
   inputSize?: Size;
-  iconPosition?: PrimeIconFieldProps["iconPosition"];
+  iconPosition?: $IconFieldProps["iconPosition"];
   labelPosition?: LabelPosition;
 }
 
@@ -52,7 +52,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
     ...rest
   } = props;
 
-  const inputId = useRef(PrimeUniqueComponentId());
+  const inputId = useRef($UniqueComponentId());
 
   // Check if we're in Formik context
   const formContext = useFormContext();
@@ -86,7 +86,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
 
               return (
                   <>
-                    <PrimeAutoComplete
+                    <$AutoComplete
                         {...commonProps}
                         value={value}
                         onChange={(event) => {
@@ -117,7 +117,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
       });
 
       return (
-          <PrimeAutoComplete
+          <$AutoComplete
               {...commonProps}
               value={value}
               onChange={(event) => {
@@ -139,19 +139,19 @@ export const AutoComplete = (props: AutoCompleteProps) => {
 
   const iconEl = icon && (
       typeof icon === 'string'
-          ? <PrimeInputIcon className={icon}></PrimeInputIcon>
-          : <PrimeInputIcon>{icon}</PrimeInputIcon>
+          ? <$InputIcon className={icon}></$InputIcon>
+          : <$InputIcon>{icon}</$InputIcon>
   );
 
   const withIcon = (
-      <PrimeIconField iconPosition={iconPosition}>
+      <$IconField iconPosition={iconPosition}>
         {iconEl}
         {inputEl()}
-      </PrimeIconField>
+      </$IconField>
   );
 
   return (
-      <div className={primeClassNames('auto-complete-wrapper',
+      <div className={$classNames('auto-complete-wrapper',
           `variant-${variant}`,
           `p-inputtext-${inputSize}`,
           {
@@ -164,14 +164,14 @@ export const AutoComplete = (props: AutoCompleteProps) => {
           })}>
         <div className="field">
           {labelPosition !== 'float' && labelEl}
-          <div className={primeClassNames({"p-inputgroup": addon})}>
+          <div className={$classNames({"p-inputgroup": addon})}>
             {getAddonTemplate(addon?.before)}
             {
               labelPosition === 'float' ? (
-                  <PrimeFloatLabel>
+                  <$FloatLabel>
                     {icon ? withIcon : inputEl()}
                     {labelEl}
-                  </PrimeFloatLabel>
+                  </$FloatLabel>
               ) : (
                   icon ? withIcon : inputEl()
               )

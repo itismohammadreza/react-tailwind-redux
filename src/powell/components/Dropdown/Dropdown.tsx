@@ -1,14 +1,14 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
-  primeClassNames,
-  PrimeFloatLabel,
-  PrimeIconField,
-  PrimeIconFieldProps,
-  PrimeInputIcon,
-  PrimeDropdown,
-  PrimeDropdownProps,
-  PrimeUniqueComponentId
+  $classNames,
+  $FloatLabel,
+  $IconField,
+  $IconFieldProps,
+  $InputIcon,
+  $Dropdown,
+  $DropdownProps,
+  $UniqueComponentId
 } from "@powell/api";
 import {getAddonTemplate, transformer} from "@powell/utils";
 import {Field, FieldProps} from "formik";
@@ -17,7 +17,7 @@ import {SafeAny} from "@powell/models/common";
 import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './Dropdown.scss';
 
-interface DropdownProps extends PrimeDropdownProps {
+interface DropdownProps extends $DropdownProps {
   name?: string;
   parseError?: (error: string) => ReactNode;
   transform?: {
@@ -31,7 +31,7 @@ interface DropdownProps extends PrimeDropdownProps {
   hint?: string;
   inputSize?: Size;
   addon?: Addon;
-  iconPosition?: PrimeIconFieldProps["iconPosition"];
+  iconPosition?: $IconFieldProps["iconPosition"];
   labelPosition?: LabelPosition;
 }
 
@@ -52,7 +52,7 @@ export const Dropdown = (props: DropdownProps) => {
     ...rest
   } = props;
 
-  const inputId = useRef(PrimeUniqueComponentId());
+  const inputId = useRef($UniqueComponentId());
 
   // Check if we're in Formik context
   const formContext = useFormContext();
@@ -86,7 +86,7 @@ export const Dropdown = (props: DropdownProps) => {
 
               return (
                   <>
-                    <PrimeDropdown
+                    <$Dropdown
                         {...commonProps}
                         value={value}
                         onChange={(event) => {
@@ -117,7 +117,7 @@ export const Dropdown = (props: DropdownProps) => {
       });
 
       return (
-          <PrimeDropdown
+          <$Dropdown
               {...commonProps}
               value={value}
               onChange={(event) => {
@@ -139,19 +139,19 @@ export const Dropdown = (props: DropdownProps) => {
 
   const iconEl = icon && (
       typeof icon === 'string'
-          ? <PrimeInputIcon className={icon}></PrimeInputIcon>
-          : <PrimeInputIcon>{icon}</PrimeInputIcon>
+          ? <$InputIcon className={icon}></$InputIcon>
+          : <$InputIcon>{icon}</$InputIcon>
   );
 
   const withIcon = (
-      <PrimeIconField iconPosition={iconPosition}>
+      <$IconField iconPosition={iconPosition}>
         {iconEl}
         {rootEl()}
-      </PrimeIconField>
+      </$IconField>
   );
 
   return (
-      <div className={primeClassNames('dropdown-wrapper',
+      <div className={$classNames('dropdown-wrapper',
           `variant-${variant}`,
           `p-inputtext-${inputSize}`,
           {
@@ -164,14 +164,14 @@ export const Dropdown = (props: DropdownProps) => {
           })}>
         <div className="field">
           {labelPosition !== 'float' && labelEl}
-          <div className={primeClassNames('field-inner', {"p-inputgroup": addon})}>
+          <div className={$classNames('field-inner', {"p-inputgroup": addon})}>
             {getAddonTemplate(addon?.before)}
             {
               labelPosition === 'float' ? (
-                  <PrimeFloatLabel>
+                  <$FloatLabel>
                     {icon ? withIcon : rootEl()}
                     {labelEl}
-                  </PrimeFloatLabel>
+                  </$FloatLabel>
               ) : (
                   icon ? withIcon : rootEl()
               )

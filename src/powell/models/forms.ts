@@ -1,4 +1,4 @@
-import {PrimeButtonProps} from "@powell/api";
+import {$ButtonProps} from "@powell/api";
 import {ButtonAppearance, Position} from "@powell/models";
 import {MouseEvent} from "react";
 
@@ -9,7 +9,7 @@ export type IconPosition = Exclude<Position, 'top' | 'bottom'>;
 export interface AddonConfig {
   type: 'button' | 'icon' | 'text';
   label?: string;
-  severity?: PrimeButtonProps["severity"];
+  severity?: $ButtonProps["severity"];
   appearance?: ButtonAppearance;
   icon?: string;
   iconPosition?: IconPosition;

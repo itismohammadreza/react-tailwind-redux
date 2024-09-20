@@ -1,4 +1,4 @@
-import {configService, PrimeContext, PrimeZIndexOptions} from "@powell/api";
+import {configService, $PrimeReactContext, $ZIndexOptions} from "@powell/api";
 import {useContext} from "react";
 import {PowellConfig, SafeAny} from "@powell/models";
 
@@ -20,7 +20,7 @@ export const usePowellConfig = () => {
     setAppendTo,
     changeTheme,
     ...restPrimeConfig
-  } = useContext(PrimeContext);
+  } = useContext($PrimeReactContext);
 
   const actions: Partial<Record<keyof PowellConfig, (c: PowellConfig) => SafeAny>> = {
     pt: (v) => setPt?.(v.pt!),
@@ -47,7 +47,7 @@ export const usePowellConfig = () => {
       setInputStyle?.(v.inputStyle!);
     },
     nullSortOrder: (v) => setNullSortOrder?.(v.nullSortOrder!),
-    zIndex: (v) => setZIndex?.(v.zIndex! as PrimeZIndexOptions),
+    zIndex: (v) => setZIndex?.(v.zIndex! as $ZIndexOptions),
     autoZIndex: (v) => setAutoZIndex?.(v.autoZIndex!),
     appendTo: (v) => setAppendTo?.(v.appendTo!),
     theme: (v) => changeTheme?.(powellConfig.theme, v.theme!, 'powell-theme-link')

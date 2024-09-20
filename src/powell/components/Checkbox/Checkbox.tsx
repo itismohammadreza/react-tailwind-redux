@@ -1,6 +1,6 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {FixLabelPosition} from "@powell/models";
-import {PrimeCheckbox, PrimeCheckboxProps, primeClassNames, PrimeUniqueComponentId} from "@powell/api";
+import {$Checkbox, $CheckboxProps, $classNames, $UniqueComponentId} from "@powell/api";
 import {transformer} from "@powell/utils";
 import {Field, FieldProps} from "formik";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
@@ -8,7 +8,7 @@ import {SafeAny} from "@powell/models/common";
 import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './Checkbox.scss';
 
-interface CheckboxProps extends Omit<PrimeCheckboxProps, 'checked'> {
+interface CheckboxProps extends Omit<$CheckboxProps, 'checked'> {
   checked?: boolean;
   name?: string;
   parseError?: (error: string) => ReactNode;
@@ -36,7 +36,7 @@ export const Checkbox = (props: CheckboxProps) => {
     ...rest
   } = props;
 
-  const inputId = useRef(PrimeUniqueComponentId());
+  const inputId = useRef($UniqueComponentId());
 
   // Check if we're in Formik context
   const formContext = useFormContext();
@@ -70,7 +70,7 @@ export const Checkbox = (props: CheckboxProps) => {
 
               return (
                   <>
-                    <PrimeCheckbox
+                    <$Checkbox
                         {...commonProps}
                         checked={value}
                         onChange={(event) => {
@@ -97,7 +97,7 @@ export const Checkbox = (props: CheckboxProps) => {
       });
 
       return (
-          <PrimeCheckbox
+          <$Checkbox
               {...commonProps}
               checked={value}
               onChange={(event) => {
@@ -118,7 +118,7 @@ export const Checkbox = (props: CheckboxProps) => {
   );
 
   return (
-      <div className={primeClassNames('checkbox-wrapper',
+      <div className={$classNames('checkbox-wrapper',
           `variant-${variant}`,
           {
             [`label-${labelPosition}`]: rest.label,
@@ -127,7 +127,7 @@ export const Checkbox = (props: CheckboxProps) => {
           })}>
         <div className="field">
           {labelEl}
-          <div className={primeClassNames('field-inner')}>
+          <div className={$classNames('field-inner')}>
             {rootEl()}
           </div>
         </div>

@@ -1,5 +1,5 @@
 import {PropsWithChildren} from "react";
-import {configService, powellDefaults, PrimeProvider} from "@powell/api";
+import {configService, powellDefaults, $PrimeReactProvider} from "@powell/api";
 import {PowellConfig, ThemeName} from "@powell/models";
 
 const createThemeLink = () => {
@@ -30,8 +30,8 @@ export const PowellProvider = (props: PropsWithChildren<{ config?: PowellConfig 
   configService.set(defaultConfig);
   applyTheme(defaultConfig.theme!);
   return (
-      <PrimeProvider value={defaultConfig}>
+      <$PrimeReactProvider value={defaultConfig}>
         {children}
-      </PrimeProvider>
+      </$PrimeReactProvider>
   )
 }

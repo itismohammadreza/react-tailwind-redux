@@ -1,10 +1,10 @@
 import {memo, MouseEvent, useRef, useState} from "react";
-import {PrimeButton, PrimeButtonProps, primeClassNames} from "@powell/api";
+import {$Button, $ButtonProps, $classNames} from "@powell/api";
 import {ButtonAppearance} from "@powell/models";
 
 type ButtonState = 'default' | 'loading' | 'next';
 
-interface ButtonProps extends Omit<PrimeButtonProps, "loading" | "link" | "text" | "outlined"> {
+interface ButtonProps extends Omit<$ButtonProps, "loading" | "link" | "text" | "outlined"> {
   async?: true;
   onClickAsync?: (event: { loadingCallback: (ok?: boolean) => void, event: MouseEvent<HTMLButtonElement> }) => void;
   appearance?: ButtonAppearance;
@@ -67,7 +67,7 @@ export const Button = memo((props: ButtonProps) => {
   }
 
   return (
-      <PrimeButton
+      <$Button
           type={type}
           {...rest}
           onClick={handleClick}
@@ -79,7 +79,7 @@ export const Button = memo((props: ButtonProps) => {
           outlined={async ? tempProps.current.appearance === 'outlined' : props.appearance === 'outlined'}
           link={async ? tempProps.current.appearance === 'link' : props.appearance === 'link'}
           loading={_state === 'loading'}
-          className={primeClassNames(props.className, `state-${_state}`)}
+          className={$classNames(props.className, `state-${_state}`)}
       />
   )
 })

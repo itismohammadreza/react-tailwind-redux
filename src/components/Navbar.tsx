@@ -3,7 +3,7 @@ import {useConfig} from "@hooks/useConfig";
 import {useTranslation} from "react-i18next";
 import {Button} from "@powell/components/Button";
 import {Logo} from "@components/Logo";
-import {primeClassNames, PrimeMenuItem, PrimePanelMenu, PrimeSidebar} from "@powell/api";
+import {$classNames, $MenuItem, $PanelMenu, $Sidebar} from "@powell/api";
 import {routes} from "@root/router";
 import {useNavigate} from "react-router-dom";
 import {Checkbox} from "@powell/components/Checkbox";
@@ -17,7 +17,7 @@ export const Navbar = (props: PropsWithChildren) => {
   const [configSidebarVisible, setConfigSidebarVisible] = useState(false);
   const [config, setConfig] = useConfig();
   const {children} = props;
-  const navItems: PrimeMenuItem[] = routes[0].children!.map(route => ({
+  const navItems: $MenuItem[] = routes[0].children!.map(route => ({
     label: route.path || 'home',
     icon: 'pi pi-minus',
     command: () => {
@@ -57,7 +57,7 @@ export const Navbar = (props: PropsWithChildren) => {
   return (
       <>
         <nav
-            className={primeClassNames('h-[70px] bg-white fixed z-20 duration-[300ms] transition-all top-0 border-b border-gray-200 shadow flex items-center justify-between p-4',
+            className={$classNames('h-[70px] bg-white fixed z-20 duration-[300ms] transition-all top-0 border-b border-gray-200 shadow flex items-center justify-between p-4',
                 {
                   'start-[20rem]': !isMobileSize,
                   'start-0': isMobileSize,
@@ -75,7 +75,7 @@ export const Navbar = (props: PropsWithChildren) => {
                   onClick={() => setSidebarVisible(true)}/>
           }
           <Button
-              className={primeClassNames("fixed top-[50%] rounded-tr-none rounded-br-none duration-[300ms] transition-all -translate-y-1/2",
+              className={$classNames("fixed top-[50%] rounded-tr-none rounded-br-none duration-[300ms] transition-all -translate-y-1/2",
                   {
                     'right-0': !configSidebarVisible,
                     'right-[20rem]': configSidebarVisible
@@ -100,20 +100,20 @@ export const Navbar = (props: PropsWithChildren) => {
         </nav>
 
         <main
-            className={primeClassNames('pt-[70px] transition-all duration-[300ms]', {'ml-[20rem]': !isMobileSize})}>
+            className={$classNames('pt-[70px] transition-all duration-[300ms]', {'ml-[20rem]': !isMobileSize})}>
           {children}
         </main>
 
-        <PrimeSidebar
+        <$Sidebar
             className="w-[20rem]"
             visible={configSidebarVisible}
             onHide={() => setConfigSidebarVisible(false)}
             modal={false}
             position="right">
           <Checkbox checked={config.rtl} onChange={e => setConfig({rtl: e.checked})} name="rtl" label="RTL"/>
-        </PrimeSidebar>
+        </$Sidebar>
 
-        <PrimeSidebar
+        <$Sidebar
             closeOnEscape={false}
             dismissable={isMobileSize}
             className="w-[20rem]"
@@ -121,8 +121,8 @@ export const Navbar = (props: PropsWithChildren) => {
             modal={isMobileSize}
             visible={sidebarVisible}
             onHide={() => setSidebarVisible(false)}>
-          <PrimePanelMenu model={navItems}/>
-        </PrimeSidebar>
+          <$PanelMenu model={navItems}/>
+        </$Sidebar>
       </>
   );
 }

@@ -1,4 +1,4 @@
-import {PrimeAPIOptions} from "@powell/api";
+import {$APIOptions} from "@powell/api";
 import {Size} from "@powell/models/common";
 import {FixLabelPosition, LabelPosition} from "@powell/models/forms";
 
@@ -60,7 +60,7 @@ export type ThemeName =
     "viva-dark" |
     "viva-light";
 
-type OmittedPrimeApiOptions = Omit<PrimeAPIOptions,
+type OmittedApiOptions = Omit<$APIOptions,
     "setAppendTo" |
     "setStyleContainer" |
     "setAutoZIndex" |
@@ -76,7 +76,7 @@ type OmittedPrimeApiOptions = Omit<PrimeAPIOptions,
     "setPt" |
     "changeTheme">;
 
-export interface PowellConfig extends OmittedPrimeApiOptions {
+export interface PowellConfig extends OmittedApiOptions {
   theme?: ThemeName;
   rtl?: boolean;
   showRequiredStar?: boolean;

@@ -1,14 +1,14 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition} from "@powell/models";
 import {
-  primeClassNames,
-  PrimeFloatLabel,
-  PrimeIconField,
-  PrimeIconFieldProps,
-  PrimeInputIcon,
-  PrimeInputTextarea,
-  PrimeInputTextareaProps,
-  PrimeUniqueComponentId
+  $classNames,
+  $FloatLabel,
+  $IconField,
+  $IconFieldProps,
+  $InputIcon,
+  $InputTextarea,
+  $InputTextareaProps,
+  $UniqueComponentId
 } from "@powell/api";
 import {getAddonTemplate, transformer} from "@powell/utils";
 import {Field, FieldProps} from "formik";
@@ -17,7 +17,7 @@ import {SafeAny} from "@powell/models/common";
 import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './InputTextarea.scss';
 
-interface InputTextareaProps extends PrimeInputTextareaProps {
+interface InputTextareaProps extends $InputTextareaProps {
   name?: string;
   parseError?: (error: string) => ReactNode;
   transform?: {
@@ -30,7 +30,7 @@ interface InputTextareaProps extends PrimeInputTextareaProps {
   icon?: string | ReactNode;
   hint?: string;
   addon?: Addon;
-  iconPosition?: PrimeIconFieldProps["iconPosition"];
+  iconPosition?: $IconFieldProps["iconPosition"];
   labelPosition?: LabelPosition;
 }
 
@@ -50,7 +50,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
     ...rest
   } = props;
 
-  const inputId = useRef(PrimeUniqueComponentId());
+  const inputId = useRef($UniqueComponentId());
 
   // Check if we're in Formik context
   const formContext = useFormContext();
@@ -84,7 +84,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
 
               return (
                   <>
-                    <PrimeInputTextarea
+                    <$InputTextarea
                         {...commonProps}
                         value={value}
                         onChange={(event) => {
@@ -115,7 +115,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
       });
 
       return (
-          <PrimeInputTextarea
+          <$InputTextarea
               {...commonProps}
               value={value}
               onChange={(event) => {
@@ -137,19 +137,19 @@ export const InputTextarea = (props: InputTextareaProps) => {
 
   const iconEl = icon && (
       typeof icon === 'string'
-          ? <PrimeInputIcon className={icon}></PrimeInputIcon>
-          : <PrimeInputIcon>{icon}</PrimeInputIcon>
+          ? <$InputIcon className={icon}></$InputIcon>
+          : <$InputIcon>{icon}</$InputIcon>
   );
 
   const withIcon = (
-      <PrimeIconField iconPosition={iconPosition}>
+      <$IconField iconPosition={iconPosition}>
         {iconEl}
         {rootEl()}
-      </PrimeIconField>
+      </$IconField>
   );
 
   return (
-      <div className={primeClassNames('input-textarea-wrapper',
+      <div className={$classNames('input-textarea-wrapper',
           `variant-${variant}`,
           {
             [`label-${labelPosition}`]: rest.label,
@@ -161,14 +161,14 @@ export const InputTextarea = (props: InputTextareaProps) => {
           })}>
         <div className="field">
           {labelPosition !== 'float' && labelEl}
-          <div className={primeClassNames('field-inner', {"p-inputgroup": addon})}>
+          <div className={$classNames('field-inner', {"p-inputgroup": addon})}>
             {getAddonTemplate(addon?.before)}
             {
               labelPosition === 'float' ? (
-                  <PrimeFloatLabel>
+                  <$FloatLabel>
                     {icon ? withIcon : rootEl()}
                     {labelEl}
-                  </PrimeFloatLabel>
+                  </$FloatLabel>
               ) : (
                   icon ? withIcon : rootEl()
               )
