@@ -1128,7 +1128,7 @@ export type {DropdownPassThroughOptions as $DropdownPassThroughOptions};
 export type {DropdownPassThroughTransitionType as $DropdownPassThroughTransitionType};
 export type {DropdownPassThroughType as $DropdownPassThroughType};
 export type {DropdownState as $DropdownState};
-export {Editor as $Editor};
+// export {Editor as $Editor};
 export type {EditorProps as $EditorProps};
 export type {EditorPassThroughMethodOptions as $EditorPassThroughMethodOptions};
 export type {EditorPassThroughOptions as $EditorPassThroughOptions};
@@ -1778,7 +1778,7 @@ export type {TieredMenuPassThroughMethodOptions as $TieredMenuPassThroughMethodO
 export type {TieredMenuPassThroughTransitionType as $TieredMenuPassThroughTransitionType};
 export type {TieredMenuPassThroughType as $TieredMenuPassThroughType};
 export type {TieredMenuProps as $TieredMenuProps};
-export {Chart as $Chart};
+// export {Chart as $Chart};
 export type {ChartProps as $ChartProps};
 export type {ChartPassThroughMethodOptions as $ChartPassThroughMethodOptions};
 export type {ChartPassThroughOptions as $ChartPassThroughOptions};
