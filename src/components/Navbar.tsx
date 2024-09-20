@@ -1,6 +1,5 @@
 import {PropsWithChildren, useEffect, useState} from 'react';
 import {useConfig} from "@hooks/useConfig";
-import {useTranslation} from "react-i18next";
 import {Button} from "@powell/components/Button";
 import {Logo} from "@components/Logo";
 import {$classNames, $MenuItem, $PanelMenu, $Sidebar} from "@powell/api";
@@ -9,7 +8,6 @@ import {useNavigate} from "react-router-dom";
 import {Checkbox} from "@powell/components/Checkbox";
 
 export const Navbar = (props: PropsWithChildren) => {
-  const {t} = useTranslation();
   const navigate = useNavigate();
   const responsiveThreshold: number = 768;
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -37,21 +35,13 @@ export const Navbar = (props: PropsWithChildren) => {
   }, [])
 
   const handleResize = () => {
-    if (document.defaultView.innerWidth < responsiveThreshold) {
+    if (document.defaultView!.innerWidth < responsiveThreshold) {
       setSidebarVisible(false);
       setIsMobileSize(true);
-    } else if (document.defaultView.innerWidth >= responsiveThreshold) {
+    } else if (document.defaultView!.innerWidth >= responsiveThreshold) {
       setIsMobileSize(false);
       setSidebarVisible(true);
     }
-  }
-
-  const handleLocaleToggle = () => {
-    setConfig({locale: config.locale === 'faIR' ? 'enUS' : 'faIR'});
-  }
-
-  const handleThemeToggle = () => {
-    setConfig({powellConfig: {theme: 'nova'}});
   }
 
   return (
