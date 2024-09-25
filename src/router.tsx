@@ -17,6 +17,7 @@ import {AutoCompletePage} from "@pages/main/showcase/AutoCompletePage.tsx";
 import {ButtonPage} from "@pages/main/showcase/ButtonPage.tsx";
 import {CascadeSelectPage} from "@pages/main/showcase/CascadeSelectPage.tsx";
 import {ChipsPage} from "@pages/main/showcase/ChipsPage.tsx";
+import {ColorPickerPage} from "@pages/main/showcase/ColorPickerPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -83,6 +84,10 @@ export const routes: RouteObject[] = [
       {
         path: "chips",
         element: <ChipsPage/>,
+      },
+      {
+        path: "colorpicker",
+        element: <ColorPickerPage/>,
       },
       {
         path: "dropdown",
