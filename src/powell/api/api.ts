@@ -1128,7 +1128,7 @@ export type {DropdownPassThroughOptions as $DropdownPassThroughOptions};
 export type {DropdownPassThroughTransitionType as $DropdownPassThroughTransitionType};
 export type {DropdownPassThroughType as $DropdownPassThroughType};
 export type {DropdownState as $DropdownState};
-// export {Editor as $Editor};
+export {Editor as $Editor};
 export type {EditorProps as $EditorProps};
 export type {EditorPassThroughMethodOptions as $EditorPassThroughMethodOptions};
 export type {EditorPassThroughOptions as $EditorPassThroughOptions};
