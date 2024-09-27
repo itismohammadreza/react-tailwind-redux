@@ -29,7 +29,6 @@ interface EditorProps extends $EditorProps {
   label?: string;
   icon?: string | ReactNode;
   hint?: string;
-  inputSize?: Size;
   addon?: Addon;
   iconPosition?: $IconFieldProps["iconPosition"];
   labelPosition?: LabelPosition;
@@ -47,7 +46,6 @@ export const Editor = (props: EditorProps) => {
     icon,
     rtl,
     showRequiredStar,
-    inputSize,
     ...rest
   } = props;
 
@@ -150,7 +148,6 @@ export const Editor = (props: EditorProps) => {
 
   return (
       <div className={$classNames('chips-wrapper',
-          `p-inputtext-${inputSize}`,
           {
             [`label-${labelPosition}`]: rest.label,
             [`icon-${iconPosition}`]: iconEl,
