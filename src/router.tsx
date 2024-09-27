@@ -24,6 +24,7 @@ import {InputSwitchPage} from "@pages/main/showcase/InputSwitchPage.tsx";
 import {InputNumberPage} from "@pages/main/showcase/InputNumberPage.tsx";
 import {InputOtpPage} from "@pages/main/showcase/InputOtpPage.tsx";
 import {KnobPage} from "@pages/main/showcase/KnobPage.tsx";
+import {ListBoxPage} from "@pages/main/showcase/ListBoxPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -128,6 +129,9 @@ export const routes: RouteObject[] = [
         element: <KnobPage/>,
       },
       {
+        path: "ListBox",
+        element: <ListBoxPage/>,
+      },
         path: "inputTextarea",
         element: <InputTextareaPage/>,
       },
