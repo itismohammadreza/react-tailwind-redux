@@ -1,7 +1,5 @@
-import {AddonConfig} from "@powell/models";
+import {AddonConfig, SafeAny, TransformOptions} from "@powell/models";
 import {Button} from "@powell/components/Button";
-import {SafeAny} from "@powell/models/common";
-import {UseTransformOptions} from "@powell/hooks";
 
 export const getAddonTemplate = (config?: AddonConfig) => {
   if (!config) {
@@ -22,9 +20,10 @@ export const getAddonTemplate = (config?: AddonConfig) => {
   }
 }
 
-export const transformer = (options: UseTransformOptions) => {
-  const value = options.transform?.input?.(options.value) || options.value;
-  const onChange = (...event: SafeAny[]) => {
+// todo: make transform type [usage] generic in components (remove SafeAny from models)
+export const transformer = <V = SafeAny, T = SafeAny>(options: TransformOptions<V, T>) => {
+  const value: V = options.transform?.input?.(options.value) || options.value;
+  const onChange = (...event: T[]) => {
     if (typeof options.transform?.output === 'function') {
       options.onChange(options.transform.output(...event));
     } else {
