@@ -19,6 +19,7 @@ import {CascadeSelectPage} from "@pages/main/showcase/CascadeSelectPage.tsx";
 import {ChipsPage} from "@pages/main/showcase/ChipsPage.tsx";
 import {ColorPickerPage} from "@pages/main/showcase/ColorPickerPage.tsx";
 import {EditorPage} from "@pages/main/showcase/EditorPage.tsx";
+import {InputMaskPage} from "@pages/main/showcase/InputMaskPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -87,12 +88,16 @@ export const routes: RouteObject[] = [
         element: <ChipsPage/>,
       },
       {
-        path: "colorpicker",
+        path: "colorPicker",
         element: <ColorPickerPage/>,
       },
       {
         path: "editor",
         element: <EditorPage/>,
+      },
+      {
+        path: "inputMask",
+        element: <InputMaskPage/>,
       },
       {
         path: "dropdown",
