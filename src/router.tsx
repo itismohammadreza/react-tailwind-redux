@@ -20,6 +20,7 @@ import {ChipsPage} from "@pages/main/showcase/ChipsPage.tsx";
 import {ColorPickerPage} from "@pages/main/showcase/ColorPickerPage.tsx";
 import {EditorPage} from "@pages/main/showcase/EditorPage.tsx";
 import {InputMaskPage} from "@pages/main/showcase/InputMaskPage.tsx";
+import {InputSwitchPage} from "@pages/main/showcase/InputSwitchPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -98,6 +99,10 @@ export const routes: RouteObject[] = [
       {
         path: "inputMask",
         element: <InputMaskPage/>,
+      },
+      {
+        path: "InputSwitch",
+        element: <InputSwitchPage/>,
       },
       {
         path: "dropdown",
