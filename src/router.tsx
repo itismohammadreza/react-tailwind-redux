@@ -22,6 +22,7 @@ import {EditorPage} from "@pages/main/showcase/EditorPage.tsx";
 import {InputMaskPage} from "@pages/main/showcase/InputMaskPage.tsx";
 import {InputSwitchPage} from "@pages/main/showcase/InputSwitchPage.tsx";
 import {InputNumberPage} from "@pages/main/showcase/InputNumberPage.tsx";
+import {InputOtpPage} from "@pages/main/showcase/InputOtpPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -104,6 +105,10 @@ export const routes: RouteObject[] = [
       {
         path: "inputNumber",
         element: <InputNumberPage/>,
+      },
+      {
+        path: "inputOtp",
+        element: <InputOtpPage/>,
       },
       {
         path: "InputSwitch",
