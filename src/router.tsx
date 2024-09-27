@@ -26,6 +26,7 @@ import {InputOtpPage} from "@pages/main/showcase/InputOtpPage.tsx";
 import {KnobPage} from "@pages/main/showcase/KnobPage.tsx";
 import {ListBoxPage} from "@pages/main/showcase/ListBoxPage.tsx";
 import {MentionPage} from "@pages/main/showcase/MentionPage.tsx";
+import {MultiSelectPage} from "@pages/main/showcase/MultiSelectPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -136,6 +137,10 @@ export const routes: RouteObject[] = [
       {
         path: "Mention",
         element: <MentionPage/>,
+      },
+      {
+        path: "MultiSelect",
+        element: <MultiSelectPage/>,
       },
       {
         path: "inputTextarea",
