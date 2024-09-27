@@ -5,11 +5,8 @@
 
     > .field-inner {
       flex-grow: 1;
+      display: flex;
     }
-  }
-
-  :where(.p-checkbox) {
-    width: 100%;
   }
 
   &.label-fix-side .field {

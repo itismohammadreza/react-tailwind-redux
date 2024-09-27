@@ -116,7 +116,7 @@ export const Editor = (props: EditorProps) => {
           <$Editor
               {...commonProps}
               value={value}
-              onChange={(event) => {
+              onTextChange={(event) => {
                 onChange(event);
                 rest.onChange?.(event);
               }}

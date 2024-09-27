@@ -64,7 +64,7 @@ export const Checkbox = (props: CheckboxProps) => {
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
                 transform: {
                   input: transform.input ?? (value => value),
-                  output: transform.output ?? (event => event.target.checked)
+                  output: transform.output ?? (event => event.checked)
                 }
               });
 
@@ -92,7 +92,7 @@ export const Checkbox = (props: CheckboxProps) => {
         onChange: (event: boolean) => setInternalValue(event),
         transform: {
           input: transform.input ?? (value => value),
-          output: transform.output ?? (event => event.target.checked)
+          output: transform.output ?? (event => event.checked)
         }
       });
 
