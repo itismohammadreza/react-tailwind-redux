@@ -23,6 +23,7 @@ import {InputMaskPage} from "@pages/main/showcase/InputMaskPage.tsx";
 import {InputSwitchPage} from "@pages/main/showcase/InputSwitchPage.tsx";
 import {InputNumberPage} from "@pages/main/showcase/InputNumberPage.tsx";
 import {InputOtpPage} from "@pages/main/showcase/InputOtpPage.tsx";
+import {KnobPage} from "@pages/main/showcase/KnobPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -121,6 +122,10 @@ export const routes: RouteObject[] = [
       {
         path: "inputText",
         element: <InputTextPage/>,
+      },
+      {
+        path: "knob",
+        element: <KnobPage/>,
       },
       {
         path: "inputTextarea",
