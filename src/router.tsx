@@ -35,6 +35,7 @@ import {SelectButtonPage} from "@pages/main/showcase/SelectButton.tsx";
 import {SliderPage} from "@pages/main/showcase/SliderPage.tsx";
 import {TreeSelectPage} from "@pages/main/showcase/TreeSelectPage.tsx";
 import {TriStateCheckboxPage} from "@pages/main/showcase/TriStateCheckboxPage.tsx";
+import {ToggleButtonPage} from "@pages/main/showcase/ToggleButtonPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -185,6 +186,10 @@ export const routes: RouteObject[] = [
       {
         path: "triStateCheckbox",
         element: <TriStateCheckboxPage/>,
+      },
+      {
+        path: "toggleButtonPage",
+        element: <ToggleButtonPage/>,
       },
       {
         path: "utils",
