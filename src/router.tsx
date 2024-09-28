@@ -29,6 +29,7 @@ import {MentionPage} from "@pages/main/showcase/MentionPage.tsx";
 import {MultiSelectPage} from "@pages/main/showcase/MultiSelectPage.tsx";
 import {MultiStateCheckboxPage} from "@pages/main/showcase/MultiStateCheckboxPage.tsx";
 import {InputPasswordPage} from "@pages/main/showcase/InputPasswordPage.tsx";
+import {RadioGroupPage} from "@pages/main/showcase/RadioGroupPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -155,6 +156,10 @@ export const routes: RouteObject[] = [
       {
         path: "multiStateCheckbox",
         element: <MultiStateCheckboxPage/>,
+      },
+      {
+        path: "radioGroup",
+        element: <RadioGroupPage/>,
       },
       {
         path: "utils",
