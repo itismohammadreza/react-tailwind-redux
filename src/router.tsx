@@ -28,6 +28,7 @@ import {ListBoxPage} from "@pages/main/showcase/ListBoxPage.tsx";
 import {MentionPage} from "@pages/main/showcase/MentionPage.tsx";
 import {MultiSelectPage} from "@pages/main/showcase/MultiSelectPage.tsx";
 import {MultiStateCheckboxPage} from "@pages/main/showcase/MultiStateCheckboxPage.tsx";
+import {InputPasswordPage} from "@pages/main/showcase/InputPasswordPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -114,6 +115,10 @@ export const routes: RouteObject[] = [
       {
         path: "inputOtp",
         element: <InputOtpPage/>,
+      },
+      {
+        path: "inputPassword",
+        element: <InputPasswordPage/>,
       },
       {
         path: "inputSwitch",
