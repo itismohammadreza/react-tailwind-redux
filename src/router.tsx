@@ -32,6 +32,7 @@ import {InputPasswordPage} from "@pages/main/showcase/InputPasswordPage.tsx";
 import {RadioGroupPage} from "@pages/main/showcase/RadioGroupPage.tsx";
 import {RatingPage} from "@pages/main/showcase/RatingPage.tsx";
 import {SelectButtonPage} from "@pages/main/showcase/SelectButton.tsx";
+import {SliderPage} from "@pages/main/showcase/SliderPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -170,6 +171,10 @@ export const routes: RouteObject[] = [
       {
         path: "selectButton",
         element: <SelectButtonPage/>,
+      },
+      {
+        path: "slider",
+        element: <SliderPage/>,
       },
       {
         path: "utils",
