@@ -27,6 +27,7 @@ import {KnobPage} from "@pages/main/showcase/KnobPage.tsx";
 import {ListBoxPage} from "@pages/main/showcase/ListBoxPage.tsx";
 import {MentionPage} from "@pages/main/showcase/MentionPage.tsx";
 import {MultiSelectPage} from "@pages/main/showcase/MultiSelectPage.tsx";
+import {MultiStateCheckboxPage} from "@pages/main/showcase/MultiStateCheckboxPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -115,7 +116,7 @@ export const routes: RouteObject[] = [
         element: <InputOtpPage/>,
       },
       {
-        path: "InputSwitch",
+        path: "inputSwitch",
         element: <InputSwitchPage/>,
       },
       {
@@ -127,24 +128,28 @@ export const routes: RouteObject[] = [
         element: <InputTextPage/>,
       },
       {
+        path: "inputTextarea",
+        element: <InputTextareaPage/>,
+      },
+      {
         path: "knob",
         element: <KnobPage/>,
       },
       {
-        path: "ListBox",
+        path: "listBox",
         element: <ListBoxPage/>,
       },
       {
-        path: "Mention",
+        path: "mention",
         element: <MentionPage/>,
       },
       {
-        path: "MultiSelect",
+        path: "multiSelect",
         element: <MultiSelectPage/>,
       },
       {
-        path: "inputTextarea",
-        element: <InputTextareaPage/>,
+        path: "multiStateCheckbox",
+        element: <MultiStateCheckboxPage/>,
       },
       {
         path: "utils",
