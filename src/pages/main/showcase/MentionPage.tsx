@@ -1,13 +1,12 @@
 import {FormContainer} from "@powell/components/FormContainer";
 import {Mention} from "@powell/components/Mention";
 import {Button} from "@powell/components/Button";
-import * as Yup from 'yup';
-import {useEffect, useRef, useState} from "react";
-import {FormikContextType} from "formik";
+import {useRef, useState} from "react";
+import {$FormikContextType, $Yup} from "@powell/api";
 
 export const MentionPage = () => {
   const [formValue, setFormValue] = useState<any>({n: ''})
-  const [formContext, setFormContext] = useState<FormikContextType<any>>({})
+  const [formContext, setFormContext] = useState<$FormikContextType<any>>({})
   const formRef = useRef<HTMLFormElement>()
   const customersSource = [
     {id: '1', nickname: 'nickname1', name: 'name1', image: ''},
@@ -106,8 +105,8 @@ export const MentionPage = () => {
               alert(JSON.stringify(values, null, 2));
             }}
             validationSchema={
-              Yup.object({
-                n: Yup.string()
+              $Yup.object({
+                n: $Yup.string()
                 .min(8, 'Must be at least 8 characters')
                 .max(20, 'Must be less  than 20 characters')
                 .required('Username is required')

@@ -1,13 +1,12 @@
 import {FormContainer} from "@powell/components/FormContainer";
 import {AutoComplete} from "@powell/components/AutoComplete";
 import {Button} from "@powell/components/Button";
-import * as Yup from 'yup';
 import {useRef, useState} from "react";
-import {FormikContextType} from "formik";
+import {$FormikContextType} from "@powell/api";
 
 export const AutoCompletePage = () => {
   const [formValue, setFormValue] = useState<any>({n: ''})
-  const [formContext, setFormContext] = useState<FormikContextType<any>>({})
+  const [formContext, setFormContext] = useState<$FormikContextType<any>>({})
   const formRef = useRef<HTMLFormElement>()
   const [value, setValue] = useState('');
   const [items, setItems] = useState([]);

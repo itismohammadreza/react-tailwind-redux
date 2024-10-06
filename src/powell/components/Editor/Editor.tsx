@@ -11,7 +11,7 @@ import {
   $UniqueComponentId
 } from "@powell/api";
 import {getAddonTemplate, transformer} from "@powell/utils";
-import {Field, FieldProps} from "formik";
+import {$Field, $FieldProps} from "@powell/api";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
 import {ErrorMessage} from "@powell/components/ErrorMessage";
@@ -69,8 +69,8 @@ export const Editor = (props: EditorProps) => {
     if (withinForm) {
       // if in Formik context
       return (
-          <Field name={name}>
-            {({field, meta}: FieldProps) => {
+          <$Field name={name}>
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: string) => formContext.setFieldValue(name, event),
@@ -99,7 +99,7 @@ export const Editor = (props: EditorProps) => {
                   </>
               );
             }}
-          </Field>
+          </$Field>
       );
     } else {
       // if outside Formik context

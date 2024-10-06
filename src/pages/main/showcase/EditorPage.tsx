@@ -1,13 +1,12 @@
 import {FormContainer} from "@powell/components/FormContainer";
 import {Editor} from "@powell/components/Editor";
 import {Button} from "@powell/components/Button";
-import * as Yup from 'yup';
 import {useRef, useState} from "react";
-import {FormikContextType} from "formik";
+import {$FormikContextType, $Yup} from "@powell/api";
 
 export const EditorPage = () => {
   const [formValue, setFormValue] = useState<any>({n: ''})
-  const [formContext, setFormContext] = useState<FormikContextType<any>>({})
+  const [formContext, setFormContext] = useState<$FormikContextType<any>>({})
   const formRef = useRef<HTMLFormElement>()
 
   const updateForm = () => {
@@ -34,18 +33,18 @@ export const EditorPage = () => {
           <Editor label="label" labelPosition="float" icon="pi pi-search" iconPosition="left" name="n"/>
 
           <Editor label="label" labelPosition="float" addon={{before: {type: 'icon', icon: 'pi pi-search'}}}
-                     name="n"/>
+                  name="n"/>
           <Editor label="label" labelPosition="float" addon={{after: {type: 'icon', icon: 'pi pi-search'}}}
-                     name="n"/>
+                  name="n"/>
 
           <Editor label="label" labelPosition="float" name="n" icon="pi pi-search" iconPosition="right"
-                     addon={{before: {type: 'icon', icon: 'pi pi-search'}}}/>
+                  addon={{before: {type: 'icon', icon: 'pi pi-search'}}}/>
           <Editor label="label" labelPosition="float" name="n" icon="pi pi-search" iconPosition="right"
-                     addon={{after: {type: 'icon', icon: 'pi pi-search'}}}/>
+                  addon={{after: {type: 'icon', icon: 'pi pi-search'}}}/>
           <Editor label="label" labelPosition="float" name="n" icon="pi pi-search" iconPosition="left"
-                     addon={{before: {type: 'icon', icon: 'pi pi-search'}}}/>
+                  addon={{before: {type: 'icon', icon: 'pi pi-search'}}}/>
           <Editor label="label" labelPosition="float" name="n" icon="pi pi-search" iconPosition="left"
-                     addon={{after: {type: 'icon', icon: 'pi pi-search'}}}/>
+                  addon={{after: {type: 'icon', icon: 'pi pi-search'}}}/>
           <Button type="submit" label="submit"/>
         </FormContainer>
 
@@ -59,8 +58,8 @@ export const EditorPage = () => {
               alert(JSON.stringify(values, null, 2));
             }}
             validationSchema={
-              Yup.object({
-                n: Yup.string()
+              $Yup.object({
+                n: $Yup.string()
                 .min(8, 'Must be at least 8 characters')
                 .max(20, 'Must be less  than 20 characters')
                 .required('Username is required')

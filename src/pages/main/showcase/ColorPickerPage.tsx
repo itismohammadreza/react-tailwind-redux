@@ -1,13 +1,12 @@
 import {FormContainer} from "@powell/components/FormContainer";
 import {ColorPicker} from "@powell/components/ColorPicker";
 import {Button} from "@powell/components/Button";
-import * as Yup from 'yup';
 import {useRef, useState} from "react";
-import {FormikContextType} from "formik";
+import {$FormikContextType, $Yup} from "@powell/api";
 
 export const ColorPickerPage = () => {
   const [formValue, setFormValue] = useState<any>({n: ''})
-  const [formContext, setFormContext] = useState<FormikContextType<any>>({})
+  const [formContext, setFormContext] = useState<$FormikContextType<any>>({})
   const formRef = useRef<HTMLFormElement>()
 
   const updateForm = () => {
@@ -59,8 +58,8 @@ export const ColorPickerPage = () => {
               alert(JSON.stringify(values, null, 2));
             }}
             validationSchema={
-              Yup.object({
-                n: Yup.string()
+              $Yup.object({
+                n: $Yup.string()
                 .min(8, 'Must be at least 8 characters')
                 .max(20, 'Must be less  than 20 characters')
                 .required('Username is required')

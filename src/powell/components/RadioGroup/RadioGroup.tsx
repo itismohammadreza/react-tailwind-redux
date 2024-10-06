@@ -2,7 +2,7 @@ import {ChangeEvent, ReactNode, useCallback, useEffect, useRef, useState} from "
 import {FixLabelPosition} from "@powell/models";
 import {$RadioButton, $RadioButtonProps, $classNames, $UniqueComponentId} from "@powell/api";
 import {transformer} from "@powell/utils";
-import {Field, FieldProps} from "formik";
+import {$Field, $FieldProps} from "@powell/api";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
 import {ErrorMessage} from "@powell/components/ErrorMessage";
@@ -63,8 +63,8 @@ export const RadioGroup = (props: RadioGroupProps) => {
     if (withinForm) {
       // if in Formik context
       return (
-          <Field name={name}>
-            {({field, meta}: FieldProps) => {
+          <$Field name={name}>
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
@@ -98,7 +98,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
                   </>
               );
             }}
-          </Field>
+          </$Field>
       );
     } else {
       // if outside Formik context

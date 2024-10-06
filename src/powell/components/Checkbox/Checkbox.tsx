@@ -1,8 +1,7 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {FixLabelPosition} from "@powell/models";
-import {$Checkbox, $CheckboxProps, $classNames, $UniqueComponentId} from "@powell/api";
+import {$Checkbox, $CheckboxProps, $classNames, $Field, $FieldProps, $UniqueComponentId} from "@powell/api";
 import {transformer} from "@powell/utils";
-import {Field, FieldProps} from "formik";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
 import {ErrorMessage} from "@powell/components/ErrorMessage";
@@ -57,8 +56,8 @@ export const Checkbox = (props: CheckboxProps) => {
     if (withinForm) {
       // if in Formik context
       return (
-          <Field name={name}>
-            {({field, meta}: FieldProps) => {
+          <$Field name={name}>
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
@@ -83,7 +82,7 @@ export const Checkbox = (props: CheckboxProps) => {
                   </>
               );
             }}
-          </Field>
+          </$Field>
       );
     } else {
       // if outside Formik context

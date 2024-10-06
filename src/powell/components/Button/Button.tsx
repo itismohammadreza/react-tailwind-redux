@@ -4,9 +4,14 @@ import {ButtonAppearance} from "@powell/models";
 
 type ButtonState = 'default' | 'loading' | 'next';
 
+interface ButtonOnClickAsyncEvent {
+  loadingCallback: (ok?: boolean) => void,
+  event: MouseEvent<HTMLButtonElement>
+}
+
 interface ButtonProps extends Omit<$ButtonProps, "loading" | "link" | "text" | "outlined"> {
   async?: true;
-  onClickAsync?: (event: { loadingCallback: (ok?: boolean) => void, event: MouseEvent<HTMLButtonElement> }) => void;
+  onClickAsync?: (event: ButtonOnClickAsyncEvent) => void;
   appearance?: ButtonAppearance;
   nextLabel?: string;
   nextIcon?: string;
