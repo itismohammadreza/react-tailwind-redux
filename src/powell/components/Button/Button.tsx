@@ -10,7 +10,7 @@ interface ButtonOnClickAsyncEvent {
 }
 
 interface ButtonProps extends Omit<$ButtonProps, "loading" | "link" | "text" | "outlined"> {
-  async?: true;
+  async?: boolean;
   onClickAsync?: (event: ButtonOnClickAsyncEvent) => void;
   appearance?: ButtonAppearance;
   nextLabel?: string;
