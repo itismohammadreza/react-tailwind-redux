@@ -2,6 +2,8 @@ import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
   $classNames,
+  $Field,
+  $FieldProps,
   $FloatLabel,
   $IconField,
   $IconFieldProps,
@@ -10,8 +12,7 @@ import {
   $InputTextProps,
   $UniqueComponentId
 } from "@powell/api";
-import {getAddonTemplate, transformer} from "@powell/utils";
-import {$Field, $FieldProps} from "@powell/api";
+import {getAddonTemplate, isRequiredField, transformer} from "@powell/utils";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
 import {ErrorMessage} from "@powell/components/ErrorMessage";
@@ -57,7 +58,7 @@ export const InputText = (props: InputTextProps) => {
   // Check if we're in Formik context
   const formContext = useFormContext();
   const withinForm = !!formContext && !!name;
-  const isRequired = withinForm && formContext.validationSchema?.fields?.[name].tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
+  const isRequired = withinForm && isRequiredField(formContext, name);
 
   // Internal state for non-Formik usage
   const [internalValue, setInternalValue] = useState(rest.value || '');
@@ -74,7 +75,7 @@ export const InputText = (props: InputTextProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta}: $FieldProps) => {
+            {({field, meta, form}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: string) => formContext.setFieldValue(name, event),
@@ -99,7 +100,7 @@ export const InputText = (props: InputTextProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage message={meta.error} parseError={parseError} hint={rest.hint}/>
+                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
                   </>
               );
             }}

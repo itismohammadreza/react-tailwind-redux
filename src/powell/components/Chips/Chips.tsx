@@ -74,7 +74,7 @@ export const Chips = (props: ChipsProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta}: $FieldProps) => {
+            {({field, meta, form}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: string) => formContext.setFieldValue(name, event),
@@ -99,7 +99,7 @@ export const Chips = (props: ChipsProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage message={meta.error} parseError={parseError} hint={rest.hint}/>
+                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
                   </>
               );
             }}

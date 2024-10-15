@@ -56,7 +56,7 @@ export const Knob = (props: KnobProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta}: $FieldProps) => {
+            {({field, meta, form}: $FieldProps) => {
               const {value = 0, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
@@ -77,7 +77,7 @@ export const Knob = (props: KnobProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage message={meta.error} parseError={parseError} hint={rest.hint}/>
+                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
                   </>
               );
             }}

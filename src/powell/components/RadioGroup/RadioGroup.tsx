@@ -64,7 +64,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta}: $FieldProps) => {
+            {({field, meta, form}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
@@ -94,7 +94,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
                           </>
                       ))
                     }
-                    <ErrorMessage message={meta.error} parseError={parseError} hint={rest.hint}/>
+                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
                   </>
               );
             }}

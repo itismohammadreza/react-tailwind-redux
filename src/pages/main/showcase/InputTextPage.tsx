@@ -77,6 +77,29 @@ export const InputTextPage = () => {
             )
           }
         </FormContainer>
+
+        <FormContainer
+            validateOnChange
+            enableReinitialize={true}
+            initialValues={{
+              social: {
+                facebook: '',
+              },
+            }}
+            onSubmit={values => {
+              console.log(values);
+            }}
+            validationSchema={
+              $Yup.object({
+                social: $Yup.object({
+                  facebook: $Yup.string().required('Username is required'),
+                })
+              })
+            }
+        >
+          <InputText name="social.facebook"/>
+          <Button type="submit" label="submit"/>
+        </FormContainer>
       </>
   )
 }
