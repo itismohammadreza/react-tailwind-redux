@@ -44,11 +44,11 @@ export const Button = memo((props: ButtonProps) => {
 
   const getButtonTempProps = (newState: ButtonState) => {
     return {
-      label: newState === 'default' ? props.label : (nextLabel ?? props.label),
-      icon: newState === 'default' ? props.icon : (nextIcon ?? props.icon),
-      appearance: newState === 'default' ? props.appearance : (nextAppearance ?? props.appearance),
-      raised: newState === 'default' ? props.raised : (nextRaised ?? props.raised),
-      severity: newState === 'default' ? props.severity : (nextSeverity ?? props.severity),
+      label: newState === 'default' ? rest.label : (nextLabel ?? rest.label),
+      icon: newState === 'default' ? rest.icon : (nextIcon ?? rest.icon),
+      appearance: newState === 'default' ? rest.appearance : (nextAppearance ?? rest.appearance),
+      raised: newState === 'default' ? rest.raised : (nextRaised ?? rest.raised),
+      severity: newState === 'default' ? rest.severity : (nextSeverity ?? rest.severity),
     }
   }
 
@@ -76,15 +76,15 @@ export const Button = memo((props: ButtonProps) => {
           type={type}
           {...rest}
           onClick={handleClick}
-          label={async ? tempProps.current.label : props.label}
-          icon={async ? tempProps.current.icon : props.icon}
-          severity={async ? tempProps.current.severity : props.severity}
-          raised={async ? tempProps.current.raised : props.raised}
-          text={async ? tempProps.current.appearance === 'text' : props.appearance === 'text'}
-          outlined={async ? tempProps.current.appearance === 'outlined' : props.appearance === 'outlined'}
-          link={async ? tempProps.current.appearance === 'link' : props.appearance === 'link'}
+          label={async ? tempProps.current.label : rest.label}
+          icon={async ? tempProps.current.icon : rest.icon}
+          severity={async ? tempProps.current.severity : rest.severity}
+          raised={async ? tempProps.current.raised : rest.raised}
+          text={async ? tempProps.current.appearance === 'text' : rest.appearance === 'text'}
+          outlined={async ? tempProps.current.appearance === 'outlined' : rest.appearance === 'outlined'}
+          link={async ? tempProps.current.appearance === 'link' : rest.appearance === 'link'}
           loading={_state === 'loading'}
-          className={$classNames(props.className, `state-${_state}`)}
+          className={$classNames(rest.className, `state-${_state}`)}
       />
   )
 })

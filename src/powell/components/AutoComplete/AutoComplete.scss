@@ -84,11 +84,11 @@
       }
     }
 
-    &.addon-before :where(.p-inputtext, .p-autocomplete)  {
+    &.addon-before :where(.p-inputtext, .p-autocomplete) {
       border-radius: 0 var(--border-radius) var(--border-radius) 0;
     }
 
-    &.addon-after :where(.p-inputtext, .p-autocomplete)  {
+    &.addon-after :where(.p-inputtext, .p-autocomplete) {
       border-radius: var(--border-radius) 0 0 var(--border-radius);
     }
   }
