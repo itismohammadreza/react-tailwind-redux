@@ -8,7 +8,7 @@ import {PowellProvider} from "@powell/api";
 import {globalConfig} from "@config/globalConfig";
 import {PowellConfig} from "@powell/models";
 import '@locales/i18n';
-import "@styles/global.scss";
+import "@styles/index.scss";
 
 export const Providers = memo(({children}: PropsWithChildren) => {
   const powellConfig: PowellConfig = {
