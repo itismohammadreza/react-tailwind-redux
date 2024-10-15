@@ -1,7 +1,7 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {FixLabelPosition} from "@powell/models";
 import {$classNames, $ErrorMessage, $Field, $FieldProps, $Slider, $SliderProps, $UniqueComponentId} from "@powell/api";
-import {transformer} from "@powell/utils";
+import {isRequiredField, transformer} from "@powell/utils";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
 import './Slider.scss';
@@ -38,7 +38,7 @@ export const Slider = (props: SliderProps) => {
   // Check if we're in Formik context
   const formContext = useFormContext();
   const withinForm = !!formContext && !!name;
-  const isRequired = withinForm && formContext.validationSchema?.fields?.[name].tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
+  const isRequired = withinForm && isRequiredField(formContext, name);
 
   // Internal state for non-Formik usage
   const [internalValue, setInternalValue] = useState(rest.checked);
