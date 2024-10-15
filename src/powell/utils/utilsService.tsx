@@ -21,14 +21,6 @@ export const getAddonTemplate = (config?: AddonConfig) => {
   }
 }
 
-export const getFieldErrorMessage = (form: $FormikErrors<SafeAny>, name: string) => {
-  return resolveObjectValue(form, name)
-}
-
-export const isTouchedField = (form: $FormikTouched<SafeAny>, name: string) => {
-  return resolveObjectValue(form, name)
-}
-
 export const isRequiredField = (formContext: $FormikContextType<$FormikValues> | null, name: string | undefined) => {
   const keys = name?.split('.') ?? [];
   let current = formContext?.validationSchema?.fields;
