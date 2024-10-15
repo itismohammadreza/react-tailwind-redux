@@ -1,10 +1,17 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {FixLabelPosition} from "@powell/models";
-import {$Checkbox, $CheckboxProps, $classNames, $Field, $FieldProps, $UniqueComponentId} from "@powell/api";
+import {
+  $Checkbox,
+  $CheckboxProps,
+  $classNames,
+  $ErrorMessage,
+  $Field,
+  $FieldProps,
+  $UniqueComponentId
+} from "@powell/api";
 import {transformer} from "@powell/utils";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
-import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './Checkbox.scss';
 
 interface CheckboxProps extends Omit<$CheckboxProps, 'checked'> {
@@ -57,7 +64,7 @@ export const Checkbox = (props: CheckboxProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
@@ -78,7 +85,12 @@ export const Checkbox = (props: CheckboxProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
+                    <$ErrorMessage name={name}>
+                      {
+                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                      }
+                    </$ErrorMessage>
+                    <small className="hint">{rest.hint}</small>
                   </>
               );
             }}

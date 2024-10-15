@@ -1,11 +1,17 @@
-import {ChangeEvent, ReactNode, useCallback, useEffect, useRef, useState} from "react";
+import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {FixLabelPosition} from "@powell/models";
-import {$RadioButton, $RadioButtonProps, $classNames, $UniqueComponentId} from "@powell/api";
+import {
+  $classNames,
+  $ErrorMessage,
+  $Field,
+  $FieldProps,
+  $RadioButton,
+  $RadioButtonProps,
+  $UniqueComponentId
+} from "@powell/api";
 import {transformer} from "@powell/utils";
-import {$Field, $FieldProps} from "@powell/api";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
-import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './RadioGroup.scss';
 
 interface RadioGroupProps extends Omit<$RadioButtonProps, 'checked'> {
@@ -64,7 +70,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
@@ -94,7 +100,12 @@ export const RadioGroup = (props: RadioGroupProps) => {
                           </>
                       ))
                     }
-                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
+                    <$ErrorMessage name={name}>
+                      {
+                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                      }
+                    </$ErrorMessage>
+                    <small className="hint">{rest.hint}</small>
                   </>
               );
             }}

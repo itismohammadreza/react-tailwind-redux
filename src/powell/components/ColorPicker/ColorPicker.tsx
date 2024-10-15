@@ -2,19 +2,20 @@ import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
   $classNames,
+  $ColorPicker,
+  $ColorPickerProps,
+  $ErrorMessage,
+  $Field,
+  $FieldProps,
   $FloatLabel,
   $IconField,
   $IconFieldProps,
   $InputIcon,
-  $ColorPicker,
-  $ColorPickerProps,
   $UniqueComponentId
 } from "@powell/api";
 import {getAddonTemplate, transformer} from "@powell/utils";
-import {$Field, $FieldProps} from "@powell/api";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
-import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './ColorPicker.scss';
 
 interface ColorPickerProps extends $ColorPickerProps {
@@ -72,7 +73,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: string) => formContext.setFieldValue(name, event),
@@ -97,7 +98,12 @@ export const ColorPicker = (props: ColorPickerProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
+                    <$ErrorMessage name={name}>
+                      {
+                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                      }
+                    </$ErrorMessage>
+                    <small className="hint">{rest.hint}</small>
                   </>
               );
             }}

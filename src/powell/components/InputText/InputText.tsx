@@ -2,6 +2,7 @@ import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
   $classNames,
+  $ErrorMessage,
   $Field,
   $FieldProps,
   $FloatLabel,
@@ -15,7 +16,6 @@ import {
 import {getAddonTemplate, isRequiredField, transformer} from "@powell/utils";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
-import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './InputText.scss';
 
 interface InputTextProps extends $InputTextProps {
@@ -75,7 +75,7 @@ export const InputText = (props: InputTextProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: string) => formContext.setFieldValue(name, event),
@@ -100,7 +100,12 @@ export const InputText = (props: InputTextProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
+                    <$ErrorMessage name={name}>
+                      {
+                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                      }
+                    </$ErrorMessage>
+                    <small className="hint">{rest.hint}</small>
                   </>
               );
             }}

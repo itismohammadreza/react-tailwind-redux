@@ -2,6 +2,9 @@ import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
   $classNames,
+  $ErrorMessage,
+  $Field,
+  $FieldProps,
   $FloatLabel,
   $IconField,
   $IconFieldProps,
@@ -11,10 +14,8 @@ import {
   $UniqueComponentId
 } from "@powell/api";
 import {getAddonTemplate, transformer} from "@powell/utils";
-import {$Field, $FieldProps} from "@powell/api";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
-import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './MultiSelect.scss';
 
 interface MultiSelectProps extends $MultiSelectProps {
@@ -74,7 +75,7 @@ export const MultiSelect = (props: MultiSelectProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: string) => formContext.setFieldValue(name, event),
@@ -99,7 +100,12 @@ export const MultiSelect = (props: MultiSelectProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
+                    <$ErrorMessage name={name}>
+                      {
+                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                      }
+                    </$ErrorMessage>
+                    <small className="hint">{rest.hint}</small>
                   </>
               );
             }}

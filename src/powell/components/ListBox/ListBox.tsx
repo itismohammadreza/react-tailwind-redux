@@ -1,11 +1,9 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {FixLabelPosition} from "@powell/models";
-import {$ListBox, $ListBoxProps, $classNames, $UniqueComponentId} from "@powell/api";
+import {$classNames, $Field, $FieldProps, $ListBox, $ListBoxProps, $UniqueComponentId} from "@powell/api";
 import {transformer} from "@powell/utils";
-import {$Field, $FieldProps} from "@powell/api";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
-import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './ListBox.scss';
 
 interface ListBoxProps extends Omit<$ListBoxProps, 'checked'> {
@@ -56,7 +54,7 @@ export const ListBox = (props: ListBoxProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
@@ -77,7 +75,12 @@ export const ListBox = (props: ListBoxProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
+                    <$ErrorMessage name={name}>
+                      {
+                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                      }
+                    </$ErrorMessage>
+                    <small className="hint">{rest.hint}</small>
                   </>
               );
             }}

@@ -1,11 +1,17 @@
 import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {FixLabelPosition} from "@powell/models";
-import {$ToggleButton, $ToggleButtonProps, $classNames, $UniqueComponentId} from "@powell/api";
+import {
+  $classNames,
+  $ErrorMessage,
+  $Field,
+  $FieldProps,
+  $ToggleButton,
+  $ToggleButtonProps,
+  $UniqueComponentId
+} from "@powell/api";
 import {transformer} from "@powell/utils";
-import {$Field, $FieldProps} from "@powell/api";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
-import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './ToggleButton.scss';
 
 interface ToggleButtonProps extends Omit<$ToggleButtonProps, 'checked'> {
@@ -56,7 +62,7 @@ export const ToggleButton = (props: ToggleButtonProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),
@@ -77,7 +83,12 @@ export const ToggleButton = (props: ToggleButtonProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
+                    <$ErrorMessage name={name}>
+                      {
+                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                      }
+                    </$ErrorMessage>
+                    <small className="hint">{rest.hint}</small>
                   </>
               );
             }}

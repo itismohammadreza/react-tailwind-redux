@@ -2,19 +2,20 @@ import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
   $classNames,
+  $Dropdown,
+  $DropdownProps,
+  $ErrorMessage,
+  $Field,
+  $FieldProps,
   $FloatLabel,
   $IconField,
   $IconFieldProps,
   $InputIcon,
-  $Dropdown,
-  $DropdownProps,
   $UniqueComponentId
 } from "@powell/api";
 import {getAddonTemplate, transformer} from "@powell/utils";
-import {$Field, $FieldProps} from "@powell/api";
 import {useApplyConfig, useFormContext} from "@powell/hooks";
 import {SafeAny} from "@powell/models/common";
-import {ErrorMessage} from "@powell/components/ErrorMessage";
 import './Dropdown.scss';
 
 interface DropdownProps extends $DropdownProps {
@@ -74,7 +75,7 @@ export const Dropdown = (props: DropdownProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
+            {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: string) => formContext.setFieldValue(name, event),
@@ -99,7 +100,12 @@ export const Dropdown = (props: DropdownProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    <ErrorMessage form={form} name={name} parseError={parseError} hint={rest.hint}/>
+                    <$ErrorMessage name={name}>
+                      {
+                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                      }
+                    </$ErrorMessage>
+                    <small className="hint">{rest.hint}</small>
                   </>
               );
             }}
