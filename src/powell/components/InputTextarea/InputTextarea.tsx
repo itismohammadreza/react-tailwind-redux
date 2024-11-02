@@ -36,7 +36,7 @@ interface InputTextareaProps extends $InputTextareaProps {
 }
 
 export const InputTextarea = (props: InputTextareaProps) => {
-  props = useApplyConfig(props);
+  props = useApplyConfig(props, {sizable: false});
   const {
     parseError,
     name,
@@ -87,7 +87,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
                   <>
                     <$InputTextarea
                         {...commonProps}
-                        value={value}
+                        defaultValue={value}
                         onChange={(event) => {
                           onChange(event);
                           rest.onChange?.(event);

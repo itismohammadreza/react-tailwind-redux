@@ -89,7 +89,7 @@ export const InputText = (props: InputTextProps) => {
                   <>
                     <$InputText
                         {...commonProps}
-                        value={value}
+                        defaultValue={value}
                         onChange={(event) => {
                           onChange(event);
                           rest.onChange?.(event);
