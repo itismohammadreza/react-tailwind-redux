@@ -855,7 +855,7 @@ import {
   TieredMenuProps,
 } from "primereact/tieredmenu";
 import {
-  Chart,
+  // Chart,
   ChartProps,
   ChartPassThroughMethodOptions,
   ChartPassThroughOptions,
