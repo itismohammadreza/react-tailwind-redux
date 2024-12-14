@@ -1,7 +1,7 @@
 import {$Toast, $ToastProps} from "@powell/api";
 import {useEffect, useRef} from "react";
 import {SafeAny} from "@powell/models";
-import {toastService} from "@powell/api/overlayService.tsx";
+import {overlayEmitter} from "@powell/api/overlayEmitter.ts";
 
 interface ToastProps extends $ToastProps {
   rtl?: boolean;
@@ -16,7 +16,7 @@ export const Toast = (prop: ToastProps) => {
       return
     }
     isRendered.current = true;
-    toastService.onToast(options => {
+    overlayEmitter.on("toast", options => {
       toast.current?.show(options);
     });
   }, []);
