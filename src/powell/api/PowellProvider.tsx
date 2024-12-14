@@ -1,6 +1,7 @@
 import {PropsWithChildren} from "react";
-import {configService, powellDefaults, $PrimeReactProvider} from "@powell/api";
+import {$ConfirmDialog, $ConfirmPopup, $PrimeReactProvider, configService, powellDefaults} from "@powell/api";
 import {PowellConfig, ThemeName} from "@powell/models";
+import {Toast} from "@powell/components/Toast";
 
 const createThemeLink = () => {
   const headEl = document.head;
@@ -31,6 +32,9 @@ export const PowellProvider = (props: PropsWithChildren<{ config?: PowellConfig 
   applyTheme(defaultConfig.theme!);
   return (
       <$PrimeReactProvider value={defaultConfig}>
+        <Toast/>
+        <$ConfirmDialog/>
+        <$ConfirmPopup/>
         {children}
       </$PrimeReactProvider>
   )
