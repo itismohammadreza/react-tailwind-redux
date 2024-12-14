@@ -1,30 +1,14 @@
 import {$confirmDialog, $confirmPopup, $UniqueComponentId} from "@powell/api/primereact.ts";
 import {HistoryState, SafeAny} from "@powell/models";
-import {createRoot} from "react-dom/client";
-
-class ToastEmitter {
-  private listeners: ((options: any) => void)[] = [];
-
-  onToast(listener: (options: any) => void) {
-    if (!this.listeners) {
-      this.listeners = [];
-    }
-    this.listeners.push(listener);
-  }
-
-  show(options: any) {
-    if (this.listeners) {
-      this.listeners.forEach(listener => listener(options));
-    }
-  }
-}
-
-export const toastService = new ToastEmitter();
+import {createRoot, Root} from "react-dom/client";
+import {createPortal} from "react-dom";
+import {overlayEmitter} from "@powell/api/overlayEmitter.ts";
+import {Dialog} from "@powell/components/Dialog";
 
 const states: HistoryState[] = [];
 
 const showToast = (options: SafeAny) => {
-  toastService.show(options)
+  overlayEmitter.emit("toast", options)
 }
 
 const showConfirmPopup = (options: SafeAny) => {
@@ -36,19 +20,24 @@ const showConfirmDialog = (options: SafeAny) => {
 };
 
 const showDialog = (options: SafeAny) => {
-  // const div = document.createElement('div');
-  // const rootInstance = createRoot(div);
-  // const onHide = () => {
-  //   const timeout = setTimeout(() => {
-  //     rootInstance.unmount();
-  //     clearTimeout(timeout);
-  //   }, 300);
-  // };
-  // const portal = createPortal(<$ConfirmDialog onHide={onHide}/>, div)
-  // rootInstance.render(portal);
-  // const timeout = setTimeout(() => {
-  //   clearTimeout(timeout);
-  // }, 0);
+  const getProps = (root: Root) => {
+    const props = {...options};
+    // override options onHide method
+    props.onHide = () => {
+      const timeout = setTimeout(() => {
+        root.unmount();
+        clearTimeout(timeout);
+        options.onHide?.();
+      }, 100);
+    };
+    return props;
+  }
+
+  renderComponent(Dialog, getProps);
+  const timeout = setTimeout(() => {
+    overlayEmitter.emit("dialog", true);
+    clearTimeout(timeout);
+  }, 0);
 }
 
 const showDialogForm = (options: SafeAny) => {
@@ -57,15 +46,12 @@ const showDialogForm = (options: SafeAny) => {
 const closeAnyOpenDialog = () => {
 }
 
-export const addToBody = (Component: any, props?: SafeAny) => {
-  const container = document.createElement('div');
-  document.body.appendChild(container);
-  const root = createRoot(container);
-  root.render(<Component {...props} />);
-  return () => {
-    root.unmount();
-    document.body.removeChild(container);
-  };
+export const renderComponent = (Component: SafeAny, getProps?: (root: Root) => SafeAny) => {
+  const div = document.createElement('div');
+  const root = createRoot(div);
+  const props = getProps?.(root);
+  const portal = createPortal(<Component {...props} />, div)
+  root.render(portal);
 }
 
 const pushState = (state: HistoryState) => {
