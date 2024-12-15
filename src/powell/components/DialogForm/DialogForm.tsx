@@ -2,19 +2,21 @@ import {$Dialog, $DialogProps} from "@powell/api";
 import {useEffect, useRef, useState} from "react";
 import {overlayEmitter} from "@powell/api/overlayEmitter.ts";
 
-interface DialogProps extends $DialogProps {
-  rtl?: boolean;
+interface DialogFormProps {
+  config: any[];
+  props: $DialogProps & {rtl?: boolean};
 }
 
-export const Dialog = (props: DialogProps) => {
+export const DialogForm = (props: DialogFormProps) => {
+  const {props: componentProps, config} = props;
   const [visible, setVisible] = useState(false);
   const isRendered = useRef(false);
   const showDialog = () => setVisible(true);
 
   const onHide = () => {
     setVisible(false);
-    overlayEmitter.off("dialog", showDialog);
-    props.onHide();
+    overlayEmitter.off("dialogForm", showDialog);
+    componentProps.onHide();
   }
 
   useEffect(() => {
@@ -22,11 +24,15 @@ export const Dialog = (props: DialogProps) => {
       return
     }
     isRendered.current = true;
-    overlayEmitter.on("dialog", showDialog);
+    overlayEmitter.on("dialogForm", showDialog);
   }, []);
 
   return (
-      <$Dialog {...props} onHide={onHide} visible={visible}
-               children={props.children && typeof props.children === 'function' ? props.children(onHide) : props.children}/>
+      <$Dialog
+          {...componentProps}
+          onHide={onHide}
+          visible={visible}>
+        <p>Content</p>
+      </$Dialog>
   );
 };

@@ -4,6 +4,7 @@ import {createRoot, Root} from "react-dom/client";
 import {createPortal} from "react-dom";
 import {overlayEmitter} from "@powell/api/overlayEmitter.ts";
 import {Dialog} from "@powell/components/Dialog";
+import {DialogForm} from "@powell/components/DialogForm";
 
 const states: HistoryState[] = [];
 
@@ -40,7 +41,31 @@ const showDialog = (options: SafeAny) => {
   }, 0);
 }
 
-const showDialogForm = (options: SafeAny) => {
+const showDialogForm = (config: any[], props: any) => {
+  return new Promise((resolve, reject) => {
+    overlayEmitter.on("dialogForm", (data) => {
+      resolve(data)
+    });
+
+    const getProps = (root: Root) => {
+      const finalProps = {...props};
+      finalProps.onHide = () => {
+        const timeout = setTimeout(() => {
+          root.unmount();
+          clearTimeout(timeout);
+          props.onHide?.();
+        }, 100);
+      };
+      return {props: finalProps, config};
+    }
+
+    renderComponent(DialogForm, getProps);
+
+    const timeout = setTimeout(() => {
+      overlayEmitter.emit("dialogForm", true);
+      clearTimeout(timeout);
+    }, 0);
+  })
 }
 
 const closeAnyOpenDialog = () => {
