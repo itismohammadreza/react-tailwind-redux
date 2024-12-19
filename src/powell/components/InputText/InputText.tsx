@@ -75,7 +75,7 @@ export const InputText = (props: InputTextProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta}: $FieldProps) => {
+            {({field, meta, form}: $FieldProps) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: string) => formContext.setFieldValue(name, event),
@@ -100,6 +100,8 @@ export const InputText = (props: InputTextProps) => {
                         }}
                         invalid={!!meta.error}
                     />
+                    {JSON.stringify(form.errors,null,2)}
+                    {JSON.stringify(form.touched,null,2)}
                     <$ErrorMessage name={name}>
                       {
                         (message) => <small className="error">{parseError?.(message) ?? message}</small>

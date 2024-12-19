@@ -2,7 +2,7 @@ import {ForwardedRef, forwardRef, PropsWithChildren, useEffect, useRef} from "re
 import {FormProvider} from "@powell/components/FormContainer";
 import {$Form, $Formik, $FormikConfig, $FormikContextType, $FormikValues, $useFormikContext} from "@powell/api";
 
-interface FormContainerProps<T extends $FormikValues> extends $FormikConfig<T> {
+export interface FormContainerProps<T extends $FormikValues> extends $FormikConfig<T> {
   onInit?: (context: $FormikContextType<T>) => void;
   className?: string;
 }

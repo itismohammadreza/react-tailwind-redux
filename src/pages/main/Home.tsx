@@ -1,5 +1,6 @@
 import {Button} from "@powell/components/Button";
 import {overlayService} from "@powell/api/overlayService.tsx";
+import {$Yup} from "@powell/api";
 
 export const Home = () => {
   const showConfirmation1 = () => {
@@ -50,26 +51,25 @@ export const Home = () => {
 
   const showDialogForm = () => {
     overlayService.showDialogForm(
-      [],
-      {
-        children: (close) =>
-            <>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla
-                pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.
-              </p>
-              <button onClick={() => close()}>Close</button>
-            </>,
-        style: {width: '50vw'},
-        header: 'Header',
-        onHide: () => console.log('hided')
-      });
+        [
+          {
+            component: 'input-text',
+            field: 'username',
+            label: 'username'
+          }
+        ],
+        {
+          validationSchema: $Yup.object({
+            username: $Yup.string()
+            .min(8, 'Must be at least 8 characters')
+            .max(20, 'Must be less  than 20 characters')
+            .required('Username is required')
+            .matches(/^[a-zA-Z0-9]+$/, 'Cannot contain special characters or spaces')
+          }),
+          style: {width: '50vw'},
+          header: 'Header',
+          onHide: () => console.log('hided')
+        });
   };
 
   return (
