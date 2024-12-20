@@ -49,8 +49,8 @@ export const Home = () => {
     );
   };
 
-  const showDialogForm = () => {
-    overlayService.showDialogForm(
+  const showDialogForm = async () => {
+    const {changeDialogVisibilityTo, values} = await overlayService.showDialogForm(
         [
           {
             component: 'input-text',
@@ -70,6 +70,9 @@ export const Home = () => {
           header: 'Header',
           onHide: () => console.log('hided')
         });
+    setTimeout(() => {
+      changeDialogVisibilityTo(true);
+    }, 3000)
   };
 
   return (

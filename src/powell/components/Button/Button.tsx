@@ -4,7 +4,7 @@ import {ButtonAppearance} from "@powell/models";
 
 type ButtonState = 'default' | 'loading' | 'next';
 
-interface ButtonOnClickAsyncEvent {
+export interface ButtonOnClickAsyncEvent {
   loadingCallback: (ok?: boolean) => void,
   event: MouseEvent<HTMLButtonElement>
 }

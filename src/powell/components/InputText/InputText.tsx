@@ -100,8 +100,6 @@ export const InputText = (props: InputTextProps) => {
                         }}
                         invalid={!!meta.error}
                     />
-                    {JSON.stringify(form.errors,null,2)}
-                    {JSON.stringify(form.touched,null,2)}
                     <$ErrorMessage name={name}>
                       {
                         (message) => <small className="error">{parseError?.(message) ?? message}</small>
