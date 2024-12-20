@@ -70,9 +70,10 @@ export const Home = () => {
           header: 'Header',
           onHide: () => console.log('hided')
         });
+
     setTimeout(() => {
       changeDialogVisibilityTo(true);
-    }, 3000)
+    }, 1000)
   };
 
   return (

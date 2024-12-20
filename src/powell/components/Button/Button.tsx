@@ -1,4 +1,4 @@
-import {memo, MouseEvent, useRef, useState} from "react";
+import {memo, MouseEvent, useCallback, useRef, useState} from "react";
 import {$Button, $ButtonProps, $classNames} from "@powell/api";
 import {ButtonAppearance} from "@powell/models";
 
@@ -54,7 +54,7 @@ export const Button = memo((props: ButtonProps) => {
 
   const tempProps = useRef<ButtonTempProps>(getButtonTempProps(state));
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
     if (async) {
       onClickAsync?.({event, loadingCallback: removeLoading});
       _setState('loading');
@@ -62,14 +62,14 @@ export const Button = memo((props: ButtonProps) => {
     } else {
       onClick?.(event);
     }
-  }
+  }, [])
 
-  const removeLoading = (toggleState?: boolean) => {
+  const removeLoading = useCallback((toggleState?: boolean) => {
     const newState = toggleState ? 'next' : 'default';
     tempProps.current = getButtonTempProps(newState);
     _setState(newState);
     onStateChange?.(newState);
-  }
+  }, [])
 
   return (
       <$Button
