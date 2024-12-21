@@ -42,7 +42,7 @@ const showDialog = (options: SafeAny) => {
 }
 
 const showDialogForm = (config: any[], props: any) => {
-  return new Promise<{changeDialogVisibilityTo: (visible: boolean) => any, values: any}>((resolve, reject) => {
+  return new Promise<{finalizeSubmit: (hideDialog: boolean) => any, values: any}>((resolve, reject) => {
     overlayEmitter.on("dialogFormClose", (data) => {
       resolve(data)
     });

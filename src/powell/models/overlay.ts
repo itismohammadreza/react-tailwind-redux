@@ -215,7 +215,7 @@ export interface NgDialogFormOptions extends NgDialogBase {
 
 export interface NgDialogFormResult {
   formValue: SafeAny;
-  changeDialogVisibilityTo: (visibility?: boolean) => void
+  finalizeSubmit: (hideDialog?: boolean) => void
 }
 
 export interface NgDialogFormValidation {

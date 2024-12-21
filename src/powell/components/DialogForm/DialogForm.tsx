@@ -49,25 +49,25 @@ export const DialogForm = (props: DialogFormProps) => {
   }, [])
 
   const onSubmit = useCallback(async (formik: $FormikProps<any>, {event, loadingCallback}: ButtonOnClickAsyncEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     const {validateForm, handleSubmit, values, setTouched, touched} = formik;
     const newTouched = config.map(c => c.field).reduce((prev, curr) => ({...prev, [curr]: true}), {});
     await setTouched({...touched, ...newTouched}, true);
     const errors = await validateForm();
-    if (Object.keys(errors).length === 0) {
-      setDisableReject(true);
-      handleSubmit();
-      loadingCallbackRef.current = loadingCallback;
-      overlayEmitter.emit('dialogFormClose', {changeDialogVisibilityTo, values});
-    } else {
+    if (Object.keys(errors).length !== 0) {
       loadingCallback();
+      return;
     }
+    setDisableReject(true);
+    handleSubmit();
+    loadingCallbackRef.current = loadingCallback;
+    overlayEmitter.emit('dialogFormClose', {finalizeSubmit, values});
   }, [])
 
-  const changeDialogVisibilityTo = useCallback((visible: boolean) => {
+  const finalizeSubmit = useCallback((hideDialog: boolean) => {
     loadingCallbackRef.current();
     setDisableReject(false);
-    if (!visible) {
+    if (hideDialog) {
       onHide();
     }
   }, [])

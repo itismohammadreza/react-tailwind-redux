@@ -50,7 +50,7 @@ export const Home = () => {
   };
 
   const showDialogForm = async () => {
-    const {changeDialogVisibilityTo, values} = await overlayService.showDialogForm(
+    const {finalizeSubmit, values} = await overlayService.showDialogForm(
         [
           {
             component: 'input-text',
@@ -72,7 +72,7 @@ export const Home = () => {
         });
 
     setTimeout(() => {
-      changeDialogVisibilityTo(true);
+      finalizeSubmit(false);
     }, 1000)
   };
 
