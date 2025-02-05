@@ -39,7 +39,6 @@ export const DialogForm = (props: DialogFormProps) => {
   const [disableReject, setDisableReject] = useState(false);
   const isRendered = useRef(false);
   const powellConfig = configService.get();
-  const loadingCallbackRef = useRef<SafeAny>(null);
   const showDialog = useCallback(() => setVisible(true), []);
 
   const onHide = useCallback(() => {
@@ -50,6 +49,14 @@ export const DialogForm = (props: DialogFormProps) => {
 
   const onSubmit = useCallback(async (formik: $FormikProps<any>, {event, loadingCallback}: ButtonOnClickAsyncEvent) => {
     event.preventDefault();
+    const finalizeSubmit = (hideDialog: boolean) => {
+      loadingCallback();
+      setDisableReject(false);
+      if (hideDialog) {
+        onHide();
+      }
+    };
+
     const {validateForm, handleSubmit, values, setTouched, touched} = formik;
     const newTouched = config.map(c => c.field).reduce((prev, curr) => ({...prev, [curr]: true}), {});
     await setTouched({...touched, ...newTouched}, true);
@@ -60,16 +67,7 @@ export const DialogForm = (props: DialogFormProps) => {
     }
     setDisableReject(true);
     handleSubmit();
-    loadingCallbackRef.current = loadingCallback;
     overlayEmitter.emit('dialogFormClose', {finalizeSubmit, values});
-  }, [])
-
-  const finalizeSubmit = useCallback((hideDialog: boolean) => {
-    loadingCallbackRef.current();
-    setDisableReject(false);
-    if (hideDialog) {
-      onHide();
-    }
   }, [])
 
   useEffect(() => {

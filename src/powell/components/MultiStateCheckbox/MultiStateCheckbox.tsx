@@ -78,7 +78,6 @@ export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
                         {...commonProps}
                         value={value}
                         onChange={(event) => {
-                          console.log(event)
                           onChange(event);
                           rest.onChange?.(event);
                         }}

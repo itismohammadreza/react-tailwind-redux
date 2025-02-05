@@ -59,21 +59,23 @@ export const Home = () => {
           }
         ],
         {
-          validationSchema: $Yup.object({
-            username: $Yup.string()
-            .min(8, 'Must be at least 8 characters')
-            .max(20, 'Must be less  than 20 characters')
-            .required('Username is required')
-            .matches(/^[a-zA-Z0-9]+$/, 'Cannot contain special characters or spaces')
-          }),
+          // validationSchema: $Yup.object({
+          //   username: $Yup.string()
+          //   .min(8, 'Must be at least 8 characters')
+          //   .max(20, 'Must be less  than 20 characters')
+          //   .required('Username is required')
+          //   .matches(/^[a-zA-Z0-9]+$/, 'Cannot contain special characters or spaces')
+          // }),
           style: {width: '50vw'},
           header: 'Header',
           onHide: () => console.log('hided')
-        });
+        }
+    );
 
-    setTimeout(() => {
-      finalizeSubmit(false);
-    }, 1000)
+    finalizeSubmit(false);
+
+    // setTimeout(() => {
+    // }, 1000)
   };
 
   return (

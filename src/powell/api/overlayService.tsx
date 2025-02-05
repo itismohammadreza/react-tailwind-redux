@@ -41,8 +41,8 @@ const showDialog = (options: SafeAny) => {
   }, 0);
 }
 
-const showDialogForm = (config: any[], props: any) => {
-  return new Promise<{finalizeSubmit: (hideDialog: boolean) => any, values: any}>((resolve, reject) => {
+const showDialogForm = (config: SafeAny[], props: SafeAny) => {
+  return new Promise<{finalizeSubmit: (hideDialog: boolean) => SafeAny, values: SafeAny}>((resolve, reject) => {
     overlayEmitter.on("dialogFormClose", (data) => {
       resolve(data)
     });
