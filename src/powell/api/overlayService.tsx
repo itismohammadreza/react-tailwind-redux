@@ -71,7 +71,7 @@ const showDialogForm = (config: SafeAny[], props: SafeAny) => {
 const closeAnyOpenDialog = () => {
 }
 
-export const renderComponent = (Component: SafeAny, getProps?: (root: Root) => SafeAny) => {
+const renderComponent = (Component: SafeAny, getProps?: (root: Root) => SafeAny) => {
   const div = document.createElement('div');
   const root = createRoot(div);
   const props = getProps?.(root);
