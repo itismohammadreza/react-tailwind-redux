@@ -10,12 +10,12 @@ const loadingRequestsCounter = new Map<string, number>();
 
 const showSuccessToast = (text: string) => {
   const message = text ?? 'با موفقیت انجام شد';
-  eventBusService.emit("showToast", {message});
+  eventBusService.emit('showToast', {message});
 }
 
 const showFailureToast = (text: string) => {
   const message = text ?? 'خطایی رخ داده است';
-  eventBusService.emit("showToast", {message});
+  eventBusService.emit('showToast', {message});
 }
 
 const getRequestConfig = (config: AxiosRequestConfig) => {
@@ -63,7 +63,7 @@ const removeRequestFromQueue = (config: InternalAxiosRequestConfig) => {
   if (i >= 0) {
     requestsQueue.splice(i, 1);
   }
-  eventBusService.emit("loading", requestsQueue.length > 0);
+  eventBusService.emit('loading', requestsQueue.length > 0);
 }
 
 const getRequestProp = (config: InternalAxiosRequestConfig, response: AxiosResponse | null, prop: keyof RequestConfig) => {
@@ -114,7 +114,7 @@ const handleHttpRequest = (config: InternalAxiosRequestConfig) => {
     loadingRequestsCounter.set(pathTemplate, (loadingRequestsCounter.get(pathTemplate) ?? 0) + 1);
     if (!loadingOnlyOnce || (loadingOnlyOnce && loadingRequestsCounter.get(pathTemplate) == 1)) {
       requestsQueue.push(config);
-      eventBusService.emit("loading", true);
+      eventBusService.emit('loading', true);
     }
   }
   return config;

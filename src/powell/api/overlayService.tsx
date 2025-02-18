@@ -9,7 +9,7 @@ import {DialogForm} from "@powell/components/DialogForm";
 const states: HistoryState[] = [];
 
 const showToast = (options: SafeAny) => {
-  overlayEmitter.emit("toast", options)
+  overlayEmitter.emit('toast', options)
 }
 
 const showConfirmPopup = (options: SafeAny) => {
@@ -36,14 +36,14 @@ const showDialog = (options: SafeAny) => {
 
   renderComponent(Dialog, getProps);
   const timeout = setTimeout(() => {
-    overlayEmitter.emit("dialog", true);
+    overlayEmitter.emit('dialog', true);
     clearTimeout(timeout);
   }, 0);
 }
 
 const showDialogForm = (config: SafeAny[], props: SafeAny) => {
   return new Promise<{finalizeSubmit: (hideDialog: boolean) => SafeAny, values: SafeAny}>((resolve, reject) => {
-    overlayEmitter.on("dialogFormClose", (data) => {
+    overlayEmitter.on('dialogFormClose', (data) => {
       resolve(data)
     });
 
@@ -62,7 +62,7 @@ const showDialogForm = (config: SafeAny[], props: SafeAny) => {
     renderComponent(DialogForm, getProps);
 
     const timeout = setTimeout(() => {
-      overlayEmitter.emit("dialogForm", true);
+      overlayEmitter.emit('dialogFormOpen', true);
       clearTimeout(timeout);
     }, 0);
   })

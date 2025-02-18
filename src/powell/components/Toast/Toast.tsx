@@ -16,7 +16,7 @@ export const Toast = (prop: ToastProps) => {
       return
     }
     isRendered.current = true;
-    overlayEmitter.on("toast", options => {
+    overlayEmitter.on('toast', options => {
       toast.current?.show(options);
     });
   }, []);

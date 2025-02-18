@@ -22,7 +22,7 @@ export const Dialog = (props: DialogProps) => {
       return
     }
     isRendered.current = true;
-    overlayEmitter.on("dialog", showDialog);
+    overlayEmitter.on('dialog', showDialog);
   }, []);
 
   return (

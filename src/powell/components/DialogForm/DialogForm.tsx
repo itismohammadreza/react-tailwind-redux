@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useRef, useState} from "react";
+import {memo, useCallback, useEffect, useRef, useState} from "react";
 import {$Dialog, $DialogProps, $FormikProps, $FormikValues, configService, PowellProvider} from "@powell/api";
 import {overlayEmitter} from "@powell/api/overlayEmitter.ts";
 import {FormContainer, FormContainerProps} from "@powell/components/FormContainer";
@@ -33,22 +33,24 @@ interface DialogFormProps<T extends $FormikValues = SafeAny> {
   props: $DialogProps & FormContainerProps<T> & {rtl?: boolean};
 }
 
-export const DialogForm = (props: DialogFormProps) => {
+export const DialogForm = memo((props: DialogFormProps) => {
   const {props: componentProps, config} = props;
   const [visible, setVisible] = useState(false);
   const [disableReject, setDisableReject] = useState(false);
   const isRendered = useRef(false);
-  const powellConfig = configService.get();
+  const powellConfig = useRef(configService.get());
   const showDialog = useCallback(() => setVisible(true), []);
 
   const onHide = useCallback(() => {
     setVisible(false);
-    overlayEmitter.off("dialogForm", showDialog);
+    overlayEmitter.off('dialogFormOpen', showDialog);
+    overlayEmitter.off('dialogFormClose', () => {});
     componentProps.onHide();
   }, [])
 
   const onSubmit = useCallback(async (formik: $FormikProps<any>, {event, loadingCallback}: ButtonOnClickAsyncEvent) => {
     event.preventDefault();
+
     const finalizeSubmit = (hideDialog: boolean) => {
       loadingCallback();
       setDisableReject(false);
@@ -75,15 +77,15 @@ export const DialogForm = (props: DialogFormProps) => {
       return
     }
     isRendered.current = true;
-    overlayEmitter.on("dialogForm", showDialog);
+    overlayEmitter.on('dialogFormOpen', showDialog);
   }, []);
 
   return (
-      <PowellProvider config={powellConfig}>
+      <PowellProvider config={powellConfig.current}>
         <$Dialog onHide={onHide} visible={visible}>
           <FormContainer
               validationSchema={componentProps.validationSchema}
-              initialValues={{}}
+              initialValues={componentProps.initialValues ?? {}}
               onSubmit={() => {
               }}>
             {
@@ -157,4 +159,4 @@ export const DialogForm = (props: DialogFormProps) => {
         </$Dialog>
       </PowellProvider>
   );
-};
+});
