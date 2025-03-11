@@ -33,7 +33,7 @@ interface DialogFormProps<T extends $FormikValues = SafeAny> {
   props: $DialogProps & FormContainerProps<T> & {rtl?: boolean};
 }
 
-export const DialogForm = memo((props: DialogFormProps) => {
+export const DialogForm = (props: DialogFormProps) => {
   const {props: componentProps, config} = props;
   const [visible, setVisible] = useState(false);
   const [disableReject, setDisableReject] = useState(false);
@@ -44,11 +44,12 @@ export const DialogForm = memo((props: DialogFormProps) => {
   const onHide = useCallback(() => {
     setVisible(false);
     overlayEmitter.off('dialogFormOpen', showDialog);
-    overlayEmitter.off('dialogFormClose', () => {});
+    overlayEmitter.off('dialogFormClose', () => {
+    });
     componentProps.onHide();
   }, [])
 
-  const onSubmit = useCallback(async (formik: $FormikProps<any>, {event, loadingCallback}: ButtonOnClickAsyncEvent) => {
+  const onSubmit = async (formik: $FormikProps<any>, {event, loadingCallback}: ButtonOnClickAsyncEvent) => {
     event.preventDefault();
 
     const finalizeSubmit = (hideDialog: boolean) => {
@@ -70,7 +71,7 @@ export const DialogForm = memo((props: DialogFormProps) => {
     setDisableReject(true);
     handleSubmit();
     overlayEmitter.emit('dialogFormClose', {finalizeSubmit, values});
-  }, [])
+  }
 
   useEffect(() => {
     if (isRendered.current) {
@@ -159,4 +160,4 @@ export const DialogForm = memo((props: DialogFormProps) => {
         </$Dialog>
       </PowellProvider>
   );
-});
+}

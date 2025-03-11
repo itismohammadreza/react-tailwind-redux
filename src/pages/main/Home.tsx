@@ -50,7 +50,7 @@ export const Home = () => {
   };
 
   const showDialogForm = async () => {
-    const {finalizeSubmit, values} = await overlayService.showDialogForm(
+    overlayService.showDialogForm(
         [
           {
             component: 'input-text',
@@ -68,14 +68,15 @@ export const Home = () => {
           // }),
           style: {width: '50vw'},
           header: 'Header',
-          onHide: () => console.log('hided')
+          onHide: () => console.log('hided'),
+          onSubmit: (data) => {
+            console.log(data.values)
+            setTimeout(() => {
+              data.finalizeSubmit(false);
+            }, 2000)
+          }
         }
     );
-
-    finalizeSubmit(false);
-
-    // setTimeout(() => {
-    // }, 1000)
   };
 
   return (
