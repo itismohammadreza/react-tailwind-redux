@@ -84,12 +84,12 @@ export const routes: RouteObject[] = [
         element: <Home/>,
       },
       {
-        path: "button",
-        element: <ButtonPage/>,
-      },
-      {
         path: "autoComplete",
         element: <AutoCompletePage/>,
+      },
+      {
+        path: "button",
+        element: <ButtonPage/>,
       },
       {
         path: "cascadeSelect",
@@ -106,6 +106,10 @@ export const routes: RouteObject[] = [
       {
         path: "colorPicker",
         element: <ColorPickerPage/>,
+      },
+      {
+        path: "dropdown",
+        element: <DropdownPage/>,
       },
       {
         path: "editor",
@@ -130,10 +134,6 @@ export const routes: RouteObject[] = [
       {
         path: "inputSwitch",
         element: <InputSwitchPage/>,
-      },
-      {
-        path: "dropdown",
-        element: <DropdownPage/>,
       },
       {
         path: "inputText",
@@ -180,16 +180,16 @@ export const routes: RouteObject[] = [
         element: <SliderPage/>,
       },
       {
+        path: "toggleButtonPage",
+        element: <ToggleButtonPage/>,
+      },
+      {
         path: "treeSelect",
         element: <TreeSelectPage/>,
       },
       {
         path: "triStateCheckbox",
         element: <TriStateCheckboxPage/>,
-      },
-      {
-        path: "toggleButtonPage",
-        element: <ToggleButtonPage/>,
       },
       {
         path: "utils",
