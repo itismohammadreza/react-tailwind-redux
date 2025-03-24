@@ -2,7 +2,8 @@ import {FormContainer} from "@powell/components/FormContainer";
 import {AutoComplete} from "@powell/components/AutoComplete";
 import {Button} from "@powell/components/Button";
 import {useRef, useState} from "react";
-import {$FormikContextType} from "@powell/api";
+import {$FormikContextType, $Yup} from "@powell/api";
+import {Preview} from "@pages/main/showcase/components/Preview.tsx";
 
 export const AutoCompletePage = () => {
   const [formValue, setFormValue] = useState<any>({n: ''})
@@ -23,6 +24,16 @@ export const AutoCompletePage = () => {
 
   return (
       <>
+        <Preview
+            previewOptions={[
+              {field: 'label', value: 'this is label'},
+              {field: 'multiple', value: false},
+            ]}
+            component={"AutoComplete"}
+            description={'Description'}>
+          <AutoComplete label="label" labelPosition="float" name="n"/>
+        </Preview>
+
         <FormContainer className="flex flex-col gap-2 p-10" initialValues={{}} onSubmit={v => console.log(v)}>
           <AutoComplete label="label" labelPosition="float" name="n"/>
 

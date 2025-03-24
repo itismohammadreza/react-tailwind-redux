@@ -44,7 +44,8 @@ export const DialogForm = memo((props: DialogFormProps) => {
   const onHide = useCallback(() => {
     setVisible(false);
     overlayEmitter.off('dialogFormOpen', showDialog);
-    overlayEmitter.off('dialogFormClose', () => {});
+    overlayEmitter.off('dialogFormClose', () => {
+    });
     componentProps.onHide();
   }, [])
 
