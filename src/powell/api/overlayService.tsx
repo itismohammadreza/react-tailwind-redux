@@ -42,30 +42,28 @@ const showDialog = (options: SafeAny) => {
 }
 
 const showDialogForm = (config: SafeAny[], props: SafeAny) => {
-  return new Promise<{finalizeSubmit: (hideDialog: boolean) => SafeAny, values: SafeAny}>((resolve, reject) => {
-    overlayEmitter.on('dialogFormClose', (data) => {
-      resolve(data)
-    });
+  overlayEmitter.on('dialogFormClose', (data) => {
+    props.onSubmit(data)
+  });
 
-    const getProps = (root: Root) => {
-      const finalProps = {...props};
-      finalProps.onHide = () => {
-        const timeout = setTimeout(() => {
-          root.unmount();
-          clearTimeout(timeout);
-          props.onHide?.();
-        }, 100);
-      };
-      return {props: finalProps, config};
-    }
+  const getProps = (root: Root) => {
+    const finalProps = {...props};
+    finalProps.onHide = () => {
+      const timeout = setTimeout(() => {
+        root.unmount();
+        clearTimeout(timeout);
+        props.onHide?.();
+      }, 100);
+    };
+    return {props: finalProps, config};
+  }
 
-    renderComponent(DialogForm, getProps);
+  renderComponent(DialogForm, getProps);
 
-    const timeout = setTimeout(() => {
-      overlayEmitter.emit('dialogFormOpen', true);
-      clearTimeout(timeout);
-    }, 0);
-  })
+  const timeout = setTimeout(() => {
+    overlayEmitter.emit('dialogFormOpen', true);
+    clearTimeout(timeout);
+  }, 0);
 }
 
 const closeAnyOpenDialog = () => {

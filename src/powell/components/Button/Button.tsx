@@ -24,7 +24,7 @@ interface ButtonProps extends Omit<$ButtonProps, "loading" | "link" | "text" | "
 
 type ButtonTempProps = Pick<ButtonProps, "label" | "icon" | "raised" | "appearance" | "severity">;
 
-export const Button = memo((props: ButtonProps) => {
+export const Button = (props: ButtonProps) => {
   const {
     async,
     onClickAsync,
@@ -54,7 +54,7 @@ export const Button = memo((props: ButtonProps) => {
 
   const tempProps = useRef<ButtonTempProps>(getButtonTempProps(state));
 
-  const handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     if (async) {
       onClickAsync?.({event, loadingCallback: removeLoading});
       _setState('loading');
@@ -62,14 +62,14 @@ export const Button = memo((props: ButtonProps) => {
     } else {
       onClick?.(event);
     }
-  }, [])
+  }
 
-  const removeLoading = useCallback((toggleState?: boolean) => {
+  const removeLoading = (toggleState?: boolean) => {
     const newState = toggleState ? 'next' : 'default';
     tempProps.current = getButtonTempProps(newState);
     _setState(newState);
     onStateChange?.(newState);
-  }, [])
+  }
 
   return (
       <$Button
@@ -87,4 +87,4 @@ export const Button = memo((props: ButtonProps) => {
           className={$classNames(rest.className, `state-${_state}`)}
       />
   )
-})
+}
