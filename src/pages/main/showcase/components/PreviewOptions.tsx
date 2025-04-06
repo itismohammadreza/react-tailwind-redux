@@ -39,20 +39,32 @@ const dropdownOptionsMap = {
   variants: ['outlined', 'filled']
 };
 
-export const PreviewOptions = ({options, onOptionChange}) => {
-  const [values, setValues] = useState({});
+interface PreviewOption {
+  field: string;
+  value: string | number | boolean;
+  options?: keyof typeof dropdownOptionsMap;
+  label?: string;
+}
+
+interface PreviewOptionsProps {
+  options: PreviewOption[];
+  onOptionChange: (option: { field: string; value: string | number | boolean }) => void;
+}
+
+export const PreviewOptions = ({ options, onOptionChange }: PreviewOptionsProps) => {
+  const [values, setValues] = useState<Record<string, string | number | boolean>>({});
 
   useEffect(() => {
-    const initialValues = options.reduce((acc, option) => {
+    const initialValues = options.reduce<Record<string, string | number | boolean>>((acc, option) => {
       acc[option.field] = option.value;
       return acc;
     }, {});
     setValues(initialValues);
   }, [options]);
 
-  const handleChange = (field, value) => {
-    setValues(prev => ({...prev, [field]: value}));
-    onOptionChange?.({field, value});
+  const handleChange = (field: string, value: string | number | boolean) => {
+    setValues(prev => ({ ...prev, [field]: value }));
+    onOptionChange?.({ field, value });
   };
 
   return (
