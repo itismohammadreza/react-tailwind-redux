@@ -73,7 +73,6 @@ export const Knob = (props: KnobProps) => {
                           onChange(event);
                           rest.onChange?.(event);
                         }}
-                        invalid={!!meta.error}
                     />
                     <$ErrorMessage name={name}>
                       {

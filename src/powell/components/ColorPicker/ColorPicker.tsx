@@ -96,7 +96,6 @@ export const ColorPicker = (props: ColorPickerProps) => {
                           field.onBlur(event);
                           rest.onBlur?.(event);
                         }}
-                        invalid={!!meta.error}
                     />
                     <$ErrorMessage name={name}>
                       {

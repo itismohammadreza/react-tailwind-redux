@@ -48,7 +48,7 @@ export const Mention = (props: MentionProps) => {
     icon,
     rtl,
     showRequiredStar,
-    variant,
+    // variant,
     inputSize,
     ...rest
   } = props;
@@ -66,7 +66,7 @@ export const Mention = (props: MentionProps) => {
   const rootEl = useCallback(() => {
     const commonProps = {
       ...rest,
-      variant,
+      // variant,
       id: inputId.current,
       name,
     };
@@ -98,7 +98,6 @@ export const Mention = (props: MentionProps) => {
                           field.onBlur(event);
                           rest.onBlur?.(event);
                         }}
-                        invalid={!!meta.error}
                     />
                     <$ErrorMessage name={name}>
                       {
@@ -158,7 +157,7 @@ export const Mention = (props: MentionProps) => {
 
   return (
       <div className={$classNames('input-text-wrapper',
-          `variant-${variant}`,
+          // `variant-${variant}`,
           `p-inputtext-${inputSize}`,
           {
             [`label-${labelPosition}`]: rest.label,

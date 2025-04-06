@@ -86,7 +86,7 @@ export const Editor = (props: EditorProps) => {
                     <$Editor
                         {...commonProps}
                         value={value}
-                        onTextChange={(event) => {
+                        onTextChange={(event: SafeAny) => {
                           onChange(event);
                           rest.onChange?.(event);
                         }}
@@ -94,7 +94,6 @@ export const Editor = (props: EditorProps) => {
                           field.onBlur(event);
                           rest.onBlur?.(event);
                         }}
-                        invalid={!!meta.error}
                     />
                     <$ErrorMessage name={name}>
                       {
@@ -122,7 +121,7 @@ export const Editor = (props: EditorProps) => {
           <$Editor
               {...commonProps}
               value={value}
-              onTextChange={(event) => {
+              onTextChange={(event: SafeAny) => {
                 onChange(event);
                 rest.onChange?.(event);
               }}

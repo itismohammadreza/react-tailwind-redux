@@ -1,7 +1,7 @@
 import {$Toast, $ToastProps} from "@powell/api";
 import {useEffect, useRef} from "react";
 import {SafeAny} from "@powell/models";
-import {overlayEmitter} from "@powell/api/overlayEmitter.ts";
+import {overlayEmitter} from "@powell/api/overlayEmitter";
 
 interface ToastProps extends $ToastProps {
   rtl?: boolean;

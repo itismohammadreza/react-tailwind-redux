@@ -1,6 +1,6 @@
 import {memo, useCallback, useEffect, useRef, useState} from "react";
 import {$Dialog, $DialogProps, $FormikProps, $FormikValues, configService, PowellProvider} from "@powell/api";
-import {overlayEmitter} from "@powell/api/overlayEmitter.ts";
+import {overlayEmitter} from "@powell/api/overlayEmitter";
 import {FormContainer, FormContainerProps} from "@powell/components/FormContainer";
 import {Button, ButtonOnClickAsyncEvent} from "@powell/components/Button";
 import {SafeAny} from "@powell/models";

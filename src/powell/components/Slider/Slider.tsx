@@ -73,7 +73,6 @@ export const Slider = (props: SliderProps) => {
                           onChange(event);
                           rest.onChange?.(event);
                         }}
-                        invalid={!!meta.error}
                     />
                     <$ErrorMessage name={name}>
                       {

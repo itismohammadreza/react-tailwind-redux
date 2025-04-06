@@ -1,5 +1,5 @@
-import {ButtonAppearance, CssObject, SafeAny, Severity, Size, ToastPosition} from "@powell/models/common.ts";
-import {IconPosition} from "@powell/models/forms.ts";
+import {ButtonAppearance, CssObject, SafeAny, Severity, Size, ToastPosition} from "@powell/models/common";
+import {IconPosition} from "@powell/models/forms";
 
 export type DefaultFocus = 'accept' | 'reject';
 export type HistoricComponent = 'confirmDialog' | 'confirmPopup' | 'dialog' | 'dialogForm' | 'bottomSheet';

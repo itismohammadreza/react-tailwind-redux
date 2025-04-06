@@ -1,4 +1,4 @@
-import { ComponentType, ReactNode, useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { Addon, LabelPosition, Size } from "@powell/models";
 import {
     $classNames,
@@ -17,7 +17,7 @@ import { SafeAny } from "@powell/models/common";
 
 export interface BaseFormProps {
     name?: string;
-    parseError?: (error: string) => ReactNode;
+    parseError?: (error: string) => SafeAny;
     transform?: {
         input?: (value: SafeAny) => string;
         output?: (event: SafeAny) => SafeAny;
@@ -25,7 +25,7 @@ export interface BaseFormProps {
     showRequiredStar?: boolean;
     rtl?: boolean;
     label?: string;
-    icon?: string | ReactNode;
+    icon?: string | SafeAny;
     hint?: string;
     addon?: Addon;
     inputSize?: Size;
@@ -41,7 +41,7 @@ export interface BaseFormProps {
 }
 
 interface BaseFormComponentProps extends BaseFormProps {
-    component: ComponentType<SafeAny>;
+    component: SafeAny;
     componentProps?: Record<string, SafeAny>;
     getValue?: (event: SafeAny) => SafeAny;
     eventProps?: {

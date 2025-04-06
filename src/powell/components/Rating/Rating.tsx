@@ -73,7 +73,6 @@ export const Rating = (props: RatingProps) => {
                           onChange(event);
                           rest.onChange?.(event);
                         }}
-                        invalid={!!meta.error}
                     />
                     <$ErrorMessage name={name}>
                       {

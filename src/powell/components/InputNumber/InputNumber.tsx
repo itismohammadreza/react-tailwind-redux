@@ -61,7 +61,7 @@ export const InputNumber = (props: InputNumberProps) => {
   const isRequired = withinForm && isRequiredField(formContext, name);
 
   // Internal state for non-Formik usage
-  const [internalValue, setInternalValue] = useState(rest.value || '');
+  const [internalValue, setInternalValue] = useState(rest.value);
 
   const rootEl = useCallback(() => {
     const commonProps = {
@@ -74,48 +74,48 @@ export const InputNumber = (props: InputNumberProps) => {
     if (withinForm) {
       // if in Formik context
       return (
-          <$Field name={name}>
+        <$Field name={name}>
             {({field, meta}: $FieldProps) => {
               const {value, onChange} = transformer({
-                value: field.value,
-                onChange: (event: string) => formContext.setFieldValue(name, event),
-                transform: {
-                  input: transform.input ?? (value => value),
-                  output: transform.output ?? (event => event.value)
-                }
-              });
+              value: field.value,
+              onChange: (event: string) => formContext.setFieldValue(name, event),
+              transform: {
+                input: transform.input ?? (value => value),
+                output: transform.output ?? (event => event.value)
+              }
+            });
 
-              return (
-                  <>
-                    <$InputNumber
-                        {...commonProps}
-                        value={value}
-                        onChange={(event) => {
-                          onChange(event);
-                          rest.onChange?.(event);
-                        }}
-                        onBlur={(event) => {
-                          field.onBlur(event);
-                          rest.onBlur?.(event);
-                        }}
-                        invalid={!!meta.error}
-                    />
-                    <$ErrorMessage name={name}>
-                      {
-                        (message) => <small className="error">{parseError?.(message) ?? message}</small>
-                      }
-                    </$ErrorMessage>
-                    <small className="hint">{rest.hint}</small>
-                  </>
-              );
-            }}
-          </$Field>
+            return (
+              <>
+                <$InputNumber
+                  {...commonProps}
+                  value={value}
+                  onChange={(event) => {
+                    onChange(event);
+                    rest.onChange?.(event);
+                  }}
+                  onBlur={(event) => {
+                    field.onBlur(event);
+                    rest.onBlur?.(event);
+                  }}
+                  invalid={!!meta.error}
+                />
+                <$ErrorMessage name={name}>
+                  {
+                    (message) => <small className="error">{parseError?.(message) ?? message}</small>
+                  }
+                </$ErrorMessage>
+                <small className="hint">{rest.hint}</small>
+              </>
+            );
+          }}
+        </$Field>
       );
     } else {
       // if outside Formik context
       const {value, onChange} = transformer({
         value: internalValue,
-        onChange: (event: string) => setInternalValue(event),
+        onChange: (event: number) => setInternalValue(event),
         transform: {
           input: transform.input ?? (value => value),
           output: transform.output ?? (event => event.value)
@@ -123,68 +123,68 @@ export const InputNumber = (props: InputNumberProps) => {
       });
 
       return (
-          <$InputNumber
-              {...commonProps}
-              value={value}
-              onChange={(event) => {
-                onChange(event);
-                rest.onChange?.(event);
-              }}
-              onBlur={rest.onBlur}
-          />
+        <$InputNumber
+          {...commonProps}
+          value={value}
+          onChange={(event) => {
+            onChange(event);
+            rest.onChange?.(event);
+          }}
+          onBlur={rest.onBlur}
+        />
       );
     }
   }, [internalValue, props]);
 
   const labelEl = rest.label && (
-      <label htmlFor={inputId.current}>
-        {rest.label}
-        {isRequired && showRequiredStar ? '*' : ''}
-      </label>
+    <label htmlFor={inputId.current}>
+      {rest.label}
+      {isRequired && showRequiredStar ? '*' : ''}
+    </label>
   );
 
   const iconEl = icon && (
-      typeof icon === 'string'
-          ? <$InputIcon className={icon}></$InputIcon>
-          : <$InputIcon>{icon}</$InputIcon>
+    typeof icon === 'string'
+      ? <$InputIcon className={icon}></$InputIcon>
+      : <$InputIcon>{icon}</$InputIcon>
   );
 
   const withIcon = (
-      <$IconField iconPosition={iconPosition}>
-        {iconEl}
-        {rootEl()}
-      </$IconField>
+    <$IconField iconPosition={iconPosition}>
+      {iconEl}
+      {rootEl()}
+    </$IconField>
   );
 
   return (
-      <div className={$classNames('input-number-wrapper',
-          `variant-${variant}`,
-          `p-inputtext-${inputSize}`,
-          {
-            [`label-${labelPosition}`]: rest.label,
-            [`icon-${iconPosition}`]: iconEl,
-            'is-rtl': rtl,
-            'is-ltr': !rtl,
-            'addon-before': addon?.before,
-            'addon-after': addon?.after,
-          })}>
-        <div className="field">
-          {labelPosition !== 'float' && labelEl}
+    <div className={$classNames('input-number-wrapper',
+      `variant-${variant}`,
+      `p-inputtext-${inputSize}`,
+      {
+        [`label-${labelPosition}`]: rest.label,
+        [`icon-${iconPosition}`]: iconEl,
+        'is-rtl': rtl,
+        'is-ltr': !rtl,
+        'addon-before': addon?.before,
+        'addon-after': addon?.after,
+      })}>
+      <div className="field">
+        {labelPosition !== 'float' && labelEl}
           <div className={$classNames('field-inner', {"p-inputgroup": addon})}>
-            {getAddonTemplate(addon?.before)}
-            {
-              labelPosition === 'float' ? (
-                  <$FloatLabel>
-                    {icon ? withIcon : rootEl()}
-                    {labelEl}
-                  </$FloatLabel>
-              ) : (
-                  icon ? withIcon : rootEl()
-              )
-            }
-            {getAddonTemplate(addon?.after)}
-          </div>
+          {getAddonTemplate(addon?.before)}
+          {
+            labelPosition === 'float' ? (
+              <$FloatLabel>
+                {icon ? withIcon : rootEl()}
+                {labelEl}
+              </$FloatLabel>
+            ) : (
+              icon ? withIcon : rootEl()
+            )
+          }
+          {getAddonTemplate(addon?.after)}
         </div>
       </div>
+    </div>
   );
 };

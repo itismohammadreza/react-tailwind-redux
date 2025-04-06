@@ -1,8 +1,8 @@
-import {$confirmDialog, $confirmPopup, $UniqueComponentId} from "@powell/api/primereact.ts";
+import {$confirmDialog, $confirmPopup, $UniqueComponentId} from "@powell/api/primereact";
 import {HistoryState, SafeAny} from "@powell/models";
 import {createRoot, Root} from "react-dom/client";
 import {createPortal} from "react-dom";
-import {overlayEmitter} from "@powell/api/overlayEmitter.ts";
+import {overlayEmitter} from "@powell/api/overlayEmitter";
 import {Dialog} from "@powell/components/Dialog";
 import {DialogForm} from "@powell/components/DialogForm";
 

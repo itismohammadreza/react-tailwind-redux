@@ -1,6 +1,6 @@
-import {AddonConfig, SafeAny, TransformOptions} from "@powell/models";
-import {Button} from "@powell/components/Button";
-import {$FormikContextType, $FormikErrors, $FormikTouched, $FormikValues} from "@powell/api";
+import { $FormikContextType, $FormikValues } from "@powell/api";
+import { Button } from "@powell/components/Button";
+import { AddonConfig, SafeAny, TransformOptions } from "@powell/models";
 
 export const getAddonTemplate = (config?: AddonConfig) => {
   if (!config) {
@@ -38,13 +38,13 @@ export const isRequiredField = (formContext: $FormikContextType<$FormikValues> |
 }
 
 // todo: make transform type [usage] generic in components (remove SafeAny from models)
-export const transformer = <V = SafeAny, T = SafeAny>(options: TransformOptions<V, T>) => {
-  const value: V = options.transform?.input?.(options.value) || options.value;
+export const transformer = <V = SafeAny | null | undefined, T = SafeAny | null | undefined>(options: TransformOptions<V, T>) => {
+  const value: V | null | undefined = options.transform?.input?.(options.value) || options.value;
   const onChange = (...event: T[]) => {
     if (typeof options.transform?.output === 'function') {
       options.onChange(options.transform.output(...event));
     } else {
-      options.onChange(...event);
+      options.onChange(...event as SafeAny);
     }
   }
 

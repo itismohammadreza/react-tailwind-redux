@@ -81,7 +81,6 @@ export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
                           onChange(event);
                           rest.onChange?.(event);
                         }}
-                        invalid={!!meta.error}
                     />
                     <$ErrorMessage name={name}>
                       {

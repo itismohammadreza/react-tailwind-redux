@@ -61,7 +61,7 @@ export const Chips = (props: ChipsProps) => {
   const isRequired = withinForm && isRequiredField(formContext, name);
 
   // Internal state for non-Formik usage
-  const [internalValue, setInternalValue] = useState(rest.value || '');
+  const [internalValue, setInternalValue] = useState(rest.value || []);
 
   const rootEl = useCallback(() => {
     const commonProps = {
@@ -115,7 +115,7 @@ export const Chips = (props: ChipsProps) => {
       // if outside Formik context
       const {value, onChange} = transformer({
         value: internalValue,
-        onChange: (event: string) => setInternalValue(event),
+        onChange: (event: string[]) => setInternalValue(event),
         transform: {
           input: transform.input ?? (value => value),
           output: transform.output ?? (event => event.target.value)

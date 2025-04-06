@@ -1,1 +1,1 @@
-export * from "./CascadeSelect.tsx";
+export * from "./CascadeSelect";
