@@ -8,19 +8,16 @@ export const AutoCompletePage = () => {
         previewOptions={[
           {
             field: 'label',
-            value: 'this is label',
-            label: 'Label Text'
+            value: 'Label',
           },
           {
             field: 'multiple',
             value: true,
-            label: 'Multiple Selection'
           },
           {
             field: 'labelPosition',
             value: 'float',
             options: 'labelPositions',
-            label: 'Label Position'
           }
         ]}
         component={"AutoComplete"}

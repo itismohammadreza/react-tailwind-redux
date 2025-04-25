@@ -39,17 +39,18 @@ export const isRequiredField = (formContext: $FormikContextType<$FormikValues> |
 
 // todo: make transform type [usage] generic in components (remove SafeAny from models)
 export const transformer = <V = SafeAny | null | undefined, T = SafeAny | null | undefined>(options: TransformOptions<V, T>) => {
-  const value: V | null | undefined = options.transform?.input?.(options.value) || options.value;
+  const {value, transform} = options;
+  const transformedValue: V | null | undefined = transform?.input?.(value) ?? value;
   const onChange = (...event: T[]) => {
-    if (typeof options.transform?.output === 'function') {
-      options.onChange(options.transform.output(...event));
+    if (typeof transform?.output === 'function') {
+      options.onChange(transform.output(...event));
     } else {
       options.onChange(...event as SafeAny);
     }
   }
 
   return {
-    value,
+    value: transformedValue,
     onChange
   }
 }

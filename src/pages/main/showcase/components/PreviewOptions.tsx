@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
-import {$Divider, $Dropdown} from "@powell/api";
+import {$Divider} from "@powell/api";
 import {InputText} from "@powell/components/InputText";
 import {Checkbox} from "@powell/components/Checkbox";
+import {Dropdown} from "@powell/components/Dropdown";
 
 const dropdownOptionsMap = {
   positions: ['top', 'bottom', 'left', 'right'],
@@ -72,9 +73,9 @@ export const PreviewOptions = ({ options, onOptionChange }: PreviewOptionsProps)
         {
           options.map(option => (
               <div key={option.field} className="flex flex-col space-y-2">
-                <label>{option.field}</label>
                 {option.options ? (
-                    <$Dropdown
+                    <Dropdown
+                        label={option.field}
                         value={values[option.field]}
                         options={dropdownOptionsMap[option.options].map(v => ({label: v, value: v}))}
                         onChange={e => handleChange(option.field, e.value)}
@@ -82,15 +83,17 @@ export const PreviewOptions = ({ options, onOptionChange }: PreviewOptionsProps)
                     />
                 ) : typeof option.value === 'string' || typeof option.value === 'number' ? (
                     <InputText
+                        label={option.field}
                         value={values[option.field]}
                         onChange={e => handleChange(option.field, e.target.value)}
                     />
-                ) : typeof option.value === 'boolean' ? (
+                ) : (
                     <Checkbox
+                        label={option.field}
                         checked={values[option.field]}
                         onChange={e => handleChange(option.field, e.checked)}
                     />
-                ) : null}
+                )}
               </div>
           ))
         }
