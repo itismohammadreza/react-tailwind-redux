@@ -21,7 +21,7 @@ export const getAddonTemplate = (config?: AddonConfig) => {
   }
 }
 
-export const isRequiredField = (formContext: $FormikContextType<$FormikValues> | null, name: string | undefined) => {
+export const isRequiredField = (formContext: $FormikContextType<$FormikValues>, name: string) => {
   const keys = name?.split('.') ?? [];
   let current = formContext?.validationSchema?.fields;
   for (const key of keys) {
@@ -38,9 +38,9 @@ export const isRequiredField = (formContext: $FormikContextType<$FormikValues> |
 }
 
 // todo: make transform type [usage] generic in components (remove SafeAny from models)
-export const transformer = <V = SafeAny | null | undefined, T = SafeAny | null | undefined>(options: TransformOptions<V, T>) => {
+export const transformer = <V = SafeAny, T = SafeAny>(options: TransformOptions<V, T>) => {
   const {value, transform} = options;
-  const transformedValue: V | null | undefined = transform?.input?.(value) ?? value;
+  const transformedValue: V = transform?.input?.(value) ?? value;
   const onChange = (...event: T[]) => {
     if (typeof transform?.output === 'function') {
       options.onChange(transform.output(...event));

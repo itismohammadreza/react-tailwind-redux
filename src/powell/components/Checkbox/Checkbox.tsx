@@ -1,4 +1,4 @@
-import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
+import {ChangeEvent, ReactNode, useCallback, useEffect, useRef, useState} from "react";
 import {FixLabelPosition} from "@powell/models";
 import {
   $Checkbox,
@@ -52,6 +52,13 @@ export const Checkbox = (props: CheckboxProps) => {
   // Internal state for non-Formik usage
   const [internalValue, setInternalValue] = useState(rest.checked);
 
+  useEffect(() => {
+    if (!withinForm) {
+      setInternalValue(rest.checked);
+    }
+  }, [rest.checked]);
+
+
   const rootEl = useCallback(() => {
     const commonProps = {
       ...rest,
@@ -64,7 +71,7 @@ export const Checkbox = (props: CheckboxProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta}: $FieldProps) => {
+            {({field, meta}: $FieldProps<boolean>) => {
               const {value, onChange} = transformer({
                 value: field.value,
                 onChange: (event: boolean) => formContext.setFieldValue(name, event),

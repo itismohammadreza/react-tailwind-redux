@@ -84,13 +84,13 @@ export const PreviewOptions = ({ options, onOptionChange }: PreviewOptionsProps)
                 ) : typeof option.value === 'string' || typeof option.value === 'number' ? (
                     <InputText
                         label={option.field}
-                        value={values[option.field]}
+                        value={values[option.field] as string}
                         onChange={e => handleChange(option.field, e.target.value)}
                     />
                 ) : (
                     <Checkbox
                         label={option.field}
-                        checked={values[option.field]}
+                        checked={values[option.field] as boolean}
                         onChange={e => handleChange(option.field, e.checked)}
                     />
                 )}

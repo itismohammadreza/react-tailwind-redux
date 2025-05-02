@@ -16,7 +16,7 @@ export const AutoCompletePage = () => {
           },
           {
             field: 'labelPosition',
-            value: 'float',
+            value: 'ifta',
             options: 'labelPositions',
           }
         ]}

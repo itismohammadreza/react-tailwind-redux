@@ -31,7 +31,7 @@ export const EventBus = <Events extends Record<EventType, unknown>>(all?: EventH
   return {
     all,
     on<Key extends keyof Events>(type: Key, handler: GenericEventHandler) {
-      const handlers: Array<GenericEventHandler> | undefined = all!.get(type);
+      const handlers: Array<GenericEventHandler> = all!.get(type);
       if (handlers) {
         handlers.push(handler);
       } else {
@@ -39,7 +39,7 @@ export const EventBus = <Events extends Record<EventType, unknown>>(all?: EventH
       }
     },
     off<Key extends keyof Events>(type: Key, handler?: GenericEventHandler) {
-      const handlers: Array<GenericEventHandler> | undefined = all!.get(type);
+      const handlers: Array<GenericEventHandler> = all!.get(type);
       if (handlers) {
         if (handler) {
           handlers.splice(handlers.indexOf(handler) >>> 0, 1);

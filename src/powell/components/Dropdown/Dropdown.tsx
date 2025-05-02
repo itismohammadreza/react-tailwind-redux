@@ -1,4 +1,4 @@
-import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
+import {ChangeEvent, ReactNode, useCallback, useEffect, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
   $classNames,
@@ -62,6 +62,12 @@ export const Dropdown = (props: DropdownProps) => {
 
   // Internal state for non-Formik usage
   const [internalValue, setInternalValue] = useState(rest.value || '');
+
+  useEffect(() => {
+    if (!withinForm) {
+      setInternalValue(rest.value || '');
+    }
+  }, [rest.value]);
 
   const rootEl = useCallback(() => {
     const commonProps = {

@@ -66,7 +66,7 @@ const removeRequestFromQueue = (config: InternalAxiosRequestConfig) => {
   eventBusService.emit('loading', requestsQueue.length > 0);
 }
 
-const getRequestProp = (config: InternalAxiosRequestConfig, response: AxiosResponse | null, prop: keyof RequestConfig) => {
+const getRequestProp = (config: InternalAxiosRequestConfig, response: AxiosResponse, prop: keyof RequestConfig) => {
   const requestConfig: any = getRequestConfig(config);
   if (!requestConfig) {
     return false;

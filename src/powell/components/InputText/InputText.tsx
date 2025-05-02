@@ -1,4 +1,4 @@
-import {ChangeEvent, ReactNode, useCallback, useRef, useState} from "react";
+import {ChangeEvent, ReactNode, useCallback, useEffect, useRef, useState} from "react";
 import {Addon, LabelPosition, Size} from "@powell/models";
 import {
   $classNames,
@@ -63,6 +63,12 @@ export const InputText = (props: InputTextProps) => {
   // Internal state for non-Formik usage
   const [internalValue, setInternalValue] = useState(rest.value || '');
 
+  useEffect(() => {
+    if (!withinForm) {
+      setInternalValue(rest.value || '');
+    }
+  }, [rest.value]);
+
   const rootEl = useCallback(() => {
     const commonProps = {
       ...rest,
@@ -75,10 +81,10 @@ export const InputText = (props: InputTextProps) => {
       // if in Formik context
       return (
           <$Field name={name}>
-            {({field, meta, form}: $FieldProps) => {
-              const {value, onChange} = transformer({
+            {({field, meta}: $FieldProps<string>) => {
+              const {value, onChange} = transformer<string, ChangeEvent<HTMLInputElement>>({
                 value: field.value,
-                onChange: (event: string) => formContext.setFieldValue(name, event),
+                onChange: (event) => formContext.setFieldValue(name, event),
                 transform: {
                   input: transform.input ?? (value => value),
                   output: transform.output ?? (event => event.target.value)
