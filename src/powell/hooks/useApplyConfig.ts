@@ -11,6 +11,7 @@ interface CommonConfigProps {
   showRequiredStar?: PowellConfig["showRequiredStar"];
   labelPosition?: PowellConfig["labelPosition"];
   inputSize?: PowellConfig["inputSize"];
+  variant?: PowellConfig["inputStyle"];
 }
 
 export const useApplyConfig = <T extends CommonConfigProps>(props: T, options: ApplyConfigOptions = {}) => {
@@ -22,6 +23,7 @@ export const useApplyConfig = <T extends CommonConfigProps>(props: T, options: A
     rtl: props.rtl ?? config.rtl,
     showRequiredStar: props.showRequiredStar ?? config.showRequiredStar,
     labelPosition: props.labelPosition ?? config.labelPosition,
+    ...('variant' in props ? {variant: props.variant ?? config.inputStyle} : {}),
   }
 
   if (isFixLabel) {

@@ -1,7 +1,7 @@
 import {$Dialog, $DialogProps} from "@powell/api";
 import {useEffect, useRef, useState} from "react";
 import {overlayEmitter} from "@powell/api/overlayEmitter";
-import { SafeAny } from "@powell/models";
+import {SafeAny} from "@powell/models";
 
 interface DialogProps extends $DialogProps {
   rtl?: boolean;

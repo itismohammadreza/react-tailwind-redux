@@ -17,6 +17,7 @@ export const InputTextPage = () => {
 
   return (
       <>
+        <InputText label="label" labelPosition="float" name="n"/>
         <FormContainer className="flex flex-col gap-2 p-10" initialValues={{}} onSubmit={v => console.log(v)}>
           <InputText label="label" labelPosition="float" name="n"/>
 
@@ -50,7 +51,6 @@ export const InputTextPage = () => {
 
         <FormContainer
             ref={formRef}
-            validateOnChange
             onInit={setFormContext}
             enableReinitialize={true}
             initialValues={formValue}
@@ -79,7 +79,6 @@ export const InputTextPage = () => {
         </FormContainer>
 
         <FormContainer
-            validateOnChange
             enableReinitialize={true}
             initialValues={{
               social: {

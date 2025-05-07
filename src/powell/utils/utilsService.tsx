@@ -1,6 +1,6 @@
-import { $FormikContextType, $FormikValues } from "@powell/api";
-import { Button } from "@powell/components/Button";
-import { AddonConfig, SafeAny, TransformOptions } from "@powell/models";
+import {$FormikContextType, $FormikValues} from "@powell/api";
+import {Button} from "@powell/components/Button";
+import {AddonConfig, SafeAny} from "@powell/models";
 
 export const getAddonTemplate = (config?: AddonConfig) => {
   if (!config) {
@@ -22,12 +22,15 @@ export const getAddonTemplate = (config?: AddonConfig) => {
 }
 
 export const isRequiredField = (formContext: $FormikContextType<$FormikValues>, name: string) => {
-  const keys = name?.split('.') ?? [];
-  let current = formContext?.validationSchema?.fields;
+  if (!formContext || !name) {
+    return false;
+  }
+  const keys = name.split('.') ?? [];
+  let current = formContext.validationSchema?.fields;
+  if (!current) {
+    return false;
+  }
   for (const key of keys) {
-    if (!current) {
-      return false;
-    }
     if (current[key]?.fields) {
       current = current[key]?.fields;
     } else {
@@ -37,20 +40,53 @@ export const isRequiredField = (formContext: $FormikContextType<$FormikValues>, 
   return current?.tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
 }
 
-// todo: make transform type [usage] generic in components (remove SafeAny from models)
-export const transformer = <V = SafeAny, T = SafeAny>(options: TransformOptions<V, T>) => {
-  const {value, transform} = options;
-  const transformedValue: V = transform?.input?.(value) ?? value;
-  const onChange = (...event: T[]) => {
-    if (typeof transform?.output === 'function') {
-      options.onChange(transform.output(...event));
-    } else {
-      options.onChange(...event as SafeAny);
+type PropDescriptor<T> =
+    | keyof T
+    | {
+  key: keyof T;
+  alias?: string;
+  defaultValue?: T[keyof T] | (() => T[keyof T]);
+  keepInRest?: boolean;
+};
+
+export const splitProps = <T extends Record<string, any>>(
+    props: T,
+    groups: Record<string, PropDescriptor<T>[]>
+) => {
+  const result: Record<string, Partial<T>> = {};
+  const rest: Partial<T> = {};
+  const assigned: Record<keyof T, boolean> = {} as any;
+  const restEligible: Record<keyof T, boolean> = {} as any;
+
+  for (const groupName in groups) {
+    for (const descriptor of groups[groupName]) {
+      const key = typeof descriptor === 'string' ? descriptor : descriptor.key;
+      const alias = typeof descriptor === 'string' ? undefined : descriptor.alias;
+      const defaultValue = typeof descriptor === 'string' ? undefined : descriptor.defaultValue;
+      const keepInRest = typeof descriptor === 'string' ? false : descriptor.keepInRest ?? false;
+
+      if (!result[groupName]) {
+        result[groupName] = {};
+      }
+
+      const value = key in props ? props[key] : typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+      result[groupName][alias ?? key] = value;
+
+      assigned[key] = true;
+      if (keepInRest) {
+        restEligible[key] = true;
+      }
     }
   }
 
-  return {
-    value: transformedValue,
-    onChange
+  // مرحله دوم: ساخت rest فقط برای پراپ‌هایی که یا assign نشده‌اند یا explicitly allow شدند
+  for (const key in props) {
+    const typedKey = key as keyof T;
+    if (!assigned[typedKey] || restEligible[typedKey]) {
+      rest[typedKey] = props[typedKey];
+    }
   }
+
+  result.rest = rest;
+  return result as Record<string, Partial<T>> & {rest: Partial<T>};
 }
