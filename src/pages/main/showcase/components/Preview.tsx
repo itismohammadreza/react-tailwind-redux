@@ -1,5 +1,5 @@
 import { $Card, $Panel, $Yup } from "@powell/api";
-import { PreviewOptions } from "@pages/main/showcase/components/PreviewOptions.tsx";
+import { PreviewOptions } from "@pages/main/showcase/components/PreviewOptions";
 import { Children, cloneElement, ReactElement, useState } from "react";
 import { FormContainer } from "@powell/components/FormContainer";
 import { Button } from "@powell/components/Button";

@@ -1,28 +1,6 @@
 import {MouseEvent, useRef, useState} from "react";
-import {$Button, $ButtonProps, $classNames} from "@powell/api";
-import {ButtonAppearance} from "@powell/models";
-
-type ButtonState = 'default' | 'loading' | 'next';
-
-export interface ButtonOnClickAsyncEvent {
-  loadingCallback: (ok?: boolean) => void,
-  event: MouseEvent<HTMLButtonElement>
-}
-
-interface ButtonProps extends Omit<$ButtonProps, "loading" | "link" | "text" | "outlined"> {
-  async?: boolean;
-  onClickAsync?: (event: ButtonOnClickAsyncEvent) => void;
-  appearance?: ButtonAppearance;
-  nextLabel?: string;
-  nextIcon?: string;
-  nextRaised?: boolean;
-  nextAppearance?: ButtonAppearance;
-  nextSeverity?: ButtonProps['severity'];
-  state?: ButtonState;
-  onStateChange?: (state: ButtonState) => void;
-}
-
-type ButtonTempProps = Pick<ButtonProps, "label" | "icon" | "raised" | "appearance" | "severity">;
+import {$Button, $classNames} from "@powell/api";
+import {ButtonProps, ButtonState, ButtonTemplateType} from "@powell/models/props";
 
 export const Button = (props: ButtonProps) => {
   const {
@@ -52,7 +30,7 @@ export const Button = (props: ButtonProps) => {
     }
   }
 
-  const tempProps = useRef<ButtonTempProps>(getButtonTempProps(state));
+  const tempProps = useRef<ButtonTemplateType>(getButtonTempProps(state));
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     if (async) {

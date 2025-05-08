@@ -1,5 +1,5 @@
 import {Button} from "@powell/components/Button";
-import {overlayService} from "@powell/api/overlayService.tsx";
+import {overlayService} from "@powell/api/overlayService";
 import {$Yup} from "@powell/api";
 
 export const Home = () => {
@@ -70,7 +70,6 @@ export const Home = () => {
           header: 'Header',
           onHide: () => console.log('hided'),
           onSubmit: (data) => {
-            console.log(data.values)
             setTimeout(() => {
               data.finalizeSubmit(false);
             }, 2000)

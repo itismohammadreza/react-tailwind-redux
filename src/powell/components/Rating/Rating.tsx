@@ -1,21 +1,9 @@
-import {ReactNode} from "react";
-import {FixLabelPosition} from "@powell/models";
-import {$Rating, $RatingProps} from "@powell/api";
+import {RatingProps} from "@powell/models";
+import {$Rating} from "@powell/api";
 import {splitProps} from "@powell/utils";
-import './Rating.scss';
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-
-interface RatingProps extends Omit<$RatingProps, 'checked'> {
-  checked?: boolean;
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  hint?: string;
-  labelPosition?: FixLabelPosition;
-}
+import './Rating.scss';
 
 export const Rating = (props: RatingProps) => {
   const {controlProps, layoutProps, rest} = splitProps<RatingProps>(props, {

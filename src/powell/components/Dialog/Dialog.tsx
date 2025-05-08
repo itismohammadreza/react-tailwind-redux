@@ -1,11 +1,8 @@
-import {$Dialog, $DialogProps} from "@powell/api";
+import {$Dialog} from "@powell/api";
 import {useEffect, useRef, useState} from "react";
 import {overlayEmitter} from "@powell/api/overlayEmitter";
 import {SafeAny} from "@powell/models";
-
-interface DialogProps extends $DialogProps {
-  rtl?: boolean;
-}
+import {DialogProps} from "@powell/models/props";
 
 export const Dialog = (props: DialogProps) => {
   const [visible, setVisible] = useState(false);

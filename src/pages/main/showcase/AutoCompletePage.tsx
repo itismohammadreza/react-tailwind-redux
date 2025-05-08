@@ -1,4 +1,4 @@
-import { Preview } from "@pages/main/showcase/components/Preview.tsx";
+import { Preview } from "@pages/main/showcase/components/Preview";
 import { AutoComplete } from "@powell/components/AutoComplete";
 
 export const AutoCompletePage = () => {

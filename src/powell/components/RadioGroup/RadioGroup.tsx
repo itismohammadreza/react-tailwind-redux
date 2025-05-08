@@ -1,28 +1,13 @@
-import {ReactNode, useRef} from "react";
-import {FixLabelPosition} from "@powell/models";
-import {$RadioButton, $RadioButtonProps, $UniqueComponentId} from "@powell/api";
+import {useRef} from "react";
+import {RadioGroupProps} from "@powell/models";
+import {$RadioButton, $UniqueComponentId} from "@powell/api";
 import {splitProps} from "@powell/utils";
-import {SafeAny} from "@powell/models/common";
-import './RadioGroup.scss';
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-
-interface RadioGroupProps extends Omit<$RadioButtonProps, 'checked'> {
-  checked?: boolean;
-  name: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  hint?: string;
-  labelPosition?: FixLabelPosition;
-  options: SafeAny[];
-  optionLabel?: string;
-  optionValue?: string;
-}
+import './RadioGroup.scss';
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<RadioGroupProps>(props, {
+  const {controlProps, layoutProps, innerProps, rest} = splitProps<RadioGroupProps>(props, {
     controlProps: [
       {
         key: 'name',
@@ -37,6 +22,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
       'showRequiredStar',
       'variant',
     ],
+    innerProps: ['optionLabel', 'optionValue']
   });
 
   const processedOptions = useRef(props.options.map(option => ({
@@ -50,25 +36,25 @@ export const RadioGroup = (props: RadioGroupProps) => {
           (control) => (
               <FieldLayout
                   {...layoutProps}
-                  componentName="input-text"
+                  componentName="radio-group"
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 {
                   processedOptions.current.map(option => (
-                      <>
+                      <div key={option.__id}>
                         <$RadioButton
                             {...rest}
                             inputId={option.__id}
-                            checked={control.value === option[props.optionValue!]}
-                            value={option[props.optionValue!]}
+                            checked={control.value === option[innerProps.optionValue!]}
+                            value={option[innerProps.optionValue!]}
                             onChange={(event) => {
-                              control.handleChange?.(event);
-                              props.onChange?.(event);
+                              control.handleChange?.(event.value);
+                              rest.onChange?.(event);
                             }}
                             invalid={!!control.meta?.error}
                         />
-                        <label htmlFor={option.__id}>{option[props.optionLabel!]}</label>
-                      </>
+                        <label htmlFor={option.__id}>{option[innerProps.optionLabel!]}</label>
+                      </div>
                   ))
                 }
               </FieldLayout>

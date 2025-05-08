@@ -1,23 +1,9 @@
-import {ReactNode} from "react";
-import {Addon, LabelPosition} from "@powell/models";
-import {$IconFieldProps, $InputTextarea, $InputTextareaProps} from "@powell/api";
+import {InputTextareaProps} from "@powell/models";
+import {$InputTextarea} from "@powell/api";
 import {splitProps} from "@powell/utils";
-import './InputTextarea.scss';
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-
-interface InputTextareaProps extends $InputTextareaProps {
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  icon?: string | ReactNode;
-  hint?: string;
-  addon?: Addon;
-  iconPosition?: $IconFieldProps["iconPosition"];
-  labelPosition?: LabelPosition;
-}
+import './InputTextarea.scss';
 
 export const InputTextarea = (props: InputTextareaProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputTextareaProps>(props, {

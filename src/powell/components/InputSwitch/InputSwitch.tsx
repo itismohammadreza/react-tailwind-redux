@@ -1,21 +1,9 @@
-import {ReactNode} from "react";
-import {FixLabelPosition} from "@powell/models";
-import {$InputSwitch, $InputSwitchProps} from "@powell/api";
+import {InputSwitchProps} from "@powell/models";
+import {$InputSwitch} from "@powell/api";
 import {splitProps} from "@powell/utils";
-import './InputSwitch.scss';
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-
-interface InputSwitchProps extends Omit<$InputSwitchProps, 'checked'> {
-  checked?: boolean;
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  hint?: string;
-  labelPosition?: FixLabelPosition;
-}
+import './InputSwitch.scss';
 
 export const InputSwitch = (props: InputSwitchProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputSwitchProps>(props, {

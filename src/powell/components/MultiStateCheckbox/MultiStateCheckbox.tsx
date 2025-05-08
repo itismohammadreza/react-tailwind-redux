@@ -1,21 +1,9 @@
-import {ReactNode} from "react";
-import {FixLabelPosition} from "@powell/models";
-import {$MultiStateCheckbox, $MultiStateCheckboxProps} from "@powell/api";
+import {MultiStateCheckboxProps} from "@powell/models";
+import {$MultiStateCheckbox} from "@powell/api";
 import {splitProps} from "@powell/utils";
-import './MultiStateCheckbox.scss';
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-
-interface MultiStateCheckboxProps extends Omit<$MultiStateCheckboxProps, 'checked'> {
-  checked?: boolean;
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  hint?: string;
-  labelPosition?: FixLabelPosition;
-}
+import './MultiStateCheckbox.scss';
 
 export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
   const {controlProps, layoutProps, rest} = splitProps<MultiStateCheckboxProps>(props, {

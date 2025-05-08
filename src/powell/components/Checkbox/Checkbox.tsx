@@ -1,21 +1,9 @@
-import {ReactNode} from "react";
-import {FixLabelPosition} from "@powell/models";
-import {$Checkbox, $CheckboxProps} from "@powell/api";
+import {$Checkbox} from "@powell/api";
 import {splitProps} from "@powell/utils";
+import {FieldControl} from "@powell/components/FieldControl";
+import {FieldLayout} from "@powell/components/FieldLayout";
+import {CheckboxProps} from "@powell/models/props";
 import './Checkbox.scss';
-import {FieldControl} from "@powell/components/FieldControl/FieldControl";
-import {FieldLayout} from "@powell/components/FieldLayout/FieldLayout";
-
-interface CheckboxProps extends Omit<$CheckboxProps, 'checked'> {
-  checked?: boolean;
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  hint?: string;
-  labelPosition?: FixLabelPosition;
-}
 
 export const Checkbox = (props: CheckboxProps) => {
   const {controlProps, layoutProps, rest} = splitProps<CheckboxProps>(props, {

@@ -1,5 +1,5 @@
 import {useApplyConfig} from "@powell/hooks";
-import {PropsWithChildren, useCallback, useRef} from "react";
+import {PropsWithChildren, useRef} from "react";
 import {$classNames, $FloatLabel, $IconField, $InputIcon, $UniqueComponentId} from "@powell/api";
 import {getAddonTemplate} from "@powell/utils";
 import {FieldLayoutProps} from "@powell/models/props";
@@ -9,6 +9,8 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
   props = useApplyConfig(props);
 
   const {
+    children,
+    label,
     componentName,
     iconPosition = 'left',
     labelPosition,
@@ -25,13 +27,9 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
 
   const inputId = useRef($UniqueComponentId());
 
-  const rootEl = useCallback(() => {
-    return props.children;
-  }, [props]);
-
-  const labelEl = props.label && (
+  const labelEl = label && (
       <label htmlFor={inputId.current}>
-        {props.label}
+        {label}
         {isRequired && showRequiredStar ? '*' : ''}
       </label>
   );
@@ -45,7 +43,7 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
   const withIcon = (
       <$IconField iconPosition={iconPosition}>
         {iconEl}
-        {rootEl()}
+        {children}
       </$IconField>
   );
 
@@ -55,7 +53,7 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
           `variant-${variant}`,
           `p-inputtext-${inputSize}`,
           {
-            [`label-${labelPosition}`]: props.label,
+            [`label-${labelPosition}`]: label,
             [`icon-${iconPosition}`]: iconEl,
             'is-rtl': rtl,
             'is-ltr': !rtl,
@@ -69,18 +67,18 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
             {
               labelPosition === 'float' ? (
                   <$FloatLabel>
-                    {icon ? withIcon : rootEl()}
+                    {icon ? withIcon : children}
                     {labelEl}
                   </$FloatLabel>
               ) : (
-                  icon ? withIcon : rootEl()
+                  icon ? withIcon : children
               )
             }
             {getAddonTemplate(addon?.after)}
           </div>
         </div>
-        <small className="error-message font-sm text-red-600">{errorElement}</small>
-        <small className="hint">{hint}</small>
+        {errorElement && <small className="error-message font-sm text-red-600">{errorElement}</small>}
+        {hint && <small className="hint">{hint}</small>}
       </div>
   );
 }

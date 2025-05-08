@@ -1,9 +1,9 @@
 import {useCallback, useEffect, useRef, useState} from "react";
-import {$Dialog, $DialogProps, $FormikProps, $FormikValues, configService, PowellProvider} from "@powell/api";
+import {$Dialog, $FormikProps, configService, PowellProvider} from "@powell/api";
 import {overlayEmitter} from "@powell/api/overlayEmitter";
-import {FormContainer, FormContainerProps} from "@powell/components/FormContainer";
-import {Button, ButtonOnClickAsyncEvent} from "@powell/components/Button";
-import {SafeAny} from "@powell/models";
+import {FormContainer} from "@powell/components/FormContainer";
+import {Button} from "@powell/components/Button";
+import {ButtonOnClickAsyncEvent, DialogFormProps} from "@powell/models";
 import {InputText} from "@powell/components/InputText";
 import {AutoComplete} from "@powell/components/AutoComplete";
 import {SelectButton} from "@powell/components/SelectButton";
@@ -27,11 +27,6 @@ import {Slider} from "@powell/components/Slider";
 import {ToggleButton} from "@powell/components/ToggleButton";
 import {TreeSelect} from "@powell/components/TreeSelect";
 import {TriStateCheckbox} from "@powell/components/TriStateCheckbox";
-
-interface DialogFormProps<T extends $FormikValues = SafeAny> {
-  config: any[];
-  props: $DialogProps & FormContainerProps<T> & {rtl?: boolean};
-}
 
 export const DialogForm = (props: DialogFormProps) => {
   const {props: componentProps, config} = props;

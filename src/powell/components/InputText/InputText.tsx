@@ -1,9 +1,9 @@
-import {$InputText} from "@powell/api";
-import './InputText.scss';
-import {FieldControl} from "@powell/components/FieldControl/FieldControl";
-import {FieldLayout} from "@powell/components/FieldLayout/FieldLayout";
-import {splitProps} from "@powell/utils";
 import {InputTextProps} from "@powell/models/props";
+import {$InputText} from "@powell/api";
+import {FieldControl} from "@powell/components/FieldControl";
+import {FieldLayout} from "@powell/components/FieldLayout";
+import {splitProps} from "@powell/utils";
+import './InputText.scss';
 
 export const InputText = (props: InputTextProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputTextProps>(props, {

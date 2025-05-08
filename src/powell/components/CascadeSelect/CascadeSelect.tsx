@@ -1,24 +1,9 @@
-import {ReactNode} from "react";
-import {Addon, LabelPosition, Size} from "@powell/models";
-import {$CascadeSelect, $CascadeSelectProps, $IconFieldProps} from "@powell/api";
+import {$CascadeSelect} from "@powell/api";
 import {splitProps} from "@powell/utils";
+import {FieldControl} from "@powell/components/FieldControl";
+import {FieldLayout} from "@powell/components/FieldLayout";
+import {CascadeSelectProps} from "@powell/models/props";
 import './CascadeSelect.scss';
-import {FieldControl} from "@powell/components/FieldControl/FieldControl";
-import {FieldLayout} from "@powell/components/FieldLayout/FieldLayout";
-
-interface CascadeSelectProps extends $CascadeSelectProps {
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  icon?: string | ReactNode;
-  hint?: string;
-  addon?: Addon;
-  inputSize?: Size;
-  iconPosition?: $IconFieldProps["iconPosition"];
-  labelPosition?: LabelPosition;
-}
 
 export const CascadeSelect = (props: CascadeSelectProps) => {
   const {controlProps, layoutProps, rest} = splitProps<CascadeSelectProps>(props, {

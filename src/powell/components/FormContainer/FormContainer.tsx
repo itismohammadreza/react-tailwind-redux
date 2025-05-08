@@ -1,11 +1,7 @@
 import {ForwardedRef, forwardRef, PropsWithChildren, useEffect, useRef} from "react";
 import {FormProvider} from "@powell/components/FormContainer";
-import {$Form, $Formik, $FormikConfig, $FormikContextType, $FormikValues, $useFormikContext} from "@powell/api";
-
-export interface FormContainerProps<T extends $FormikValues> extends $FormikConfig<T> {
-  onInit?: (context: $FormikContextType<T>) => void;
-  className?: string;
-}
+import {$Form, $Formik, $FormikContextType, $FormikValues, $useFormikContext} from "@powell/api";
+import {FormContainerProps} from "@powell/models";
 
 const FormContent = <T extends $FormikValues>(props: PropsWithChildren<{onInit: FormContainerProps<T>['onInit']}>) => {
   const {children, onInit} = props;

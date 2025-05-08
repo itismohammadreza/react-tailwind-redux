@@ -1,24 +1,9 @@
-import {ReactNode} from "react";
-import {Addon, LabelPosition, Size} from "@powell/models";
-import {$IconFieldProps, $MultiSelect, $MultiSelectProps} from "@powell/api";
+import {MultiSelectProps} from "@powell/models";
+import {$MultiSelect} from "@powell/api";
 import {splitProps} from "@powell/utils";
-import './MultiSelect.scss';
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-
-interface MultiSelectProps extends $MultiSelectProps {
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  icon?: string | ReactNode;
-  hint?: string;
-  inputSize?: Size;
-  addon?: Addon;
-  iconPosition?: $IconFieldProps["iconPosition"];
-  labelPosition?: LabelPosition;
-}
+import './MultiSelect.scss';
 
 export const MultiSelect = (props: MultiSelectProps) => {
   const {controlProps, layoutProps, rest} = splitProps<MultiSelectProps>(props, {

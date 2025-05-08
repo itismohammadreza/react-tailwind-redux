@@ -1,24 +1,9 @@
-import {ReactNode} from "react";
-import {Addon, LabelPosition, Size} from "@powell/models";
-import {$IconFieldProps, $InputNumber, $InputNumberProps} from "@powell/api";
+import {InputNumberProps} from "@powell/models";
+import {$InputNumber} from "@powell/api";
 import {splitProps} from "@powell/utils";
-import './InputNumber.scss';
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-
-interface InputNumberProps extends $InputNumberProps {
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  icon?: string | ReactNode;
-  hint?: string;
-  inputSize?: Size;
-  addon?: Addon;
-  iconPosition?: $IconFieldProps["iconPosition"];
-  labelPosition?: LabelPosition;
-}
+import './InputNumber.scss';
 
 export const InputNumber = (props: InputNumberProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputNumberProps>(props, {

@@ -1,11 +1,7 @@
-import {$Toast, $ToastProps} from "@powell/api";
+import {$Toast} from "@powell/api";
 import {useEffect, useRef} from "react";
-import {SafeAny} from "@powell/models";
+import {SafeAny, ToastProps} from "@powell/models";
 import {overlayEmitter} from "@powell/api/overlayEmitter";
-
-interface ToastProps extends $ToastProps {
-  rtl?: boolean;
-}
 
 export const Toast = (prop: ToastProps) => {
   const toast = useRef<SafeAny>(null);

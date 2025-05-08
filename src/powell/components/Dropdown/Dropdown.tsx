@@ -1,24 +1,9 @@
-import {ReactNode} from "react";
-import {Addon, LabelPosition, Size} from "@powell/models";
-import {$Dropdown, $DropdownProps, $IconFieldProps} from "@powell/api";
+import {DropdownProps} from "@powell/models";
+import {$Dropdown} from "@powell/api";
 import {splitProps} from "@powell/utils";
+import {FieldControl} from "@powell/components/FieldControl";
+import {FieldLayout} from "@powell/components/FieldLayout";
 import './Dropdown.scss';
-import {FieldControl} from "@powell/components/FieldControl/FieldControl";
-import {FieldLayout} from "@powell/components/FieldLayout/FieldLayout";
-
-interface DropdownProps extends $DropdownProps {
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  icon?: string | ReactNode;
-  hint?: string;
-  inputSize?: Size;
-  addon?: Addon;
-  iconPosition?: $IconFieldProps["iconPosition"];
-  labelPosition?: LabelPosition;
-}
 
 export const Dropdown = (props: DropdownProps) => {
   const {controlProps, layoutProps, rest} = splitProps<DropdownProps>(props, {

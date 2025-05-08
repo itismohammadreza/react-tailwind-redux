@@ -1,24 +1,9 @@
-import {ReactNode} from "react";
-import {Addon, LabelPosition, Size} from "@powell/models";
-import {$IconFieldProps, $InputMask, $InputMaskProps} from "@powell/api";
+import {InputMaskProps} from "@powell/models";
+import {$InputMask} from "@powell/api";
 import {splitProps} from "@powell/utils";
-import './InputMask.scss';
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-
-interface InputMaskProps extends $InputMaskProps {
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  icon?: string | ReactNode;
-  hint?: string;
-  inputSize?: Size;
-  addon?: Addon;
-  iconPosition?: $IconFieldProps["iconPosition"];
-  labelPosition?: LabelPosition;
-}
+import './InputMask.scss';
 
 export const InputMask = (props: InputMaskProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputMaskProps>(props, {

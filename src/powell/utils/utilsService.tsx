@@ -79,7 +79,6 @@ export const splitProps = <T extends Record<string, any>>(
     }
   }
 
-  // مرحله دوم: ساخت rest فقط برای پراپ‌هایی که یا assign نشده‌اند یا explicitly allow شدند
   for (const key in props) {
     const typedKey = key as keyof T;
     if (!assigned[typedKey] || restEligible[typedKey]) {

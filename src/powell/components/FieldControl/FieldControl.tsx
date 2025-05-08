@@ -19,7 +19,6 @@ export const FieldControl = (props: FieldControlProps) => {
               formContext!.setFieldValue(name, event)
             };
             const handleBlur = (event: SafeAny) => {
-              console.log(event)
               control.field.onBlur(event)
             };
             const controlMeta: FieldControlMeta = {
@@ -28,11 +27,11 @@ export const FieldControl = (props: FieldControlProps) => {
               handleChange,
               handleBlur,
               isRequired,
-              errorElement: (
+              errorElement: control.meta.error ? (
                   <$ErrorMessage name={name}>
                     {(message) => parseError?.(message) ?? message}
                   </$ErrorMessage>
-              )
+              ) : null
             }
             return typeof children === "function" ? children(controlMeta) : children;
           }}

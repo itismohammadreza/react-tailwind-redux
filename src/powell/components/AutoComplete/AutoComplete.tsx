@@ -1,24 +1,9 @@
-import {ReactNode} from "react";
-import {Addon, LabelPosition, Size} from "@powell/models";
-import {$AutoComplete, $AutoCompleteProps, $IconFieldProps} from "@powell/api";
+import {$AutoComplete} from "@powell/api";
 import {splitProps} from "@powell/utils";
+import {FieldControl} from "@powell/components/FieldControl";
+import {FieldLayout} from "@powell/components/FieldLayout";
+import {AutoCompleteProps} from "@powell/models/props";
 import './AutoComplete.scss';
-import {FieldControl} from "@powell/components/FieldControl/FieldControl";
-import {FieldLayout} from "@powell/components/FieldLayout/FieldLayout";
-
-interface AutoCompleteProps extends $AutoCompleteProps {
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  rtl?: boolean;
-  label?: string;
-  icon?: string | ReactNode;
-  hint?: string;
-  addon?: Addon;
-  inputSize?: Size;
-  iconPosition?: $IconFieldProps["iconPosition"];
-  labelPosition?: LabelPosition;
-}
 
 export const AutoComplete = (props: AutoCompleteProps) => {
   const {controlProps, layoutProps, rest} = splitProps<AutoCompleteProps>(props, {
