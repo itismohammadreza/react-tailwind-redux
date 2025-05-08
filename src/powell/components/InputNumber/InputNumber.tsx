@@ -15,6 +15,7 @@ export const InputNumber = (props: InputNumberProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'iconPosition',
       'labelPosition',
       'addon',
@@ -38,7 +39,7 @@ export const InputNumber = (props: InputNumberProps) => {
                   errorElement={control.errorElement}>
                 <$InputNumber
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

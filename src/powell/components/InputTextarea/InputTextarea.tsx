@@ -15,6 +15,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'iconPosition',
       'labelPosition',
       'addon',
@@ -37,7 +38,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
                   errorElement={control.errorElement}>
                 <$InputTextarea
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);
                       props.onChange?.(event);

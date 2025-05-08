@@ -15,6 +15,7 @@ export const ToggleButton = (props: ToggleButtonProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
@@ -33,7 +34,7 @@ export const ToggleButton = (props: ToggleButtonProps) => {
                   errorElement={control.errorElement}>
                 <$ToggleButton
                     {...rest}
-                    checked={control.value}
+                    checked={control.field ? control.field.value : props.checked}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

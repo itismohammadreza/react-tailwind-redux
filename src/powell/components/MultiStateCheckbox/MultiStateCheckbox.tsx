@@ -15,6 +15,7 @@ export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
@@ -33,7 +34,7 @@ export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
                   errorElement={control.errorElement}>
                 <$MultiStateCheckbox
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);
                       props.onChange?.(event);

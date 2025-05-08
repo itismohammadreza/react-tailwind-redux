@@ -15,6 +15,7 @@ export const InputSwitch = (props: InputSwitchProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
@@ -33,7 +34,7 @@ export const InputSwitch = (props: InputSwitchProps) => {
                   errorElement={control.errorElement}>
                 <$InputSwitch
                     {...rest}
-                    checked={control.value}
+                    checked={control.field ? control.field.value : props.checked}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

@@ -15,14 +15,11 @@ export const ColorPicker = (props: ColorPickerProps) => {
       'parseError',
     ],
     layoutProps: [
-      'iconPosition',
+      'label',
       'labelPosition',
-      'addon',
       'hint',
-      'icon',
       'rtl',
       'showRequiredStar',
-      'inputSize',
     ],
   });
 
@@ -37,7 +34,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
                   errorElement={control.errorElement}>
                 <$ColorPicker
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);
                       props.onChange?.(event);

@@ -15,6 +15,7 @@ export const Mention = (props: MentionProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'iconPosition',
       'labelPosition',
       'addon',
@@ -37,7 +38,7 @@ export const Mention = (props: MentionProps) => {
                   errorElement={control.errorElement}>
                 <$Mention
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.((event.target as HTMLInputElement).value);
                       props.onChange?.(event);

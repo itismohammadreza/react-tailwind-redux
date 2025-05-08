@@ -15,6 +15,7 @@ export const Checkbox = (props: CheckboxProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
@@ -35,14 +36,10 @@ export const Checkbox = (props: CheckboxProps) => {
                   errorElement={control.errorElement}>
                 <$Checkbox
                     {...rest}
-                    checked={control.value}
+                    checked={control.field ? control.field.value : props.checked}
                     onChange={(event) => {
-                      control.handleChange?.(event.target.value);
+                      control.handleChange?.(event.checked);
                       props.onChange?.(event);
-                    }}
-                    onBlur={(event) => {
-                      control.handleBlur?.(event);
-                      props.onBlur?.(event);
                     }}
                     invalid={!!control.meta?.error}
                 />

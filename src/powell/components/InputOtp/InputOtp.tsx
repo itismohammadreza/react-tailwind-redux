@@ -15,12 +15,12 @@ export const InputOtp = (props: InputOtpProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
       'showRequiredStar',
       'variant',
-      'inputSize',
     ],
   });
 
@@ -35,7 +35,7 @@ export const InputOtp = (props: InputOtpProps) => {
                   errorElement={control.errorElement}>
                 <$InputOtp
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

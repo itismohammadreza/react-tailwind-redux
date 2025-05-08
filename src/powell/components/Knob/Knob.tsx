@@ -15,6 +15,7 @@ export const Knob = (props: KnobProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',

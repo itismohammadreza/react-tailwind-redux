@@ -15,6 +15,7 @@ export const Chips = (props: ChipsProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'iconPosition',
       'labelPosition',
       'addon',
@@ -38,7 +39,7 @@ export const Chips = (props: ChipsProps) => {
                   errorElement={control.errorElement}>
                 <$Chips
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);
                       props.onChange?.(event);

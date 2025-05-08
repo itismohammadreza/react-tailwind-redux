@@ -10,7 +10,6 @@ export interface FieldControlMeta extends Partial<$FieldProps> {
   handleChange?: (value: SafeAny) => void;
   handleBlur?: (value: SafeAny) => void;
   isRequired?: boolean;
-  value?: SafeAny;
   errorElement?: ReactNode;
 }
 

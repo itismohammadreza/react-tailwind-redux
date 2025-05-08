@@ -15,6 +15,7 @@ export const Slider = (props: SliderProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
@@ -33,7 +34,7 @@ export const Slider = (props: SliderProps) => {
                   errorElement={control.errorElement}>
                 <$Slider
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

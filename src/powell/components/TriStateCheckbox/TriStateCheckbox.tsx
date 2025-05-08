@@ -15,6 +15,7 @@ export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
@@ -34,7 +35,7 @@ export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
                   errorElement={control.errorElement}>
                 <$TriStateCheckbox
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

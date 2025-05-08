@@ -15,6 +15,7 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'iconPosition',
       'labelPosition',
       'addon',
@@ -38,7 +39,7 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
                   errorElement={control.errorElement}>
                 <$CascadeSelect
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

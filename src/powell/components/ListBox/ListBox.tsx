@@ -15,6 +15,7 @@ export const ListBox = (props: ListBoxProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
@@ -33,7 +34,7 @@ export const ListBox = (props: ListBoxProps) => {
                   errorElement={control.errorElement}>
                 <$ListBox
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

@@ -23,7 +23,6 @@ export const FieldControl = (props: FieldControlProps) => {
             };
             const controlMeta: FieldControlMeta = {
               ...control,
-              value: control.field.value,
               handleChange,
               handleBlur,
               isRequired,

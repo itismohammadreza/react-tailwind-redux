@@ -16,6 +16,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
       'parseError',
     ],
     layoutProps: [
+      'label',
       'labelPosition',
       'hint',
       'rtl',
@@ -45,7 +46,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
                         <$RadioButton
                             {...rest}
                             inputId={option.__id}
-                            checked={control.value === option[innerProps.optionValue!]}
+                            checked={(control.field ? control.field.value : props.value) === option[innerProps.optionValue!]}
                             value={option[innerProps.optionValue!]}
                             onChange={(event) => {
                               control.handleChange?.(event.value);

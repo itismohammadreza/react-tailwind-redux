@@ -15,11 +15,9 @@ export const Editor = (props: EditorProps) => {
       'parseError',
     ],
     layoutProps: [
-      'iconPosition',
+      'label',
       'labelPosition',
-      'addon',
       'hint',
-      'icon',
       'rtl',
       'showRequiredStar',
     ],
@@ -36,7 +34,7 @@ export const Editor = (props: EditorProps) => {
                   errorElement={control.errorElement}>
                 <$Editor
                     {...rest}
-                    value={control.value}
+                    value={control.field ? control.field.value : props.value}
                     onTextChange={(event) => {
                       control.handleChange?.(event.htmlValue);
                       props.onTextChange?.(event);
