@@ -2,7 +2,7 @@ import {$ButtonProps, $FieldProps} from "@powell/api";
 import {ButtonAppearance, Position, SafeAny} from "@powell/models";
 import {MouseEvent, ReactNode} from "react";
 
-export type LabelPosition = 'float' | 'fix-side' | 'fix-top';
+export type LabelPosition = 'float' | 'side' | 'top';
 export type FixLabelPosition = Exclude<LabelPosition, 'float'>;
 export type IconPosition = Exclude<Position, 'top' | 'bottom'>;
 

@@ -1,19 +1,29 @@
-import {FormContainer} from "@powell/components/FormContainer";
 import {SelectButton} from "@powell/components/SelectButton";
-import {Button} from "@powell/components/Button";
+import {PreviewProps} from "@pages/main/showcase/models";
+import {Preview} from "@pages/main/showcase/components/Preview";
+import {SelectButtonProps} from "@powell/models";
 
 export const SelectButtonPage = () => {
   const items = [
-    { name: 'Option 1', value: 1 },
-    { name: 'Option 2', value: 2 },
-    { name: 'Option 3', value: 3 }
+    {name: 'Option 1', value: 1},
+    {name: 'Option 2', value: 2},
+    {name: 'Option 3', value: 3}
   ];
 
-  return (
-      <FormContainer className="flex flex-col gap-2 p-10" initialValues={{}} onSubmit={v => console.log(v)}>
-        <SelectButton optionLabel="name" options={items} label="label" name="n"/>
+  const previewProps: PreviewProps<SelectButtonProps> = {
+    component: "",
+    description: "",
+    options: [
+      {
+        field: 'label',
+        value: 'Label',
+      },
+    ]
+  }
 
-        <Button type="submit" label="submit"/>
-      </FormContainer>
+  return (
+      <Preview {...previewProps}>
+        <SelectButton optionLabel="name" options={items} name="n"/>
+      </Preview>
   )
 }

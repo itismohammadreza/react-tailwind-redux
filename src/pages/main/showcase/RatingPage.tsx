@@ -1,13 +1,23 @@
-import {FormContainer} from "@powell/components/FormContainer";
 import {Rating} from "@powell/components/Rating";
-import {Button} from "@powell/components/Button";
+import {PreviewProps} from "@pages/main/showcase/models";
+import {Preview} from "@pages/main/showcase/components/Preview";
+import {RatingProps} from "@powell/models";
 
 export const RatingPage = () => {
-  return (
-      <FormContainer className="flex flex-col gap-2 p-10" initialValues={{}} onSubmit={v => console.log(v)}>
-        <Rating label="label" name="n"/>
+  const previewProps: PreviewProps<RatingProps> = {
+    component: "",
+    description: "",
+    options: [
+      {
+        field: 'label',
+        value: 'Label',
+      },
+    ]
+  }
 
-        <Button type="submit" label="submit"/>
-      </FormContainer>
+  return (
+      <Preview {...previewProps}>
+        <Rating name="n"/>
+      </Preview>
   )
 }

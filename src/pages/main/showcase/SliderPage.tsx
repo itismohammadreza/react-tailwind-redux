@@ -1,13 +1,23 @@
-import {FormContainer} from "@powell/components/FormContainer";
 import {Slider} from "@powell/components/Slider";
-import {Button} from "@powell/components/Button";
+import {PreviewProps} from "@pages/main/showcase/models";
+import {Preview} from "@pages/main/showcase/components/Preview";
+import {SliderProps} from "@powell/models";
 
 export const SliderPage = () => {
-  return (
-      <FormContainer className="flex flex-col gap-2 p-10" initialValues={{}} onSubmit={v => console.log(v)}>
-        <Slider label="label" name="n"/>
+  const previewProps: PreviewProps<SliderProps> = {
+    component: "",
+    description: "",
+    options: [
+      {
+        field: 'label',
+        value: 'Label',
+      },
+    ]
+  }
 
-        <Button type="submit" label="submit"/>
-      </FormContainer>
+  return (
+      <Preview {...previewProps}>
+        <Slider name="n"/>
+      </Preview>
   )
 }

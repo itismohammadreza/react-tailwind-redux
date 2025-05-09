@@ -1,13 +1,23 @@
-import {FormContainer} from "@powell/components/FormContainer";
 import {TriStateCheckbox} from "@powell/components/TriStateCheckbox";
-import {Button} from "@powell/components/Button";
+import {Preview} from "@pages/main/showcase/components/Preview";
+import {PreviewProps} from "@pages/main/showcase/models";
+import {TriStateCheckboxProps} from "@powell/models";
 
 export const TriStateCheckboxPage = () => {
-  return (
-      <FormContainer className="flex flex-col gap-2 p-10" initialValues={{n:null}} onSubmit={v => console.log(v)}>
-        <TriStateCheckbox label="label" name="n"/>
+  const previewProps: PreviewProps<TriStateCheckboxProps> = {
+    component: "",
+    description: "",
+    options: [
+      {
+        field: 'label',
+        value: 'Label',
+      },
+    ]
+  }
 
-        <Button type="submit" label="submit"/>
-      </FormContainer>
+  return (
+      <Preview {...previewProps}>
+        <TriStateCheckbox name="n"/>
+      </Preview>
   )
 }

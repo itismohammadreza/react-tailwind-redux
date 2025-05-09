@@ -1,3 +1,11 @@
+@mixin apply-to($selectors...) {
+  @each $selector in $selectors {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
 [class*="-wrapper"] {
   .field {
     display: flex;
@@ -12,8 +20,10 @@
     color: #e24c4c;
   }
 
-  :where(.p-inputtext) {
-    width: 100%;
+  @include apply-to(".p-autocomplete, .p-cascadeselect, .p-chips, .p-colorpicker, .p-dropdown, [data-pc-name=" editor "], .p-inputnumber, .p-inputtext, .p-inputtextarea, .p-inputmask, .p-inputwrapper, .p-password-input") {
+    &, .p-inputtext {
+      width: 100%;
+    }
   }
 
   .p-icon-field {
@@ -23,7 +33,7 @@
     }
 
     &.p-icon-field-right {
-      :where(.p-inputtext) {
+      @include apply-to(".p-autocomplete, .p-cascadeselect, .p-chips, .p-colorpicker, .p-dropdown, [data-pc-name=" editor "], .p-inputnumber, .p-inputtext, .p-inputtextarea, .p-inputmask, .p-inputwrapper, .p-password-input") {
         padding-right: 2.5rem;
       }
 
@@ -34,7 +44,7 @@
     }
 
     &.p-icon-field-left {
-      :where(.p-inputtext) {
+      @include apply-to(".p-autocomplete, .p-cascadeselect, .p-chips, .p-colorpicker, .p-dropdown, [data-pc-name=" editor "], .p-inputnumber, .p-inputtext, .p-inputtextarea, .p-inputmask, .p-inputwrapper, .p-password-input") {
         padding-left: 2.5rem;
       }
 
@@ -45,12 +55,12 @@
     }
   }
 
-  &.label-fix-side .field {
+  &.label-side .field {
     flex-direction: row;
     align-items: center;
   }
 
-  &.label-fix-top .field {
+  &.label-top .field {
     flex-direction: column;
 
     label {
@@ -60,7 +70,7 @@
 
   &.addon-before {
     [class*="icon-"] {
-      :where(.p-inputtext) {
+      @include apply-to(".p-autocomplete, .p-cascadeselect, .p-chips, .p-colorpicker, .p-dropdown, [data-pc-name=" editor "], .p-inputnumber, .p-inputtext, .p-inputtextarea, .p-inputmask, .p-inputwrapper, .p-password-input") {
         border-radius: 0 var(--border-radius) var(--border-radius) 0;
       }
     }
@@ -74,7 +84,7 @@
     }
 
     [class*="icon-"] {
-      :where(.p-inputtext) {
+      @include apply-to(".p-autocomplete, .p-cascadeselect, .p-chips, .p-colorpicker, .p-dropdown, [data-pc-name=" editor "], .p-inputnumber, .p-inputtext, .p-inputtextarea, .p-inputmask, .p-inputwrapper, .p-password-input") {
         border-radius: var(--border-radius) 0 0 var(--border-radius);
       }
     }

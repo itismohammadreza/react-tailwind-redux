@@ -7,6 +7,6 @@ export const powellDefaults: PowellConfig = {
   ripple: true,
   inputSize: 'md',
   inputStyle: 'outlined',
-  labelPosition: 'fix-top',
-  fixLabelPosition: 'fix-side'
+  labelPosition: 'top',
+  fixLabelPosition: 'side'
 }

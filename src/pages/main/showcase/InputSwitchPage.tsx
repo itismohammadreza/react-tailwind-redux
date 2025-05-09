@@ -1,13 +1,23 @@
-import {FormContainer} from "@powell/components/FormContainer";
 import {InputSwitch} from "@powell/components/InputSwitch";
-import {Button} from "@powell/components/Button";
+import {PreviewProps} from "@pages/main/showcase/models";
+import {Preview} from "@pages/main/showcase/components/Preview";
+import {InputSwitchProps} from "@powell/models";
 
 export const InputSwitchPage = () => {
-  return (
-      <FormContainer className="flex flex-col gap-2 p-10" initialValues={{}} onSubmit={v => console.log(v)}>
-        <InputSwitch label="label" name="n"/>
+  const previewProps: PreviewProps<InputSwitchProps> = {
+    component: "",
+    description: "",
+    options: [
+      {
+        field: 'label',
+        value: 'Label',
+      },
+    ]
+  }
 
-        <Button type="submit" label="submit"/>
-      </FormContainer>
+  return (
+      <Preview {...previewProps}>
+        <InputSwitch name="n"/>
+      </Preview>
   )
 }

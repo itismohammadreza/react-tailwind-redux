@@ -1,21 +1,31 @@
-import {FormContainer} from "@powell/components/FormContainer";
 import {ListBox} from "@powell/components/ListBox";
-import {Button} from "@powell/components/Button";
+import {PreviewProps} from "@pages/main/showcase/models";
+import {Preview} from "@pages/main/showcase/components/Preview";
+import {ListBoxProps} from "@powell/models";
 
 export const ListBoxPage = () => {
   const cities = [
-    { name: 'New York', code: 'NY' },
-    { name: 'Rome', code: 'RM' },
-    { name: 'London', code: 'LDN' },
-    { name: 'Istanbul', code: 'IST' },
-    { name: 'Paris', code: 'PRS' }
+    {name: 'New York', code: 'NY'},
+    {name: 'Rome', code: 'RM'},
+    {name: 'London', code: 'LDN'},
+    {name: 'Istanbul', code: 'IST'},
+    {name: 'Paris', code: 'PRS'}
   ];
 
-  return (
-      <FormContainer className="flex flex-col gap-2 p-10" initialValues={{}} onSubmit={v => console.log(v)}>
-        <ListBox options={cities} optionLabel="name" label="label" name="n"/>
+  const previewProps: PreviewProps<ListBoxProps> = {
+    component: "",
+    description: "",
+    options: [
+      {
+        field: 'label',
+        value: 'Label',
+      },
+    ]
+  }
 
-        <Button type="submit" label="submit"/>
-      </FormContainer>
+  return (
+      <Preview {...previewProps}>
+        <ListBox options={cities} optionLabel="name" name="n"/>
+      </Preview>
   )
 }

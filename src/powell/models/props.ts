@@ -85,8 +85,8 @@ export type HasControl = {
   name?: string;
   parseError?: (error: string) => ReactNode;
   showRequiredStar?: boolean;
-  label?: string;
   hint?: string;
+  label?: string;
   rtl?: boolean;
 }
 
