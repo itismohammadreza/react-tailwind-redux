@@ -12,6 +12,7 @@ export const Knob = (props: KnobProps) => {
         key: 'name',
         keepInRest: true,
       },
+      'id',
       'parseError',
     ],
     layoutProps: [
@@ -30,11 +31,13 @@ export const Knob = (props: KnobProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="knob"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$Knob
                     {...rest}
-                    value={control.value || 0}
+                    id={control.id}
+                    value={(control.field ? control.field.value : props.value) || 0}
                     onChange={(event) => {
                       control.handleChange?.(event.value);
                       props.onChange?.(event);

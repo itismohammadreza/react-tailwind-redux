@@ -12,6 +12,7 @@ export const SelectButton = (props: SelectButtonProps) => {
         key: 'name',
         keepInRest: true,
       },
+      'id',
       'parseError',
     ],
     layoutProps: [
@@ -30,10 +31,12 @@ export const SelectButton = (props: SelectButtonProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="select-button"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$SelectButton
                     {...rest}
+                    id={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

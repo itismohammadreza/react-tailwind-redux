@@ -12,6 +12,10 @@ export const InputPassword = (props: InputPasswordProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -35,10 +39,12 @@ export const InputPassword = (props: InputPasswordProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="input-password"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$Password
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);

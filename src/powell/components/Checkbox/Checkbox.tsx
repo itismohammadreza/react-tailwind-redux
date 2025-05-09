@@ -12,6 +12,10 @@ export const Checkbox = (props: CheckboxProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -32,10 +36,12 @@ export const Checkbox = (props: CheckboxProps) => {
                   {...layoutProps}
                   icon={null}
                   componentName="checkbox"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$Checkbox
                     {...rest}
+                    inputId={control.id}
                     checked={control.field ? control.field.value : props.checked}
                     onChange={(event) => {
                       control.handleChange?.(event.checked);

@@ -12,6 +12,7 @@ export const Slider = (props: SliderProps) => {
         key: 'name',
         keepInRest: true,
       },
+      'id',
       'parseError',
     ],
     layoutProps: [
@@ -30,10 +31,12 @@ export const Slider = (props: SliderProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="slider"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$Slider
                     {...rest}
+                    id={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

@@ -12,6 +12,10 @@ export const ColorPicker = (props: ColorPickerProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -30,10 +34,12 @@ export const ColorPicker = (props: ColorPickerProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="color-picker"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$ColorPicker
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);

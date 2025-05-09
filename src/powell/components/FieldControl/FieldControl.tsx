@@ -1,14 +1,16 @@
-import {$ErrorMessage, $Field, $FieldProps} from "@powell/api";
+import {$ErrorMessage, $Field, $FieldProps, $UniqueComponentId} from "@powell/api";
 import {useFormContext} from "@powell/hooks";
 import {FieldControlMeta, SafeAny} from "@powell/models";
 import {isRequiredField} from "@powell/utils";
 import {FieldControlProps} from "@powell/models/props";
+import {useRef} from "react";
 
 export const FieldControl = (props: FieldControlProps) => {
-  const {name, parseError, children} = props;
+  const {name, parseError, id, children} = props;
   const formContext = useFormContext();
   const withinForm = !!formContext && !!name;
   const isRequired = withinForm && isRequiredField(formContext, name);
+  const uniqueId = useRef(id ?? $UniqueComponentId());
 
   // if the component is in formik context
   if (withinForm) {
@@ -26,6 +28,7 @@ export const FieldControl = (props: FieldControlProps) => {
               handleChange,
               handleBlur,
               isRequired,
+              id: uniqueId.current,
               errorElement: control.meta.error ? (
                   <$ErrorMessage name={name}>
                     {(message) => parseError?.(message) ?? message}

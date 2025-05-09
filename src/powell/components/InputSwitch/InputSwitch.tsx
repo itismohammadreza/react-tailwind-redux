@@ -12,6 +12,10 @@ export const InputSwitch = (props: InputSwitchProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -30,10 +34,12 @@ export const InputSwitch = (props: InputSwitchProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="input-switch"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$InputSwitch
                     {...rest}
+                    inputId={control.id}
                     checked={control.field ? control.field.value : props.checked}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

@@ -12,6 +12,7 @@ export const InputMask = (props: InputMaskProps) => {
         key: 'name',
         keepInRest: true,
       },
+      'id',
       'parseError',
     ],
     layoutProps: [
@@ -35,10 +36,12 @@ export const InputMask = (props: InputMaskProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="input-mask"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$InputMask
                     {...rest}
+                    id={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

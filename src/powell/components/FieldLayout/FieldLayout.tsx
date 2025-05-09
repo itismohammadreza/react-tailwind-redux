@@ -1,6 +1,6 @@
 import {useApplyConfig} from "@powell/hooks";
-import {PropsWithChildren, useRef} from "react";
-import {$classNames, $FloatLabel, $IconField, $InputIcon, $UniqueComponentId} from "@powell/api";
+import {PropsWithChildren} from "react";
+import {$classNames, $FloatLabel, $IconField, $InputIcon} from "@powell/api";
 import {getAddonTemplate} from "@powell/utils";
 import {FieldLayoutProps} from "@powell/models/props";
 import "./FieldLayout.scss";
@@ -22,13 +22,12 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
     showRequiredStar,
     variant,
     inputSize,
+    id,
     errorElement,
   } = props;
 
-  const inputId = useRef($UniqueComponentId());
-
   const labelEl = label && (
-      <label htmlFor={inputId.current}>
+      <label htmlFor={id}>
         {label}
         {isRequired && showRequiredStar ? '*' : ''}
       </label>
@@ -77,7 +76,7 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
             {getAddonTemplate(addon?.after)}
           </div>
         </div>
-        {errorElement && <small className="error-message font-sm text-red-600">{errorElement}</small>}
+        {errorElement && <small className="error-message">{errorElement}</small>}
         {hint && <small className="hint">{hint}</small>}
       </div>
   );

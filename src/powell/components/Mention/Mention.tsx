@@ -12,6 +12,10 @@ export const Mention = (props: MentionProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -34,10 +38,12 @@ export const Mention = (props: MentionProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="mention"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$Mention
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.((event.target as HTMLInputElement).value);

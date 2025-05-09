@@ -12,6 +12,7 @@ export const ToggleButton = (props: ToggleButtonProps) => {
         key: 'name',
         keepInRest: true,
       },
+      'id',
       'parseError',
     ],
     layoutProps: [
@@ -30,10 +31,12 @@ export const ToggleButton = (props: ToggleButtonProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="toggle-button"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$ToggleButton
                     {...rest}
+                    id={control.id}
                     checked={control.field ? control.field.value : props.checked}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

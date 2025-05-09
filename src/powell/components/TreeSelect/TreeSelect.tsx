@@ -12,6 +12,10 @@ export const TreeSelect = (props: TreeSelectProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -35,10 +39,12 @@ export const TreeSelect = (props: TreeSelectProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="tree-select"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$TreeSelect
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);

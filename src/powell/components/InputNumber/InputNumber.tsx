@@ -12,6 +12,10 @@ export const InputNumber = (props: InputNumberProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -35,10 +39,12 @@ export const InputNumber = (props: InputNumberProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="input-number"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$InputNumber
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

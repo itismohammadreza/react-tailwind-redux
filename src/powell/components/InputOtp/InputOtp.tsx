@@ -12,6 +12,7 @@ export const InputOtp = (props: InputOtpProps) => {
         key: 'name',
         keepInRest: true,
       },
+      'id',
       'parseError',
     ],
     layoutProps: [
@@ -31,10 +32,12 @@ export const InputOtp = (props: InputOtpProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="input-otp"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$InputOtp
                     {...rest}
+                    id={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

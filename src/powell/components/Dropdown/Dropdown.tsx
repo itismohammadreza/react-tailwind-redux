@@ -12,6 +12,10 @@ export const Dropdown = (props: DropdownProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -35,10 +39,12 @@ export const Dropdown = (props: DropdownProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="dropdown"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$Dropdown
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);

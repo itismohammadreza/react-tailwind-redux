@@ -13,6 +13,10 @@ export const RadioGroup = (props: RadioGroupProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -38,6 +42,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="radio-group"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 {

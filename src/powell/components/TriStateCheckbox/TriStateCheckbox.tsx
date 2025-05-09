@@ -12,6 +12,7 @@ export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
         key: 'name',
         keepInRest: true,
       },
+      'id',
       'parseError',
     ],
     layoutProps: [
@@ -31,10 +32,12 @@ export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="tri-state-checkbox"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$TriStateCheckbox
                     {...rest}
+                    id={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

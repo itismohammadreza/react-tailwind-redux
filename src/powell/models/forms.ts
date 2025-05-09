@@ -11,6 +11,7 @@ export interface FieldControlMeta extends Partial<$FieldProps> {
   handleBlur?: (value: SafeAny) => void;
   isRequired?: boolean;
   errorElement?: ReactNode;
+  id?: string;
 }
 
 export interface AddonConfig {

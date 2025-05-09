@@ -12,6 +12,10 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -35,10 +39,12 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="cascade-select"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$CascadeSelect
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.value);

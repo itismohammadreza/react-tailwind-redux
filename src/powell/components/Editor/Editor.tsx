@@ -12,6 +12,7 @@ export const Editor = (props: EditorProps) => {
         key: 'name',
         keepInRest: true,
       },
+      'id',
       'parseError',
     ],
     layoutProps: [
@@ -30,10 +31,12 @@ export const Editor = (props: EditorProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="editor"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$Editor
                     {...rest}
+                    id={control.id}
                     value={control.field ? control.field.value : props.value}
                     onTextChange={(event) => {
                       control.handleChange?.(event.htmlValue);

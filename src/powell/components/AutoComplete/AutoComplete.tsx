@@ -12,6 +12,10 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -35,10 +39,12 @@ export const AutoComplete = (props: AutoCompleteProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="auto-complete"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$AutoComplete
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);

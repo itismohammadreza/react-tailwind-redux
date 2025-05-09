@@ -12,6 +12,10 @@ export const MultiSelect = (props: MultiSelectProps) => {
         key: 'name',
         keepInRest: true,
       },
+      {
+        key: 'inputId',
+        alias: 'id'
+      },
       'parseError',
     ],
     layoutProps: [
@@ -35,10 +39,12 @@ export const MultiSelect = (props: MultiSelectProps) => {
               <FieldLayout
                   {...layoutProps}
                   componentName="multi-select"
+                  id={control.id}
                   isRequired={control.isRequired}
                   errorElement={control.errorElement}>
                 <$MultiSelect
                     {...rest}
+                    inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
                       control.handleChange?.(event.target.value);

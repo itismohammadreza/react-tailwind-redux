@@ -43,6 +43,7 @@ export type ButtonTemplateType = Pick<ButtonProps, "label" | "icon" | "raised" |
 export interface FieldControlProps {
   name?: string;
   parseError?: (error: string) => ReactNode;
+  id?: string;
   children?: ReactNode | ((event: FieldControlMeta) => ReactNode);
 }
 
@@ -55,6 +56,7 @@ export interface FieldLayoutProps {
   label?: string;
   icon?: string | ReactNode;
   hint?: string;
+  id?: string;
   inputSize?: Size;
   addon?: Addon;
   iconPosition?: $IconFieldProps["iconPosition"];
