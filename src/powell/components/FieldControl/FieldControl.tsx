@@ -41,5 +41,5 @@ export const FieldControl = (props: FieldControlProps) => {
     )
   }
   // if the component is NOT in formik context
-  return typeof children === "function" ? children({}) : children;
+  return typeof children === "function" ? children({id: uniqueId.current}) : children;
 }
