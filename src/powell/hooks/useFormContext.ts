@@ -1,10 +1,11 @@
 import {useContext} from "react";
 import {FormContext} from "@powell/components/FormContainer";
-import {$FormikConfig, $FormikContextType, $FormikValues, $useFormikContext} from "@powell/api";
+import {$FormikConfig, $FormikContext, $FormikContextType, $FormikValues, $useFormikContext} from "@powell/api";
+import {SafeAny} from "@powell/models";
 
 export const useFormContext = () => {
   const context = useContext(FormContext) as $FormikConfig<$FormikValues>;
-  const formikContext = $useFormikContext();
+  const formikContext = useSafeFormikContext();
 
   if (!context || !formikContext) {
     return null;
@@ -12,3 +13,15 @@ export const useFormContext = () => {
 
   return {...context, ...formikContext} as $FormikContextType<$FormikValues>;
 };
+
+export function useSafeFormikContext<T = SafeAny>() {
+  const context = useContext($FormikContext);
+  try {
+    if (context) {
+      return $useFormikContext<T>();
+    }
+    return undefined;
+  } catch {
+    return undefined;
+  }
+}
