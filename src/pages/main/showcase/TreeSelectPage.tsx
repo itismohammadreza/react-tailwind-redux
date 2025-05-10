@@ -72,8 +72,8 @@ export const TreeSelectPage = () => {
   ];
 
   const previewProps: PreviewProps<TreeSelectProps> = {
-    component: "",
-    description: "",
+    component: "TreeSelect",
+    description: "TreeSelect is a form component to choose from hierarchical data.",
     options: [
       {
         field: 'label',

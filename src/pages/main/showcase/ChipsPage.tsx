@@ -5,8 +5,8 @@ import {ChipsProps} from "@powell/models";
 
 export const ChipsPage = () => {
   const previewProps: PreviewProps<ChipsProps> = {
-    component: "",
-    description: "",
+    component: "Chips",
+    description: "Chips is used to enter multiple values on an input field.",
     options: [
       {
         field: 'label',

@@ -12,8 +12,8 @@ export const MultiSelectPage = () => {
   ];
 
   const previewProps: PreviewProps<MultiSelectProps> = {
-    component: "",
-    description: "",
+    component: "MultiSelect",
+    description: "MultiSelect is used to select multiple items from a collection.",
     options: [
       {
         field: 'label',

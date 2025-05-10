@@ -5,8 +5,8 @@ import {InputMaskProps} from "@powell/models";
 
 export const InputMaskPage = () => {
   const previewProps: PreviewProps<InputMaskProps> = {
-    component: "",
-    description: "",
+    component: "InputMask",
+    description: "InputMask component is used to enter input in a certain format such as numeric, date, currency, email and phone.",
     options: [
       {
         field: 'label',

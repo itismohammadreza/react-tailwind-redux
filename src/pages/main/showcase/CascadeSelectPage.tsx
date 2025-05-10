@@ -82,8 +82,8 @@ export const CascadeSelectPage = () => {
   ];
 
   const previewProps: PreviewProps<CascadeSelectProps> = {
-    component: "",
-    description: "",
+    component: "CascadeSelect",
+    description: "CascadeSelect is a form component to select a value from a nested structure of options.",
     options: [
       {
         field: 'label',

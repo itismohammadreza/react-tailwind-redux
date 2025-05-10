@@ -5,8 +5,8 @@ import {ColorPickerProps} from "@powell/models";
 
 export const ColorPickerPage = () => {
   const previewProps: PreviewProps<ColorPickerProps> = {
-    component: "",
-    description: "",
+    component: "ColorPicker",
+    description: "ColorPicker is an input component to select a color.",
     options: [
       {
         field: 'label',

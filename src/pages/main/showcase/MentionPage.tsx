@@ -45,10 +45,9 @@ export const MentionPage = () => {
     );
   }
 
-
   const previewProps: PreviewProps<MentionProps> = {
-    component: "",
-    description: "",
+    component: "Mention",
+    description: "Mention component is used to tag objects in a text.",
     options: [
       {
         field: 'label',

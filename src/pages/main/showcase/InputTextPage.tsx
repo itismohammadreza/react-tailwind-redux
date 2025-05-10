@@ -5,8 +5,8 @@ import {InputTextProps} from "@powell/models";
 
 export const InputTextPage = () => {
   const previewProps: PreviewProps<InputTextProps> = {
-    component: "",
-    description: "",
+    component: "InputText",
+    description: "InputText is an extension to standard input element with theming and keyfiltering.",
     options: [
       {
         field: 'label',

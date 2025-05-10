@@ -13,8 +13,8 @@ export const ListBoxPage = () => {
   ];
 
   const previewProps: PreviewProps<ListBoxProps> = {
-    component: "",
-    description: "",
+    component: "ListBox",
+    description: "ListBox is used to select one or more values from a list of items.",
     options: [
       {
         field: 'label',

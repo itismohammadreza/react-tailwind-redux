@@ -5,8 +5,8 @@ import {InputTextareaProps} from "@powell/models";
 
 export const InputTextareaPage = () => {
   const previewProps: PreviewProps<InputTextareaProps> = {
-    component: "",
-    description: "",
+    component: "InputTextarea",
+    description: "InputTextarea adds styling and autoResize functionality to standard textarea element.",
     options: [
       {
         field: 'label',

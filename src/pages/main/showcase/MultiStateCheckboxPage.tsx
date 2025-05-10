@@ -11,8 +11,8 @@ export const MultiStateCheckboxPage = () => {
   ];
 
   const previewProps: PreviewProps<MultiStateCheckboxProps> = {
-    component: "",
-    description: "",
+    component: "MultiStateCheckbox",
+    description: "MultiStateCheckbox is used to select a state from given options.",
     options: [
       {
         field: 'label',

@@ -5,8 +5,8 @@ import {InputNumberProps} from "@powell/models";
 
 export const InputNumberPage = () => {
   const previewProps: PreviewProps<InputNumberProps> = {
-    component: "",
-    description: "",
+    component: "InputNumber",
+    description: "InputNumber is an input component to provide numerical input.",
     options: [
       {
         field: 'label',

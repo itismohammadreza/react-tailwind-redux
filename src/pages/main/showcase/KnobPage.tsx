@@ -5,8 +5,8 @@ import {KnobProps} from "@powell/models";
 
 export const KnobPage = () => {
   const previewProps: PreviewProps<KnobProps> = {
-    component: "",
-    description: "",
+    component: "Knob",
+    description: "Knob is a form component to define number inputs with a dial.",
     options: [
       {
         field: 'label',

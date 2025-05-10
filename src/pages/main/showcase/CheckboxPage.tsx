@@ -5,8 +5,8 @@ import {CheckboxProps} from "@powell/models";
 
 export const CheckboxPage = () => {
   const previewProps: PreviewProps<CheckboxProps> = {
-    component: "",
-    description: "",
+    component: "Checkbox",
+    description: "Checkbox is an extension to standard checkbox element with theming.",
     options: [
       {
         field: 'label',

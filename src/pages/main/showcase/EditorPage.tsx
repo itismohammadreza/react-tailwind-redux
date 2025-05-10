@@ -5,8 +5,8 @@ import {EditorProps} from "@powell/models";
 
 export const EditorPage = () => {
   const previewProps: PreviewProps<EditorProps> = {
-    component: "",
-    description: "",
+    component: "Editor",
+    description: "Editor is rich text editor component based on Quill.",
     options: [
       {
         field: 'label',

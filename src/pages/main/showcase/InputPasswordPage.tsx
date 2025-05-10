@@ -5,8 +5,8 @@ import {InputPasswordProps} from "@powell/models";
 
 export const InputPasswordPage = () => {
   const previewProps: PreviewProps<InputPasswordProps> = {
-    component: "",
-    description: "",
+    component: "Password",
+    description: "Password displays strength indicator for password fields.",
     options: [
       {
         field: 'label',

@@ -5,8 +5,8 @@ import {InputOtpProps} from "@powell/models";
 
 export const InputOtpPage = () => {
   const previewProps: PreviewProps<InputOtpProps> = {
-    component: "",
-    description: "",
+    component: "InputOtp",
+    description: "InputOtp groups a collection of contents in tabs.",
     options: [
       {
         field: 'label',

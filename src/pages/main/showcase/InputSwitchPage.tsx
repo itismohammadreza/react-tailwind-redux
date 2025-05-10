@@ -5,8 +5,8 @@ import {InputSwitchProps} from "@powell/models";
 
 export const InputSwitchPage = () => {
   const previewProps: PreviewProps<InputSwitchProps> = {
-    component: "",
-    description: "",
+    component: "InputSwitch",
+    description: "InputSwitch is used to select a boolean value.",
     options: [
       {
         field: 'label',

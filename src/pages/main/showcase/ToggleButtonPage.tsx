@@ -5,8 +5,8 @@ import {ToggleButtonProps} from "@powell/models";
 
 export const ToggleButtonPage = () => {
   const previewProps: PreviewProps<ToggleButtonProps> = {
-    component: "",
-    description: "",
+    component: "ToggleButton",
+    description: "ToggleButton is used to select a boolean value using a button.",
     options: [
       {
         field: 'label',

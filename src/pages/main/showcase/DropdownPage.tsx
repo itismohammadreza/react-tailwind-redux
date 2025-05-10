@@ -12,8 +12,8 @@ export const DropdownPage = () => {
   ];
 
   const previewProps: PreviewProps<DropdownProps> = {
-    component: "",
-    description: "",
+    component: "Dropdown",
+    description: "Dropdown also known as Select, is used to choose an item from a collection of options.",
     options: [
       {
         field: 'label',

@@ -5,8 +5,8 @@ import {RatingProps} from "@powell/models";
 
 export const RatingPage = () => {
   const previewProps: PreviewProps<RatingProps> = {
-    component: "",
-    description: "",
+    component: "Rating",
+    description: "Rating component is a star based selection input.",
     options: [
       {
         field: 'label',

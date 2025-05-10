@@ -13,8 +13,8 @@ export const RadioGroupPage = () => {
   ];
 
   const previewProps: PreviewProps<RadioGroupProps> = {
-    component: "",
-    description: "",
+    component: "RadioGroup",
+    description: "RadioGroup is an extension to standard radio button element with theming.",
     options: [
       {
         field: 'label',

@@ -5,8 +5,8 @@ import {TriStateCheckboxProps} from "@powell/models";
 
 export const TriStateCheckboxPage = () => {
   const previewProps: PreviewProps<TriStateCheckboxProps> = {
-    component: "",
-    description: "",
+    component: "TriStateCheckbox",
+    description: "TriStateCheckbox is an extension to the Checkbox component with an additional state.",
     options: [
       {
         field: 'label',
