@@ -2,6 +2,15 @@ import {$FormikContextType, $FormikValues} from "@powell/api";
 import {Button} from "@powell/components/Button";
 import {AddonConfig, SafeAny} from "@powell/models";
 
+type PropDescriptor<T> =
+    | keyof T & string
+    | {
+  key: keyof T & string;
+  alias?: string;
+  defaultValue?: T[keyof T] | (() => T[keyof T]);
+  keepInRest?: boolean;
+};
+
 export const getAddonTemplate = (config?: AddonConfig) => {
   if (!config) {
     return <></>
@@ -40,23 +49,11 @@ export const isRequiredField = (formContext: $FormikContextType<$FormikValues>, 
   return current?.tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
 }
 
-type PropDescriptor<T> =
-    | keyof T
-    | {
-  key: keyof T;
-  alias?: string;
-  defaultValue?: T[keyof T] | (() => T[keyof T]);
-  keepInRest?: boolean;
-};
-
-export const splitProps = <T extends Record<string, any>>(
-    props: T,
-    groups: Record<string, PropDescriptor<T>[]>
-) => {
-  const result: Record<string, Partial<T>> = {};
+export const splitProps = <T extends Record<string, SafeAny>>(props: T, groups: Record<string, PropDescriptor<T>[]>) => {
+  const result: Record<string, SafeAny> = {};
   const rest: Partial<T> = {};
-  const assigned: Record<keyof T, boolean> = {} as any;
-  const restEligible: Record<keyof T, boolean> = {} as any;
+  const assigned: Partial<Record<keyof T, boolean>> = {};
+  const restEligible: Partial<Record<keyof T, boolean>> = {};
 
   for (const groupName in groups) {
     for (const descriptor of groups[groupName]) {
