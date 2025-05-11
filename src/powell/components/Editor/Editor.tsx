@@ -33,7 +33,7 @@ export const Editor = (props: EditorProps) => {
                   componentName="editor"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$Editor
                     {...rest}
                     id={control.id}

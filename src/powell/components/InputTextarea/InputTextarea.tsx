@@ -37,7 +37,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
                   componentName="input-textarea"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$InputTextarea
                     {...rest}
                     id={control.id}
@@ -50,7 +50,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

@@ -33,7 +33,7 @@ export const Rating = (props: RatingProps) => {
                   componentName="rating"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$Rating
                     {...rest}
                     id={control.id}

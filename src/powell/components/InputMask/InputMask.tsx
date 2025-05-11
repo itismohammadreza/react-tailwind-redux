@@ -38,7 +38,7 @@ export const InputMask = (props: InputMaskProps) => {
                   componentName="input-mask"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$InputMask
                     {...rest}
                     id={control.id}
@@ -51,7 +51,7 @@ export const InputMask = (props: InputMaskProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

@@ -38,7 +38,7 @@ export const Checkbox = (props: CheckboxProps) => {
                   componentName="checkbox"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$Checkbox
                     {...rest}
                     inputId={control.id}
@@ -47,7 +47,7 @@ export const Checkbox = (props: CheckboxProps) => {
                       control.handleChange?.(event.checked);
                       props.onChange?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

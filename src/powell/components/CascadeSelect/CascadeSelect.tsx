@@ -41,7 +41,7 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
                   componentName="cascade-select"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$CascadeSelect
                     {...rest}
                     inputId={control.id}
@@ -54,7 +54,7 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

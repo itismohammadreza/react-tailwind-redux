@@ -33,7 +33,7 @@ export const ListBox = (props: ListBoxProps) => {
                   componentName="list-box"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$ListBox
                     {...rest}
                     id={control.id}
@@ -46,7 +46,7 @@ export const ListBox = (props: ListBoxProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

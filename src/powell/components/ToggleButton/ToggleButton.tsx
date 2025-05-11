@@ -33,7 +33,7 @@ export const ToggleButton = (props: ToggleButtonProps) => {
                   componentName="toggle-button"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$ToggleButton
                     {...rest}
                     id={control.id}
@@ -46,7 +46,7 @@ export const ToggleButton = (props: ToggleButtonProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

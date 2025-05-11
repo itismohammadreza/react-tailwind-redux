@@ -40,7 +40,7 @@ export const Mention = (props: MentionProps) => {
                   componentName="mention"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$Mention
                     {...rest}
                     inputId={control.id}

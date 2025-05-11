@@ -33,7 +33,7 @@ export const Knob = (props: KnobProps) => {
                   componentName="knob"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$Knob
                     {...rest}
                     id={control.id}

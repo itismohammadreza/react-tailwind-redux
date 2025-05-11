@@ -41,7 +41,7 @@ export const Chips = (props: ChipsProps) => {
                   componentName="chips"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$Chips
                     {...rest}
                     inputId={control.id}
@@ -54,7 +54,7 @@ export const Chips = (props: ChipsProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

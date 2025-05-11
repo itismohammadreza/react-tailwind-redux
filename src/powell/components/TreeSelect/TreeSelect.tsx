@@ -41,7 +41,7 @@ export const TreeSelect = (props: TreeSelectProps) => {
                   componentName="tree-select"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$TreeSelect
                     {...rest}
                     inputId={control.id}
@@ -54,7 +54,7 @@ export const TreeSelect = (props: TreeSelectProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

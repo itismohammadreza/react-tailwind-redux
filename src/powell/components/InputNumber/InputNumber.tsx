@@ -41,7 +41,7 @@ export const InputNumber = (props: InputNumberProps) => {
                   componentName="input-number"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$InputNumber
                     {...rest}
                     inputId={control.id}
@@ -54,7 +54,7 @@ export const InputNumber = (props: InputNumberProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

@@ -41,7 +41,7 @@ export const MultiSelect = (props: MultiSelectProps) => {
                   componentName="multi-select"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$MultiSelect
                     {...rest}
                     inputId={control.id}
@@ -54,7 +54,7 @@ export const MultiSelect = (props: MultiSelectProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

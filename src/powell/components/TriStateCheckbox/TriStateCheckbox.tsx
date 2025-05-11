@@ -34,7 +34,7 @@ export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
                   componentName="tri-state-checkbox"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$TriStateCheckbox
                     {...rest}
                     id={control.id}
@@ -47,7 +47,7 @@ export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

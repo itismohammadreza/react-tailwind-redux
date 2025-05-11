@@ -36,7 +36,7 @@ export const InputSwitch = (props: InputSwitchProps) => {
                   componentName="input-switch"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$InputSwitch
                     {...rest}
                     inputId={control.id}
@@ -49,7 +49,7 @@ export const InputSwitch = (props: InputSwitchProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

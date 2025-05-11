@@ -33,7 +33,7 @@ export const SelectButton = (props: SelectButtonProps) => {
                   componentName="select-button"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$SelectButton
                     {...rest}
                     id={control.id}
@@ -43,10 +43,10 @@ export const SelectButton = (props: SelectButtonProps) => {
                       props.onChange?.(event);
                     }}
                     onBlur={(event) => {
-                      control.handleBlur?.(event);
+                      control.handleBlur?.({target: {name: rest.name}});
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

@@ -33,7 +33,7 @@ export const Slider = (props: SliderProps) => {
                   componentName="slider"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$Slider
                     {...rest}
                     id={control.id}

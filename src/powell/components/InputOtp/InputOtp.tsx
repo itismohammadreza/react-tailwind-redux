@@ -34,7 +34,7 @@ export const InputOtp = (props: InputOtpProps) => {
                   componentName="input-otp"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$InputOtp
                     {...rest}
                     id={control.id}
@@ -47,7 +47,7 @@ export const InputOtp = (props: InputOtpProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
-                    invalid={!!control.meta?.error}
+                    invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

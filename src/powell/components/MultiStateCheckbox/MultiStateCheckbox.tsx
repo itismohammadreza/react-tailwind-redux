@@ -33,7 +33,7 @@ export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
                   componentName="multi-state-checkbox"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$MultiStateCheckbox
                     {...rest}
                     id={control.id}

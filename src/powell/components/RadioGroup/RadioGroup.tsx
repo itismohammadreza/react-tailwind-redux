@@ -44,7 +44,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
                   componentName="radio-group"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 {
                   processedOptions.current.map(option => (
                       <div key={option.__id}>
@@ -57,7 +57,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
                               control.handleChange?.(event.value);
                               rest.onChange?.(event);
                             }}
-                            invalid={!!control.meta?.error}
+                            invalid={!!control.meta?.error && !props.disabled}
                         />
                         <label htmlFor={option.__id}>{option[innerProps.optionLabel!]}</label>
                       </div>

@@ -36,7 +36,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
                   componentName="color-picker"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}>
                 <$ColorPicker
                     {...rest}
                     inputId={control.id}
