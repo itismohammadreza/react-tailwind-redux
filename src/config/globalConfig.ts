@@ -8,4 +8,3 @@ export const globalConfig: Readonly<ConfigState> = {
   requestTimeout: 15000,
   powellConfig: {}
 }
-

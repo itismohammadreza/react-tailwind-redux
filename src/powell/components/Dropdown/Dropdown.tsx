@@ -21,7 +21,7 @@ export const Dropdown = (props: DropdownProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
       'inputSize',
     ],
   });

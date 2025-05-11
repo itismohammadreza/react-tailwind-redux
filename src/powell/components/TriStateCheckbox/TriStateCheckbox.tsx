@@ -18,7 +18,7 @@ export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
       'hint',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
     ],
   });
 

@@ -21,7 +21,7 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
       'inputSize',
     ],
   });

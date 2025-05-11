@@ -18,7 +18,7 @@ export const InputOtp = (props: InputOtpProps) => {
       'hint',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
     ],
   });
 

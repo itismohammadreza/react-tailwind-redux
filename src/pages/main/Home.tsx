@@ -1,6 +1,5 @@
 import {Button} from "@powell/components/Button";
 import {overlayService} from "@powell/api/overlayService";
-import {$Yup} from "@powell/api";
 
 export const Home = () => {
   const showConfirmation1 = () => {

@@ -21,7 +21,7 @@ export const InputText = (props: InputTextProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
       'inputSize',
     ],
   });

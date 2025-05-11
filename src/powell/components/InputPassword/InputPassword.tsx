@@ -21,7 +21,7 @@ export const InputPassword = (props: InputPasswordProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
       'inputSize',
     ],
   });

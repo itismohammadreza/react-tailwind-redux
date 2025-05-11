@@ -21,7 +21,7 @@ export const MultiSelect = (props: MultiSelectProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
       'inputSize',
     ],
   });

@@ -21,7 +21,7 @@ export const TreeSelect = (props: TreeSelectProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
       'inputSize',
     ],
   });

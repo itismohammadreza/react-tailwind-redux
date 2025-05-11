@@ -21,7 +21,7 @@ export const InputMask = (props: InputMaskProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
       'inputSize',
     ],
   });

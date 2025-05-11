@@ -1,35 +1,13 @@
-import {FormContainer} from "@powell/components/FormContainer";
 import {InputText} from "@powell/components/InputText";
-import {Button} from "@powell/components/Button";
+import {useState} from "react";
 
 export const UtilsPage = () => {
+  const [value, setValue] = useState('Default Value');
+
   return (
       <>
-        <h3>transform input value:</h3>
-        <FormContainer
-            validateOnChange
-            enableReinitialize={true}
-            initialValues={{n: ''}}
-            onSubmit={(values) => {
-              alert(JSON.stringify(values, null, 2));
-            }}>
-          {
-            (context) => (
-                <>
-                  <InputText
-                      label="Username"
-                      name="n"
-                      transform={{
-                        input: (v) => v && Number(v.replace(/,/g, '')).toLocaleString(),
-                        output: (v) => v.target.value && v.target.value.replace(/,/g, '')
-                      }}/>
-                  <Button type="submit" label="Submit"></Button>
-                </>
-            )
-          }
-        </FormContainer>
-        <h3>outside formik context:</h3>
-        <InputText value={"test"} onChange={(e) => console.log(e.target.value)} label="Username"/>
+        <h3>Outside Form Context:</h3>
+        <InputText value={value} onChange={(e) => setValue(e.target.value)} label="Username"/>
       </>
   )
 }

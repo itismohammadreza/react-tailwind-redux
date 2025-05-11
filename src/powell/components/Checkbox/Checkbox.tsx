@@ -18,7 +18,7 @@ export const Checkbox = (props: CheckboxProps) => {
       'hint',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
     ],
   });
 

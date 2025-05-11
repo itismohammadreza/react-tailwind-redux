@@ -21,7 +21,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
     ],
   });
 

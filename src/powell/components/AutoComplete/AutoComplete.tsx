@@ -21,7 +21,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
       'icon',
       'rtl',
       'showRequiredStar',
-      'variant',
+      {key: 'variant', keepInRest: true},
       'inputSize',
     ],
   });
