@@ -50,8 +50,9 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
       <div className={$classNames(
           `${componentName}-wrapper`,
           `variant-${variant}`,
-          `p-inputtext-${inputSize}`,
           {
+            'p-inputtext-sm': inputSize === 'small',
+            'p-inputtext-lg': inputSize === 'large',
             [`label-${labelPosition}`]: label,
             [`icon-${iconPosition}`]: iconEl,
             'is-rtl': rtl,
