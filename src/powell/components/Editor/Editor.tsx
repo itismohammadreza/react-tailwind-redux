@@ -40,7 +40,7 @@ export const Editor = (props: EditorProps) => {
                       props.onTextChange?.(event);
                     }}
                     onBlur={(event) => {
-                      control.handleBlur?.(event);
+                      control.handleBlur?.({target: {name: rest.name}});
                       props.onBlur?.(event);
                     }}
                 />
