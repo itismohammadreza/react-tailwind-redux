@@ -2,8 +2,11 @@ import {Dropdown} from "@powell/components/Dropdown";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {DropdownProps} from "@powell/models";
+import {usePowellConfig} from "@root/powell";
 
 export const DropdownPage = () => {
+  const [config] = usePowellConfig();
+
   const options = [
     {label: 'label1', value: 1},
     {label: 'label2', value: 2},
@@ -15,10 +18,20 @@ export const DropdownPage = () => {
     component: "Dropdown",
     description: "Dropdown also known as Select, is used to choose an item from a collection of options.",
     options: [
-      {
-        field: 'label',
-        value: 'Label',
-      },
+      {field: 'label', value: 'label'},
+      {field: 'labelWidth', value: 100},
+      {field: 'hint', value: ''},
+      {field: 'rtl', value: config.rtl},
+      {field: 'showRequiredStar', value: config.showRequiredStar},
+      {field: 'variant', value: 'outlined', selectOptions: 'variants'},
+      {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
+      {field: 'inputSize', value: '', selectOptions: 'sizes'},
+      {field: 'checkmark', value: false},
+      {field: 'disabled', value: false},
+      {field: 'editable', value: false},
+      {field: 'filter', value: false},
+      {field: 'placeholder', value: ''},
+      {field: 'showClear', value: false},
     ]
   }
 

@@ -3,8 +3,13 @@ import {useState} from "react";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {MentionProps} from "@powell/models";
+import {usePowellConfig} from "@root/powell";
 
 export const MentionPage = () => {
+  const [config] = usePowellConfig();
+
+  const [suggestions, setSuggestions] = useState([]);
+
   const customersSource = [
     {id: '1', nickname: 'nickname1', name: 'name1', image: ''},
     {id: '2', nickname: 'nickname2', name: 'name2', image: ''},
@@ -13,8 +18,6 @@ export const MentionPage = () => {
     {id: '5', nickname: 'nickname5', name: 'name5', image: ''},
     {id: '6', nickname: 'nickname6', name: 'name6', image: ''},
   ]
-  const [customers, setCustomers] = useState(customersSource);
-  const [suggestions, setSuggestions] = useState([]);
 
   const onSearch = (event) => {
     setTimeout(() => {
@@ -22,9 +25,9 @@ export const MentionPage = () => {
       let suggestions;
 
       if (!query.trim().length) {
-        suggestions = [...customers];
+        suggestions = [...customersSource];
       } else {
-        suggestions = customers.filter((customer) => {
+        suggestions = customersSource.filter((customer) => {
           return customer.nickname.toLowerCase().startsWith(query.toLowerCase());
         });
       }
@@ -49,10 +52,16 @@ export const MentionPage = () => {
     component: "Mention",
     description: "Mention component is used to tag objects in a text.",
     options: [
-      {
-        field: 'label',
-        value: 'Label',
-      },
+      {field: 'label', value: 'label'},
+      {field: 'labelWidth', value: 100},
+      {field: 'hint', value: ''},
+      {field: 'rtl', value: config.rtl},
+      {field: 'showRequiredStar', value: config.showRequiredStar},
+      {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
+      {field: 'inputSize', value: '', selectOptions: 'sizes'},
+      {field: 'autoResize', value: false},
+      {field: 'delay', value: 0},
+      {field: 'trigger', value: '@'},
     ]
   }
 

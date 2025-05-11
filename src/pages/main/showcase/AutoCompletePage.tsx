@@ -4,8 +4,11 @@ import {useState} from "react";
 import {$AutoCompleteCompleteEvent} from "@powell/api";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {AutoCompleteProps} from "@powell/models";
+import {usePowellConfig} from "@root/powell";
 
 export const AutoCompletePage = () => {
+  const [config] = usePowellConfig();
+
   const [items, setItems] = useState([]);
 
   const search = (event: $AutoCompleteCompleteEvent) => {
@@ -16,36 +19,18 @@ export const AutoCompletePage = () => {
     component: "AutoComplete",
     description: "AutoComplete is an input component that provides real-time suggestions while being typed",
     options: [
-      {
-        field: 'label',
-        value: 'Label',
-      },
-      {
-        field: 'multiple',
-        value: true,
-      },
-      {
-        field: 'delay',
-        value: 0,
-      },
-      {
-        field: 'disabled',
-        value: false,
-      },
-      {
-        field: 'dropdown',
-        value: false,
-      },
-      {
-        field: 'variant',
-        value: 'outlined',
-        selectOptions: 'variants'
-      },
-      {
-        field: 'labelPosition',
-        value: 'float',
-        selectOptions: 'labelPositions',
-      }
+      {field: 'label', value: 'label'},
+      {field: 'labelWidth', value: 100},
+      {field: 'hint', value: ''},
+      {field: 'rtl', value: config.rtl},
+      {field: 'showRequiredStar', value: config.showRequiredStar},
+      {field: 'variant', value: 'outlined', selectOptions: 'variants'},
+      {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
+      {field: 'inputSize', value: '', selectOptions: 'sizes'},
+      {field: 'disabled', value: false},
+      {field: 'multiple', value: true},
+      {field: 'delay', value: 0},
+      {field: 'dropdown', value: false},
     ],
   }
 

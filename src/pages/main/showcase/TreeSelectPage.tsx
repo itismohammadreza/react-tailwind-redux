@@ -2,8 +2,11 @@ import {TreeSelect} from "@powell/components/TreeSelect";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {TreeSelectProps} from "@powell/models";
+import {usePowellConfig} from "@root/powell";
 
 export const TreeSelectPage = () => {
+  const [config] = usePowellConfig();
+
   const options = [
     {
       key: '0',
@@ -75,10 +78,19 @@ export const TreeSelectPage = () => {
     component: "TreeSelect",
     description: "TreeSelect is a form component to choose from hierarchical data.",
     options: [
-      {
-        field: 'label',
-        value: 'Label',
-      },
+      {field: 'label', value: 'label'},
+      {field: 'labelWidth', value: 100},
+      {field: 'hint', value: ''},
+      {field: 'rtl', value: config.rtl},
+      {field: 'showRequiredStar', value: config.showRequiredStar},
+      {field: 'variant', value: 'outlined', selectOptions: 'variants'},
+      {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
+      {field: 'inputSize', value: '', selectOptions: 'sizes'},
+      {field: 'disabled', value: false},
+      {field: 'display', value: 'comma', selectOptions: 'displayTypes'},
+      {field: 'filter', value: false},
+      {field: 'placeholder', value: ''},
+      {field: 'showClear', value: false},
     ]
   }
 

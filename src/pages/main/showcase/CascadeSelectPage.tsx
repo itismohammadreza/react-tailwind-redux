@@ -2,8 +2,11 @@ import {CascadeSelect} from "@powell/components/CascadeSelect";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {CascadeSelectProps} from "@powell/models";
+import {usePowellConfig} from "@root/powell";
 
 export const CascadeSelectPage = () => {
+  const [config] = usePowellConfig();
+
   const countries = [
     {
       name: 'Australia',
@@ -85,10 +88,14 @@ export const CascadeSelectPage = () => {
     component: "CascadeSelect",
     description: "CascadeSelect is a form component to select a value from a nested structure of options.",
     options: [
-      {
-        field: 'label',
-        value: 'Label',
-      },
+      {field: 'label', value: 'label'},
+      {field: 'labelWidth', value: 100},
+      {field: 'hint', value: ''},
+      {field: 'rtl', value: config.rtl},
+      {field: 'showRequiredStar', value: config.showRequiredStar},
+      {field: 'variant', value: 'outlined', selectOptions: 'variants'},
+      {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
+      {field: 'inputSize', value: '', selectOptions: 'sizes'},
     ]
   }
 
