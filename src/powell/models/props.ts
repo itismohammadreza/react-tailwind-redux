@@ -37,9 +37,6 @@ import {MouseEvent, ReactNode} from "react";
 import {ButtonAppearance, SafeAny, Size} from "@powell/models/common";
 import {Addon, FieldControlMeta, FixLabelPosition, LabelPosition} from "@powell/models/forms";
 
-export type ButtonState = 'default' | 'loading' | 'next';
-export type ButtonTemplateType = Pick<ButtonProps, "label" | "icon" | "raised" | "appearance" | "severity">;
-
 export interface FieldControlProps {
   name?: string;
   parseError?: (error: string) => ReactNode;
@@ -54,6 +51,7 @@ export interface FieldLayoutProps {
   showRequiredStar?: boolean;
   rtl?: boolean;
   label?: string;
+  labelWidth?: number;
   icon?: string | ReactNode;
   hint?: string;
   id?: string;
@@ -64,65 +62,57 @@ export interface FieldLayoutProps {
   errorElement?: ReactNode;
 }
 
-export type HasSize = {
-  inputSize?: Size;
-}
+export type HasSize = Pick<FieldLayoutProps, "inputSize">;
 
-export type HasIcon = {
-  icon?: string | ReactNode;
-  iconPosition?: $IconFieldProps["iconPosition"];
-}
+export type HasIcon = Pick<FieldLayoutProps, "icon" | "iconPosition">;
 
-export type HasAddon = {
-  addon?: Addon;
-}
+export type HasAddon = Pick<FieldLayoutProps, "addon">
 
 export type HasLabel<T> = {
   labelPosition?: T;
 }
 
-export type HasControl = {
-  name?: string;
-  parseError?: (error: string) => ReactNode;
-  showRequiredStar?: boolean;
-  hint?: string;
-  label?: string;
-  rtl?: boolean;
-}
+export type HasControl =
+    Pick<FieldControlProps, "name" | "parseError">
+    & Pick<FieldLayoutProps, "showRequiredStar" | "hint" | "label" | "labelWidth" | "rtl">;
 
-export type DefaultFieldControlProps = HasControl & HasAddon & HasSize & HasIcon & HasLabel<LabelPosition>;
-export type FixFieldControlProps = HasControl & HasAddon & HasSize & HasIcon & HasLabel<FixLabelPosition>;
+export type CommonFieldControlProps = HasControl & HasAddon & HasSize & HasIcon & HasLabel<LabelPosition>;
+export type FixFieldControlProps = HasControl & HasLabel<FixLabelPosition>;
 
-export type AutoCompleteProps = $AutoCompleteProps & DefaultFieldControlProps;
-export type InputTextProps = $InputTextProps & DefaultFieldControlProps;
-export type CascadeSelectProps = $CascadeSelectProps & DefaultFieldControlProps;
+export type AutoCompleteProps = $AutoCompleteProps & CommonFieldControlProps;
+export type InputTextProps = $InputTextProps & CommonFieldControlProps;
+export type CascadeSelectProps = $CascadeSelectProps & CommonFieldControlProps;
 export type CheckboxProps = Partial<$CheckboxProps> & FixFieldControlProps;
-export type ChipsProps = $ChipsProps & DefaultFieldControlProps;
+export type ChipsProps = $ChipsProps & CommonFieldControlProps;
 export type ColorPickerProps = $ColorPickerProps & FixFieldControlProps;
-export type DropdownProps = $DropdownProps & DefaultFieldControlProps;
+export type DropdownProps = $DropdownProps & CommonFieldControlProps;
 export type EditorProps = $EditorProps & FixFieldControlProps;
-export type InputMaskProps = $InputMaskProps & DefaultFieldControlProps;
-export type InputNumberProps = $InputNumberProps & DefaultFieldControlProps;
+export type InputMaskProps = $InputMaskProps & CommonFieldControlProps;
+export type InputNumberProps = $InputNumberProps & CommonFieldControlProps;
 export type InputOtpProps = $InputOtpProps & FixFieldControlProps;
-export type InputPasswordProps = $PasswordProps & DefaultFieldControlProps;
+export type InputPasswordProps = $PasswordProps & CommonFieldControlProps;
 export type InputSwitchProps = Partial<$InputSwitchProps> & FixFieldControlProps;
-export type InputTextareaProps = $InputTextareaProps & Omit<DefaultFieldControlProps, 'inputSize'>;
-export type KnobProps = $KnobProps & HasControl & HasLabel<LabelPosition>;
+export type InputTextareaProps = $InputTextareaProps & Omit<CommonFieldControlProps, 'inputSize'>;
+export type KnobProps = $KnobProps & FixFieldControlProps;
 export type ListBoxProps = $ListBoxProps & FixFieldControlProps;
-export type MentionProps = $MentionProps & DefaultFieldControlProps;
-export type MultiSelectProps = $MultiSelectProps & DefaultFieldControlProps;
+export type MentionProps = $MentionProps & CommonFieldControlProps;
+export type MultiSelectProps = $MultiSelectProps & CommonFieldControlProps;
 export type MultiStateCheckboxProps = $MultiStateCheckboxProps & FixFieldControlProps;
 export type RadioGroupProps = $RadioButtonProps & FixFieldControlProps & {
   options: SafeAny[];
   optionLabel: string;
-  optionValue: string
+  optionValue: string;
 };
 export type RatingProps = $RatingProps & FixFieldControlProps;
 export type SelectButtonProps = $SelectButtonProps & FixFieldControlProps;
 export type SliderProps = $SliderProps & FixFieldControlProps;
 export type ToggleButtonProps = $ToggleButtonProps & FixFieldControlProps;
-export type TreeSelectProps = $TreeSelectProps & DefaultFieldControlProps;
+export type TreeSelectProps = $TreeSelectProps & CommonFieldControlProps;
 export type TriStateCheckboxProps = $TriStateCheckboxProps & FixFieldControlProps;
+
+export type ButtonState = 'default' | 'loading' | 'next';
+
+export type ButtonTemplateType = Pick<ButtonProps, "label" | "icon" | "raised" | "appearance" | "severity">;
 
 export interface ButtonOnClickAsyncEvent {
   loadingCallback: (ok?: boolean) => void,
