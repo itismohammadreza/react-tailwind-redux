@@ -8,14 +8,8 @@ import './InputPassword.scss';
 export const InputPassword = (props: InputPasswordProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputPasswordProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

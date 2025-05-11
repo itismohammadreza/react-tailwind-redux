@@ -8,14 +8,8 @@ import './ColorPicker.scss';
 export const ColorPicker = (props: ColorPickerProps) => {
   const {controlProps, layoutProps, rest} = splitProps<ColorPickerProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

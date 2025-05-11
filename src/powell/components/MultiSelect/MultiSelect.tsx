@@ -8,14 +8,8 @@ import './MultiSelect.scss';
 export const MultiSelect = (props: MultiSelectProps) => {
   const {controlProps, layoutProps, rest} = splitProps<MultiSelectProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

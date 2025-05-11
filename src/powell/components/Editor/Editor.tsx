@@ -8,10 +8,7 @@ import './Editor.scss';
 export const Editor = (props: EditorProps) => {
   const {controlProps, layoutProps, rest} = splitProps<EditorProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

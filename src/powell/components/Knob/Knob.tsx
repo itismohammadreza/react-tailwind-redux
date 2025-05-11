@@ -8,10 +8,7 @@ import './Knob.scss';
 export const Knob = (props: KnobProps) => {
   const {controlProps, layoutProps, rest} = splitProps<KnobProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

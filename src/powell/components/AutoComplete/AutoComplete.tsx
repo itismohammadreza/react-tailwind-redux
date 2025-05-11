@@ -8,14 +8,8 @@ import './AutoComplete.scss';
 export const AutoComplete = (props: AutoCompleteProps) => {
   const {controlProps, layoutProps, rest} = splitProps<AutoCompleteProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

@@ -8,14 +8,8 @@ import './InputNumber.scss';
 export const InputNumber = (props: InputNumberProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputNumberProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

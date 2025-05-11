@@ -8,14 +8,8 @@ import './TreeSelect.scss';
 export const TreeSelect = (props: TreeSelectProps) => {
   const {controlProps, layoutProps, rest} = splitProps<TreeSelectProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

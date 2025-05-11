@@ -38,8 +38,7 @@ export const Preview = (props: PreviewProps) => {
               <FormContainer
                   validationSchema={
                     $Yup.object({
-                      n: $Yup.string()
-                      .required('Field is required')
+                      n: $Yup.string().required('Field is required')
                     })
                   }
                   className="flex flex-col gap-2 p-10"

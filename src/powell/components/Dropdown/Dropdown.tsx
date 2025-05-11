@@ -8,14 +8,8 @@ import './Dropdown.scss';
 export const Dropdown = (props: DropdownProps) => {
   const {controlProps, layoutProps, rest} = splitProps<DropdownProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

@@ -9,14 +9,8 @@ import './RadioGroup.scss';
 export const RadioGroup = (props: RadioGroupProps) => {
   const {controlProps, layoutProps, innerProps, rest} = splitProps<RadioGroupProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

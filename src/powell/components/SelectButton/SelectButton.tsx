@@ -8,10 +8,7 @@ import './SelectButton.scss';
 export const SelectButton = (props: SelectButtonProps) => {
   const {controlProps, layoutProps, rest} = splitProps<SelectButtonProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

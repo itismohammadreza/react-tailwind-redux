@@ -8,10 +8,7 @@ import './InputOtp.scss';
 export const InputOtp = (props: InputOtpProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputOtpProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

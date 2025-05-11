@@ -8,10 +8,7 @@ import './Rating.scss';
 export const Rating = (props: RatingProps) => {
   const {controlProps, layoutProps, rest} = splitProps<RatingProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

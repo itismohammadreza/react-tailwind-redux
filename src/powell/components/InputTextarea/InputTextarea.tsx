@@ -8,10 +8,7 @@ import './InputTextarea.scss';
 export const InputTextarea = (props: InputTextareaProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputTextareaProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

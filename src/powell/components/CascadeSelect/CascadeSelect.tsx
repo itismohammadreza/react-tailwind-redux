@@ -8,14 +8,8 @@ import './CascadeSelect.scss';
 export const CascadeSelect = (props: CascadeSelectProps) => {
   const {controlProps, layoutProps, rest} = splitProps<CascadeSelectProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

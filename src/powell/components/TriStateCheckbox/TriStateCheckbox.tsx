@@ -8,10 +8,7 @@ import './TriStateCheckbox.scss';
 export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
   const {controlProps, layoutProps, rest} = splitProps<TriStateCheckboxProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

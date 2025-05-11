@@ -8,14 +8,8 @@ import './Mention.scss';
 export const Mention = (props: MentionProps) => {
   const {controlProps, layoutProps, rest} = splitProps<MentionProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

@@ -8,10 +8,7 @@ import './MultiStateCheckbox.scss';
 export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
   const {controlProps, layoutProps, rest} = splitProps<MultiStateCheckboxProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

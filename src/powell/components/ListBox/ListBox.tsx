@@ -8,10 +8,7 @@ import './ListBox.scss';
 export const ListBox = (props: ListBoxProps) => {
   const {controlProps, layoutProps, rest} = splitProps<ListBoxProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

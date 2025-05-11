@@ -8,14 +8,8 @@ import './InputSwitch.scss';
 export const InputSwitch = (props: InputSwitchProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputSwitchProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [

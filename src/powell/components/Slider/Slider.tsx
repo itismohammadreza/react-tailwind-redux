@@ -8,10 +8,7 @@ import './Slider.scss';
 export const Slider = (props: SliderProps) => {
   const {controlProps, layoutProps, rest} = splitProps<SliderProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

@@ -8,10 +8,7 @@ import './InputMask.scss';
 export const InputMask = (props: InputMaskProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputMaskProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

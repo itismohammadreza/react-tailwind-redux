@@ -8,10 +8,7 @@ import './InputText.scss';
 export const InputText = (props: InputTextProps) => {
   const {controlProps, layoutProps, rest} = splitProps<InputTextProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
+      {key: 'name', keepInRest: true},
       'id',
       'parseError',
     ],

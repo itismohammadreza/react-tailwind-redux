@@ -8,14 +8,8 @@ import './Chips.scss';
 export const Chips = (props: ChipsProps) => {
   const {controlProps, layoutProps, rest} = splitProps<ChipsProps>(props, {
     controlProps: [
-      {
-        key: 'name',
-        keepInRest: true,
-      },
-      {
-        key: 'inputId',
-        alias: 'id'
-      },
+      {key: 'name', keepInRest: true},
+      {key: 'inputId', alias: 'id'},
       'parseError',
     ],
     layoutProps: [
