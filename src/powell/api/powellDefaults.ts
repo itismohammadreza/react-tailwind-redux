@@ -8,5 +8,6 @@ export const powellDefaults: PowellConfig = {
   inputSize: 'medium',
   inputStyle: 'outlined',
   labelPosition: 'top',
-  fixLabelPosition: 'side'
+  fixLabelPosition: 'side',
+  injectDirectionToRoot: false,
 }

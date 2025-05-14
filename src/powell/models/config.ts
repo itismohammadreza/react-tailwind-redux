@@ -83,4 +83,5 @@ export interface PowellConfig extends OmittedApiOptions {
   inputSize?: Size;
   labelPosition?: LabelPosition;
   fixLabelPosition?: FixLabelPosition;
+  injectDirectionToRoot?: boolean;
 }
