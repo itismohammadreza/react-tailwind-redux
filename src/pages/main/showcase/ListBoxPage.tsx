@@ -24,7 +24,7 @@ export const ListBoxPage = () => {
       {field: 'hint', value: ''},
       {field: 'rtl', value: config.rtl},
       {field: 'showRequiredStar', value: config.showRequiredStar},
-      {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.labelPosition},
+      {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.fixLabelPosition},
       {field: 'disabled', value: false},
       {field: 'filter', value: false},
       {field: 'multiple', value: false},

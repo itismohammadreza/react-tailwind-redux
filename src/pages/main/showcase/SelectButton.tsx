@@ -22,7 +22,7 @@ export const SelectButtonPage = () => {
       {field: 'hint', value: ''},
       {field: 'rtl', value: config.rtl},
       {field: 'showRequiredStar', value: config.showRequiredStar},
-      {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.labelPosition},
+      {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.fixLabelPosition},
       {field: 'allowEmpty', value: true},
       {field: 'disabled', value: false},
       {field: 'multiple', value: false},

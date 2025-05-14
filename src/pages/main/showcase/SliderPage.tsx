@@ -16,7 +16,7 @@ export const SliderPage = () => {
       {field: 'hint', value: ''},
       {field: 'rtl', value: config.rtl},
       {field: 'showRequiredStar', value: config.showRequiredStar},
-      {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.labelPosition},
+      {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.fixLabelPosition},
       {field: 'disabled', value: false},
       {field: 'max', value: 100},
       {field: 'min', value: 0},

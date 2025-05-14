@@ -25,7 +25,7 @@ export const RadioGroupPage = () => {
       {field: 'rtl', value: config.rtl},
       {field: 'showRequiredStar', value: config.showRequiredStar},
       {field: 'variant', value: 'outlined', selectOptions: 'variants'},
-      {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.labelPosition},
+      {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.fixLabelPosition},
       {field: 'disabled', value: false},
       {field: 'readonly', value: false},
     ]
