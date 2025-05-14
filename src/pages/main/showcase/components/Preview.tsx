@@ -21,7 +21,7 @@ export const Preview = (props: PreviewProps) => {
   };
 
   return (
-      <div className="container p-4 space-y-4">
+      <div className="container mx-auto p-4 space-y-4">
         <$Card className="[&_.p-card-content]:p-0">
           <h3 className="text-2xl font-bold mb-3">{component}</h3>
           <h5 className="text-gray-400">{description}</h5>

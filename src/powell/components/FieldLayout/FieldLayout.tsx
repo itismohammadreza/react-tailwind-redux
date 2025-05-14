@@ -55,11 +55,10 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
             'p-inputtext-lg': inputSize === 'large',
             [`label-${labelPosition}`]: label,
             [`icon-${iconPosition}`]: iconEl,
-            'is-rtl': rtl,
-            'is-ltr': !rtl,
             'addon-before': addon?.before,
             'addon-after': addon?.after,
-          })}>
+          })}
+           dir={rtl ? 'rtl' : 'ltr'}>
         <div className="field">
           {labelPosition !== 'float' && labelEl}
           <div className={$classNames('field-inner', {"p-inputgroup": addon})}>
