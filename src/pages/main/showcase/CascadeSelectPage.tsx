@@ -101,7 +101,13 @@ export const CascadeSelectPage = () => {
 
   return (
       <Preview {...previewProps}>
-        <CascadeSelect options={countries} name="n"/>
+        <CascadeSelect
+            options={countries}
+            optionLabel="cname"
+            optionGroupLabel="name"
+            optionGroupChildren={['states', 'cities']}
+            style={{ width: '14rem' }}
+            name="n"/>
       </Preview>
   )
 }
