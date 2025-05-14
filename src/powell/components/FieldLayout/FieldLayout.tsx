@@ -3,7 +3,6 @@ import {PropsWithChildren} from "react";
 import {$classNames, $FloatLabel, $IconField, $InputIcon} from "@powell/api";
 import {getAddonTemplate} from "@powell/utils";
 import {FieldLayoutProps} from "@powell/models/props";
-import "./FieldLayout.scss";
 
 export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
   props = useApplyConfig(props);
