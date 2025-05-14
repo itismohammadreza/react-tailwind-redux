@@ -2,6 +2,7 @@ import {PropsWithChildren} from "react";
 import {$ConfirmDialog, $ConfirmPopup, $PrimeReactProvider, configService, powellDefaults} from "@powell/api";
 import {PowellConfig, ThemeName} from "@powell/models";
 import {Toast} from "@powell/components/Toast";
+import {applyConfigToDom} from "@powell/hooks";
 
 const createThemeLink = () => {
   const headEl = document.head;
@@ -22,13 +23,14 @@ const applyTheme = (theme: ThemeName) => {
   themeEl.setAttribute('href', themeLink);
 }
 
-export const PowellProvider = (props: PropsWithChildren<{ config?: PowellConfig }>) => {
+export const PowellProvider = (props: PropsWithChildren<{config?: PowellConfig}>) => {
   const {children, config} = props;
   const defaultConfig: PowellConfig = {
     ...powellDefaults,
     ...config
   };
   configService.set(defaultConfig);
+  applyConfigToDom(defaultConfig);
   applyTheme(defaultConfig.theme!);
   return (
       <$PrimeReactProvider value={defaultConfig}>
