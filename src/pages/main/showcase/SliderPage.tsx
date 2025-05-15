@@ -22,7 +22,7 @@ export const SliderPage = () => {
       {field: 'min', value: 0},
       {field: 'orientation', value: 'horizontal', selectOptions: 'orientations'},
       {field: 'range', value: false},
-      {field: 'style', value: 1},
+      {field: 'step', value: 1},
     ]
   }
 

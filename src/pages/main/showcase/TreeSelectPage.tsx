@@ -90,6 +90,7 @@ export const TreeSelectPage = () => {
       {field: 'display', value: 'comma', selectOptions: 'displayTypes'},
       {field: 'filter', value: false},
       {field: 'placeholder', value: ''},
+      {field: 'selectionMode', value: 'single', selectOptions: 'selectionModes'},
       {field: 'showClear', value: false},
     ]
   }

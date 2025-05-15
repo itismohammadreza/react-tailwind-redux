@@ -45,7 +45,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
                   errorElement={!props.disabled && control.errorElement}>
                 {
                   processedOptions.current.map(option => (
-                      <div key={option.__id}>
+                      <div className="radio-group-item" key={option.__id}>
                         <$RadioButton
                             {...rest}
                             inputId={option.__id}

@@ -27,6 +27,7 @@ export const MultiSelectPage = () => {
       {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
       {field: 'inputSize', value: '', selectOptions: 'sizes'},
       {field: 'display', value: 'comma', selectOptions: 'displayTypes'},
+      {field: 'filter', value: false},
       {field: 'fixedPlaceholder', value: false},
       {field: 'flex', value: false},
       {field: 'inline', value: false},

@@ -40,7 +40,7 @@ export const MentionPage = () => {
     return (
         <div className="flex align-items-center">
           <img alt={suggestion.name} src={src} width="32"/>
-          <span className="flex flex-column ml-2">
+          <span className="flex flex-column ms-2">
             {suggestion.name}
             <small style={{fontSize: '.75rem', color: 'var(--text-color-secondary)'}}>@{suggestion.nickname}</small>
           </span>
