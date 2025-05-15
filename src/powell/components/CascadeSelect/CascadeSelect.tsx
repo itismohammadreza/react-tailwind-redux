@@ -43,7 +43,7 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
                 <$CascadeSelect
                     {...rest}
                     // Todo: Uncomment this line after panelClassName added to component props in next updates
-                    // panelClassName={`${props.panelClassName} ${props.rtl ? 'panel-rtl' : ''}`}
+                    // panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
                     inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {

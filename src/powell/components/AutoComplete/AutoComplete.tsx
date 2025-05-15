@@ -42,7 +42,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
                   errorElement={!props.disabled && control.errorElement}>
                 <$AutoComplete
                     {...rest}
-                    panelClassName={`${props.panelClassName} ${props.rtl ? 'panel-rtl' : ''}`}
+                    panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
                     inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {

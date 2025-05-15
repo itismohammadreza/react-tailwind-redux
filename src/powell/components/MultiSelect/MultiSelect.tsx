@@ -42,7 +42,7 @@ export const MultiSelect = (props: MultiSelectProps) => {
                   errorElement={!props.disabled && control.errorElement}>
                 <$MultiSelect
                     {...rest}
-                    panelClassName={`${props.panelClassName} ${props.rtl ? 'panel-rtl' : ''}`}
+                    panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
                     inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {

@@ -37,7 +37,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
                   errorElement={!props.disabled && control.errorElement}>
                 <$ColorPicker
                     {...rest}
-                    panelClassName={`${props.panelClassName} ${props.rtl ? 'panel-rtl' : ''}`}
+                    panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
                     inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
