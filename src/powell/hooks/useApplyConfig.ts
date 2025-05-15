@@ -70,12 +70,8 @@ export const useApplyConfig = <T extends CommonConfigProps>(props: T, options: A
     ...props,
     rtl: props.rtl ?? config.rtl,
     showRequiredStar: props.showRequiredStar ?? config.showRequiredStar,
-    labelPosition: props.labelPosition ?? config.labelPosition,
+    labelPosition: props.labelPosition ?? (isFixLabel ? config.fixLabelPosition : config.labelPosition),
     ...('variant' in props ? {variant: props.variant ?? config.inputStyle} : {}),
-  }
-
-  if (isFixLabel) {
-    result.labelPosition = config.fixLabelPosition;
   }
 
   if (sizable) {
