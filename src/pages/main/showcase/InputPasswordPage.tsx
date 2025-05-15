@@ -21,6 +21,7 @@ export const InputPasswordPage = () => {
       {field: 'inputSize', value: '', selectOptions: 'sizes'},
       {field: 'feedback', value: true},
       {field: 'toggleMask', value: true},
+      {field: 'showClear', value: false},
     ]
   }
 

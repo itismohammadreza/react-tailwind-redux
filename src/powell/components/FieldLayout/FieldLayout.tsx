@@ -20,6 +20,7 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
     inputSize,
     id,
     errorElement,
+    className
   } = props;
 
   const labelEl = label && (
@@ -44,6 +45,7 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
 
   return (
       <div className={$classNames(
+          className,
           `${componentName}-wrapper`,
           `variant-${variant}`,
           {

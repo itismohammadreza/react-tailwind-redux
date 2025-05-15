@@ -20,6 +20,7 @@ export const InputTextPage = () => {
       {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
       {field: 'inputSize', value: '', selectOptions: 'sizes'},
       {field: 'disabled', value: false},
+      {field: 'showClear', value: false},
     ]
   }
 

@@ -60,6 +60,7 @@ export interface FieldLayoutProps {
   iconPosition?: $IconFieldProps["iconPosition"];
   labelPosition?: LabelPosition;
   errorElement?: ReactNode;
+  className?: string;
 }
 
 export type HasSize = Pick<FieldLayoutProps, "inputSize">;
@@ -80,7 +81,7 @@ export type CommonFieldControlProps = HasControl & HasAddon & HasSize & HasIcon 
 export type FixFieldControlProps = HasControl & HasLabel<FixLabelPosition>;
 
 export type AutoCompleteProps = $AutoCompleteProps & CommonFieldControlProps;
-export type InputTextProps = $InputTextProps & CommonFieldControlProps;
+export type InputTextProps = $InputTextProps & CommonFieldControlProps & {showClear?: boolean};
 export type CascadeSelectProps = $CascadeSelectProps & CommonFieldControlProps;
 export type CheckboxProps = Partial<$CheckboxProps> & FixFieldControlProps;
 export type ChipsProps = $ChipsProps & CommonFieldControlProps;
@@ -90,7 +91,7 @@ export type EditorProps = $EditorProps & FixFieldControlProps;
 export type InputMaskProps = $InputMaskProps & CommonFieldControlProps;
 export type InputNumberProps = $InputNumberProps & CommonFieldControlProps;
 export type InputOtpProps = $InputOtpProps & FixFieldControlProps;
-export type InputPasswordProps = $PasswordProps & CommonFieldControlProps;
+export type InputPasswordProps = $PasswordProps & CommonFieldControlProps & {showClear?: boolean};
 export type InputSwitchProps = Partial<$InputSwitchProps> & FixFieldControlProps;
 export type InputTextareaProps = $InputTextareaProps & Omit<CommonFieldControlProps, 'inputSize'>;
 export type KnobProps = $KnobProps & FixFieldControlProps;

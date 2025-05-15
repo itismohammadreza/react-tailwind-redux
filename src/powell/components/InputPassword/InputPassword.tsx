@@ -1,9 +1,10 @@
-import {InputPasswordProps} from "@powell/models";
+import {FieldControlMeta, InputPasswordProps, SafeAny} from "@powell/models";
 import {$Password} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
 import './InputPassword.scss';
+import {TimesIcon} from "primereact/icons/times";
 
 export const InputPassword = (props: InputPasswordProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {
@@ -30,31 +31,46 @@ export const InputPassword = (props: InputPasswordProps) => {
     }
   });
 
+  const clear = (control: FieldControlMeta) => {
+    control.handleChange?.('');
+    props.onChange?.({target: {value: ''}} as SafeAny);
+  };
+
   return (
       <FieldControl {...controlProps}>
         {
           (control) => (
               <FieldLayout
                   {...layoutProps}
+                  className={`
+                    ${props.showClear ? 'input-password-clearable' : ''} 
+                    ${props.toggleMask ? 'input-password-toggleable' : ''}`
+                  }
                   componentName="input-password"
                   id={control.id}
                   isRequired={control.isRequired}
                   errorElement={!props.disabled && control.errorElement}>
-                <$Password
-                    {...rest}
-                    panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
-                    inputId={control.id}
-                    value={control.field ? control.field.value : props.value}
-                    onChange={(event) => {
-                      control.handleChange?.(event.target.value);
-                      props.onChange?.(event);
-                    }}
-                    onBlur={(event) => {
-                      control.handleBlur?.(event);
-                      props.onBlur?.(event);
-                    }}
-                    invalid={!!control.meta?.error && !props.disabled}
-                />
+                <div className="input-password-inner">
+                  <$Password
+                      {...rest}
+                      panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
+                      inputId={control.id}
+                      value={control.field ? control.field.value : props.value}
+                      onChange={(event) => {
+                        control.handleChange?.(event.target.value);
+                        props.onChange?.(event);
+                      }}
+                      onBlur={(event) => {
+                        control.handleBlur?.(event);
+                        props.onBlur?.(event);
+                      }}
+                      invalid={!!control.meta?.error && !props.disabled}
+                  />
+                  {
+                      ((control.field?.value || props.value) != null && props.showClear && !props.disabled) &&
+                      <TimesIcon className="input-password-clear-icon" onPointerUp={() => clear(control)}/>
+                  }
+                </div>
               </FieldLayout>
           )
         }
