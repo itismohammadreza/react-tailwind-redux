@@ -42,6 +42,7 @@ export const InputPassword = (props: InputPasswordProps) => {
                   errorElement={!props.disabled && control.errorElement}>
                 <$Password
                     {...rest}
+                    panelClassName={`${props.panelClassName} ${props.rtl ? 'panel-rtl' : ''}`}
                     inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {

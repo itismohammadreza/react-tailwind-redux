@@ -42,6 +42,7 @@ export const Dropdown = (props: DropdownProps) => {
                   errorElement={!props.disabled && control.errorElement}>
                 <$Dropdown
                     {...rest}
+                    panelClassName={`${props.panelClassName} ${props.rtl ? 'panel-rtl' : ''}`}
                     inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
