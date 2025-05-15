@@ -1,24 +1,28 @@
 import {$ListBox} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {ListBoxProps} from "@powell/models";
+import {useApplyConfig} from "@powell/hooks";
 import './ListBox.scss';
 
 export const ListBox = (props: ListBoxProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<ListBoxProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      'id',
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'labelPosition',
-      'hint',
-      'rtl',
-      'showRequiredStar',
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: true,
+    sizable: false,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        'id',
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'labelPosition',
+        'hint',
+        'rtl',
+        'showRequiredStar',
+      ],
+    }
   });
 
   return (

@@ -1,27 +1,31 @@
 import {useRef} from "react";
 import {RadioGroupProps} from "@powell/models";
 import {$RadioButton, $UniqueComponentId} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './RadioGroup.scss';
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const {controlProps, layoutProps, innerProps, rest} = splitProps<RadioGroupProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      {key: 'inputId', alias: 'id'},
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'labelPosition',
-      'hint',
-      'rtl',
-      'showRequiredStar',
-      {key: 'variant', keepInRest: true},
-    ],
-    innerProps: ['optionLabel', 'optionValue']
+  const {controlProps, layoutProps, innerProps, rest} = useApplyConfig(props, {
+    isFixLabel: true,
+    sizable: false,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        {key: 'inputId', alias: 'id'},
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'labelPosition',
+        'hint',
+        'rtl',
+        'showRequiredStar',
+        {key: 'variant', keepInRest: true},
+      ],
+      innerProps: ['optionLabel', 'optionValue'],
+    }
   });
 
   const processedOptions = useRef(props.options.map(option => ({

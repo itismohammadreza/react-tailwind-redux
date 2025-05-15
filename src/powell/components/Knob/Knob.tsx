@@ -1,24 +1,28 @@
 import {KnobProps} from "@powell/models";
 import {$Knob} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './Knob.scss';
 
 export const Knob = (props: KnobProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<KnobProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      'id',
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'labelPosition',
-      'hint',
-      'rtl',
-      'showRequiredStar',
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: true,
+    sizable: false,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        'id',
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'labelPosition',
+        'hint',
+        'rtl',
+        'showRequiredStar',
+      ],
+    }
   });
 
   return (

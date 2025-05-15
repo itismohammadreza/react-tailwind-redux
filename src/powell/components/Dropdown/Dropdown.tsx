@@ -1,29 +1,33 @@
 import {DropdownProps} from "@powell/models";
 import {$Dropdown} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './Dropdown.scss';
 
 export const Dropdown = (props: DropdownProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<DropdownProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      {key: 'inputId', alias: 'id'},
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'iconPosition',
-      'labelPosition',
-      'addon',
-      'hint',
-      'icon',
-      'rtl',
-      'showRequiredStar',
-      {key: 'variant', keepInRest: true},
-      'inputSize',
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: false,
+    sizable: true,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        {key: 'inputId', alias: 'id'},
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'iconPosition',
+        'labelPosition',
+        'addon',
+        'hint',
+        'icon',
+        'rtl',
+        'showRequiredStar',
+        {key: 'variant', keepInRest: true},
+        'inputSize',
+      ],
+    }
   });
 
   return (

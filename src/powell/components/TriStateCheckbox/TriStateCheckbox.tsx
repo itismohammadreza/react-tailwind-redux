@@ -1,25 +1,29 @@
 import {TriStateCheckboxProps} from "@powell/models";
 import {$TriStateCheckbox} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './TriStateCheckbox.scss';
 
 export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<TriStateCheckboxProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      'id',
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'labelPosition',
-      'hint',
-      'rtl',
-      'showRequiredStar',
-      {key: 'variant', keepInRest: true},
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: true,
+    sizable: false,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        'id',
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'labelPosition',
+        'hint',
+        'rtl',
+        'showRequiredStar',
+        {key: 'variant', keepInRest: true},
+      ],
+    }
   });
 
   return (

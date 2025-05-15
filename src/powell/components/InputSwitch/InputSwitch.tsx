@@ -1,24 +1,28 @@
 import {InputSwitchProps} from "@powell/models";
 import {$InputSwitch} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './InputSwitch.scss';
 
 export const InputSwitch = (props: InputSwitchProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<InputSwitchProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      {key: 'inputId', alias: 'id'},
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'labelPosition',
-      'hint',
-      'rtl',
-      'showRequiredStar',
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: true,
+    sizable: false,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        {key: 'inputId', alias: 'id'},
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'labelPosition',
+        'hint',
+        'rtl',
+        'showRequiredStar',
+      ],
+    }
   });
 
   return (

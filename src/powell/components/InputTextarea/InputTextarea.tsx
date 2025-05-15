@@ -1,28 +1,32 @@
 import {InputTextareaProps} from "@powell/models";
 import {$InputTextarea} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './InputTextarea.scss';
 
 export const InputTextarea = (props: InputTextareaProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<InputTextareaProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      'id',
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'iconPosition',
-      'labelPosition',
-      'addon',
-      'hint',
-      'icon',
-      'rtl',
-      'showRequiredStar',
-      {key: 'variant', keepInRest: true},
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: false,
+    sizable: false,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        'id',
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'iconPosition',
+        'labelPosition',
+        'addon',
+        'hint',
+        'icon',
+        'rtl',
+        'showRequiredStar',
+        {key: 'variant', keepInRest: true},
+      ],
+    }
   });
 
   return (

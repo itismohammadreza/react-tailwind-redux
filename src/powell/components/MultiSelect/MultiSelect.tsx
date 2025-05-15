@@ -1,29 +1,33 @@
 import {MultiSelectProps} from "@powell/models";
 import {$MultiSelect} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './MultiSelect.scss';
 
 export const MultiSelect = (props: MultiSelectProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<MultiSelectProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      {key: 'inputId', alias: 'id'},
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'iconPosition',
-      'labelPosition',
-      'addon',
-      'hint',
-      'icon',
-      'rtl',
-      'showRequiredStar',
-      {key: 'variant', keepInRest: true},
-      'inputSize',
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: false,
+    sizable: true,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        {key: 'inputId', alias: 'id'},
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'iconPosition',
+        'labelPosition',
+        'addon',
+        'hint',
+        'icon',
+        'rtl',
+        'showRequiredStar',
+        {key: 'variant', keepInRest: true},
+        'inputSize',
+      ],
+    }
   });
 
   return (

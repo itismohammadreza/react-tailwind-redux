@@ -1,28 +1,32 @@
 import {MentionProps} from "@powell/models";
 import {$Mention} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './Mention.scss';
 
 export const Mention = (props: MentionProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<MentionProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      {key: 'inputId', alias: 'id'},
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'iconPosition',
-      'labelPosition',
-      'addon',
-      'hint',
-      'icon',
-      'rtl',
-      'showRequiredStar',
-      'inputSize',
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: false,
+    sizable: true,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        {key: 'inputId', alias: 'id'},
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'iconPosition',
+        'labelPosition',
+        'addon',
+        'hint',
+        'icon',
+        'rtl',
+        'showRequiredStar',
+        'inputSize',
+      ],
+    }
   });
 
   return (

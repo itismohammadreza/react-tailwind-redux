@@ -1,25 +1,29 @@
 import {InputOtpProps} from "@powell/models";
 import {$InputOtp} from "@powell/api";
-import {splitProps} from "@powell/utils";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
+import {useApplyConfig} from "@powell/hooks";
 import './InputOtp.scss';
 
 export const InputOtp = (props: InputOtpProps) => {
-  const {controlProps, layoutProps, rest} = splitProps<InputOtpProps>(props, {
-    controlProps: [
-      {key: 'name', keepInRest: true},
-      'id',
-      'parseError',
-    ],
-    layoutProps: [
-      'label',
-      'labelPosition',
-      'hint',
-      'rtl',
-      'showRequiredStar',
-      {key: 'variant', keepInRest: true},
-    ],
+  const {controlProps, layoutProps, rest} = useApplyConfig(props, {
+    isFixLabel: true,
+    sizable: false,
+    groups: {
+      controlProps: [
+        {key: 'name', keepInRest: true},
+        'id',
+        'parseError',
+      ],
+      layoutProps: [
+        'label',
+        'labelPosition',
+        'hint',
+        'rtl',
+        'showRequiredStar',
+        {key: 'variant', keepInRest: true},
+      ],
+    }
   });
 
   return (
