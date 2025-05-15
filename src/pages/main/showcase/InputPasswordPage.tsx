@@ -2,7 +2,7 @@ import {InputPassword} from "@powell/components/InputPassword";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {InputPasswordProps} from "@powell/models";
-import {usePowellConfig} from "@root/powell";
+import {usePowellConfig} from "@powell/hooks";
 
 export const InputPasswordPage = () => {
   const [config] = usePowellConfig();

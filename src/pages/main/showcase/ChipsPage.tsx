@@ -2,7 +2,7 @@ import {Chips} from "@powell/components/Chips";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {ChipsProps} from "@powell/models";
-import {usePowellConfig} from "@root/powell";
+import {usePowellConfig} from "@powell/hooks";
 
 export const ChipsPage = () => {
   const [config] = usePowellConfig();

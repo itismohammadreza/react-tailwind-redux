@@ -2,7 +2,7 @@ import {InputNumber} from "@powell/components/InputNumber";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {InputNumberProps} from "@powell/models";
-import {usePowellConfig} from "@root/powell";
+import {usePowellConfig} from "@powell/hooks";
 
 export const InputNumberPage = () => {
   const [config] = usePowellConfig();

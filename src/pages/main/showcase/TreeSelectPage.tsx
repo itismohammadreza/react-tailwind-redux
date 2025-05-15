@@ -2,7 +2,7 @@ import {TreeSelect} from "@powell/components/TreeSelect";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {TreeSelectProps} from "@powell/models";
-import {usePowellConfig} from "@root/powell";
+import {usePowellConfig} from "@powell/hooks";
 
 export const TreeSelectPage = () => {
   const [config] = usePowellConfig();

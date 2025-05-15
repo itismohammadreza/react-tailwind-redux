@@ -3,7 +3,7 @@ import {useState} from "react";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {MentionProps} from "@powell/models";
-import {usePowellConfig} from "@root/powell";
+import {usePowellConfig} from "@powell/hooks";
 
 export const MentionPage = () => {
   const [config] = usePowellConfig();

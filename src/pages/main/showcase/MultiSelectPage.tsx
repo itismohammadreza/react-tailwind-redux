@@ -2,7 +2,7 @@ import {MultiSelect} from "@powell/components/MultiSelect";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {MultiSelectProps} from "@powell/models";
-import {usePowellConfig} from "@root/powell";
+import {usePowellConfig} from "@powell/hooks";
 
 export const MultiSelectPage = () => {
   const [config] = usePowellConfig();

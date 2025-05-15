@@ -2,7 +2,7 @@ import {Editor} from "@powell/components/Editor";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {EditorProps} from "@powell/models";
-import {usePowellConfig} from "@root/powell";
+import {usePowellConfig} from "@powell/hooks";
 
 export const EditorPage = () => {
   const [config] = usePowellConfig();

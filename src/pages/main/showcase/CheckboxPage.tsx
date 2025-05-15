@@ -2,7 +2,7 @@ import {Checkbox} from "@powell/components/Checkbox";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {Preview} from "@pages/main/showcase/components/Preview";
 import {CheckboxProps} from "@powell/models";
-import {usePowellConfig} from "@root/powell";
+import {usePowellConfig} from "@powell/hooks";
 
 export const CheckboxPage = () => {
   const [config] = usePowellConfig();
