@@ -497,11 +497,11 @@
       color: #6b7280;
     }
 
-    &.p-icon-field-right > .p-input-icon {
+    &.p-icon-field-right > .p-input-icon:not(:has([class*=p-password-])) {
       right: 0.75rem;
     }
 
-    &.p-icon-field-left > .p-input-icon {
+    &.p-icon-field-left > .p-input-icon:not(:has([class*=p-password-])) {
       left: 0.75rem;
     }
   }
@@ -1285,9 +1285,9 @@
 
 @include components-general-styles();
 
-@include components-icon-styles();
-
 @include components-rtl-styles();
+
+@include components-icon-styles();
 
 @include components-addon-styles();
 
