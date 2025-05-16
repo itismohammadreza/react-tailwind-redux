@@ -47,7 +47,7 @@ export const Chips = (props: ChipsProps) => {
                     inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {
-                      control.handleChange?.(event.target.value);
+                      control.handleChange?.(event.target.value?.length ? event.target.value : undefined);
                       props.onChange?.(event);
                     }}
                     onBlur={(event) => {
