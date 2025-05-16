@@ -26,6 +26,7 @@ export const InputNumber = (props: InputNumberProps) => {
         'rtl',
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
+        {key: 'disabled', keepInRest: true},
         'inputSize',
       ],
     }

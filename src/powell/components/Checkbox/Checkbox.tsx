@@ -23,6 +23,7 @@ export const Checkbox = (props: CheckboxProps) => {
         'rtl',
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

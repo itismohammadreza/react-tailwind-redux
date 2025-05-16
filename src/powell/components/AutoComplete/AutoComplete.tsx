@@ -26,6 +26,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         'rtl',
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
+        {key: 'disabled', keepInRest: true},
         'inputSize',
       ],
     }

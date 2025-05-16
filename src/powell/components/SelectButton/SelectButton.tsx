@@ -22,6 +22,7 @@ export const SelectButton = (props: SelectButtonProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

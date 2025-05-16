@@ -22,6 +22,7 @@ export const Knob = (props: KnobProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

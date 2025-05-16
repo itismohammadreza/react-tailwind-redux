@@ -27,6 +27,7 @@ export const MultiSelect = (props: MultiSelectProps) => {
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
         'inputSize',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

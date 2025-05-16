@@ -26,6 +26,7 @@ export const Mention = (props: MentionProps) => {
         'rtl',
         'showRequiredStar',
         'inputSize',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

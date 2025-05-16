@@ -22,6 +22,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

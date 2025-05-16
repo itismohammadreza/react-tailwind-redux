@@ -24,6 +24,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
         'rtl',
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
+        {key: 'disabled', keepInRest: true},
       ],
       innerProps: ['optionLabel', 'optionValue'],
     }

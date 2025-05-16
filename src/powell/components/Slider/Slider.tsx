@@ -22,6 +22,7 @@ export const Slider = (props: SliderProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

@@ -22,6 +22,7 @@ export const ToggleButton = (props: ToggleButtonProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

@@ -26,6 +26,7 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
         'rtl',
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
+        {key: 'disabled', keepInRest: true},
         'inputSize',
       ],
     }

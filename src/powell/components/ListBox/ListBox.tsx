@@ -22,6 +22,7 @@ export const ListBox = (props: ListBoxProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

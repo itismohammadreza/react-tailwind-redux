@@ -22,6 +22,7 @@ export const Rating = (props: RatingProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

@@ -26,6 +26,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
         'rtl',
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

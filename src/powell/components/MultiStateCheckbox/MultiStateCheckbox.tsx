@@ -22,6 +22,7 @@ export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

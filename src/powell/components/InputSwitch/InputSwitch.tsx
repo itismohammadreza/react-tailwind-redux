@@ -22,6 +22,7 @@ export const InputSwitch = (props: InputSwitchProps) => {
         'hint',
         'rtl',
         'showRequiredStar',
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

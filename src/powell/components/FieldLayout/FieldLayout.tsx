@@ -22,7 +22,8 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
     id,
     errorElement,
     className,
-    containerStyle
+    containerStyle,
+    disabled
   } = props;
 
   const labelEl = label && (
@@ -72,6 +73,7 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
           {
             'p-inputtext-sm': inputSize === 'small',
             'p-inputtext-lg': inputSize === 'large',
+            'control-disabled': disabled,
             [`label-${labelPosition}`]: label,
             [`icon-${iconPosition}`]: iconEl,
             'addon-before': addon?.before && !addon?.after,

@@ -23,6 +23,7 @@ export const InputOtp = (props: InputOtpProps) => {
         'rtl',
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
+        {key: 'disabled', keepInRest: true},
       ],
     }
   });

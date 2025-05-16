@@ -62,6 +62,7 @@ export interface FieldLayoutProps {
   errorElement?: ReactNode;
   className?: string;
   containerStyle?: CssObject;
+  disabled?: string;
 }
 
 export type HasSize = Pick<FieldLayoutProps, "inputSize">;
