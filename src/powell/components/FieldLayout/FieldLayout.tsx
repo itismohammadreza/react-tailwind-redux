@@ -1,7 +1,8 @@
 import {PropsWithChildren} from "react";
 import {$classNames, $FloatLabel, $IconField, $InputIcon} from "@powell/api";
-import {getAddonTemplate} from "@powell/utils";
 import {FieldLayoutProps} from "@powell/models/props";
+import {AddonConfig} from "@powell/models";
+import {Button} from "@powell/components/Button";
 
 export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
   const {
@@ -42,6 +43,25 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
         {children}
       </$IconField>
   );
+
+  const getAddonTemplate = (config?: AddonConfig) => {
+    if (!config) {
+      return <></>
+    }
+    const {type, ...rest} = config;
+    switch (type) {
+      case "button":
+        return <Button {...rest} />
+      case "icon":
+        return (
+            <span className="p-inputgroup-addon" onClick={rest?.onClick}>
+            <i className={rest.icon}></i>
+          </span>
+        )
+      case "text":
+        return <span className="p-inputgroup-addon">{rest.text}</span>
+    }
+  }
 
   return (
       <div className={$classNames(

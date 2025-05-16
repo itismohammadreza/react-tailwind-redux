@@ -1,9 +1,27 @@
-import {$ErrorMessage, $Field, $FieldProps, $UniqueComponentId} from "@powell/api";
+import {$ErrorMessage, $Field, $FieldProps, $FormikContextType, $FormikValues, $UniqueComponentId} from "@powell/api";
 import {useFormContext} from "@powell/hooks";
 import {FieldControlMeta, SafeAny} from "@powell/models";
-import {isRequiredField} from "@powell/utils";
 import {FieldControlProps} from "@powell/models/props";
 import {useRef} from "react";
+
+const isRequiredField = (formContext: $FormikContextType<$FormikValues>, name: string) => {
+  if (!formContext || !name) {
+    return false;
+  }
+  const keys = name.split('.') ?? [];
+  let current = formContext.validationSchema?.fields;
+  if (!current) {
+    return false;
+  }
+  for (const key of keys) {
+    if (current[key]?.fields) {
+      current = current[key]?.fields;
+    } else {
+      current = current[key];
+    }
+  }
+  return current?.tests?.some((t: SafeAny) => t.OPTIONS.name === 'required');
+}
 
 export const FieldControl = (props: FieldControlProps) => {
   const {name, parseError, id, children} = props;
