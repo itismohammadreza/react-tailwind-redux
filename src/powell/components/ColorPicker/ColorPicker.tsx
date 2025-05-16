@@ -16,6 +16,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

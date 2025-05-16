@@ -16,6 +16,7 @@ export const SelectButton = (props: SelectButtonProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

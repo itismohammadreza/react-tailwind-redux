@@ -16,6 +16,7 @@ export const MultiSelect = (props: MultiSelectProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

@@ -16,6 +16,7 @@ export const Checkbox = (props: CheckboxProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

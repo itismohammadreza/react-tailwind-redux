@@ -18,6 +18,7 @@ export const InputText = (props: InputTextProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

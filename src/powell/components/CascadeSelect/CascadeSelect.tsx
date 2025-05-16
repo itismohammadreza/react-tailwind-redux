@@ -16,6 +16,7 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

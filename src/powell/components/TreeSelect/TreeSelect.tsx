@@ -16,6 +16,7 @@ export const TreeSelect = (props: TreeSelectProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

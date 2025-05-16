@@ -16,6 +16,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

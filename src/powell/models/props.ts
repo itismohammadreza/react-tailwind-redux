@@ -34,7 +34,7 @@ import {
   $TriStateCheckboxProps
 } from "@powell/api";
 import {MouseEvent, ReactNode} from "react";
-import {ButtonAppearance, SafeAny, Size} from "@powell/models/common";
+import {ButtonAppearance, CssObject, SafeAny, Size} from "@powell/models/common";
 import {Addon, FieldControlMeta, FixLabelPosition, LabelPosition} from "@powell/models/forms";
 
 export interface FieldControlProps {
@@ -61,6 +61,7 @@ export interface FieldLayoutProps {
   labelPosition?: LabelPosition;
   errorElement?: ReactNode;
   className?: string;
+  containerStyle?: CssObject;
 }
 
 export type HasSize = Pick<FieldLayoutProps, "inputSize">;
@@ -75,7 +76,7 @@ export type HasLabel<T> = {
 
 export type HasControl =
     Pick<FieldControlProps, "name" | "parseError">
-    & Pick<FieldLayoutProps, "showRequiredStar" | "hint" | "label" | "labelWidth" | "rtl">;
+    & Pick<FieldLayoutProps, "showRequiredStar" | "hint" | "label" | "labelWidth" | "rtl" | "containerStyle">;
 
 export type CommonFieldControlProps = HasControl & HasAddon & HasSize & HasIcon & HasLabel<LabelPosition>;
 export type FixFieldControlProps = HasControl & HasLabel<FixLabelPosition>;

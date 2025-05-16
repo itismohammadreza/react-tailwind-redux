@@ -1,4 +1,4 @@
-import {PropsWithChildren} from "react";
+import {CSSProperties, PropsWithChildren} from "react";
 import {$classNames, $FloatLabel, $IconField, $InputIcon} from "@powell/api";
 import {FieldLayoutProps} from "@powell/models/props";
 import {AddonConfig} from "@powell/models";
@@ -21,7 +21,8 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
     inputSize,
     id,
     errorElement,
-    className
+    className,
+    containerStyle
   } = props;
 
   const labelEl = label && (
@@ -77,7 +78,8 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
             'addon-after': addon?.after && !addon?.before,
             'addon-both': addon?.before && addon?.after,
           })}
-           dir={rtl ? 'rtl' : 'ltr'}>
+           dir={rtl ? 'rtl' : 'ltr'}
+           style={containerStyle as CSSProperties}>
         <div className="field">
           {labelPosition !== 'float' && labelEl}
           <div className={$classNames('field-inner', {"p-inputgroup": addon})}>

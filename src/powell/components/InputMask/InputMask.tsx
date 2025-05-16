@@ -16,6 +16,7 @@ export const InputMask = (props: InputMaskProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

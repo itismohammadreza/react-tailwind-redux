@@ -16,6 +16,7 @@ export const InputSwitch = (props: InputSwitchProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

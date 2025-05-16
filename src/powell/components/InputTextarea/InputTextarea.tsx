@@ -16,6 +16,7 @@ export const InputTextarea = (props: InputTextareaProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

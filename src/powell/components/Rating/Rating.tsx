@@ -16,6 +16,7 @@ export const Rating = (props: RatingProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

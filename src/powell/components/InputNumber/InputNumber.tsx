@@ -16,6 +16,7 @@ export const InputNumber = (props: InputNumberProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

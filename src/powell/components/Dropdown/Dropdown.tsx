@@ -16,6 +16,7 @@ export const Dropdown = (props: DropdownProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

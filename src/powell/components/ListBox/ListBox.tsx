@@ -16,6 +16,7 @@ export const ListBox = (props: ListBoxProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

@@ -16,6 +16,7 @@ export const ToggleButton = (props: ToggleButtonProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

@@ -17,6 +17,7 @@ export const InputPassword = (props: InputPasswordProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

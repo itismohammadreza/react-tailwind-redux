@@ -16,6 +16,7 @@ export const Editor = (props: EditorProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

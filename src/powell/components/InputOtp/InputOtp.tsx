@@ -16,6 +16,7 @@ export const InputOtp = (props: InputOtpProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

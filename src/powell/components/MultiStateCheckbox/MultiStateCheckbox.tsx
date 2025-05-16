@@ -16,6 +16,7 @@ export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

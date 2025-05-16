@@ -17,6 +17,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

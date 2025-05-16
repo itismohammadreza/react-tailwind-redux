@@ -16,6 +16,7 @@ export const Chips = (props: ChipsProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',

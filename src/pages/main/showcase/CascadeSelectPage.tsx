@@ -107,7 +107,7 @@ export const CascadeSelectPage = () => {
             optionLabel="cname"
             optionGroupLabel="name"
             optionGroupChildren={['states', 'cities']}
-            style={{width: '14rem'}}
+            containerStyle={{width: '14rem'}}
             name="n"/>
       </Preview>
   )

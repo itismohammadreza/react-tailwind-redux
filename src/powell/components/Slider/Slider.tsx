@@ -16,6 +16,7 @@ export const Slider = (props: SliderProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

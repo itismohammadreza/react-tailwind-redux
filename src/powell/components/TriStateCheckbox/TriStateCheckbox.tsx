@@ -16,6 +16,7 @@ export const TriStateCheckbox = (props: TriStateCheckboxProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'labelPosition',
         'hint',

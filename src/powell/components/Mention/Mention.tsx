@@ -16,6 +16,7 @@ export const Mention = (props: MentionProps) => {
         'parseError',
       ],
       layoutProps: [
+        'containerStyle',
         'label',
         'iconPosition',
         'labelPosition',
