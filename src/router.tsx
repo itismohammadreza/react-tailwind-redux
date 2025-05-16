@@ -31,7 +31,7 @@ import {MultiStateCheckboxPage} from "@pages/main/showcase/MultiStateCheckboxPag
 import {InputPasswordPage} from "@pages/main/showcase/InputPasswordPage";
 import {RadioGroupPage} from "@pages/main/showcase/RadioGroupPage";
 import {RatingPage} from "@pages/main/showcase/RatingPage";
-import {SelectButtonPage} from "@pages/main/showcase/SelectButton";
+import {SelectButtonPage} from "@pages/main/showcase/SelectButtonPage";
 import {SliderPage} from "@pages/main/showcase/SliderPage";
 import {TreeSelectPage} from "@pages/main/showcase/TreeSelectPage";
 import {TriStateCheckboxPage} from "@pages/main/showcase/TriStateCheckboxPage";
