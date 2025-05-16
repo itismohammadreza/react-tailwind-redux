@@ -18,6 +18,7 @@ export const InputTextareaPage = () => {
       {field: 'showRequiredStar', value: config.showRequiredStar},
       {field: 'variant', value: 'outlined', selectOptions: 'variants'},
       {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
+      {field: 'addon', selectOptions: 'addon', value: 'none'},
       {field: 'autoResize', value: false},
     ]
   }

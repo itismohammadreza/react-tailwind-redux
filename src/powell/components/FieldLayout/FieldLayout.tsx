@@ -55,8 +55,8 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
       case "icon":
         return (
             <span className="p-inputgroup-addon" onClick={rest?.onClick}>
-            <i className={rest.icon}></i>
-          </span>
+              <i className={rest.icon}></i>
+            </span>
         )
       case "text":
         return <span className="p-inputgroup-addon">{rest.text}</span>
@@ -73,8 +73,9 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
             'p-inputtext-lg': inputSize === 'large',
             [`label-${labelPosition}`]: label,
             [`icon-${iconPosition}`]: iconEl,
-            'addon-before': addon?.before,
-            'addon-after': addon?.after,
+            'addon-before': addon?.before && !addon?.after,
+            'addon-after': addon?.after && !addon?.before,
+            'addon-both': addon?.before && addon?.after,
           })}
            dir={rtl ? 'rtl' : 'ltr'}>
         <div className="field">

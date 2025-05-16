@@ -95,7 +95,8 @@ export const CascadeSelectPage = () => {
       {field: 'showRequiredStar', value: config.showRequiredStar},
       {field: 'variant', value: 'outlined', selectOptions: 'variants'},
       {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
-      {field: 'inputSize', value: '', selectOptions: 'sizes'},
+      {field: 'addon', selectOptions: 'addon', value: 'none'},
+      {field: 'inputSize', value: 'none', selectOptions: 'sizes'},
     ]
   }
 
@@ -106,7 +107,7 @@ export const CascadeSelectPage = () => {
             optionLabel="cname"
             optionGroupLabel="name"
             optionGroupChildren={['states', 'cities']}
-            style={{ width: '14rem' }}
+            style={{width: '14rem'}}
             name="n"/>
       </Preview>
   )

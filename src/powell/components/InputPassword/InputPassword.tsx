@@ -43,8 +43,8 @@ export const InputPassword = (props: InputPasswordProps) => {
               <FieldLayout
                   {...layoutProps}
                   className={`
-                    ${props.showClear ? 'input-password-clearable' : ''} 
-                    ${props.toggleMask ? 'input-password-toggleable' : ''}`
+                    ${props.showClear ? 'is-clearable' : ''} 
+                    ${props.toggleMask ? 'has-toggler' : ''}`
                   }
                   componentName="input-password"
                   id={control.id}

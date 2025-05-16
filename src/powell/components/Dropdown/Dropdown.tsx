@@ -36,6 +36,7 @@ export const Dropdown = (props: DropdownProps) => {
           (control) => (
               <FieldLayout
                   {...layoutProps}
+                  className={`${props.showClear ? 'is-clearable' : ''}`}
                   componentName="dropdown"
                   id={control.id}
                   isRequired={control.isRequired}

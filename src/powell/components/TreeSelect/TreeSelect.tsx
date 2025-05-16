@@ -36,6 +36,7 @@ export const TreeSelect = (props: TreeSelectProps) => {
           (control) => (
               <FieldLayout
                   {...layoutProps}
+                  className={`${props.showClear ? 'is-clearable' : ''}`}
                   componentName="tree-select"
                   id={control.id}
                   isRequired={control.isRequired}

@@ -36,6 +36,7 @@ export const InputNumber = (props: InputNumberProps) => {
           (control) => (
               <FieldLayout
                   {...layoutProps}
+                  className={`${props.showButtons ? `has-buttons-${props.buttonLayout}` : ''}`}
                   componentName="input-number"
                   id={control.id}
                   isRequired={control.isRequired}

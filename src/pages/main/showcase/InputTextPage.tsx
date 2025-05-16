@@ -18,7 +18,8 @@ export const InputTextPage = () => {
       {field: 'showRequiredStar', value: config.showRequiredStar},
       {field: 'variant', value: 'outlined', selectOptions: 'variants'},
       {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
-      {field: 'inputSize', value: '', selectOptions: 'sizes'},
+      {field: 'addon', selectOptions: 'addon', value: 'none'},
+      {field: 'inputSize', value: 'none', selectOptions: 'sizes'},
       {field: 'disabled', value: false},
       {field: 'showClear', value: false},
     ]

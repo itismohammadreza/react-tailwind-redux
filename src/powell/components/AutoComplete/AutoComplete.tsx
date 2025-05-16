@@ -39,7 +39,8 @@ export const AutoComplete = (props: AutoCompleteProps) => {
                   componentName="auto-complete"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={!props.disabled && control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}
+                  className={props.dropdown ? 'has-dropdown' : ''}>
                 <$AutoComplete
                     {...rest}
                     panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}

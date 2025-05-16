@@ -4,6 +4,7 @@ import {Children, cloneElement, useState} from "react";
 import {FormContainer} from "@powell/components/FormContainer";
 import {Button} from "@powell/components/Button";
 import {PreviewOption, PreviewProps} from "@pages/main/showcase/models";
+import {SafeAny} from "@powell/models";
 
 export const Preview = (props: PreviewProps) => {
   const {options = [], component, description, withForm = true, children} = props;
@@ -16,7 +17,35 @@ export const Preview = (props: PreviewProps) => {
   };
 
   const preview = () => {
-    const props = previewOptions.reduce((acc, curr) => ({...acc, [curr.field]: curr.value}), {});
+    const getAddonConfig = (value: string) => {
+      let finalValue: SafeAny = null;
+      const addon = {type: 'icon', icon: 'pi pi-prime'}
+      switch (value) {
+        case 'none':
+          finalValue = null;
+          break;
+        case 'iconRight':
+          finalValue = {icon: 'pi pi-prime', iconPosition: 'right'};
+          break;
+        case 'iconLeft':
+          finalValue = {icon: 'pi pi-prime', iconPosition: 'left'};
+          break;
+        case 'addonBefore':
+          finalValue = {addon: {before: addon}}
+          break;
+        case 'addonAfter':
+          finalValue = {addon: {after: addon}}
+          break;
+        case 'addonBoth':
+          finalValue = {addon: {before: addon, after: addon}}
+          break;
+      }
+      return finalValue;
+    }
+    const props = previewOptions.reduce((acc, curr) => ({
+      ...acc,
+      ...(curr.field === 'addon' ? getAddonConfig(curr.value) : {[curr.field]: curr.value})
+    }), {});
     return Children.map(children, (child) => cloneElement(child, props));
   };
 

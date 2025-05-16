@@ -36,6 +36,7 @@ export const MultiSelect = (props: MultiSelectProps) => {
           (control) => (
               <FieldLayout
                   {...layoutProps}
+                  className={`${props.showClear ? 'is-clearable' : ''}`}
                   componentName="multi-select"
                   id={control.id}
                   isRequired={control.isRequired}

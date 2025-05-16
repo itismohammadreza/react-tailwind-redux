@@ -43,7 +43,7 @@ export const InputText = (props: InputTextProps) => {
           (control) => (
               <FieldLayout
                   {...layoutProps}
-                  className={props.showClear ? 'input-text-clearable' : ''}
+                  className={props.showClear ? 'is-clearable' : ''}
                   componentName="input-text"
                   id={control.id}
                   isRequired={control.isRequired}
