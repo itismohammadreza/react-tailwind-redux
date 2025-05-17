@@ -1055,7 +1055,46 @@
   }
 
   .auto-complete-wrapper {
-    @include adjust-addon-styles(".p-inputtext");
+    &:not(.has-dropdown) {
+      @include adjust-addon-styles(".p-inputtext");
+    }
+
+    &.has-dropdown {
+      &.addon-both {
+        .p-autocomplete-dropdown,
+        .p-inputtext {
+          @include radius-all(0);
+        }
+      }
+
+      &.addon-before {
+        &:dir(rtl) {
+          .p-inputtext {
+            @include radius-all(0);
+          }
+        }
+
+        &:dir(ltr) {
+          .p-inputtext {
+            @include right-side-radius(0);
+          }
+        }
+      }
+
+      &.addon-after {
+        &:dir(rtl) {
+          .p-autocomplete-dropdown {
+            @include left-side-radius(0);
+          }
+        }
+
+        &:dir(ltr) {
+          .p-autocomplete-dropdown {
+            @include right-side-radius(0);
+          }
+        }
+      }
+    }
   }
 
   .cascade-select-wrapper {
