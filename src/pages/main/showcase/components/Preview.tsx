@@ -70,11 +70,10 @@ export const Preview = (props: PreviewProps) => {
                       n: $Yup.mixed().required('Field is required')
                     })
                   }
-                  className="flex flex-col gap-2 p-10"
+                  className="p-10"
                   initialValues={{n: null}}
                   onSubmit={v => console.log(v)}>
                 {preview()}
-                <Button type="submit" label="Submit"/>
               </FormContainer>
           ) : (
               preview()
