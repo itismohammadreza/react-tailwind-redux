@@ -69,8 +69,8 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
       <div className={$classNames(
           className,
           `${componentName}-wrapper`,
-          `variant-${variant}`,
           {
+            [`variant-${variant}`]: !!variant,
             'p-inputtext-sm': inputSize === 'small',
             'p-inputtext-lg': inputSize === 'large',
             'control-disabled': disabled,

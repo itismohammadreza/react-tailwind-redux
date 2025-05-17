@@ -27,7 +27,6 @@ export const CascadeSelectPage = () => {
             {cname: 'Townsville', code: 'A-TO'}
           ]
         },
-
       ]
     },
     {
@@ -48,7 +47,6 @@ export const CascadeSelectPage = () => {
             {cname: 'Toronto', code: 'C-TO'}
           ]
         },
-
       ]
     },
     {

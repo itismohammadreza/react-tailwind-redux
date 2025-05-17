@@ -90,6 +90,17 @@
       display: inline-flex;
     }
   }
+
+  .color-picker-wrapper.is-inline,
+  .editor-wrapper,
+  .input-textarea-wrapper,
+  .list-box-wrapper,
+  .mention-wrapper,
+  .radio-group-wrapper.is-vertical {
+    .field label {
+      align-self: self-start;
+    }
+  }
 }
 
 @mixin components-rtl-styles() {

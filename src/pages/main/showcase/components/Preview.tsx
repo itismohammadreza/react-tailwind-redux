@@ -2,7 +2,6 @@ import {$Card, $Panel, $Yup} from "@powell/api";
 import {PreviewOptions} from "@pages/main/showcase/components/PreviewOptions";
 import {Children, cloneElement, useState} from "react";
 import {FormContainer} from "@powell/components/FormContainer";
-import {Button} from "@powell/components/Button";
 import {PreviewOption, PreviewProps} from "@pages/main/showcase/models";
 import {SafeAny} from "@powell/models";
 
@@ -62,7 +61,7 @@ export const Preview = (props: PreviewProps) => {
             </$Panel>
         )}
 
-        <$Panel style={{minHeight: '110px'}} header="preview">
+        <$Panel style={{minHeight: '110px'}} header="Preview">
           {withForm ? (
               <FormContainer
                   validationSchema={

@@ -36,7 +36,8 @@ export const ColorPicker = (props: ColorPickerProps) => {
                   componentName="color-picker"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={!props.disabled && control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}
+                  className={props.inline ? 'is-inline' : ''}>
                 <$ColorPicker
                     {...rest}
                     panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
