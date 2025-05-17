@@ -524,7 +524,7 @@
 
     &.icon-right {
       .p-inputtext {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
 
       &:dir(ltr).has-dropdown {
@@ -536,7 +536,7 @@
 
     &.icon-left {
       .p-inputtext {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
 
       &:dir(rtl).has-dropdown {
@@ -559,7 +559,7 @@
 
     &.icon-right {
       .p-cascadeselect-label {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
 
       &:dir(ltr) {
@@ -571,7 +571,7 @@
 
     &.icon-left {
       .p-cascadeselect-label {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
 
       &:dir(rtl) {
@@ -594,13 +594,13 @@
 
     &.icon-right {
       .p-inputtext {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
     }
 
     &.icon-left {
       .p-inputtext {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
     }
   }
@@ -617,7 +617,7 @@
 
     &.icon-right {
       .p-dropdown-label {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
 
       &:dir(ltr) {
@@ -629,7 +629,7 @@
 
     &.icon-left {
       .p-dropdown-label {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
 
       &:dir(rtl) {
@@ -647,7 +647,7 @@
           }
 
           .p-dropdown-label {
-            padding-right: 3rem !important;
+            padding-right: 3rem;
           }
         }
       }
@@ -659,7 +659,7 @@
           }
 
           .p-dropdown-label {
-            padding-left: 3rem !important;
+            padding-left: 3rem;
           }
         }
       }
@@ -678,13 +678,13 @@
 
     &.icon-right {
       .p-inputtext {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
     }
 
     &.icon-left {
       .p-inputtext {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
     }
   }
@@ -701,7 +701,7 @@
 
     &.icon-right {
       .p-inputtext {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
 
       &.has-buttons-horizontal {
@@ -725,7 +725,7 @@
 
     &.icon-left {
       .p-inputtext {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
 
       &.has-buttons-horizontal {
@@ -760,7 +760,7 @@
 
     &.icon-right {
       .p-inputtext {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
 
       &:dir(ltr) {
@@ -770,7 +770,7 @@
           }
 
           .p-inputtext {
-            padding-right: 4.5rem !important;
+            padding-right: 4.5rem;
           }
         }
       }
@@ -778,7 +778,7 @@
 
     &.icon-left {
       .p-inputtext {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
 
       &:dir(rtl) {
@@ -788,7 +788,7 @@
           }
 
           .p-inputtext {
-            padding-left: 4.5rem !important;
+            padding-left: 4.5rem;
           }
         }
       }
@@ -803,7 +803,7 @@
             }
 
             .p-inputtext {
-              padding-right: 7rem !important;
+              padding-right: 7rem;
             }
           }
         }
@@ -817,7 +817,7 @@
             }
 
             .p-inputtext {
-              padding-left: 7rem !important;
+              padding-left: 7rem;
             }
           }
         }
@@ -837,13 +837,13 @@
 
     &.icon-right {
       .p-inputtext {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
     }
 
     &.icon-left {
       .p-inputtext {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
     }
 
@@ -855,7 +855,7 @@
           }
 
           .p-inputtext {
-            padding-right: 4rem !important;
+            padding-right: 4rem;
           }
         }
       }
@@ -867,7 +867,7 @@
           }
 
           .p-inputtext {
-            padding-left: 4rem !important;
+            padding-left: 4rem;
           }
         }
       }
@@ -886,13 +886,13 @@
 
     &.icon-right {
       .p-inputtextarea {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
     }
 
     &.icon-left {
       .p-inputtextarea {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
     }
   }
@@ -909,13 +909,13 @@
 
     &.icon-right {
       .p-inputtext {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
     }
 
     &.icon-left {
       .p-inputtext {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
     }
   }
@@ -932,7 +932,7 @@
 
     &.icon-right {
       .p-multiselect-label {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
 
       &:dir(ltr) {
@@ -944,7 +944,7 @@
 
     &.icon-left {
       .p-multiselect-label {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
 
       &:dir(rtl) {
@@ -962,7 +962,7 @@
           }
 
           .p-multiselect-label {
-            padding-right: 3rem !important;
+            padding-right: 3rem;
           }
         }
       }
@@ -974,7 +974,7 @@
           }
 
           .p-multiselect-label {
-            padding-left: 3rem !important;
+            padding-left: 3rem;
           }
         }
       }
@@ -993,7 +993,7 @@
 
     &.icon-right {
       .p-treeselect-label {
-        padding-right: 2.5rem !important;
+        padding-right: 2.5rem;
       }
 
       &:dir(ltr) {
@@ -1005,7 +1005,7 @@
 
     &.icon-left {
       .p-treeselect-label {
-        padding-left: 2.5rem !important;
+        padding-left: 2.5rem;
       }
 
       &:dir(rtl) {
@@ -1023,7 +1023,7 @@
           }
 
           .p-treeselect-label {
-            padding-right: 3rem !important;
+            padding-right: 3rem;
           }
         }
       }
@@ -1035,7 +1035,7 @@
           }
 
           .p-treeselect-label {
-            padding-left: 3rem !important;
+            padding-left: 3rem;
           }
         }
       }
