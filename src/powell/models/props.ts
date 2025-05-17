@@ -34,7 +34,7 @@ import {
   $TriStateCheckboxProps
 } from "@powell/api";
 import {MouseEvent, ReactNode} from "react";
-import {ButtonAppearance, CssObject, SafeAny, Size} from "@powell/models/common";
+import {ButtonAppearance, CssObject, Orientation, SafeAny, Size} from "@powell/models/common";
 import {Addon, FieldControlMeta, FixLabelPosition, LabelPosition} from "@powell/models/forms";
 
 export interface FieldControlProps {
@@ -102,6 +102,7 @@ export type MentionProps = $MentionProps & CommonFieldControlProps;
 export type MultiSelectProps = $MultiSelectProps & CommonFieldControlProps;
 export type MultiStateCheckboxProps = $MultiStateCheckboxProps & FixFieldControlProps;
 export type RadioGroupProps = $RadioButtonProps & FixFieldControlProps & {
+  orientation?: Orientation,
   options: SafeAny[];
   optionLabel: string;
   optionValue: string;

@@ -330,7 +330,23 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.5rem;
+    }
+
+    &.is-vertical {
+      .radio-group-item {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &.is-horizontal {
+      .radio-group-item {
+        gap: 0.25rem;
+      }
+
+      .field-inner {
+        display: flex;
+        gap: 1.25rem;
+      }
     }
   }
 

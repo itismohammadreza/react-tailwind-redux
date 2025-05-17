@@ -25,6 +25,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
         'showRequiredStar',
         {key: 'variant', keepInRest: true},
         {key: 'disabled', keepInRest: true},
+        {key: 'orientation', keepInRest: false, defaultValue: 'horizontal'},
       ],
       innerProps: ['optionLabel', 'optionValue'],
     }
@@ -44,7 +45,8 @@ export const RadioGroup = (props: RadioGroupProps) => {
                   componentName="radio-group"
                   id={control.id}
                   isRequired={control.isRequired}
-                  errorElement={!props.disabled && control.errorElement}>
+                  errorElement={!props.disabled && control.errorElement}
+                  className={`is-${props.orientation}`}>
                 {
                   processedOptions.current.map(option => (
                       <div className="radio-group-item" key={option.__id}>

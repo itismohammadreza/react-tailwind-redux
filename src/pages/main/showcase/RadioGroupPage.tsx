@@ -27,7 +27,8 @@ export const RadioGroupPage = () => {
       {field: 'variant', value: 'outlined', selectOptions: 'variants'},
       {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.fixLabelPosition},
       {field: 'disabled', value: false},
-      {field: 'readonly', value: false},
+      {field: 'readOnly', value: false},
+      {field: 'orientation', selectOptions: 'orientations', value: 'horizontal'},
     ]
   }
 
