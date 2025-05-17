@@ -223,7 +223,7 @@
     &.is-clearable {
       .p-inputtext {
         padding-right: 0.75rem;
-        padding-inline-end: 2rem;
+        padding-inline-end: 2.5rem;
       }
 
       .input-text-clear-icon {
@@ -558,25 +558,63 @@
     }
 
     &.icon-right {
-      .p-cascadeselect-label {
-        padding-right: 2.5rem;
+      &:dir(rtl) {
+        .p-cascadeselect-label {
+          padding-right: 2.5rem;
+        }
       }
 
       &:dir(ltr) {
-        .p-input-icon {
-          right: 4rem;
+        .p-cascadeselect-label {
+          padding-right: 1.75rem;
+        }
+
+        .field .p-icon-field > .p-input-icon {
+          right: 3rem;
         }
       }
     }
 
     &.icon-left {
-      .p-cascadeselect-label {
-        padding-left: 2.5rem;
+      &:dir(ltr) {
+        .p-cascadeselect-label {
+          padding-left: 2.5rem;
+        }
       }
 
       &:dir(rtl) {
-        .p-input-icon {
-          left: 4rem;
+        .p-cascadeselect-label {
+          padding-left: 1.75rem;
+        }
+
+        .field .p-icon-field > .p-input-icon {
+          left: 3rem;
+        }
+      }
+    }
+
+    &.is-clearable {
+      &.icon-right {
+        &:dir(ltr) {
+          .p-cascadeselect-clear-icon {
+            inset-inline-end: 5rem;
+          }
+
+          .p-cascadeselect-label {
+            padding-right: 3.75rem;
+          }
+        }
+      }
+
+      &.icon-left {
+        &:dir(rtl) {
+          .p-cascadeselect-clear-icon {
+            inset-inline-end: 5rem;
+          }
+
+          .p-cascadeselect-label {
+            padding-left: 3.75rem;
+          }
         }
       }
     }
@@ -616,24 +654,36 @@
     }
 
     &.icon-right {
-      .p-dropdown-label {
-        padding-right: 2.5rem;
+      &:dir(rtl) {
+        .p-dropdown-label {
+          padding-right: 2.5rem;
+        }
       }
 
       &:dir(ltr) {
-        .p-input-icon {
+        .p-dropdown-label {
+          padding-right: 1.75rem;
+        }
+
+        .field .p-icon-field > .p-input-icon {
           right: 3rem;
         }
       }
     }
 
     &.icon-left {
-      .p-dropdown-label {
-        padding-left: 2.5rem;
+      &:dir(ltr) {
+        .p-dropdown-label {
+          padding-left: 2.5rem;
+        }
       }
 
       &:dir(rtl) {
-        .p-input-icon {
+        .p-dropdown-label {
+          padding-left: 1.75rem;
+        }
+
+        .field .p-icon-field > .p-input-icon {
           left: 3rem;
         }
       }
@@ -647,7 +697,7 @@
           }
 
           .p-dropdown-label {
-            padding-right: 3rem;
+            padding-right: 3.75rem;
           }
         }
       }
@@ -659,7 +709,7 @@
           }
 
           .p-dropdown-label {
-            padding-left: 3rem;
+            padding-left: 3.75rem;
           }
         }
       }
@@ -764,9 +814,9 @@
       }
 
       &:dir(ltr) {
-        &.has-toggler, &.is-clearable {
+        &.has-toggler {
           .p-input-icon:not(:has([class*=p-password-])) {
-            right: 3rem;
+            right: 2.75rem;
           }
 
           .p-inputtext {
@@ -782,9 +832,9 @@
       }
 
       &:dir(rtl) {
-        &.has-toggler, &.is-clearable {
+        &.has-toggler {
           .p-input-icon:not(:has([class*=p-password-])) {
-            left: 3rem;
+            left: 2.75rem;
           }
 
           .p-inputtext {
@@ -796,28 +846,48 @@
 
     &.is-clearable {
       &.icon-right {
+        &:dir(ltr) {
+          .input-password-clear-icon {
+            inset-inline-end: 2.5rem;
+          }
+
+          .p-inputtext {
+            padding-right: 4rem;
+          }
+        }
+
         &.has-toggler {
           &:dir(ltr) {
             .input-password-clear-icon {
-              inset-inline-end: 5rem;
+              inset-inline-end: 4.75rem;
             }
 
             .p-inputtext {
-              padding-right: 7rem;
+              padding-right: 6.5rem;
             }
           }
         }
       }
 
       &.icon-left {
+        &:dir(rtl) {
+          .input-password-clear-icon {
+            inset-inline-end: 2.5rem;
+          }
+
+          .p-inputtext {
+            padding-left: 4rem;
+          }
+        }
+
         &.has-toggler {
           &:dir(rtl) {
             .input-password-clear-icon {
-              inset-inline-end: 5rem;
+              inset-inline-end: 4.75rem;
             }
 
             .p-inputtext {
-              padding-left: 7rem;
+              padding-left: 6.5rem;
             }
           }
         }
@@ -931,24 +1001,36 @@
     }
 
     &.icon-right {
-      .p-multiselect-label {
-        padding-right: 2.5rem;
+      &:dir(rtl) {
+        .p-multiselect-label {
+          padding-right: 2.5rem;
+        }
       }
 
       &:dir(ltr) {
-        .p-input-icon {
+        .p-multiselect-label {
+          padding-right: 1.75rem;
+        }
+
+        .field .p-icon-field > .p-input-icon {
           right: 3rem;
         }
       }
     }
 
     &.icon-left {
-      .p-multiselect-label {
-        padding-left: 2.5rem;
+      &:dir(ltr) {
+        .p-multiselect-label {
+          padding-left: 2.5rem;
+        }
       }
 
       &:dir(rtl) {
-        .p-input-icon {
+        .p-multiselect-label {
+          padding-left: 1.75rem;
+        }
+
+        .field .p-icon-field > .p-input-icon {
           left: 3rem;
         }
       }
@@ -962,7 +1044,7 @@
           }
 
           .p-multiselect-label {
-            padding-right: 3rem;
+            padding-right: 3.75rem;
           }
         }
       }
@@ -974,7 +1056,7 @@
           }
 
           .p-multiselect-label {
-            padding-left: 3rem;
+            padding-left: 3.75rem;
           }
         }
       }
@@ -992,24 +1074,36 @@
     }
 
     &.icon-right {
-      .p-treeselect-label {
-        padding-right: 2.5rem;
+      &:dir(rtl) {
+        .p-treeselect-label {
+          padding-right: 2.5rem;
+        }
       }
 
       &:dir(ltr) {
-        .p-input-icon {
+        .p-treeselect-label {
+          padding-right: 1.75rem;
+        }
+
+        .field .p-icon-field > .p-input-icon {
           right: 3rem;
         }
       }
     }
 
     &.icon-left {
-      .p-treeselect-label {
-        padding-left: 2.5rem;
+      &:dir(ltr) {
+        .p-treeselect-label {
+          padding-left: 2.5rem;
+        }
       }
 
       &:dir(rtl) {
-        .p-input-icon {
+        .p-treeselect-label {
+          padding-left: 1.75rem;
+        }
+
+        .field .p-icon-field > .p-input-icon {
           left: 3rem;
         }
       }
@@ -1023,7 +1117,7 @@
           }
 
           .p-treeselect-label {
-            padding-right: 3rem;
+            padding-right: 3.75rem;
           }
         }
       }
@@ -1035,7 +1129,7 @@
           }
 
           .p-treeselect-label {
-            padding-left: 3rem;
+            padding-left: 3.75rem;
           }
         }
       }
