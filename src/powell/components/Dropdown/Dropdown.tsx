@@ -3,7 +3,6 @@ import {$Dropdown} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './Dropdown.scss';
 
 export const Dropdown = (props: DropdownProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

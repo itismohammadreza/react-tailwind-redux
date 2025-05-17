@@ -3,7 +3,6 @@ import {$InputNumber} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './InputNumber.scss';
 
 export const InputNumber = (props: InputNumberProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

@@ -3,7 +3,6 @@ import {$TreeSelect} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './TreeSelect.scss';
 
 export const TreeSelect = (props: TreeSelectProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

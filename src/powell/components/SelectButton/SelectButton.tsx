@@ -3,7 +3,6 @@ import {$SelectButton} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './SelectButton.scss';
 
 export const SelectButton = (props: SelectButtonProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

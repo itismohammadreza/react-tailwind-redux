@@ -3,7 +3,6 @@ import {$MultiSelect} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './MultiSelect.scss';
 
 export const MultiSelect = (props: MultiSelectProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

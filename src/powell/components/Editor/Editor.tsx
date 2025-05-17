@@ -3,7 +3,6 @@ import {$Editor} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './Editor.scss';
 
 export const Editor = (props: EditorProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

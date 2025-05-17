@@ -3,7 +3,6 @@ import {$Password} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './InputPassword.scss';
 import {TimesIcon} from "primereact/icons/times";
 
 export const InputPassword = (props: InputPasswordProps) => {

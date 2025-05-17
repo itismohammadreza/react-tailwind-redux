@@ -3,7 +3,6 @@ import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {ListBoxProps} from "@powell/models";
 import {useApplyConfig} from "@powell/hooks";
-import './ListBox.scss';
 
 export const ListBox = (props: ListBoxProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

@@ -3,7 +3,6 @@ import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {ColorPickerProps} from "@powell/models/props";
 import {useApplyConfig} from "@powell/hooks";
-import './ColorPicker.scss';
 
 export const ColorPicker = (props: ColorPickerProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

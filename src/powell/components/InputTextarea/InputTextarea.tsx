@@ -3,7 +3,6 @@ import {$InputTextarea} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './InputTextarea.scss';
 
 export const InputTextarea = (props: InputTextareaProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

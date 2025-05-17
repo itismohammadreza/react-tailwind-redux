@@ -3,7 +3,6 @@ import {$Knob} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './Knob.scss';
 
 export const Knob = (props: KnobProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

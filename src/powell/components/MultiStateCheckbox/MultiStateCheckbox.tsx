@@ -3,7 +3,6 @@ import {$MultiStateCheckbox} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './MultiStateCheckbox.scss';
 
 export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

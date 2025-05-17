@@ -3,7 +3,6 @@ import {$InputSwitch} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './InputSwitch.scss';
 
 export const InputSwitch = (props: InputSwitchProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

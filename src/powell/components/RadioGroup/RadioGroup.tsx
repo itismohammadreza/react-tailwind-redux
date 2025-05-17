@@ -4,7 +4,6 @@ import {$RadioButton, $UniqueComponentId} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './RadioGroup.scss';
 
 export const RadioGroup = (props: RadioGroupProps) => {
   const {controlProps, layoutProps, innerProps, rest} = useApplyConfig(props, {

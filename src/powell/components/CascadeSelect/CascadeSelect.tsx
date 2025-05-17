@@ -3,7 +3,6 @@ import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {CascadeSelectProps} from "@powell/models/props";
 import {useApplyConfig} from "@powell/hooks";
-import './CascadeSelect.scss';
 
 export const CascadeSelect = (props: CascadeSelectProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

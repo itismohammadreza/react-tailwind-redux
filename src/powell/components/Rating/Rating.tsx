@@ -3,7 +3,6 @@ import {$Rating} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './Rating.scss';
 
 export const Rating = (props: RatingProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

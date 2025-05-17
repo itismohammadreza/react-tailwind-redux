@@ -3,7 +3,6 @@ import {$Slider} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './Slider.scss';
 
 export const Slider = (props: SliderProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

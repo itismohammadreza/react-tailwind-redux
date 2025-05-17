@@ -3,7 +3,6 @@ import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {CheckboxProps} from "@powell/models/props";
 import {useApplyConfig} from "@powell/hooks";
-import './Checkbox.scss';
 
 export const Checkbox = (props: CheckboxProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

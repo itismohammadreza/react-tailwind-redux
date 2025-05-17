@@ -3,7 +3,6 @@ import {$InputText} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
-import './InputText.scss';
 import {TimesIcon} from "primereact/icons/times";
 import {FieldControlMeta, SafeAny} from "@powell/models";
 
