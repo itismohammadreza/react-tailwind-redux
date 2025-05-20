@@ -639,7 +639,6 @@ import {
   StepperPassThroughMethodOptions,
   StepperPassThroughOptions,
   StepperPassThroughOptionType,
-  StepperRefAttributes,
   StepperState,
   StepperProps,
 } from "primereact/stepper";
@@ -1604,7 +1603,6 @@ export type {StepperPassThroughAttributes as $StepperPassThroughAttributes};
 export type {StepperPassThroughMethodOptions as $StepperPassThroughMethodOptions};
 export type {StepperPassThroughOptions as $StepperPassThroughOptions};
 export type {StepperPassThroughOptionType as $StepperPassThroughOptionType};
-export type {StepperRefAttributes as $StepperRefAttributes};
 export type {StepperState as $StepperState};
 export type {StepperProps as $StepperProps};
 export {TabView as $TabView};
