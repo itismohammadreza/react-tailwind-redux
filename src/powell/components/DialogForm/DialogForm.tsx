@@ -3,7 +3,7 @@ import {$Dialog, $FormikProps, configService, PowellProvider} from "@powell/api"
 import {overlayEmitter} from "@powell/api/overlayEmitter";
 import {FormContainer} from "@powell/components/FormContainer";
 import {Button} from "@powell/components/Button";
-import {ButtonOnClickAsyncEvent, DialogFormProps} from "@powell/models";
+import {ButtonOnClickAsyncEvent, DialogFormProps, DialogFormSubmitEvent, SafeAny} from "@powell/models";
 import {InputText} from "@powell/components/InputText";
 import {AutoComplete} from "@powell/components/AutoComplete";
 import {SelectButton} from "@powell/components/SelectButton";
@@ -29,7 +29,7 @@ import {TreeSelect} from "@powell/components/TreeSelect";
 import {TriStateCheckbox} from "@powell/components/TriStateCheckbox";
 
 export const DialogForm = (props: DialogFormProps) => {
-  const {props: componentProps, config} = props;
+  const {dialogOptions, config, ...formOptions} = props;
   const [visible, setVisible] = useState(false);
   const [disableReject, setDisableReject] = useState(false);
   const isRendered = useRef(false);
@@ -38,13 +38,10 @@ export const DialogForm = (props: DialogFormProps) => {
 
   const onHide = useCallback(() => {
     setVisible(false);
-    overlayEmitter.off('dialogFormOpen', showDialog);
-    overlayEmitter.off('dialogFormClose', () => {
-    });
-    componentProps.onHide();
+    dialogOptions.onHide?.();
   }, [])
 
-  const onSubmit = async (formik: $FormikProps<any>, {event, loadingCallback}: ButtonOnClickAsyncEvent) => {
+  const onSubmit = async (formik: $FormikProps<SafeAny>, {event, loadingCallback}: ButtonOnClickAsyncEvent) => {
     event.preventDefault();
 
     const finalizeSubmit = (hideDialog: boolean) => {
@@ -56,7 +53,7 @@ export const DialogForm = (props: DialogFormProps) => {
     };
 
     const {validateForm, handleSubmit, values, setTouched, touched} = formik;
-    const newTouched = config.map(c => c.field).reduce((prev, curr) => ({...prev, [curr]: true}), {});
+    const newTouched = config.map(c => c.key).reduce((prev, curr) => ({...prev, [curr]: true}), {});
     await setTouched({...touched, ...newTouched}, true);
     const errors = await validateForm();
     if (Object.keys(errors).length !== 0) {
@@ -65,7 +62,7 @@ export const DialogForm = (props: DialogFormProps) => {
     }
     setDisableReject(true);
     handleSubmit();
-    overlayEmitter.emit('dialogFormClose', {finalizeSubmit, values});
+    overlayEmitter.emit('dialogFormClose', {finalizeSubmit, values} as DialogFormSubmitEvent);
   }
 
   useEffect(() => {
@@ -74,80 +71,121 @@ export const DialogForm = (props: DialogFormProps) => {
     }
     isRendered.current = true;
     overlayEmitter.on('dialogFormOpen', showDialog);
+
+    return () => {
+      overlayEmitter.off('dialogFormOpen', showDialog);
+      overlayEmitter.off('dialogFormClose', () => {
+      });
+    }
   }, []);
 
   return (
       <PowellProvider config={powellConfig.current}>
-        <$Dialog onHide={onHide} visible={visible}>
+        <$Dialog
+            {...dialogOptions}
+            className={`dialog-form ${dialogOptions.className} ${dialogOptions.rtl ? 'is-rtl' : 'is-ltr'}`}
+            onHide={onHide}
+            visible={visible}>
           <FormContainer
-              validationSchema={componentProps.validationSchema}
-              initialValues={componentProps.initialValues ?? {}}
+              validationSchema={formOptions.validationSchema}
+              initialValues={formOptions.initialValues ?? {}}
               onSubmit={() => {
               }}>
             {
               (formik) => (
                   <>
-                    {
-                      config.map((item) => {
-                        switch (item.component) {
-                          case 'auto-complete':
-                            return <AutoComplete key={item.field} name={item.field} {...item} />;
-                          case 'button':
-                            return <Button key={item.field} name={item.field} {...item} />;
-                          case 'cascade-select':
-                            return <SelectButton key={item.field} name={item.field} {...item} />;
-                          case 'checkbox':
-                            return <Checkbox key={item.field} name={item.field} {...item} />;
-                          case 'chips':
-                            return <Chips key={item.field} name={item.field} {...item} />;
-                          case 'dropdown':
-                            return <Dropdown key={item.field} name={item.field} {...item} />;
-                          case 'editor':
-                            return <Editor key={item.field} name={item.field} {...item} />;
-                          case 'input-mask':
-                            return <InputMask key={item.field} name={item.field} {...item} />;
-                          case 'input-number':
-                            return <InputNumber key={item.field} name={item.field} {...item} />;
-                          case 'input-otp':
-                            return <InputOtp key={item.field} name={item.field} {...item} />;
-                          case 'input-password':
-                            return <InputPassword key={item.field} name={item.field} {...item} />;
-                          case 'input-switch':
-                            return <InputSwitch key={item.field} name={item.field} {...item} />;
-                          case 'input-text':
-                            return <InputText key={item.field} name={item.field} {...item} />;
-                          case 'input-textarea':
-                            return <InputTextarea key={item.field} name={item.field} {...item} />;
-                          case 'knob':
-                            return <Knob key={item.field} name={item.field} {...item} />;
-                          case 'list-box':
-                            return <ListBox key={item.field} name={item.field} {...item} />;
-                          case 'mention':
-                            return <Mention key={item.field} name={item.field} {...item} />;
-                          case 'multi-select':
-                            return <Mention key={item.field} name={item.field} {...item} />;
-                          case 'multi-state-checkbox':
-                            return <MultiStateCheckbox key={item.field} name={item.field} {...item} />;
-                          case 'radio-group':
-                            return <RadioGroup key={item.field} name={item.field} {...item} />;
-                          case 'rating':
-                            return <Rating key={item.field} name={item.field} {...item} />;
-                          case 'select-button':
-                            return <SelectButton key={item.field} name={item.field} {...item} />;
-                          case 'slider':
-                            return <Slider key={item.field} name={item.field} {...item} />;
-                          case 'toggle-button':
-                            return <ToggleButton key={item.field} name={item.field} {...item} />;
-                          case 'tree-select':
-                            return <TreeSelect key={item.field} name={item.field} {...item} />;
-                          case 'tri-state-checkbox':
-                            return <TriStateCheckbox key={item.field} name={item.field} {...item} />;
-                          default:
-                            return null;
-                        }
-                      })
-                    }
-                    <Button async type="submit" onClickAsync={(event) => onSubmit(formik, event)} label="ثبت"/>
+                    <div className="dialog-form-content">
+                      {
+                        config.map((item) => {
+                          item.rtl = dialogOptions.rtl ?? powellConfig.current.rtl;
+                          switch (item.component) {
+                            case 'auto-complete':
+                              return <AutoComplete key={item.key} name={item.key} {...item} />;
+                            case 'button':
+                              return <Button key={item.key} name={item.key} {...item} />;
+                            case 'cascade-select':
+                              return <SelectButton key={item.key} name={item.key} {...item} />;
+                            case 'checkbox':
+                              return <Checkbox key={item.key} name={item.key} {...item} />;
+                            case 'chips':
+                              return <Chips key={item.key} name={item.key} {...item} />;
+                            case 'dropdown':
+                              return <Dropdown key={item.key} name={item.key} {...item} />;
+                            case 'editor':
+                              return <Editor key={item.key} name={item.key} {...item} />;
+                            case 'input-mask':
+                              return <InputMask key={item.key} name={item.key} {...item} />;
+                            case 'input-number':
+                              return <InputNumber key={item.key} name={item.key} {...item} />;
+                            case 'input-otp':
+                              return <InputOtp key={item.key} name={item.key} {...item} />;
+                            case 'input-password':
+                              return <InputPassword key={item.key} name={item.key} {...item} />;
+                            case 'input-switch':
+                              return <InputSwitch key={item.key} name={item.key} {...item} />;
+                            case 'input-text':
+                              return <InputText key={item.key} name={item.key} {...item} />;
+                            case 'input-textarea':
+                              return <InputTextarea key={item.key} name={item.key} {...item} />;
+                            case 'knob':
+                              return <Knob key={item.key} name={item.key} {...item} />;
+                            case 'list-box':
+                              return <ListBox key={item.key} name={item.key} {...item} />;
+                            case 'mention':
+                              return <Mention key={item.key} name={item.key} {...item} />;
+                            case 'multi-select':
+                              return <Mention key={item.key} name={item.key} {...item} />;
+                            case 'multi-state-checkbox':
+                              return <MultiStateCheckbox key={item.key} name={item.key} {...item} />;
+                            case 'radio-group':
+                              return <RadioGroup key={item.key} name={item.key} {...item} />;
+                            case 'rating':
+                              return <Rating key={item.key} name={item.key} {...item} />;
+                            case 'select-button':
+                              return <SelectButton key={item.key} name={item.key} {...item} />;
+                            case 'slider':
+                              return <Slider key={item.key} name={item.key} {...item} />;
+                            case 'toggle-button':
+                              return <ToggleButton key={item.key} name={item.key} {...item} />;
+                            case 'tree-select':
+                              return <TreeSelect key={item.key} name={item.key} {...item} />;
+                            case 'tri-state-checkbox':
+                              return <TriStateCheckbox key={item.key} name={item.key} {...item} />;
+                            default:
+                              return null;
+                          }
+                        })
+                      }
+                    </div>
+                    <div className="dialog-form-footer">
+                      {
+                          dialogOptions.rejectVisible &&
+                          <Button
+                              onClick={onHide}
+                              autoFocus={dialogOptions.defaultFocus === 'reject'}
+                              disabled={disableReject}
+                              icon={dialogOptions.rejectIcon}
+                              severity={dialogOptions.rejectSeverity}
+                              appearance={dialogOptions.rejectAppearance}
+                              label={dialogOptions.rejectLabel}
+                              size={dialogOptions.buttonSize}
+                              iconPos={dialogOptions.buttonIconPosition}/>
+                      }
+                      {
+                          dialogOptions.acceptVisible &&
+                          <Button
+                              async
+                              type="submit"
+                              onClickAsync={(event) => onSubmit(formik, event)}
+                              autoFocus={dialogOptions.defaultFocus === 'accept'}
+                              icon={dialogOptions.acceptIcon}
+                              severity={dialogOptions.acceptSeverity}
+                              appearance={dialogOptions.acceptAppearance}
+                              label={dialogOptions.acceptLabel}
+                              size={dialogOptions.buttonSize}
+                              iconPos={dialogOptions.buttonIconPosition}/>
+                      }
+                    </div>
                   </>
               )
             }

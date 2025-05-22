@@ -36,6 +36,11 @@ import {SliderPage} from "@pages/main/showcase/SliderPage";
 import {TreeSelectPage} from "@pages/main/showcase/TreeSelectPage";
 import {TriStateCheckboxPage} from "@pages/main/showcase/TriStateCheckboxPage";
 import {ToggleButtonPage} from "@pages/main/showcase/ToggleButtonPage";
+import {ConfirmDialogPage} from "@pages/main/showcase/ConfirmDialogPage.tsx";
+import {ConfirmPopupPage} from "@pages/main/showcase/ConfirmPopupPage.tsx";
+import {DialogFormPage} from "@pages/main/showcase/DialogFormPage.tsx";
+import {DialogPage} from "@pages/main/showcase/DialogPage.tsx";
+import {ToastPage} from "@pages/main/showcase/ToastPage.tsx";
 
 const provideUser = async () => {
   try {
@@ -108,6 +113,22 @@ export const routes: RouteObject[] = [
         element: <ColorPickerPage/>,
       },
       {
+        path: "confirmDialog",
+        element: <ConfirmDialogPage/>,
+      },
+      {
+        path: "confirmPopup",
+        element: <ConfirmPopupPage/>,
+      },
+      {
+        path: "dialogForm",
+        element: <DialogFormPage/>,
+      },
+      {
+        path: "dialog",
+        element: <DialogPage/>,
+      },
+      {
         path: "dropdown",
         element: <DropdownPage/>,
       },
@@ -178,6 +199,10 @@ export const routes: RouteObject[] = [
       {
         path: "slider",
         element: <SliderPage/>,
+      },
+      {
+        path: "toast",
+        element: <ToastPage/>,
       },
       {
         path: "toggleButtonPage",

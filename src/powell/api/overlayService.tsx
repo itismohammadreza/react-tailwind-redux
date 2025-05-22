@@ -1,28 +1,77 @@
 import {$confirmDialog, $confirmPopup, $UniqueComponentId} from "@powell/api/primereact";
-import {HistoryState, SafeAny} from "@powell/models";
+import {
+  ConfirmDialogOptions,
+  ConfirmPopupOptions,
+  DialogFormProps,
+  DialogFormSubmitEvent,
+  DialogOptions,
+  HistoryState,
+  SafeAny,
+  Size,
+  ToastOptions
+} from "@powell/models";
 import {createRoot, Root} from "react-dom/client";
 import {createPortal} from "react-dom";
 import {overlayEmitter} from "@powell/api/overlayEmitter";
 import {Dialog} from "@powell/components/Dialog";
 import {DialogForm} from "@powell/components/DialogForm";
+import {configService} from "@powell/api/configService.ts";
 
 const states: HistoryState[] = [];
 
-const showToast = (options: SafeAny) => {
-  overlayEmitter.emit('toast', options)
+const showToast = (options: ToastOptions) => {
+  const defaultOptions: ToastOptions = {
+    sticky: false,
+    life: 3000,
+    closable: true,
+    position: 'top-right',
+    ...options
+  }
+  overlayEmitter.emit('toast', defaultOptions);
 }
 
-const showConfirmPopup = (options: SafeAny) => {
-  $confirmPopup(options);
+const showConfirmPopup = (options: ConfirmPopupOptions) => {
+  const defaultOptions: ConfirmPopupOptions = {
+    buttonFull: false,
+    acceptSeverity: "success",
+    acceptAppearance: "outlined",
+    rejectSeverity: "danger",
+    rejectAppearance: "outlined",
+    rtl: configService.get().rtl,
+    ...options
+  }
+  return $confirmPopup({
+    ...defaultOptions,
+    className: `${options.className} ${options.buttonFull ? 'is-button-full' : ''} ${options.rtl ? 'is-rtl' : 'is-ltr'}`,
+    acceptClassName: `${options.acceptClassName} p-button-${options.acceptAppearance} p-button-${options.acceptSeverity} p-button-${getSizeRqualivant(options.buttonSize)}`,
+    rejectClassName: `${options.rejectClassName} p-button-${options.rejectAppearance} p-button-${options.rejectSeverity} p-button-${getSizeRqualivant(options.buttonSize)}`
+  });
 }
 
-const showConfirmDialog = (options: SafeAny) => {
-  $confirmDialog(options);
+const showConfirmDialog = (options: ConfirmDialogOptions) => {
+  const defaultOptions: ConfirmDialogOptions = {
+    buttonFull: false,
+    acceptSeverity: "success",
+    acceptAppearance: "outlined",
+    rejectSeverity: "danger",
+    rejectAppearance: "outlined",
+    rtl: configService.get().rtl,
+    ...options
+  }
+  return $confirmDialog({
+    ...defaultOptions,
+    className: `${options.className} ${options.buttonFull ? 'is-button-full' : ''} ${options.rtl ? 'is-rtl' : 'is-ltr'}`,
+    acceptClassName: `${options.acceptClassName} p-button-${options.acceptAppearance} p-button-${options.acceptSeverity} p-button-${getSizeRqualivant(options.buttonSize)}`,
+    rejectClassName: `${options.rejectClassName} p-button-${options.rejectAppearance} p-button-${options.rejectSeverity} p-button-${getSizeRqualivant(options.buttonSize)}`
+  });
 };
 
-const showDialog = (options: SafeAny) => {
+const showDialog = (options: DialogOptions) => {
   const getProps = (root: Root) => {
-    const props = {...options};
+    const props = {
+      className: `${options.className} ${options.rtl ? 'is-rtl' : 'is-ltr'}`,
+      ...options
+    };
     // override options onHide method
     props.onHide = () => {
       const timeout = setTimeout(() => {
@@ -41,21 +90,38 @@ const showDialog = (options: SafeAny) => {
   }, 0);
 }
 
-const showDialogForm = (config: SafeAny[], props: SafeAny) => {
-  overlayEmitter.on('dialogFormClose', (data) => {
-    props.onSubmit(data)
+const showDialogForm = (options: DialogFormProps) => {
+  const {dialogOptions, ...formOptions} = options;
+  const defaultProps: DialogFormProps = {
+    ...options,
+    dialogOptions: {
+      acceptLabel: 'ثبت',
+      acceptVisible: true,
+      acceptSeverity: 'success',
+      acceptAppearance: 'default',
+      rejectLabel: 'بستن',
+      rejectVisible: true,
+      rejectSeverity: 'danger',
+      rejectAppearance: 'outlined',
+      ...dialogOptions,
+    }
+  }
+  overlayEmitter.on('dialogFormClose', (data: DialogFormSubmitEvent) => {
+    formOptions.onSubmit(data)
   });
 
   const getProps = (root: Root) => {
-    const finalProps = {...props};
-    finalProps.onHide = () => {
-      const timeout = setTimeout(() => {
-        root.unmount();
-        clearTimeout(timeout);
-        props.onHide?.();
-      }, 100);
-    };
-    return {props: finalProps, config};
+    const finalProps = {...defaultProps};
+    if (finalProps.dialogOptions) {
+      finalProps.dialogOptions.onHide = () => {
+        const timeout = setTimeout(() => {
+          root.unmount();
+          clearTimeout(timeout);
+          dialogOptions?.onHide?.();
+        }, 100);
+      };
+    }
+    return finalProps;
   }
 
   renderComponent(DialogForm, getProps);
@@ -95,6 +161,14 @@ const stateChange = () => {
 
 const isPopped = (state: HistoryState) => {
   return states.findIndex(s => s.key === state.key && s.component === state.component) === -1;
+}
+
+const getSizeRqualivant = (size: Size) => {
+  const sizeMap: Record<Size, string> = {
+    large: 'lg',
+    small: 'sm',
+  }
+  return sizeMap[size];
 }
 
 export const overlayService = {

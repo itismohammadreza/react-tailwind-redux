@@ -1,7 +1,49 @@
-import {ButtonAppearance, CssObject, SafeAny, Severity, Size, ToastPosition} from "@powell/models/common";
+import {ButtonAppearance, CssObject, SafeAny, Size} from "@powell/models/common";
 import {IconPosition} from "@powell/models/forms";
+import {
+  $ConfirmDialogProps,
+  $ConfirmPopupProps,
+  $DialogProps,
+  $FormikValues,
+  $ToastMessage,
+  $ToastProps,
+  $TreeProps
+} from "@powell/api";
+import {ReactNode} from "react";
+import {
+  AutoCompleteProps,
+  ButtonProps,
+  CascadeSelectProps,
+  CheckboxProps,
+  ChipsProps,
+  ColorPickerProps,
+  DropdownProps,
+  EditorProps,
+  InputMaskProps,
+  InputNumberProps,
+  InputOtpProps,
+  InputPasswordProps,
+  InputSwitchProps,
+  InputTextareaProps,
+  InputTextProps,
+  KnobProps,
+  ListBoxProps,
+  MentionProps,
+  MultiSelectProps,
+  MultiStateCheckboxProps,
+  RadioGroupProps,
+  RatingProps,
+  SelectButtonProps,
+  SliderProps,
+  ToggleButtonProps,
+  TreeSelectProps,
+  TriStateCheckboxProps
+} from "@powell/models/props";
+
+type _ToastOptions = $ToastProps & $ToastMessage;
 
 export type DefaultFocus = 'accept' | 'reject';
+
 export type HistoricComponent = 'confirmDialog' | 'confirmPopup' | 'dialog' | 'dialogForm' | 'bottomSheet';
 
 export interface HistoryState {
@@ -9,226 +51,64 @@ export interface HistoryState {
   component: HistoricComponent;
 }
 
-export interface NgToastOptions {
-  autoZIndex?: boolean;
-  baseZIndex?: number;
-  style?: CSSStyleDeclaration;
-  position?: ToastPosition;
-  preventOpenDuplicates?: boolean;
-  preventDuplicates?: boolean;
-  showTransformOptions?: string;
-  hideTransformOptions?: string;
-  showTransitionOptions?: string;
-  hideTransitionOptions?: string;
-  breakpoints?: SafeAny;
-  severity?: Severity;
-  summary?: string;
-  detail?: string;
-  id?: SafeAny;
-  key?: string;
-  life?: number;
-  sticky?: boolean;
-  closable?: boolean;
-  data?: SafeAny;
-  icon?: string;
-  contentStyleClass?: string;
-  styleClass?: string;
-  closeIcon?: string;
-
+export interface ToastOptions extends _ToastOptions {
   rtl?: boolean;
 }
 
-export interface NgMessageOptions {
-  summary?: string;
-  detail?: string;
-  icon?: string;
-}
-
-export interface NgConfirmPopupOptions {
-  showTransitionOptions?: string;
-  hideTransitionOptions?: string;
-  autoZIndex?: boolean;
-  baseZIndex?: number;
-  style?: CssObject;
-  styleClass?: string;
-  message?: string;
-  key?: string;
-  icon?: string;
-  header?: string;
-  accept?: () => SafeAny;
-  reject?: () => SafeAny;
-  acceptLabel?: string;
-  rejectLabel?: string;
-  acceptIcon?: string;
-  rejectIcon?: string;
-  acceptVisible?: boolean;
-  rejectVisible?: boolean;
-  blockScroll?: boolean;
-  closeOnEscape?: boolean;
-  dismissableMask?: boolean;
-  defaultFocus?: DefaultFocus;
-  acceptButtonStyleClass?: string;
-  rejectButtonStyleClass?: string;
-  target?: EventTarget;
-  acceptEvent?: SafeAny;
-  rejectEvent?: SafeAny;
-
+export interface ConfirmPopupOptions extends $ConfirmPopupProps {
   buttonFull?: boolean;
-  acceptSeverity?: Severity;
+  acceptSeverity?: ButtonProps["severity"];
   acceptAppearance?: ButtonAppearance;
-  rejectSeverity?: Severity;
+  rejectSeverity?: ButtonProps["severity"];
   rejectAppearance?: ButtonAppearance;
   buttonSize?: Size;
   buttonIconPos?: IconPosition;
   rtl?: boolean;
 }
 
-export interface NgConfirmDialogOptions {
-  header?: string;
-  icon?: string;
-  message?: string;
-  style?: CssObject;
-  styleClass?: string;
-  maskStyleClass?: string;
-  acceptIcon?: string;
-  acceptLabel?: string;
-  closeAriaLabel?: string;
-  acceptAriaLabel?: string;
-  acceptVisible?: boolean;
-  rejectIcon?: string;
-  rejectLabel?: string;
-  rejectAriaLabel?: string;
-  rejectVisible?: boolean;
-  acceptButtonStyleClass?: string;
-  rejectButtonStyleClass?: string;
-  closeOnEscape?: boolean;
-  dismissableMask?: boolean;
-  blockScroll?: boolean;
-  closable?: boolean;
-  appendTo?: SafeAny;
-  key?: string;
-  autoZIndex?: boolean;
-  baseZIndex?: number;
-  transitionOptions?: string;
-  focusTrap?: boolean;
-  defaultFocus?: DefaultFocus;
-  breakpoints?: SafeAny;
-  visible?: SafeAny;
-  position?: string;
-
-  buttonFull?: boolean
-  acceptSeverity?: Severity;
+export interface ConfirmDialogOptions extends $ConfirmDialogProps {
+  buttonFull?: boolean;
+  acceptSeverity?: ButtonProps["severity"];
   acceptAppearance?: ButtonAppearance;
-  rejectSeverity?: Severity;
+  rejectSeverity?: ButtonProps["severity"];
   rejectAppearance?: ButtonAppearance;
   buttonSize?: Size;
-  buttonIconPos?: IconPosition;
   rtl?: boolean;
 }
 
-interface NgDialogBase {
-  header?: string;
-  draggable?: boolean;
-  resizable?: boolean;
-  positionLeft?: number;
-  positionTop?: number;
-  contentStyle?: CssObject;
-  contentStyleClass?: string;
-  modal?: boolean;
-  closeOnEscape?: boolean;
-  dismissableMask?: boolean;
-  rtl?: boolean;
-  closable?: boolean;
-  responsive?: boolean;
-  appendTo?: SafeAny;
-  breakpoints?: SafeAny;
-  styleClass?: string;
-  maskStyleClass?: string;
-  maskStyle?: CssObject;
-  showHeader?: boolean;
-  breakpoint?: number;
-  blockScroll?: boolean;
-  autoZIndex?: boolean;
-  baseZIndex?: number;
-  minX?: number;
-  minY?: number;
-  focusOnShow?: boolean;
-  maximizable?: boolean;
-  keepInViewport?: boolean;
-  focusTrap?: boolean;
-  transitionOptions?: string;
-  closeIcon?: string;
-  closeAriaLabel?: string;
-  closeTabindex?: string;
-  minimizeIcon?: string;
-  maximizeIcon?: string;
-  style?: CssObject;
-  position?: SafeAny;
-  onShow?: () => SafeAny;
-  onHide?: () => SafeAny;
-  visibleChange?: (event: SafeAny) => SafeAny;
-  onResizeInit?: (event: SafeAny) => SafeAny;
-  onResizeEnd?: (event: SafeAny) => SafeAny;
-  onDragEnd?: (event: SafeAny) => SafeAny;
-  onMaximize?: (event: SafeAny) => SafeAny;
+export interface DialogOptions extends Omit<Partial<$DialogProps>, "children"> {
+  children: ReactNode | ((close: VoidFunction) => ReactNode);
 }
 
-export interface NgDialogOptions extends NgDialogBase {
-  buttonStyleClass?: string;
-  buttonIcon?: string;
-  buttonIconPos?: IconPosition;
-  buttonFull?: boolean;
-  buttonLabel?: string;
-  buttonSeverity?: Severity;
-  buttonAppearance?: ButtonAppearance;
-  buttonSize?: Size;
-  content?: string;
-}
-
-export interface NgDialogFormOptions extends NgDialogBase {
-  containerStyleClass?: string;
+export interface DialogFormOptions extends $DialogProps {
+  defaultFocus?: DefaultFocus;
+  containerClassName?: string;
   containerStyle?: CssObject;
-  defaultFocus?: DefaultFocus;
-  acceptButtonStyleClass?: string;
-  rejectButtonStyleClass?: string;
   acceptVisible?: boolean;
   acceptIcon?: string;
-  acceptSeverity?: Severity;
+  acceptSeverity?: ButtonProps["severity"];
   acceptLabel?: string;
   acceptAppearance?: ButtonAppearance;
   rejectVisible?: boolean;
   rejectIcon?: string;
-  rejectSeverity?: Severity;
+  rejectSeverity?: ButtonProps["severity"];
   rejectLabel?: string;
   rejectAppearance?: ButtonAppearance;
   buttonFull?: boolean;
   buttonSize?: Size;
   buttonIconPosition?: IconPosition;
-  submitDisabled?: boolean | ((dialogFormEvent?: SafeAny) => boolean);
-  formValidator?: {
-    type: string,
-    validator: SafeAny,
-    message: string,
-    style?: CssObject
-  };
 }
 
-export interface NgDialogFormResult {
-  formValue: SafeAny;
-  finalizeSubmit: (hideDialog?: boolean) => void
-}
-
-export interface NgDialogFormValidation {
-  type: SafeAny | string;
-  validator: SafeAny;
-  message: string | ((control: SafeAny) => string);
-}
-
-export interface NgDialogFormEvent {
+export interface DialogFormEvent {
   event?: SafeAny,
   form?: SafeAny;
   currentConfig?: DialogFormConfig;
   allConfig?: DialogFormConfig[];
+}
+
+export interface DialogFormSubmitEvent {
+  values: $FormikValues;
+  finalizeSubmit: (hideDialog: boolean) => void;
 }
 
 export type NgDialogFormComponent =
@@ -238,37 +118,68 @@ export type NgDialogFormComponent =
     | 'button'
     | 'cascade-select'
     | 'checkbox'
-    | 'checkbox-group'
+    // | 'checkbox-group'
     | 'chips'
     | 'color-picker'
     | 'dropdown'
-    | 'dual-label-switch'
+    // | 'dual-label-switch'
     | 'editor'
-    | 'file-picker'
-    | 'file-picker2'
+    // | 'file-picker'
+    // | 'file-picker2'
     | 'datepicker'
-    | 'image'
     | 'input-mask'
     | 'input-number'
     | 'input-otp'
     | 'input-password'
+    | 'input-switch'
     | 'input-text'
     | 'input-textarea'
-    | 'iran-map'
     | 'knob'
-    | 'listbox'
-    | 'map'
-    | 'message'
+    | 'list-box'
+    // | 'map'
+    | 'mention'
     | 'multi-select'
-    | 'radio'
+    | 'multi-state-checkbox'
+    | 'radio-group'
     | 'rating'
     | 'select-button'
     | 'slider'
-    | 'switch'
     | 'toggle-button'
     | 'tree'
     | 'tree-select'
     | 'tri-state-checkbox'
 
-export interface DialogFormConfig {
-}
+export type DialogFormConfig =
+    Partial<AutoCompleteProps> &
+    Partial<ButtonProps> &
+    Partial<CascadeSelectProps> &
+    Partial<CheckboxProps> &
+    Partial<ChipsProps> &
+    Partial<ColorPickerProps> &
+    Partial<DropdownProps> &
+    Partial<EditorProps> &
+    Partial<InputMaskProps> &
+    Partial<InputNumberProps> &
+    Partial<InputOtpProps> &
+    Partial<InputPasswordProps> &
+    Partial<InputSwitchProps> &
+    Partial<InputTextProps> &
+    Partial<InputTextareaProps> &
+    Partial<KnobProps> &
+    Partial<ListBoxProps> &
+    Partial<MentionProps> &
+    Partial<MultiSelectProps> &
+    Partial<MultiStateCheckboxProps> &
+    Partial<RadioGroupProps> &
+    Partial<RatingProps> &
+    Partial<SelectButtonProps> &
+    Partial<SliderProps> &
+    Partial<ToggleButtonProps> &
+    Partial<$TreeProps> &
+    Partial<TreeSelectProps> &
+    Partial<TriStateCheckboxProps> &
+    {
+      component: string;
+      key: string;
+      hidden?: boolean;
+    }

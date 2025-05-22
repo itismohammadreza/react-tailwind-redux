@@ -1394,6 +1394,97 @@
   }
 }
 
+@mixin overlays-styles() {
+  :is(.p-dialog,.p-confirm-popup, .p-dialog-form, .p-toast) {
+    &.is-rtl {
+      direction: rtl;
+    }
+
+    .p-button-icon:empty {
+      display: none;
+    }
+  }
+
+  .p-confirm-dialog {
+    .p-confirm-dialog-message {
+      margin-left: 0;
+    }
+
+    .p-confirm-dialog-icon {
+      margin-inline-end: 1rem;
+    }
+
+    .p-dialog-footer {
+      text-align: end;
+      justify-content: flex-end;
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        margin: 0;
+      }
+    }
+
+    &.is-button-full {
+      .p-dialog-footer {
+        button {
+          flex: auto;
+        }
+      }
+    }
+  }
+
+  .p-confirm-popup {
+    .p-confirm-popup-message {
+      margin-left: 0;
+    }
+
+    .p-confirm-popup-icon {
+      margin-inline-end: 1rem;
+    }
+
+    .p-confirm-popup-footer {
+      text-align: end;
+      justify-content: flex-end;
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        margin: 0;
+      }
+    }
+
+    &.is-button-full {
+      .p-confirm-popup-footer {
+        button {
+          flex: auto;
+        }
+      }
+    }
+  }
+
+  .dialog-form {
+    .dialog-form-content {
+      > * {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .dialog-form-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+  }
+
+  .p-toast {
+    .p-toast-message .p-toast-message-content .p-toast-message-text {
+      margin: unset;
+      margin-inline-start: 1rem;
+    }
+  }
+}
+
 @mixin radius-all($value) {
   @include left-side-radius($value);
   @include right-side-radius($value);
@@ -1458,3 +1549,5 @@
 @include components-addon-styles();
 
 @include components-panel-styles();
+
+@include overlays-styles();
