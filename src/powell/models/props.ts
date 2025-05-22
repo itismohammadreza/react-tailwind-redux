@@ -102,9 +102,9 @@ export type MultiSelectProps = $MultiSelectProps & CommonFieldControlProps;
 export type MultiStateCheckboxProps = $MultiStateCheckboxProps & FixFieldControlProps;
 export type RadioGroupProps = $RadioButtonProps & FixFieldControlProps & {
   orientation?: Orientation,
-  options: SafeAny[];
-  optionLabel: string;
-  optionValue: string;
+  options?: SafeAny[];
+  optionLabel?: string;
+  optionValue?: string;
 };
 export type RatingProps = $RatingProps & FixFieldControlProps;
 export type SelectButtonProps = $SelectButtonProps & FixFieldControlProps;

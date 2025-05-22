@@ -26,7 +26,10 @@ export const RadioGroup = (props: RadioGroupProps) => {
         {key: 'disabled', keepInRest: true},
         {key: 'orientation', keepInRest: false, defaultValue: 'horizontal'},
       ],
-      innerProps: ['optionLabel', 'optionValue'],
+      innerProps: [
+        {key: 'optionLabel', defaultValue: 'label'},
+        {key: 'optionValue', defaultValue: 'value'},
+      ],
     }
   });
 
