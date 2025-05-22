@@ -9,6 +9,14 @@
 - show toast on error from interceptor(dispatch an action and listen to the action in toast component)
 - add theme live changing and other configurations in sidebar
 - add dialog and modals preview pages
+- implement close dialogs when browser back button clicked
+- create following components and add them to dialog form:
+  'checkbox-group'
+  'dual-label-switch'
+  'file-picker'
+  'file-picker2'
+  'map'
+
 -------------------------------------------------------------
 
 - multi-state-checkbox does not accept variant props
