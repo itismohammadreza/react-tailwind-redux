@@ -85,3 +85,26 @@ export interface PowellConfig extends OmittedApiOptions {
   fixLabelPosition?: FixLabelPosition;
   injectDirectionToRoot?: boolean;
 }
+
+export interface ApplyConfigOptions<T> {
+  isFixLabel: boolean;
+  sizable: boolean;
+  groups: Record<string, PropDescriptor<T>[]>
+}
+
+export interface CommonConfigProps {
+  rtl?: PowellConfig["rtl"];
+  showRequiredStar?: PowellConfig["showRequiredStar"];
+  labelPosition?: PowellConfig["labelPosition"];
+  inputSize?: PowellConfig["inputSize"];
+  variant?: PowellConfig["inputStyle"];
+}
+
+export type PropDescriptor<T> =
+    | keyof T & string
+    | {
+  key: keyof T & string;
+  alias?: string;
+  defaultValue?: T[keyof T] | (() => T[keyof T]);
+  keepInRest?: boolean;
+};
