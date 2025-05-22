@@ -5,7 +5,6 @@ import {
   $CheckboxProps,
   $ChipsProps,
   $ColorPickerProps,
-  $DialogProps,
   $DropdownProps,
   $EditorProps,
   $FormikConfig,
@@ -28,7 +27,6 @@ import {
   $RatingProps,
   $SelectButtonProps,
   $SliderProps,
-  $ToastProps,
   $ToggleButtonProps,
   $TreeSelectProps,
   $TriStateCheckboxProps
@@ -36,6 +34,7 @@ import {
 import {MouseEvent, ReactNode} from "react";
 import {ButtonAppearance, CssObject, Orientation, SafeAny, Size} from "@powell/models/common";
 import {Addon, FieldControlMeta, FixLabelPosition, LabelPosition} from "@powell/models/forms";
+import {DialogFormConfig, DialogFormOptions, DialogFormSubmitEvent} from "@powell/models/overlay.ts";
 
 export interface FieldControlProps {
   name?: string;
@@ -136,20 +135,15 @@ export interface ButtonProps extends Omit<$ButtonProps, "loading" | "link" | "te
   onStateChange?: (state: ButtonState) => void;
 }
 
-export interface DialogProps extends $DialogProps {
-  rtl?: boolean;
+export interface DialogFormProps {
+  config: DialogFormConfig[];
+  submitDisabled?: boolean | ((dialogFormEvent?: SafeAny) => boolean);
+  onSubmit?: (event: DialogFormSubmitEvent) => void;
+  dialogOptions?: Omit<Partial<DialogFormOptions>, "children">;
+  validationSchema?: FormContainerProps["validationSchema"];
+  initialValues?: FormContainerProps["initialValues"];
 }
 
-export interface DialogFormProps<T extends $FormikValues = SafeAny> {
-  config: SafeAny[];
-  props: $DialogProps & FormContainerProps<T> & {rtl?: boolean};
-}
-
-export interface FormContainerProps<T extends $FormikValues> extends $FormikConfig<T> {
+export interface FormContainerProps<T = $FormikValues> extends $FormikConfig<T> {
   onInit?: (context: $FormikContextType<T>) => void;
-  className?: string;
-}
-
-export interface ToastProps extends $ToastProps {
-  rtl?: boolean;
 }

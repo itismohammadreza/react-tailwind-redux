@@ -1,10 +1,9 @@
 import {$Dialog} from "@powell/api";
 import {useEffect, useRef, useState} from "react";
 import {overlayEmitter} from "@powell/api/overlayEmitter";
-import {SafeAny} from "@powell/models";
-import {DialogProps} from "@powell/models/props";
+import {DialogOptions} from "@powell/models";
 
-export const Dialog = (props: DialogProps) => {
+export const Dialog = (props: DialogOptions) => {
   const [visible, setVisible] = useState(false);
   const isRendered = useRef(false);
   const showDialog = () => setVisible(true);
@@ -24,7 +23,8 @@ export const Dialog = (props: DialogProps) => {
   }, []);
 
   return (
-      <$Dialog {...props} onHide={onHide} visible={visible}
-               children={props.children && typeof props.children === 'function' ? (props.children as SafeAny)(onHide) : props.children}/>
+      <$Dialog {...props} onHide={onHide} visible={visible}>
+        {typeof props?.children === 'function' ? props.children(onHide) : props.children}
+      </$Dialog>
   );
 };

@@ -26,7 +26,7 @@ export const dropdownOptionsMap = {
   defaultFocusTypes: ['none', 'accept', 'reject', 'close'],
   toastPositions: ['top-right', 'top-left', 'bottom-right', 'bottom-left', 'top-center', 'bottom-center', 'center'],
   toastSeverities: ['secondary', 'success', 'info', 'warn', 'error', 'contrast'],
-  dialogPositions: ['top', 'bottom', 'left', 'right', 'topleft', 'topright', 'bottomleft', 'bottomright', 'center'],
+  dialogPositions: ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'center'],
   pinchLimitZoomLevels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 'original image size'],
   pinchOverflows: ['hidden', 'visible'],
   pinchDisableZoomControls: ['disable', 'never', 'auto'],

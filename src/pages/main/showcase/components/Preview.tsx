@@ -6,13 +6,14 @@ import {PreviewOption, PreviewProps} from "@pages/main/showcase/models";
 import {SafeAny} from "@powell/models";
 
 export const Preview = (props: PreviewProps) => {
-  const {options = [], component, description, withForm = true, children} = props;
+  const {options = [], component, description, withForm = true, onOptionChange, children} = props;
   const [previewOptions, setPreviewOptions] = useState(options);
 
   const handleOptionChange = (option: PreviewOption) => {
     setPreviewOptions(prev => prev.map(opt =>
         opt.field === option.field ? {...opt, value: option.value} : opt
     ));
+    onOptionChange?.(option)
   };
 
   const preview = () => {
@@ -41,10 +42,16 @@ export const Preview = (props: PreviewProps) => {
       }
       return finalValue;
     }
-    const props = previewOptions.reduce((acc, curr) => ({
-      ...acc,
-      ...(curr.field === 'addon' ? getAddonConfig(curr.value) : {[curr.field]: curr.value})
-    }), {});
+
+    let props: SafeAny = {};
+    if (["ConfirmDialog", "ConfirmPopup", "DialogForm", "Dialog", "Toast"].includes(component)) {
+      props = {};
+    } else {
+      props = previewOptions.reduce((acc, curr) => ({
+        ...acc,
+        ...(curr.field === 'addon' ? getAddonConfig(curr.value) : {[curr.field]: curr.value})
+      }), {});
+    }
     return Children.map(children, (child) => cloneElement(child, props));
   };
 
@@ -62,21 +69,22 @@ export const Preview = (props: PreviewProps) => {
         )}
 
         <$Panel style={{minHeight: '110px'}} header="Preview">
-          {withForm ? (
-              <FormContainer
-                  validationSchema={
-                    $Yup.object({
-                      n: $Yup.mixed().required('Field is required')
-                    })
-                  }
-                  className="p-10"
-                  initialValues={{n: null}}
-                  onSubmit={v => console.log(v)}>
-                {preview()}
-              </FormContainer>
-          ) : (
-              preview()
-          )}
+          <div className="p-10">
+            {withForm ? (
+                <FormContainer
+                    validationSchema={
+                      $Yup.object({
+                        n: $Yup.mixed().required('Field is required')
+                      })
+                    }
+                    initialValues={{n: null}}
+                    onSubmit={v => console.log(v)}>
+                  {preview()}
+                </FormContainer>
+            ) : (
+                preview()
+            )}
+          </div>
         </$Panel>
       </div>
   );

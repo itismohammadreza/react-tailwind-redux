@@ -13,6 +13,7 @@ export interface PreviewProps<T = SafeAny> {
   component: string;
   description: string;
   withForm?: boolean;
+  onOptionChange?: (event: PreviewOption) => void;
   children?: ReactElement;
 }
 
