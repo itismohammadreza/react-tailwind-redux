@@ -5,7 +5,6 @@ export const powellDefaults: PowellConfig = {
   rtl: false,
   showRequiredStar: true,
   ripple: true,
-  inputSize: 'medium',
   inputStyle: 'outlined',
   labelPosition: 'top',
   fixLabelPosition: 'side',

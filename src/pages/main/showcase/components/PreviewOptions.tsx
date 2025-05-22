@@ -34,6 +34,7 @@ export const PreviewOptions = (props: PreviewOptionsProps) => {
               <div key={option.field} className="flex flex-col space-y-2">
                 {option.selectOptions ? (
                     <Dropdown
+                        showClear
                         label={option.field}
                         value={values[option.field]}
                         options={dropdownOptionsMap[option.selectOptions].map((v: string) => ({label: v, value: v}))}
