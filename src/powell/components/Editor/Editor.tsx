@@ -1,8 +1,15 @@
 import {EditorProps} from "@powell/models";
-import {$Editor} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
+import {lazy} from "react";
+
+const LazyEditor = lazy(() =>
+    import ('primereact/editor')
+    .then(module => ({
+      default: module.Editor
+    }))
+);
 
 export const Editor = (props: EditorProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {
@@ -35,7 +42,7 @@ export const Editor = (props: EditorProps) => {
                   id={control.id}
                   isRequired={control.isRequired}
                   errorElement={!props.disabled && control.errorElement}>
-                <$Editor
+                <LazyEditor
                     {...rest}
                     id={control.id}
                     value={control.field ? control.field.value : props.value}
