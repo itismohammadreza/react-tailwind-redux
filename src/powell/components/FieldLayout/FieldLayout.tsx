@@ -1,7 +1,6 @@
 import {CSSProperties, PropsWithChildren} from "react";
 import {$classNames, $FloatLabel, $IconField, $InputIcon} from "@powell/api";
-import {FieldLayoutProps} from "@powell/models/props";
-import {AddonConfig} from "@powell/models";
+import {AddonConfig, FieldLayoutProps} from "@powell/models";
 import {Button} from "@powell/components/Button";
 
 export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {

@@ -1,6 +1,5 @@
-import {$Dialog} from "@powell/api";
+import {$Dialog, overlayEmitter} from "@powell/api";
 import {useEffect, useRef, useState} from "react";
-import {overlayEmitter} from "@powell/api/overlayEmitter";
 import {DialogOptions} from "@powell/models";
 
 export const Dialog = (props: DialogOptions) => {

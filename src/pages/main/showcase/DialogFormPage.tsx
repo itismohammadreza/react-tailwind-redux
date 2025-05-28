@@ -3,8 +3,7 @@ import {PreviewProps} from "@pages/main/showcase/models";
 import {DialogFormOptions, DialogOptions} from "@powell/models";
 import {usePowellConfig} from "@powell/hooks";
 import {Button} from "@powell/components/Button";
-import {overlayService} from "@powell/api/overlayService";
-import {$Yup} from "@powell/api";
+import {$Yup, overlayService} from "@powell/api";
 import {useState} from "react";
 
 export const DialogFormPage = () => {

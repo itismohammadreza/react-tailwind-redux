@@ -1,7 +1,6 @@
-import {$Toast} from "@powell/api";
+import {$Toast, overlayEmitter} from "@powell/api";
 import {useEffect, useRef, useState} from "react";
 import {SafeAny, ToastOptions} from "@powell/models";
-import {overlayEmitter} from "@powell/api/overlayEmitter";
 
 export const Toast = () => {
   const toast = useRef<SafeAny>(null);

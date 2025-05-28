@@ -3,7 +3,7 @@ import {PreviewProps} from "@pages/main/showcase/models";
 import {ConfirmPopupOptions} from "@powell/models";
 import {usePowellConfig} from "@powell/hooks";
 import {Button} from "@powell/components/Button";
-import {overlayService} from "@powell/api/overlayService";
+import {overlayService} from "@powell/api";
 import {useState} from "react";
 
 export const ConfirmPopupPage = () => {

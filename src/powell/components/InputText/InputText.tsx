@@ -1,10 +1,9 @@
-import {InputTextProps} from "@powell/models/props";
+import {FieldControlMeta, InputTextProps, SafeAny} from "@powell/models";
 import {$InputText} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
 import {useApplyConfig} from "@powell/hooks";
 import {TimesIcon} from "primereact/icons/times";
-import {FieldControlMeta, SafeAny} from "@powell/models";
 
 export const InputText = (props: InputTextProps) => {
   const {controlProps, layoutProps, rest} = useApplyConfig(props, {

@@ -1,7 +1,7 @@
 import {$AutoComplete} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-import {AutoCompleteProps} from "@powell/models/props";
+import {AutoCompleteProps} from "@powell/models";
 import {useApplyConfig} from "@powell/hooks";
 
 export const AutoComplete = (props: AutoCompleteProps) => {

@@ -1,6 +1,5 @@
 import {$APIOptions} from "@powell/api";
-import {Size} from "@powell/models/common";
-import {FixLabelPosition, LabelPosition} from "@powell/models/forms";
+import {FixLabelPosition, LabelPosition, Size} from "@powell/models";
 
 export type ThemeName =
     "arya-blue" |

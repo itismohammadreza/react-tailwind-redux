@@ -1,7 +1,6 @@
 import {$ErrorMessage, $Field, $FieldProps, $FormikContextType, $FormikValues, $UniqueComponentId} from "@powell/api";
 import {useFormContext} from "@powell/hooks";
-import {FieldControlMeta, SafeAny} from "@powell/models";
-import {FieldControlProps} from "@powell/models/props";
+import {FieldControlMeta, FieldControlProps, SafeAny} from "@powell/models";
 import {useRef} from "react";
 
 const isRequiredField = (formContext: $FormikContextType<$FormikValues>, name: string) => {

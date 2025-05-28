@@ -2,7 +2,7 @@ import {Preview} from "@pages/main/showcase/components/Preview";
 import {PreviewProps} from "@pages/main/showcase/models";
 import {usePowellConfig} from "@powell/hooks";
 import {Button} from "@powell/components/Button";
-import {overlayService} from "@powell/api/overlayService";
+import {overlayService} from "@powell/api";
 import {ConfirmDialogOptions} from "@powell/models";
 import {useState} from "react";
 

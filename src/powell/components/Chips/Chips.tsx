@@ -1,7 +1,7 @@
 import {$Chips} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-import {ChipsProps} from "@powell/models/props";
+import {ChipsProps} from "@powell/models";
 import {useApplyConfig} from "@powell/hooks";
 
 export const Chips = (props: ChipsProps) => {

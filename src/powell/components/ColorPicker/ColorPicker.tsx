@@ -1,7 +1,7 @@
 import {$ColorPicker} from "@powell/api";
 import {FieldControl} from "@powell/components/FieldControl";
 import {FieldLayout} from "@powell/components/FieldLayout";
-import {ColorPickerProps} from "@powell/models/props";
+import {ColorPickerProps} from "@powell/models";
 import {useApplyConfig} from "@powell/hooks";
 
 export const ColorPicker = (props: ColorPickerProps) => {

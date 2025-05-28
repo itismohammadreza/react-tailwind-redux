@@ -36,11 +36,11 @@ import {SliderPage} from "@pages/main/showcase/SliderPage";
 import {TreeSelectPage} from "@pages/main/showcase/TreeSelectPage";
 import {TriStateCheckboxPage} from "@pages/main/showcase/TriStateCheckboxPage";
 import {ToggleButtonPage} from "@pages/main/showcase/ToggleButtonPage";
-import {ConfirmDialogPage} from "@pages/main/showcase/ConfirmDialogPage.tsx";
-import {ConfirmPopupPage} from "@pages/main/showcase/ConfirmPopupPage.tsx";
-import {DialogFormPage} from "@pages/main/showcase/DialogFormPage.tsx";
-import {DialogPage} from "@pages/main/showcase/DialogPage.tsx";
-import {ToastPage} from "@pages/main/showcase/ToastPage.tsx";
+import {ConfirmDialogPage} from "@pages/main/showcase/ConfirmDialogPage";
+import {ConfirmPopupPage} from "@pages/main/showcase/ConfirmPopupPage";
+import {DialogFormPage} from "@pages/main/showcase/DialogFormPage";
+import {DialogPage} from "@pages/main/showcase/DialogPage";
+import {ToastPage} from "@pages/main/showcase/ToastPage";
 
 const provideUser = async () => {
   try {

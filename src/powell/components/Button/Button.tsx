@@ -1,6 +1,6 @@
 import {MouseEvent, useRef, useState} from "react";
 import {$Button, $classNames} from "@powell/api";
-import {ButtonProps, ButtonState, ButtonTemplateType} from "@powell/models/props";
+import {ButtonProps, ButtonState, ButtonTemplateType} from "@powell/models";
 
 export const Button = (props: ButtonProps) => {
   const {

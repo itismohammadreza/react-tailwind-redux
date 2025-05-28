@@ -1,4 +1,4 @@
-import {$confirmDialog, $confirmPopup, $UniqueComponentId} from "@powell/api/primereact";
+import {$confirmDialog, $confirmPopup, $UniqueComponentId, configService, overlayEmitter} from "@powell/api";
 import {
   ConfirmDialogOptions,
   ConfirmPopupOptions,
@@ -12,10 +12,8 @@ import {
 } from "@powell/models";
 import {createRoot, Root} from "react-dom/client";
 import {createPortal} from "react-dom";
-import {overlayEmitter} from "@powell/api/overlayEmitter";
 import {Dialog} from "@powell/components/Dialog";
 import {DialogForm} from "@powell/components/DialogForm";
-import {configService} from "@powell/api/configService.ts";
 
 const states: HistoryState[] = [];
 
