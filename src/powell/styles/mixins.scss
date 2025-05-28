@@ -1,0 +1,54 @@
+@mixin radius-all($value) {
+  @include left-side-radius($value);
+  @include right-side-radius($value);
+}
+
+@mixin left-side-radius($value) {
+  border-top-left-radius: $value;
+  border-bottom-left-radius: $value;
+}
+
+@mixin right-side-radius($value) {
+  border-top-right-radius: $value;
+  border-bottom-right-radius: $value;
+}
+
+@mixin adjust-addon-styles($selector) {
+  &.addon-both {
+    #{$selector} {
+      @include radius-all(0);
+    }
+  }
+
+  &:dir(ltr) {
+    &.addon-before {
+      #{$selector} {
+        @include left-side-radius(0);
+        @include right-side-radius(var(--border-radius));
+      }
+    }
+
+    &.addon-after {
+      #{$selector} {
+        @include left-side-radius(var(--border-radius));
+        @include right-side-radius(0);
+      }
+    }
+  }
+
+  &:dir(rtl) {
+    &.addon-before {
+      #{$selector} {
+        @include left-side-radius(var(--border-radius));
+        @include right-side-radius(0);
+      }
+    }
+
+    &.addon-after {
+      #{$selector} {
+        @include left-side-radius(0);
+        @include right-side-radius(var(--border-radius));
+      }
+    }
+  }
+}

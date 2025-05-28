@@ -1,0 +1,141 @@
+.p-autocomplete-panel {
+  &.panel-rtl {
+    direction: rtl;
+  }
+}
+
+.p-cascadeselect-panel {
+  &.panel-rtl {
+    direction: rtl;
+
+    .p-cascadeselect-group-icon {
+      margin-left: unset;
+      margin-inline-start: auto;
+      transform: rotate(180deg);
+    }
+
+    .p-cascadeselect-item-active > .p-cascadeselect-sublist-wrapper {
+      left: unset;
+      inset-inline-start: 100%;
+    }
+  }
+}
+
+.p-dropdown-panel {
+  &.panel-rtl {
+    direction: rtl;
+  }
+
+  .p-dropdown-header {
+    .p-dropdown-filter-icon {
+      right: auto;
+      inset-inline-end: 0.75rem;
+    }
+
+    .p-dropdown-filter {
+      padding-right: 0.75rem;
+      padding-inline-end: 2rem;
+      margin-right: 0;
+      margin-inline-end: -1.75rem;
+    }
+  }
+}
+
+.p-password-panel {
+  &.panel-rtl {
+    direction: rtl;
+  }
+}
+
+.p-mention-panel {
+  &.panel-rtl {
+    direction: rtl;
+  }
+}
+
+.p-multiselect-panel {
+  &.panel-rtl {
+    direction: rtl;
+
+    .p-multiselect-header {
+      .p-checkbox {
+        margin-right: unset;
+        margin-inline-end: 0.5rem;
+      }
+
+      .p-multiselect-close {
+        margin-left: unset;
+        margin-inline-start: 0.5rem;
+      }
+
+      .p-multiselect-filter-container {
+        .p-inputtext {
+          padding-right: 0.75rem;
+          margin-inline-end: 1.75rem;
+          padding-inline-end: 2rem;
+        }
+
+        .p-multiselect-filter-icon {
+          right: auto;
+          inset-inline-end: 0.75rem;
+        }
+      }
+    }
+
+    .p-multiselect-items .p-multiselect-item .p-checkbox {
+      margin-right: unset;
+      margin-inline-end: 0.5rem;
+    }
+  }
+}
+
+.p-treeselect-panel {
+  &.panel-rtl {
+    direction: rtl;
+
+    .p-tree .p-tree-container .p-treenode {
+      &:not([aria-expanded="true"]) {
+        .p-tree-toggler {
+          transform: rotate(180deg);
+        }
+      }
+
+      .p-treenode-content {
+        .p-tree-toggler, .p-treenode-icon, .p-checkbox {
+          margin-right: unset;
+          margin-inline-end: 0.5rem;
+        }
+      }
+    }
+
+    .p-tree .p-treenode-children {
+      padding: unset;
+      padding-inline-start: 1rem;
+    }
+
+    .p-treeselect-header {
+      .p-checkbox {
+        margin-right: unset;
+        margin-inline-end: 0.5rem;
+      }
+
+      .p-treeselect-close {
+        margin-left: unset;
+        margin-inline-start: 0.5rem;
+      }
+
+      .p-treeselect-filter-container {
+        .p-inputtext {
+          padding-right: 0.75rem;
+          margin-inline-end: 1.75rem;
+          padding-inline-end: 2rem;
+        }
+
+        .p-treeselect-filter-icon {
+          right: auto;
+          inset-inline-end: 0.75rem;
+        }
+      }
+    }
+  }
+}

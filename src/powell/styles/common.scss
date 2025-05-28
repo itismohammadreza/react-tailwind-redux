@@ -1,0 +1,102 @@
+[class*="-wrapper"] {
+  .field {
+    display: flex;
+    gap: 0.25rem 1rem;
+
+    > .field-inner {
+      flex-grow: 1;
+    }
+  }
+
+  &.control-disabled {
+    label {
+      opacity: 0.6;
+    }
+  }
+
+  &.label-side .field {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &.label-top .field {
+    flex-direction: column;
+
+    label {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  &.label-float {
+    label {
+      left: auto;
+      inset-inline-start: 0.75rem;
+    }
+
+    &[class^="icon"] .field label {
+      inset-inline-start: 2.5rem;
+    }
+  }
+
+  .hint {
+    color: var(--text-color-secondary);
+    display: block;
+  }
+
+  .error-message {
+    color: rgb(185, 28, 28);
+    display: block;
+  }
+}
+
+.auto-complete-wrapper .p-autocomplete,
+.auto-complete-wrapper .p-autocomplete .p-inputtext,
+.cascade-select-wrapper .p-cascadeselect,
+.chips-wrapper .p-chips,
+.chips-wrapper .p-chips .p-inputtext,
+.dropdown-wrapper .p-dropdown,
+.editor-wrapper [data-pc-name="editor"],
+.input-mask-wrapper .p-inputmask,
+.input-number-wrapper .p-inputnumber,
+.input-text-wrapper .p-inputtext,
+.input-textarea-wrapper .p-inputtext,
+.input-password-wrapper .p-password,
+.input-password-wrapper .p-password div,
+.input-password-wrapper .p-password-input,
+.mention-wrapper .p-mention,
+.mention-wrapper .p-mention .p-mention-input,
+.multi-select-wrapper .p-multiselect,
+.tree-select-wrapper .p-treeselect {
+  width: 100%;
+}
+
+.checkbox-wrapper,
+.tri-state-checkbox-wrapper,
+.multi-state-checkbox-wrapper {
+  &.label-side .field {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 0.25rem 0.5rem;
+
+    .field-inner {
+      flex-grow: 0;
+    }
+  }
+}
+
+.input-switch-wrapper {
+  .field-inner {
+    display: inline-flex;
+  }
+}
+
+.color-picker-wrapper.is-inline,
+.editor-wrapper,
+.input-textarea-wrapper,
+.list-box-wrapper,
+.mention-wrapper,
+.radio-group-wrapper.is-vertical {
+  .field label {
+    align-self: self-start;
+  }
+}

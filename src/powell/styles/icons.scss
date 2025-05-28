@@ -1,0 +1,640 @@
+[class*=-wrapper] .p-icon-field {
+  .p-input-icon {
+    margin: 0;
+    transform: translateY(-50%);
+    z-index: 50;
+    color: #6b7280;
+  }
+
+  &.p-icon-field-right > .p-input-icon:not(:has([class*=p-password-])) {
+    right: 0.75rem;
+  }
+
+  &.p-icon-field-left > .p-input-icon:not(:has([class*=p-password-])) {
+    left: 0.75rem;
+  }
+}
+
+.auto-complete-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    .p-inputtext {
+      padding-right: 2.5rem;
+    }
+
+    &:dir(ltr).has-dropdown {
+      .p-input-icon {
+        right: 4rem;
+      }
+    }
+  }
+
+  &.icon-left {
+    .p-inputtext {
+      padding-left: 2.5rem;
+    }
+
+    &:dir(rtl).has-dropdown {
+      .p-input-icon {
+        left: 4rem;
+      }
+    }
+  }
+}
+
+.cascade-select-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    &:dir(rtl) {
+      .p-cascadeselect-label {
+        padding-right: 2.5rem;
+      }
+    }
+
+    &:dir(ltr) {
+      .p-cascadeselect-label {
+        padding-right: 1.75rem;
+      }
+
+      .field .p-icon-field > .p-input-icon {
+        right: 3rem;
+      }
+    }
+  }
+
+  &.icon-left {
+    &:dir(ltr) {
+      .p-cascadeselect-label {
+        padding-left: 2.5rem;
+      }
+    }
+
+    &:dir(rtl) {
+      .p-cascadeselect-label {
+        padding-left: 1.75rem;
+      }
+
+      .field .p-icon-field > .p-input-icon {
+        left: 3rem;
+      }
+    }
+  }
+
+  &.is-clearable {
+    &.icon-right {
+      &:dir(ltr) {
+        .p-cascadeselect-clear-icon {
+          inset-inline-end: 5rem;
+        }
+
+        .p-cascadeselect-label {
+          padding-right: 3.75rem;
+        }
+      }
+    }
+
+    &.icon-left {
+      &:dir(rtl) {
+        .p-cascadeselect-clear-icon {
+          inset-inline-end: 5rem;
+        }
+
+        .p-cascadeselect-label {
+          padding-left: 3.75rem;
+        }
+      }
+    }
+  }
+}
+
+.chips-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    .p-inputtext {
+      padding-right: 2.5rem;
+    }
+  }
+
+  &.icon-left {
+    .p-inputtext {
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+.dropdown-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    &:dir(rtl) {
+      .p-dropdown-label {
+        padding-right: 2.5rem;
+      }
+    }
+
+    &:dir(ltr) {
+      .p-dropdown-label {
+        padding-right: 1.75rem;
+      }
+
+      .field .p-icon-field > .p-input-icon {
+        right: 3rem;
+      }
+    }
+  }
+
+  &.icon-left {
+    &:dir(ltr) {
+      .p-dropdown-label {
+        padding-left: 2.5rem;
+      }
+    }
+
+    &:dir(rtl) {
+      .p-dropdown-label {
+        padding-left: 1.75rem;
+      }
+
+      .field .p-icon-field > .p-input-icon {
+        left: 3rem;
+      }
+    }
+  }
+
+  &.is-clearable {
+    &.icon-right {
+      &:dir(ltr) {
+        .p-dropdown-clear-icon {
+          inset-inline-end: 5rem;
+        }
+
+        .p-dropdown-label {
+          padding-right: 3.75rem;
+        }
+      }
+    }
+
+    &.icon-left {
+      &:dir(rtl) {
+        .p-dropdown-clear-icon {
+          inset-inline-end: 5rem;
+        }
+
+        .p-dropdown-label {
+          padding-left: 3.75rem;
+        }
+      }
+    }
+  }
+}
+
+.input-mask-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    .p-inputtext {
+      padding-right: 2.5rem;
+    }
+  }
+
+  &.icon-left {
+    .p-inputtext {
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+.input-number-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    .p-inputtext {
+      padding-right: 2.5rem;
+    }
+
+    &.has-buttons-horizontal {
+      .p-input-icon {
+        right: 4rem;
+      }
+    }
+
+    &.has-buttons-vertical {
+      .p-inputtext {
+        padding-left: 2.5rem;
+      }
+    }
+
+    &:dir(ltr).has-buttons-stacked {
+      .p-input-icon {
+        right: 4rem;
+      }
+    }
+  }
+
+  &.icon-left {
+    .p-inputtext {
+      padding-left: 2.5rem;
+    }
+
+    &.has-buttons-horizontal {
+      .p-input-icon {
+        left: 4rem;
+      }
+    }
+
+    &.has-buttons-vertical {
+      .p-inputtext {
+        padding-right: 2.5rem;
+      }
+    }
+
+    &:dir(rtl).has-buttons-stacked {
+      .p-input-icon {
+        left: 4rem;
+      }
+    }
+  }
+}
+
+.input-password-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    .p-inputtext {
+      padding-right: 2.5rem;
+    }
+
+    &:dir(ltr) {
+      &.has-toggler {
+        .p-input-icon:not(:has([class*=p-password-])) {
+          right: 2.75rem;
+        }
+
+        .p-inputtext {
+          padding-right: 4.5rem;
+        }
+      }
+    }
+  }
+
+  &.icon-left {
+    .p-inputtext {
+      padding-left: 2.5rem;
+    }
+
+    &:dir(rtl) {
+      &.has-toggler {
+        .p-input-icon:not(:has([class*=p-password-])) {
+          left: 2.75rem;
+        }
+
+        .p-inputtext {
+          padding-left: 4.5rem;
+        }
+      }
+    }
+  }
+
+  &.is-clearable {
+    &.icon-right {
+      &:dir(ltr) {
+        .input-password-clear-icon {
+          inset-inline-end: 2.5rem;
+        }
+
+        .p-inputtext {
+          padding-right: 4rem;
+        }
+      }
+
+      &.has-toggler {
+        &:dir(ltr) {
+          .input-password-clear-icon {
+            inset-inline-end: 4.75rem;
+          }
+
+          .p-inputtext {
+            padding-right: 6.5rem;
+          }
+        }
+      }
+    }
+
+    &.icon-left {
+      &:dir(rtl) {
+        .input-password-clear-icon {
+          inset-inline-end: 2.5rem;
+        }
+
+        .p-inputtext {
+          padding-left: 4rem;
+        }
+      }
+
+      &.has-toggler {
+        &:dir(rtl) {
+          .input-password-clear-icon {
+            inset-inline-end: 4.75rem;
+          }
+
+          .p-inputtext {
+            padding-left: 6.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.input-text-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    .p-inputtext {
+      padding-right: 2.5rem;
+    }
+  }
+
+  &.icon-left {
+    .p-inputtext {
+      padding-left: 2.5rem;
+    }
+  }
+
+  &.is-clearable {
+    &.icon-right {
+      &:dir(ltr) {
+        .input-text-clear-icon {
+          inset-inline-end: 2.5rem;
+        }
+
+        .p-inputtext {
+          padding-right: 4rem;
+        }
+      }
+    }
+
+    &.icon-left {
+      &:dir(rtl) {
+        .input-text-clear-icon {
+          inset-inline-end: 2.5rem;
+        }
+
+        .p-inputtext {
+          padding-left: 4rem;
+        }
+      }
+    }
+  }
+}
+
+.input-textarea-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    .p-inputtextarea {
+      padding-right: 2.5rem;
+    }
+  }
+
+  &.icon-left {
+    .p-inputtextarea {
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+.mention-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    .p-inputtext {
+      padding-right: 2.5rem;
+    }
+  }
+
+  &.icon-left {
+    .p-inputtext {
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+.multi-select-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    &:dir(rtl) {
+      .p-multiselect-label {
+        padding-right: 2.5rem;
+      }
+    }
+
+    &:dir(ltr) {
+      .p-multiselect-label {
+        padding-right: 1.75rem;
+      }
+
+      .field .p-icon-field > .p-input-icon {
+        right: 3rem;
+      }
+    }
+  }
+
+  &.icon-left {
+    &:dir(ltr) {
+      .p-multiselect-label {
+        padding-left: 2.5rem;
+      }
+    }
+
+    &:dir(rtl) {
+      .p-multiselect-label {
+        padding-left: 1.75rem;
+      }
+
+      .field .p-icon-field > .p-input-icon {
+        left: 3rem;
+      }
+    }
+  }
+
+  &.is-clearable {
+    &.icon-right {
+      &:dir(ltr) {
+        .p-multiselect-clear-icon {
+          inset-inline-end: 5rem;
+        }
+
+        .p-multiselect-label {
+          padding-right: 3.75rem;
+        }
+      }
+    }
+
+    &.icon-left {
+      &:dir(rtl) {
+        .p-multiselect-clear-icon {
+          inset-inline-end: 5rem;
+        }
+
+        .p-multiselect-label {
+          padding-left: 3.75rem;
+        }
+      }
+    }
+  }
+}
+
+.tree-select-wrapper {
+  &.label-float {
+    &:dir(ltr).icon-left,
+    &:dir(rtl).icon-right {
+      label {
+        inset-inline-start: 2.5rem;
+      }
+    }
+  }
+
+  &.icon-right {
+    &:dir(rtl) {
+      .p-treeselect-label {
+        padding-right: 2.5rem;
+      }
+    }
+
+    &:dir(ltr) {
+      .p-treeselect-label {
+        padding-right: 1.75rem;
+      }
+
+      .field .p-icon-field > .p-input-icon {
+        right: 3rem;
+      }
+    }
+  }
+
+  &.icon-left {
+    &:dir(ltr) {
+      .p-treeselect-label {
+        padding-left: 2.5rem;
+      }
+    }
+
+    &:dir(rtl) {
+      .p-treeselect-label {
+        padding-left: 1.75rem;
+      }
+
+      .field .p-icon-field > .p-input-icon {
+        left: 3rem;
+      }
+    }
+  }
+
+  &.is-clearable {
+    &.icon-right {
+      &:dir(ltr) {
+        .p-treeselect-clear-icon {
+          inset-inline-end: 5rem;
+        }
+
+        .p-treeselect-label {
+          padding-right: 3.75rem;
+        }
+      }
+    }
+
+    &.icon-left {
+      &:dir(rtl) {
+        .p-treeselect-clear-icon {
+          inset-inline-end: 5rem;
+        }
+
+        .p-treeselect-label {
+          padding-left: 3.75rem;
+        }
+      }
+    }
+  }
+}
