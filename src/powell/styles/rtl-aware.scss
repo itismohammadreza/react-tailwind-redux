@@ -26,17 +26,16 @@ textarea {
     inset-inline-end: 0.75rem;
   }
 
-  &:dir(rtl) {
-    .p-autocomplete-dd {
-      .p-autocomplete-dropdown {
-        @include left-side-radius(var(--border-radius));
-        @include right-side-radius(0);
-      }
+  .p-autocomplete-dd {
+    .p-autocomplete-dropdown {
+      @include mixins.radius-end(var(--border-radius));
+      @include mixins.radius-start(0);
+    }
 
-      .p-autocomplete-input, .p-autocomplete-multiple-container {
-        @include left-side-radius(0);
-        @include right-side-radius(var(--border-radius));
-      }
+    .p-autocomplete-input,
+    .p-autocomplete-multiple-container {
+      @include mixins.radius-end(0);
+      @include mixins.radius-start(var(--border-radius));
     }
   }
 }
@@ -72,32 +71,43 @@ textarea {
 }
 
 .input-number-wrapper {
-  &:dir(rtl) {
-    &.has-buttons-stacked {
-      .p-inputnumber-input {
-        @include left-side-radius(0);
-        @include right-side-radius(var(--border-radius));
-      }
-
-      .p-button.p-inputnumber-button-up {
-        border-top-left-radius: var(--border-radius);
-        border-top-right-radius: 0;
-      }
-
-      .p-button.p-inputnumber-button-down {
-        border-bottom-left-radius: var(--border-radius);
-        border-bottom-right-radius: 0;
-      }
+  &.has-buttons-stacked {
+    .p-inputnumber-input {
+      @include mixins.radius-end(0);
+      @include mixins.radius-start(var(--border-radius));
     }
 
-    &.has-buttons-horizontal {
-      .p-button.p-inputnumber-button-up {
-        order: 1;
-      }
+    .p-button.p-inputnumber-button-up {
+      border-start-end-radius: var(--border-radius);
+      border-start-start-radius: 0;
+    }
 
-      .p-button.p-inputnumber-button-down {
-        order: 3;
-      }
+    .p-button.p-inputnumber-button-down {
+      border-end-end-radius: var(--border-radius);
+      border-end-start-radius: 0;
+    }
+  }
+
+  &.has-buttons-horizontal {
+    .p-inputtext {
+      @include mixins.radius-all(0);
+    }
+
+    .p-button.p-inputnumber-button-up {
+      @include mixins.radius-start(0);
+      @include mixins.radius-end(var(--border-radius));
+    }
+
+    .p-button.p-inputnumber-button-down {
+      @include mixins.radius-end(0);
+      @include mixins.radius-start(var(--border-radius));
+    }
+  }
+
+  &.has-buttons-vertical {
+    .p-inputtext {
+      @include mixins.radius-all(0);
+      width: 100%;
     }
   }
 }

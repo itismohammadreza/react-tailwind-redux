@@ -12,218 +12,136 @@
 
 .auto-complete-wrapper {
   &:not(.has-dropdown) {
-    @include adjust-addon-styles(".p-inputtext");
+    @include mixins.adjust-addon-styles(".p-inputtext");
   }
 
   &.has-dropdown {
     &.addon-both {
       .p-autocomplete-dropdown,
       .p-inputtext {
-        @include radius-all(0);
+        @include mixins.radius-all(0);
       }
     }
 
-    &.addon-before {
-      &:dir(rtl) {
-        .p-inputtext {
-          @include radius-all(0);
-        }
-      }
-
-      &:dir(ltr) {
-        .p-inputtext {
-          @include right-side-radius(0);
-        }
+    &.addon-start {
+      .p-inputtext {
+        @include mixins.radius-start(0);
       }
     }
 
-    &.addon-after {
-      &:dir(rtl) {
-        .p-autocomplete-dropdown {
-          @include left-side-radius(0);
-        }
-      }
-
-      &:dir(ltr) {
-        .p-autocomplete-dropdown {
-          @include right-side-radius(0);
-        }
+    &.addon-end {
+      .p-autocomplete-dropdown {
+        @include mixins.radius-end(0);
       }
     }
   }
 }
 
 .cascade-select-wrapper {
-  @include adjust-addon-styles(".p-inputwrapper");
+  @include mixins.adjust-addon-styles(".p-inputwrapper");
 }
 
 .chips-wrapper {
-  @include adjust-addon-styles(".p-inputtext");
+  @include mixins.adjust-addon-styles(".p-inputtext");
 }
 
 .dropdown-wrapper {
-  @include adjust-addon-styles(".p-inputwrapper");
+  @include mixins.adjust-addon-styles(".p-inputwrapper");
 }
 
 .input-mask-wrapper {
-  @include adjust-addon-styles(".p-inputtext");
+  @include mixins.adjust-addon-styles(".p-inputtext");
 }
 
 .input-number-wrapper {
   &:not([class*=has-buttons]) {
-    @include adjust-addon-styles(".p-inputtext");
+    @include mixins.adjust-addon-styles(".p-inputtext");
   }
 
   &.has-buttons-stacked {
-    &.addon-both {
-      .p-button.p-inputnumber-button-down,
-      .p-button.p-inputnumber-button-up {
-        @include radius-all(0);
-      }
-    }
-
-    &.addon-after {
+    &.addon-both,
+    &.addon-end {
       .p-button.p-inputnumber-button-up,
       .p-button.p-inputnumber-button-down {
-        @include radius-all(0)
+        @include mixins.radius-end(0)
       }
     }
 
-    &.addon-before {
-      &:dir(rtl) {
-        .p-inputtext {
-          @include left-side-radius(0)
-        }
-      }
-
-      &:dir(ltr) {
-        .p-inputtext {
-          @include right-side-radius(0)
-        }
+    &.addon-both,
+    &.addon-start {
+      .p-inputtext {
+        @include mixins.radius-start(0)
       }
     }
   }
 
   &.has-buttons-horizontal {
+    &.addon-start {
+      .p-inputtext,
+      .p-button.p-inputnumber-button-down {
+        @include mixins.radius-start(0);
+      }
+    }
+
+    &.addon-end {
+      .p-inputtext,
+      .p-button.p-inputnumber-button-up {
+        @include mixins.radius-end(0);
+      }
+    }
+
     &.addon-both {
       .p-button.p-inputnumber-button-down,
       .p-button.p-inputnumber-button-up {
-        @include radius-all(0);
-      }
-    }
-
-    &.addon-after {
-      &:dir(rtl) {
-        .p-inputtext {
-          @include right-side-radius(0);
-        }
-
-        .p-button.p-inputnumber-button-down {
-          @include left-side-radius(0);
-        }
-      }
-
-      &:dir(ltr) {
-        .p-inputtext {
-          @include left-side-radius(0);
-        }
-
-        .p-button.p-inputnumber-button-up {
-          @include right-side-radius(0);
-        }
-      }
-    }
-
-    &.addon-before {
-      &:dir(rtl) {
-        .p-inputtext {
-          @include left-side-radius(0);
-        }
-
-        .p-button.p-inputnumber-button-up {
-          @include right-side-radius(0);
-        }
-      }
-
-      &:dir(ltr) {
-        .p-inputtext {
-          @include right-side-radius(0);
-        }
-
-        .p-button.p-inputnumber-button-down {
-          @include left-side-radius(0);
-        }
+        @include mixins.radius-all(0);
       }
     }
   }
 
   &.has-buttons-vertical {
-    .p-inputtext {
-      @include radius-all(0);
-      width: 100%
+    &.addon-start {
+      .p-button.p-inputnumber-button-down,
+      .p-button.p-inputnumber-button-up {
+        @include mixins.radius-start(0);
+      }
+    }
+
+    &.addon-end {
+      .p-button.p-inputnumber-button-down,
+      .p-button.p-inputnumber-button-up {
+        @include mixins.radius-end(0);
+      }
     }
 
     &.addon-both {
       .p-button.p-inputnumber-button-down,
       .p-button.p-inputnumber-button-up {
-        @include radius-all(0);
-      }
-    }
-
-    &.addon-before {
-      &:dir(ltr) {
-        .p-button.p-inputnumber-button-down,
-        .p-button.p-inputnumber-button-up {
-          @include left-side-radius(0);
-        }
-      }
-
-      &:dir(rtl) {
-        .p-button.p-inputnumber-button-down,
-        .p-button.p-inputnumber-button-up {
-          @include right-side-radius(0);
-        }
-      }
-    }
-
-    &.addon-after {
-      &:dir(ltr) {
-        .p-button.p-inputnumber-button-down,
-        .p-button.p-inputnumber-button-up {
-          @include right-side-radius(0);
-        }
-      }
-
-      &:dir(rtl) {
-        .p-button.p-inputnumber-button-down,
-        .p-button.p-inputnumber-button-up {
-          @include left-side-radius(0);
-        }
+        @include mixins.radius-all(0);
       }
     }
   }
 }
 
 .input-password-wrapper {
-  @include adjust-addon-styles(".p-inputtext");
+  @include mixins.adjust-addon-styles(".p-inputtext");
 }
 
 .input-text-wrapper {
-  @include adjust-addon-styles(".p-inputtext");
+  @include mixins.adjust-addon-styles(".p-inputtext");
 }
 
 .input-textarea-wrapper {
-  @include adjust-addon-styles(".p-inputtextarea");
+  @include mixins.adjust-addon-styles(".p-inputtextarea");
 }
 
 .mention-wrapper {
-  @include adjust-addon-styles(".p-inputtext");
+  @include mixins.adjust-addon-styles(".p-inputtext");
 }
 
 .multi-select-wrapper {
-  @include adjust-addon-styles(".p-inputwrapper");
+  @include mixins.adjust-addon-styles(".p-inputwrapper");
 }
 
 .tree-select-wrapper {
-  @include adjust-addon-styles(".p-inputwrapper");
+  @include mixins.adjust-addon-styles(".p-inputwrapper");
 }
