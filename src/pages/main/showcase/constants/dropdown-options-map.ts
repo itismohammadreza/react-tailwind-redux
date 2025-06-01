@@ -15,7 +15,7 @@ export const dropdownOptionsMap = {
   statuses: ['none', 'success', 'info', 'warning', 'error', '403', '404', '500'],
   imageTypes: ['none', 'box1', 'box2', 'magnifier'],
   iconDisplayTypes: ['input', 'button'],
-  addon: ['none', 'iconRight', 'iconLeft', 'addonBefore', 'addonAfter', 'addonBoth'],
+  addon: ['none', 'iconRight', 'iconLeft', 'addonStart', 'addonEnd', 'addonBoth'],
   sizes: ['none', 'small', 'large'],
   colorFormats: ['hex', 'rgb', 'hsb'],
   modes: ['basic', 'advanced'],

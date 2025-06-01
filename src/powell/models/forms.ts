@@ -26,6 +26,6 @@ export interface AddonConfig {
 }
 
 export interface Addon {
-  before?: AddonConfig;
-  after?: AddonConfig;
+  start?: AddonConfig;
+  end?: AddonConfig;
 }

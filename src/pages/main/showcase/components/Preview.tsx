@@ -30,14 +30,14 @@ export const Preview = (props: PreviewProps) => {
         case 'iconLeft':
           finalValue = {icon: 'pi pi-prime', iconPosition: 'left'};
           break;
-        case 'addonBefore':
-          finalValue = {addon: {before: addon}}
+        case 'addonStart':
+          finalValue = {addon: {start: addon}}
           break;
-        case 'addonAfter':
-          finalValue = {addon: {after: addon}}
+        case 'addonEnd':
+          finalValue = {addon: {end: addon}}
           break;
         case 'addonBoth':
-          finalValue = {addon: {before: addon, after: addon}}
+          finalValue = {addon: {start: addon, end: addon}}
           break;
       }
       return finalValue;

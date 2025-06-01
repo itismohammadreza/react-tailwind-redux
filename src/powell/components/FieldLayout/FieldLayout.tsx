@@ -75,16 +75,16 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
             'control-disabled': disabled,
             [`label-${labelPosition}`]: label,
             [`icon-${iconPosition}`]: iconEl,
-            'addon-before': addon?.before && !addon?.after,
-            'addon-after': addon?.after && !addon?.before,
-            'addon-both': addon?.before && addon?.after,
+            'addon-start': addon?.start && !addon?.end,
+            'addon-end': addon?.end && !addon?.start,
+            'addon-both': addon?.start && addon?.end,
           })}
            dir={rtl ? 'rtl' : 'ltr'}
            style={containerStyle as CSSProperties}>
         <div className="field">
           {labelPosition !== 'float' && labelEl}
           <div className={$classNames('field-inner', {"p-inputgroup": addon})}>
-            {getAddonTemplate(addon?.before)}
+            {getAddonTemplate(addon?.start)}
             {
               labelPosition === 'float' ? (
                   <$FloatLabel>
@@ -95,7 +95,7 @@ export const FieldLayout = (props: PropsWithChildren<FieldLayoutProps>) => {
                   icon ? withIcon : children
               )
             }
-            {getAddonTemplate(addon?.after)}
+            {getAddonTemplate(addon?.end)}
           </div>
         </div>
         {errorElement && <small className="error-message">{errorElement}</small>}
