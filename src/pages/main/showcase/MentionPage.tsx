@@ -57,6 +57,7 @@ export const MentionPage = () => {
       {field: 'hint', value: ''},
       {field: 'rtl', value: config.rtl},
       {field: 'showRequiredStar', value: config.showRequiredStar},
+      {field: 'variant', value: 'outlined', selectOptions: 'variants'},
       {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
       {field: 'addon', selectOptions: 'addon', value: 'none'},
       {field: 'inputSize', value: 'none', selectOptions: 'sizes'},

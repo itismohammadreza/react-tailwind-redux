@@ -74,7 +74,7 @@ export const Preview = (props: PreviewProps) => {
                 <FormContainer
                     validationSchema={
                       $Yup.object({
-                        n: $Yup.mixed().required('Field is required')
+                        n: $Yup.string().required('Field is required')
                       })
                     }
                     initialValues={{n: null}}

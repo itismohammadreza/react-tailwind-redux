@@ -37,14 +37,14 @@ export const CascadeSelect = (props: CascadeSelectProps) => {
           (control) => (
               <FieldLayout
                   {...layoutProps}
+                  className={props.showClear ? 'is-clearable' : ''}
                   componentName="cascade-select"
                   id={control.id}
                   isRequired={control.isRequired}
                   errorElement={!props.disabled && control.errorElement}>
                 <$CascadeSelect
                     {...rest}
-                    // Todo: Uncomment this line after panelClassName added to component props in next updates
-                    // panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
+                    panelClassName={`${props.panelClassName ?? ''} ${props.rtl ? 'panel-rtl' : ''}`}
                     inputId={control.id}
                     value={control.field ? control.field.value : props.value}
                     onChange={(event) => {

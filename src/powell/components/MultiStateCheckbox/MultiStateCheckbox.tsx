@@ -48,6 +48,8 @@ export const MultiStateCheckbox = (props: MultiStateCheckboxProps) => {
                       control.handleBlur?.(event);
                       props.onBlur?.(event);
                     }}
+                    // Todo: Uncomment this line after invalid added to component props in next updates
+                    // invalid={!!control.meta?.error && !props.disabled}
                 />
               </FieldLayout>
           )

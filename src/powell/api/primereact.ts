@@ -170,7 +170,7 @@ import {
   ListBoxFilterTemplateOptions,
   ListBoxFilterValueChangeEvent,
   ListBoxPassThroughMethodOptions,
-  ListboxPassThroughOptions,
+  ListBoxPassThroughOptions,
   ListBoxPassThroughType,
   ListBoxProps,
   ListBoxState
@@ -1197,7 +1197,7 @@ export type {ListBoxFilterTemplateOptions as $ListBoxFilterTemplateOptions};
 export type {ListBoxFilterValueChangeEvent as $ListBoxFilterValueChangeEvent};
 export type {ListBoxPassThroughMethodOptions as $ListBoxPassThroughMethodOptions};
 export type {ListBoxPassThroughType as $ListBoxPassThroughType};
-export type {ListboxPassThroughOptions as $ListboxPassThroughOptions};
+export type {ListBoxPassThroughOptions as ListBoxPassThroughOptions};
 export type {ListBoxState as $ListBoxState};
 export type {ListBoxProps as $ListBoxProps};
 export {Mention as $Mention};

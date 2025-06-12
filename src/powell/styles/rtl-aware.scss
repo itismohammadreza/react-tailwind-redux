@@ -40,6 +40,20 @@ textarea {
   }
 }
 
+.cascade-select-wrapper{
+  &.is-clearable {
+    .p-cascade-select-label {
+      padding-right: 0.75rem;
+      padding-inline-end: 1.75rem;
+    }
+
+    .p-cascadeselect-clear-icon {
+      right: auto;
+      inset-inline-end: 3rem;
+    }
+  }
+}
+
 .chips-wrapper {
   .p-chips-multiple-container .p-chips-token {
     margin: 0;
