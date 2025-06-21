@@ -41,6 +41,8 @@ import {ConfirmPopupPage} from "@pages/main/showcase/ConfirmPopupPage";
 import {DialogFormPage} from "@pages/main/showcase/DialogFormPage";
 import {DialogPage} from "@pages/main/showcase/DialogPage";
 import {ToastPage} from "@pages/main/showcase/ToastPage";
+import {FilePickerPage} from "@pages/main/showcase/FilePickerPage.tsx";
+import {FilePicker2Page} from "@pages/main/showcase/FilePicker2Page.tsx";
 
 const provideUser = async () => {
   try {
@@ -135,6 +137,14 @@ export const routes: RouteObject[] = [
       {
         path: "editor",
         element: <EditorPage/>,
+      },
+      {
+        path: "filePicker",
+        element: <FilePickerPage/>,
+      },
+      {
+        path: "filePicker2",
+        element: <FilePicker2Page/>,
       },
       {
         path: "inputMask",

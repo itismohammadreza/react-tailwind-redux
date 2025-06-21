@@ -40,7 +40,7 @@ textarea {
   }
 }
 
-.cascade-select-wrapper{
+.cascade-select-wrapper {
   &.is-clearable {
     .p-cascade-select-label {
       padding-right: 0.75rem;
@@ -82,6 +82,17 @@ textarea {
 
 .editor-wrapper .ql-toolbar.ql-snow {
   direction: ltr;
+}
+
+.file-picker-wrapper {
+  .p-button .p-button-icon-left {
+    margin-right: 0;
+    margin-inline-end: 0.5rem;
+  }
+
+  .p-fileupload-row > div:last-child {
+    text-align: end;
+  }
 }
 
 .input-number-wrapper {
