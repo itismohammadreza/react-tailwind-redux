@@ -135,7 +135,7 @@ const handleHttpError = (error: AxiosError) => {
   const failureMessage = getRequestProp(config!, response!, 'failureMessage');
 
   if (![false, undefined].includes(failureMessage)) {
-    showFailureToast(failureMessage || response?.data?.message);
+    showFailureToast(failureMessage || 'response?.data?.message');
   }
   removeRequestFromQueue(config!);
   if (response!.status === 401) {

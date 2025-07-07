@@ -52,8 +52,8 @@ const provideUser = async () => {
     if (user) {
       return null;
     }
-    const {data} = await dispatch(apiEndpoints.getProfile.initiate());
-    dispatch(updateUser(data));
+    // const {data} = await dispatch(apiEndpoints.getProfile.initiate());
+    // dispatch(updateUser(data));
     return user;
   } catch {
     return null;

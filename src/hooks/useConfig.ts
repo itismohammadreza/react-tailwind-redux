@@ -13,11 +13,11 @@ export const useConfig = () => {
   const {i18n} = useTranslation();
   const actions = {
     locale: (c: Partial<ConfigState>) => {
-      dispatch(changeLocale(c.locale!));
+      dispatch(changeLocale(c.locale! as any));
       i18n.changeLanguage(c.locale);
     },
     rtl: (c: Partial<ConfigState>) => {
-      dispatch(changeToRtl(c.rtl!));
+      dispatch(changeToRtl(c.rtl! as any));
       setPowellConfig({rtl: c.rtl!});
     },
   }

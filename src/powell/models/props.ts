@@ -157,4 +157,5 @@ export interface DialogFormProps {
 
 export interface FormContainerProps<T = $FormikValues> extends $FormikConfig<T> {
   onInit?: (context: $FormikContextType<T>) => void;
+  className?: string;
 }

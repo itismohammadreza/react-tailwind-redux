@@ -6,10 +6,10 @@ const configSlice = createSlice({
   name: "config",
   initialState: globalConfig,
   reducers: {
-    changeToRtl: (state: ConfigState, action: PayloadAction<boolean>) => {
+    changeToRtl: (state: any, action: any) => {
       state.rtl = action.payload;
     },
-    changeLocale: (state: ConfigState, action: PayloadAction<Locale>) => {
+    changeLocale: (state: any, action: any) => {
       state.locale = action.payload;
     },
   },

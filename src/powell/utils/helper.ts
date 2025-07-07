@@ -17,7 +17,7 @@ const splitProps = <T extends Record<string, SafeAny>>(props: T, groups: Record<
         result[groupName] = {};
       }
 
-      const value = key in props ? props[key] : typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+      const value = key in props ? props[key] : typeof defaultValue === 'function' ? (defaultValue as any)() : defaultValue;
       result[groupName][alias ?? key] = value;
 
       assigned[key] = true;

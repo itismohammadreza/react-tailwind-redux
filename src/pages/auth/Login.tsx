@@ -13,11 +13,11 @@ export const Login = () => {
 
   const onSubmit = async (value: User) => {
     try {
-      const {data} = await login(value);
-      localStorage.setItem('token', data.access_token);
-      const {data: user} = await getProfile();
-      dispatch(updateUser(user));
-      navigate(searchParams.get('return') ?? '/');
+      // const {data} = await login(value);
+      // localStorage.setItem('token', data.access_token);
+      // const {data: user} = await getProfile();
+      // dispatch(updateUser(user));
+      // navigate(searchParams.get('return') ?? '/');
     } catch {
     }
   }
