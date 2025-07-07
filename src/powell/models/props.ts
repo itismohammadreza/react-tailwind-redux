@@ -7,6 +7,7 @@ import {
   $ColorPickerProps,
   $DropdownProps,
   $EditorProps,
+  $FileUploadProps,
   $FormikConfig,
   $FormikContextType,
   $FormikValues,
@@ -100,6 +101,8 @@ export type ChipsProps = $ChipsProps & CommonFieldControlProps;
 export type ColorPickerProps = $ColorPickerProps & FixFieldControlProps;
 export type DropdownProps = $DropdownProps & CommonFieldControlProps;
 export type EditorProps = $EditorProps & FixFieldControlProps;
+export type FilePickerProps = $FileUploadProps & FixFieldControlProps;
+export type FilePicker2Props = FixFieldControlProps;
 export type InputMaskProps = $InputMaskProps & CommonFieldControlProps;
 export type InputNumberProps = $InputNumberProps & CommonFieldControlProps;
 export type InputOtpProps = $InputOtpProps & FixFieldControlProps;

@@ -5,6 +5,7 @@ export type Direction = 'rtl' | 'ltr';
 export type Size = 'small' | 'large';
 export type Orientation = 'horizontal' | 'vertical';
 export type Position = 'left' | 'right' | 'top' | 'bottom';
+export type FileResultType = 'base64' | 'file' | 'none';
 export type Nullable<T = void> = T | null | undefined;
 export type SafeAny = any;
 export type CssObject = Partial<CSSProperties>;

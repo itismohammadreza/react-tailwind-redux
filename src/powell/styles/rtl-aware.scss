@@ -40,6 +40,20 @@ textarea {
   }
 }
 
+.cascade-select-wrapper {
+  &.is-clearable {
+    .p-cascade-select-label {
+      padding-right: 0.75rem;
+      padding-inline-end: 1.75rem;
+    }
+
+    .p-cascadeselect-clear-icon {
+      right: auto;
+      inset-inline-end: 3rem;
+    }
+  }
+}
+
 .chips-wrapper {
   .p-chips-multiple-container .p-chips-token {
     margin: 0;
@@ -68,6 +82,17 @@ textarea {
 
 .editor-wrapper .ql-toolbar.ql-snow {
   direction: ltr;
+}
+
+.file-picker-wrapper {
+  .p-button .p-button-icon-left {
+    margin-right: 0;
+    margin-inline-end: 0.5rem;
+  }
+
+  .p-fileupload-row > div:last-child {
+    text-align: end;
+  }
 }
 
 .input-number-wrapper {

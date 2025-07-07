@@ -22,6 +22,8 @@ export const MultiStateCheckboxPage = () => {
       {field: 'hint', value: ''},
       {field: 'rtl', value: config.rtl},
       {field: 'showRequiredStar', value: config.showRequiredStar},
+      // Todo: Uncomment this line after variant added to component props in next updates
+      // {field: 'variant', value: 'outlined', selectOptions: 'variants'},
       {field: 'labelPosition', selectOptions: 'fixLabelPositions', value: config.fixLabelPosition},
       {field: 'disabled', value: false},
       {field: 'empty', value: true},

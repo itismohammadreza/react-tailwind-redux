@@ -95,6 +95,7 @@ export const CascadeSelectPage = () => {
       {field: 'labelPosition', selectOptions: 'labelPositions', value: config.labelPosition},
       {field: 'addon', selectOptions: 'addon', value: 'none'},
       {field: 'inputSize', value: 'none', selectOptions: 'sizes'},
+      {field: 'showClear', value: false},
     ]
   }
 
